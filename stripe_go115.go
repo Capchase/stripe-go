@@ -9,7 +9,7 @@ import "net/http"
 //
 // Go 1.15 fixes a long-standing bug https://github.com/golang/go/issues/32441
 // that led to HTTP/2 being disabled by default in stripe-go
-// in https://github.com/stripe/stripe-go/pull/903.
+// in https://github.com/Capchase/stripe-go/pull/903.
 //
 // This init is guaranteed to execute after all package-level var
 // initializations have been completed, so the initialization of

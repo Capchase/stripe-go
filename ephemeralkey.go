@@ -48,7 +48,7 @@ func (e *EphemeralKey) UnmarshalJSON(data []byte) error {
 
 	// Go does guarantee the longevity of `data`, so copy when assigning `RawJSON`
 	// See https://golang.org/pkg/encoding/json/#Unmarshaler
-	// and https://github.com/stripe/stripe-go/pull/1142
+	// and https://github.com/Capchase/stripe-go/pull/1142
 	e.RawJSON = append(e.RawJSON[:0], data...)
 
 	return nil
