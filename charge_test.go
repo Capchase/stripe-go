@@ -14,7 +14,7 @@ func TestCharge_UnmarshalJSON(t *testing.T) {
 		var v Charge
 		err := json.Unmarshal([]byte(`"ch_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ch_123", v.ID)
+		assert.Equal(t, "ch_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -25,7 +25,7 @@ func TestCharge_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ch_123", v.ID)
+		assert.Equal(t, "ch_123", *v.ID)
 	}
 }
 
@@ -35,7 +35,7 @@ func TestChargeOutcomeRule_UnmarshalJSON(t *testing.T) {
 		var v ChargeOutcomeRule
 		err := json.Unmarshal([]byte(`"ssr_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ssr_123", v.ID)
+		assert.Equal(t, "ssr_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -46,7 +46,7 @@ func TestChargeOutcomeRule_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ssr_123", v.ID)
+		assert.Equal(t, "ssr_123", *v.ID)
 	}
 }
 

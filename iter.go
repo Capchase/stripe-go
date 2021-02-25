@@ -60,7 +60,8 @@ func (it *Iter) Meta() *ListMeta {
 // It returns false when the iterator stops
 // at the end of the list.
 func (it *Iter) Next() bool {
-	if len(it.values) == 0 && *it.meta.HasMore && !it.listParams.Single {
+	hasMore := it.meta.HasMore
+	if len(it.values) == 0 && (hasMore != nil && *hasMore) && !it.listParams.Single {
 		// determine if we're moving forward or backwards in paging
 		if it.listParams.EndingBefore != nil {
 			it.listParams.EndingBefore = String(listItemID(it.cur))
@@ -118,7 +119,10 @@ func GetIter(container ListParamsContainer, query Query) *Iter {
 	iter := &Iter{
 		formValues: formValues,
 		listParams: *listParams,
-		query:      query,
+		meta: &ListMeta{
+			HasMore: Bool(false),
+		},
+		query: query,
 	}
 
 	iter.getPage()

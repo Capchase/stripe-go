@@ -36,7 +36,7 @@ func TestIssuingAuthorizationList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.IssuingAuthorization())
-	assert.Equal(t, "issuing.authorization", i.IssuingAuthorization().Object)
+	assert.Equal(t, "issuing.authorization", *i.IssuingAuthorization().Object)
 	assert.NotNil(t, i.IssuingAuthorizationList())
 }
 

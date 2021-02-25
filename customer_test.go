@@ -13,7 +13,7 @@ func TestCustomer_UnmarshalJSON(t *testing.T) {
 		var v Customer
 		err := json.Unmarshal([]byte(`"cus_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "cus_123", v.ID)
+		assert.Equal(t, "cus_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -24,6 +24,6 @@ func TestCustomer_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "cus_123", v.ID)
+		assert.Equal(t, "cus_123", *v.ID)
 	}
 }

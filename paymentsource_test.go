@@ -33,10 +33,10 @@ func TestPaymentSource_MarshalJSON(t *testing.T) {
 		name := "alice cooper"
 		paymentSource := &PaymentSource{
 			Type: PaymentSourceTypeCard,
-			ID:   id,
+			ID:   &id,
 			Card: &Card{
-				ID:   id,
-				Name: name,
+				ID:   &id,
+				Name: &name,
 			},
 		}
 
@@ -48,10 +48,10 @@ func TestPaymentSource_MarshalJSON(t *testing.T) {
 		err = json.Unmarshal(d, unmarshalled)
 		assert.NoError(t, err)
 
-		assert.Equal(t, unmarshalled.ID, id)
+		assert.Equal(t, *unmarshalled.ID, id)
 		assert.NotNil(t, unmarshalled.Card)
-		assert.Equal(t, unmarshalled.Card.ID, id)
-		assert.Equal(t, unmarshalled.Card.Name, name)
+		assert.Equal(t, *unmarshalled.Card.ID, id)
+		assert.Equal(t, *unmarshalled.Card.Name, name)
 	}
 
 	{
@@ -59,10 +59,10 @@ func TestPaymentSource_MarshalJSON(t *testing.T) {
 		name := "big bank"
 		paymentSource := &PaymentSource{
 			Type: PaymentSourceTypeBankAccount,
-			ID:   id,
+			ID:   &id,
 			BankAccount: &BankAccount{
-				ID:                id,
-				AccountHolderName: name,
+				ID:                &id,
+				AccountHolderName: &name,
 			},
 		}
 
@@ -74,10 +74,10 @@ func TestPaymentSource_MarshalJSON(t *testing.T) {
 		err = json.Unmarshal(d, unmarshalled)
 		assert.NoError(t, err)
 
-		assert.Equal(t, unmarshalled.ID, id)
+		assert.Equal(t, *unmarshalled.ID, id)
 		assert.NotNil(t, unmarshalled.BankAccount)
-		assert.Equal(t, unmarshalled.BankAccount.ID, id)
-		assert.Equal(t, unmarshalled.BankAccount.AccountHolderName, name)
+		assert.Equal(t, *unmarshalled.BankAccount.ID, id)
+		assert.Equal(t, *unmarshalled.BankAccount.AccountHolderName, name)
 	}
 }
 
@@ -87,7 +87,7 @@ func TestPaymentSource_UnmarshalJSON(t *testing.T) {
 		var v PaymentSource
 		err := json.Unmarshal([]byte(`"ba_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ba_123", v.ID)
+		assert.Equal(t, "ba_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -104,6 +104,6 @@ func TestPaymentSource_UnmarshalJSON(t *testing.T) {
 
 		// The payment source has a field for each possible type, so the bank
 		// account is located one level down
-		assert.Equal(t, "ba_123", v.BankAccount.ID)
+		assert.Equal(t, "ba_123", *v.BankAccount.ID)
 	}
 }

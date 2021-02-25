@@ -22,7 +22,7 @@ func TestIssuingCardList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.IssuingCard())
-	assert.Equal(t, "issuing.card", i.IssuingCard().Object)
+	assert.Equal(t, "issuing.card", *i.IssuingCard().Object)
 	assert.NotNil(t, i.IssuingCardList())
 }
 

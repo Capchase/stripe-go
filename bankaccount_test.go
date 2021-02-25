@@ -14,7 +14,7 @@ func TestBankAccount_UnmarshalJSON(t *testing.T) {
 		var v BankAccount
 		err := json.Unmarshal([]byte(`"ba_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ba_123", v.ID)
+		assert.Equal(t, "ba_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -25,7 +25,7 @@ func TestBankAccount_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ba_123", v.ID)
+		assert.Equal(t, "ba_123", *v.ID)
 	}
 }
 

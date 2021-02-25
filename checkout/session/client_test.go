@@ -66,7 +66,7 @@ func TestCheckoutSessionNew(t *testing.T) {
 	session, err := New(params)
 	assert.Nil(t, err)
 	assert.NotNil(t, session)
-	assert.Equal(t, session.LineItems.Data[0].Object, "item")
+	assert.Equal(t, *session.LineItems.Data[0].Object, "item")
 }
 
 func TestCheckoutSessionList(t *testing.T) {

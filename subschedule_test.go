@@ -24,7 +24,7 @@ func TestSubscriptionSchedule_UnmarshalJSON(t *testing.T) {
 		var v SubscriptionSchedule
 		err := json.Unmarshal([]byte(`"sub_sched_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "sub_sched_123", v.ID)
+		assert.Equal(t, "sub_sched_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -35,6 +35,6 @@ func TestSubscriptionSchedule_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "sub_sched_123", v.ID)
+		assert.Equal(t, "sub_sched_123", *v.ID)
 	}
 }

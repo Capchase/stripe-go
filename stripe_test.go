@@ -90,7 +90,7 @@ func TestDo_Retry(t *testing.T) {
 			w.Write([]byte(`{"error":"Conflict (this should be retried)."}`))
 
 		case 1:
-			response := testServerResponse{Message: message}
+			response := testServerResponse{Message: &message}
 
 			data, err := json.Marshal(response)
 			assert.NoError(t, err)
@@ -386,7 +386,7 @@ func TestDo_LastResponsePopulated(t *testing.T) {
 	}
 
 	message := "Hello, client."
-	expectedResponse := testServerResponse{Message: message}
+	expectedResponse := testServerResponse{Message: &message}
 	rawJSON, err := json.Marshal(expectedResponse)
 	assert.NoError(t, err)
 
@@ -424,10 +424,10 @@ func TestDo_LastResponsePopulated(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, message, resource.Message)
 
-	assert.Equal(t, "key_123", *resource.LastResponse.IdempotencyKey)
+	assert.Equal(t, "key_123", resource.LastResponse.IdempotencyKey)
 	assert.Equal(t, "other_header", resource.LastResponse.Header.Get("Other-Header"))
 	assert.Equal(t, rawJSON, resource.LastResponse.RawJSON)
-	assert.Equal(t, "req_123", *resource.LastResponse.RequestID)
+	assert.Equal(t, "req_123", resource.LastResponse.RequestID)
 	assert.Equal(t,
 		fmt.Sprintf("%v %v", http.StatusCreated, http.StatusText(http.StatusCreated)),
 		resource.LastResponse.Status)
@@ -448,7 +448,7 @@ func TestDo_TelemetryDisabled(t *testing.T) {
 		// none of the requests should include telemetry metrics
 		assert.Equal(t, r.Header.Get("X-Stripe-Client-Telemetry"), "")
 
-		response := testServerResponse{Message: message}
+		response := testServerResponse{Message: &message}
 
 		data, err := json.Marshal(response)
 		assert.NoError(t, err)
@@ -502,7 +502,7 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 	}
 
 	type requestMetrics struct {
-		RequestDurationMS *int `json:"request_duration_ms"`
+		RequestDurationMS *int    `json:"request_duration_ms"`
 		RequestID         *string `json:"request_id"`
 	}
 
@@ -532,14 +532,14 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 
 			// the second request should include the metrics for the first request
 			assert.Equal(t, telemetry.LastRequestMetrics.RequestID, "req_1")
-			assert.True(t, telemetry.LastRequestMetrics.RequestDurationMS > 20,
+			assert.True(t, *telemetry.LastRequestMetrics.RequestDurationMS > 20,
 				"request_duration_ms should be > 20ms")
 		default:
 			assert.Fail(t, "Should not have reached request %v", requestNum)
 		}
 
 		w.Header().Set("Request-Id", fmt.Sprintf("req_%d", requestNum))
-		response := testServerResponse{Message: message}
+		response := testServerResponse{Message: &message}
 
 		data, err := json.Marshal(response)
 		assert.NoError(t, err)
@@ -597,7 +597,7 @@ func TestDo_TelemetryEnabledNoDataRace(t *testing.T) {
 		reqID := atomic.AddInt32(&requestNum, 1)
 
 		w.Header().Set("Request-Id", fmt.Sprintf("req_%d", reqID))
-		response := testServerResponse{Message: message}
+		response := testServerResponse{Message: &message}
 
 		data, err := json.Marshal(response)
 		assert.NoError(t, err)
@@ -727,7 +727,7 @@ func TestGetBackendWithConfig_TrimV1Suffix(t *testing.T) {
 		).(*BackendImplementation)
 
 		// The `/v1` suffix has been stripped.
-		assert.Equal(t, "https://api.com", *backend.URL)
+		assert.Equal(t, "https://api.com", backend.URL)
 	}
 
 	// Also support trimming a `/v1/` with an extra trailing slash which is
@@ -740,7 +740,7 @@ func TestGetBackendWithConfig_TrimV1Suffix(t *testing.T) {
 			},
 		).(*BackendImplementation)
 
-		assert.Equal(t, "https://api.com", *backend.URL)
+		assert.Equal(t, "https://api.com", backend.URL)
 	}
 
 	// No-op otherwise.
@@ -752,7 +752,7 @@ func TestGetBackendWithConfig_TrimV1Suffix(t *testing.T) {
 			},
 		).(*BackendImplementation)
 
-		assert.Equal(t, "https://api.com", *backend.URL)
+		assert.Equal(t, "https://api.com", backend.URL)
 	}
 }
 
@@ -760,7 +760,7 @@ func TestParseID(t *testing.T) {
 	// JSON string
 	{
 		id, ok := ParseID([]byte(`"ch_123"`))
-		assert.Equal(t, "ch_123", *id)
+		assert.Equal(t, "ch_123", id)
 		assert.True(t, ok)
 	}
 
@@ -894,10 +894,10 @@ func TestUserAgent(t *testing.T) {
 
 func TestUserAgentWithAppInfo(t *testing.T) {
 	appInfo := &AppInfo{
-		Name:      "MyAwesomePlugin",
-		PartnerID: "partner_1234",
-		URL:       "https://myawesomeplugin.info",
-		Version:   "1.2.34",
+		Name:      String("MyAwesomePlugin"),
+		PartnerID: String("partner_1234"),
+		URL:       String("https://myawesomeplugin.info"),
+		Version:   String("1.2.34"),
 	}
 	SetAppInfo(appInfo)
 	defer SetAppInfo(nil)
@@ -965,9 +965,9 @@ func TestStripeClientUserAgent(t *testing.T) {
 
 func TestStripeClientUserAgentWithAppInfo(t *testing.T) {
 	appInfo := &AppInfo{
-		Name:    "MyAwesomePlugin",
-		URL:     "https://myawesomeplugin.info",
-		Version: "1.2.34",
+		Name:    String("MyAwesomePlugin"),
+		URL:     String("https://myawesomeplugin.info"),
+		Version: String("1.2.34"),
 	}
 	SetAppInfo(appInfo)
 	defer SetAppInfo(nil)
@@ -1005,8 +1005,8 @@ func TestResponseToError(t *testing.T) {
 	// JSON and inject into our conversion function.
 	expectedErr := &Error{
 		Code:  ErrorCodeMissing,
-		Msg:   "That card was declined",
-		Param: "expiry_date",
+		Msg:   String("That card was declined"),
+		Param: String("expiry_date"),
 		Type:  ErrorTypeCard,
 	}
 	bytes, err := json.Marshal(expectedErr)

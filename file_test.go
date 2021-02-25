@@ -14,7 +14,7 @@ func TestFile_UnmarshalJSON(t *testing.T) {
 		var v File
 		err := json.Unmarshal([]byte(`"file_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "file_123", v.ID)
+		assert.Equal(t, "file_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -25,7 +25,7 @@ func TestFile_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "file_123", v.ID)
+		assert.Equal(t, "file_123", *v.ID)
 	}
 }
 

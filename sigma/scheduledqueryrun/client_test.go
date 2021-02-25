@@ -22,6 +22,6 @@ func TestSigmaScheduledQueryRunList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.SigmaScheduledQueryRun())
-	assert.Equal(t, "scheduled_query_run", i.SigmaScheduledQueryRun().Object)
+	assert.Equal(t, "scheduled_query_run", *i.SigmaScheduledQueryRun().Object)
 	assert.NotNil(t, i.SigmaScheduledQueryRunList())
 }

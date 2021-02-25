@@ -43,8 +43,9 @@ func TestIterOneErr(t *testing.T) {
 }
 
 func TestIterPage2Empty(t *testing.T) {
+	u := uint32(0)
 	tq := testQuery{
-		{[]interface{}{&item{"x"}}, &ListMeta{HasMore: true, TotalCount: 0, URL: ""}, nil},
+		{[]interface{}{&item{"x"}}, &ListMeta{HasMore: Bool(true), TotalCount: &u, URL: String("")}, nil},
 		{nil, &ListMeta{}, nil},
 	}
 	want := []interface{}{&item{"x"}}
@@ -55,8 +56,9 @@ func TestIterPage2Empty(t *testing.T) {
 }
 
 func TestIterPage2EmptyErr(t *testing.T) {
+	u := uint32(0)
 	tq := testQuery{
-		{[]interface{}{&item{"x"}}, &ListMeta{HasMore: true, TotalCount: 0, URL: ""}, nil},
+		{[]interface{}{&item{"x"}}, &ListMeta{HasMore: Bool(true), TotalCount: &u, URL: String("")}, nil},
 		{nil, &ListMeta{}, errTest},
 	}
 	want := []interface{}{&item{"x"}}
@@ -67,9 +69,10 @@ func TestIterPage2EmptyErr(t *testing.T) {
 }
 
 func TestIterTwoPages(t *testing.T) {
+	u := uint32(0)
 	tq := testQuery{
-		{[]interface{}{&item{"x"}}, &ListMeta{HasMore: true, TotalCount: 0, URL: ""}, nil},
-		{[]interface{}{2}, &ListMeta{HasMore: false, TotalCount: 0, URL: ""}, nil},
+		{[]interface{}{&item{"x"}}, &ListMeta{HasMore: Bool(true), TotalCount: &u, URL: String("")}, nil},
+		{[]interface{}{2}, &ListMeta{HasMore: Bool(false), TotalCount: &u, URL: String("")}, nil},
 	}
 	want := []interface{}{&item{"x"}, 2}
 	g, gerr := collect(GetIter(nil, tq.query))
@@ -79,9 +82,10 @@ func TestIterTwoPages(t *testing.T) {
 }
 
 func TestIterTwoPagesErr(t *testing.T) {
+	u := uint32(0)
 	tq := testQuery{
-		{[]interface{}{&item{"x"}}, &ListMeta{HasMore: true, TotalCount: 0, URL: ""}, nil},
-		{[]interface{}{2}, &ListMeta{HasMore: false, TotalCount: 0, URL: ""}, errTest},
+		{[]interface{}{&item{"x"}}, &ListMeta{HasMore: Bool(true), TotalCount: &u, URL: String("")}, nil},
+		{[]interface{}{2}, &ListMeta{HasMore: Bool(false), TotalCount: &u, URL: String("")}, errTest},
 	}
 	want := []interface{}{&item{"x"}, 2}
 	g, gerr := collect(GetIter(nil, tq.query))
@@ -100,8 +104,9 @@ func TestIterReversed(t *testing.T) {
 }
 
 func TestIterReversedTwoPages(t *testing.T) {
+	u := uint32(0)
 	tq := testQuery{
-		{[]interface{}{&item{"3"}, 4}, &ListMeta{HasMore: true, TotalCount: 0, URL: ""}, nil},
+		{[]interface{}{&item{"3"}, 4}, &ListMeta{HasMore: Bool(true), TotalCount: &u, URL: String("")}, nil},
 		{[]interface{}{1, 2}, &ListMeta{}, nil},
 	}
 	want := []interface{}{4, &item{"3"}, 2, 1}
@@ -134,7 +139,8 @@ func TestIterListAndMeta(t *testing.T) {
 	type listType struct {
 		ListMeta
 	}
-	listMeta := &ListMeta{HasMore: true, TotalCount: 0, URL: ""}
+	u := uint32(0)
+	listMeta := &ListMeta{HasMore: Bool(true), TotalCount: &u, URL: String("")}
 	list := &listType{ListMeta: *listMeta}
 
 	tq := testQuery{{nil, list, nil}}

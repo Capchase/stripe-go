@@ -26,7 +26,7 @@ func TestIssuingDisputeList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.IssuingDispute())
-	assert.Equal(t, "issuing.dispute", i.IssuingDispute().Object)
+	assert.Equal(t, "issuing.dispute", *i.IssuingDispute().Object)
 	assert.NotNil(t, i.IssuingDisputeList())
 }
 

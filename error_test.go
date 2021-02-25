@@ -10,7 +10,8 @@ import (
 )
 
 func TestErrorError(t *testing.T) {
-	err := &Error{Type: String("foo", Msg: "bar")}
+	s := "bar"
+	err := &Error{Type: "foo", Msg: &s}
 	assert.Equal(t, `{"message":"bar","type":"foo"}`, err.Error())
 }
 
@@ -36,18 +37,18 @@ func TestErrorResponse(t *testing.T) {
 	stripeErr := err.(*Error)
 	assert.Equal(t, ErrorTypeInvalidRequest, stripeErr.Type)
 	assert.Equal(t, "req_123", *stripeErr.RequestID)
-	assert.Equal(t, 401, stripeErr.HTTPStatusCode)
+	assert.Equal(t, 401, *stripeErr.HTTPStatusCode)
 }
 
 func TestErrorRedact(t *testing.T) {
-	pi := &PaymentIntent{Amount: int64(400), ClientSecret: "foo"}
-	si := &SetupIntent{Description: String("keepme", ClientSecret: "foo")}
+	pi := &PaymentIntent{Amount: Int64(int64(400)), ClientSecret: String("foo")}
+	si := &SetupIntent{Description: String("keepme"), ClientSecret: String("foo")}
 
 	t.Run("BothIntentObjects", func(t *testing.T) {
 		err := &Error{PaymentIntent: pi, SetupIntent: si}
 		redacted := err.redact()
-		assert.Equal(t, int64(400), err.PaymentIntent.Amount)
-		assert.Equal(t, int64(400), redacted.PaymentIntent.Amount)
+		assert.Equal(t, int64(400), *err.PaymentIntent.Amount)
+		assert.Equal(t, int64(400), *redacted.PaymentIntent.Amount)
 		assert.Equal(t, "keepme", *err.SetupIntent.Description)
 		assert.Equal(t, "keepme", *redacted.SetupIntent.Description)
 		assert.Equal(t, "foo", *err.PaymentIntent.ClientSecret)
@@ -68,8 +69,8 @@ func TestErrorRedact(t *testing.T) {
 	t.Run("PaymentIntentAlone", func(t *testing.T) {
 		err := &Error{PaymentIntent: pi}
 		redacted := err.redact()
-		assert.Equal(t, int64(400), err.PaymentIntent.Amount)
-		assert.Equal(t, int64(400), redacted.PaymentIntent.Amount)
+		assert.Equal(t, int64(400), *err.PaymentIntent.Amount)
+		assert.Equal(t, int64(400), *redacted.PaymentIntent.Amount)
 		assert.Equal(t, "foo", *err.PaymentIntent.ClientSecret)
 		assert.Equal(t, "foo", *pi.ClientSecret)
 		assert.Equal(t, "REDACTED", *redacted.PaymentIntent.ClientSecret)

@@ -13,7 +13,7 @@ func TestTransfer_UnmarshalJSON(t *testing.T) {
 		var v Transfer
 		err := json.Unmarshal([]byte(`"tr_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "tr_123", v.ID)
+		assert.Equal(t, "tr_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -24,7 +24,7 @@ func TestTransfer_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "tr_123", v.ID)
+		assert.Equal(t, "tr_123", *v.ID)
 	}
 }
 
@@ -34,7 +34,7 @@ func TestTransferDestination_UnmarshalJSON(t *testing.T) {
 		var v TransferDestination
 		err := json.Unmarshal([]byte(`"acct_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "acct_123", v.ID)
+		assert.Equal(t, "acct_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -45,10 +45,10 @@ func TestTransferDestination_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "acct_123", v.ID)
+		assert.Equal(t, "acct_123", *v.ID)
 
 		// The child Account field should also be expanded. For legacy reasons
 		// it's a different object.
-		assert.Equal(t, "acct_123", v.Account.ID)
+		assert.Equal(t, "acct_123", *v.Account.ID)
 	}
 }

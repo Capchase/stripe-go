@@ -22,7 +22,7 @@ func TestReportRunList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.ReportRun())
-	assert.Equal(t, "reporting.report_run", i.ReportRun().Object)
+	assert.Equal(t, "reporting.report_run", *i.ReportRun().Object)
 	assert.NotNil(t, i.ReportRunList())
 }
 

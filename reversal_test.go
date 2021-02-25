@@ -13,7 +13,7 @@ func TestReversal_UnmarshalJSON(t *testing.T) {
 		var v Reversal
 		err := json.Unmarshal([]byte(`"trr_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "trr_123", v.ID)
+		assert.Equal(t, "trr_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -24,6 +24,6 @@ func TestReversal_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "trr_123", v.ID)
+		assert.Equal(t, "trr_123", *v.ID)
 	}
 }

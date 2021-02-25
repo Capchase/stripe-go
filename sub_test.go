@@ -40,7 +40,7 @@ func TestSubscription_UnmarshalJSON(t *testing.T) {
 		var v Subscription
 		err := json.Unmarshal([]byte(`"sub_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "sub_123", v.ID)
+		assert.Equal(t, "sub_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -51,6 +51,6 @@ func TestSubscription_UnmarshalJSON(t *testing.T) {
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "sub_123", v.ID)
+		assert.Equal(t, "sub_123", *v.ID)
 	}
 }
