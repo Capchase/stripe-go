@@ -205,86 +205,86 @@ type SubscriptionListParams struct {
 
 // SubscriptionPauseCollection if specified, payment collection for this subscription will be paused.
 type SubscriptionPauseCollection struct {
-	Behavior  SubscriptionPauseCollectionBehavior `json:"behavior"`
-	ResumesAt *int64 `json:"resumes_at"`
+	Behavior  SubscriptionPauseCollectionBehavior `json:"behavior,omitempty"`
+	ResumesAt *int64 `json:"resumes_at,omitempty"`
 }
 
 // SubscriptionPendingInvoiceItemInterval represents the interval at which to invoice pending invoice
 // items.
 type SubscriptionPendingInvoiceItemInterval struct {
-	Interval      SubscriptionPendingInvoiceItemIntervalInterval `json:"interval"`
-	IntervalCount *int64 `json:"interval_count"`
+	Interval      SubscriptionPendingInvoiceItemIntervalInterval `json:"interval,omitempty"`
+	IntervalCount *int64 `json:"interval_count,omitempty"`
 }
 
 // SubscriptionPendingUpdate represents deferred changes that will be applied when latest invoice is paid.
 type SubscriptionPendingUpdate struct {
-	BillingCycleAnchor *int64 `json:"billing_cycle_anchor"`
-	ExpiresAt          *int64 `json:"expires_at"`
-	SubscriptionItems  []*SubscriptionItem `json:"subscription_items"`
-	TrialEnd           *int64 `json:"trial_end"`
-	TrialFromPlan      *bool `json:"trial_from_plan"`
+	BillingCycleAnchor *int64 `json:"billing_cycle_anchor,omitempty"`
+	ExpiresAt          *int64 `json:"expires_at,omitempty"`
+	SubscriptionItems  []*SubscriptionItem `json:"subscription_items,omitempty"`
+	TrialEnd           *int64 `json:"trial_end,omitempty"`
+	TrialFromPlan      *bool `json:"trial_from_plan,omitempty"`
 }
 
 // SubscriptionTransferData represents the information for the transfer_data associated with a subscription.
 type SubscriptionTransferData struct {
-	AmountPercent *float64 `json:"amount_percent"`
-	Destination   *Account `json:"destination"`
+	AmountPercent *float64 `json:"amount_percent,omitempty"`
+	Destination   *Account `json:"destination,omitempty"`
 }
 
 // Subscription is the resource representing a Stripe subscription.
 // For more details see https://stripe.com/docs/api#subscriptions.
 type Subscription struct {
 	APIResource
-	ApplicationFeePercent         *float64 `json:"application_fee_percent"`
-	BillingCycleAnchor            *int64 `json:"billing_cycle_anchor"`
-	BillingThresholds             *SubscriptionBillingThresholds         `json:"billing_thresholds"`
-	CancelAt                      *int64 `json:"cancel_at"`
-	CancelAtPeriodEnd             *bool `json:"cancel_at_period_end"`
-	CanceledAt                    *int64 `json:"canceled_at"`
-	CollectionMethod              SubscriptionCollectionMethod           `json:"collection_method"`
-	Created                       *int64 `json:"created"`
-	CurrentPeriodEnd              *int64 `json:"current_period_end"`
-	CurrentPeriodStart            *int64 `json:"current_period_start"`
-	Customer                      *Customer                              `json:"customer"`
-	DaysUntilDue                  *int64 `json:"days_until_due"`
-	DefaultPaymentMethod          *PaymentMethod                         `json:"default_payment_method"`
-	DefaultSource                 *PaymentSource                         `json:"default_source"`
-	DefaultTaxRates               []*TaxRate                             `json:"default_tax_rates"`
-	Discount                      *Discount                              `json:"discount"`
-	EndedAt                       *int64 `json:"ended_at"`
-	ID                            *string `json:"id"`
-	Items                         *SubscriptionItemList                  `json:"items"`
-	LatestInvoice                 *Invoice                               `json:"latest_invoice"`
-	Livemode                      *bool `json:"livemode"`
-	Metadata                      map[string]string                      `json:"metadata"`
-	NextPendingInvoiceItemInvoice *int64 `json:"next_pending_invoice_item_invoice"`
-	Object                        *string `json:"object"`
-	OnBehalfOf                    *Account                               `json:"on_behalf_of"`
-	PauseCollection               SubscriptionPauseCollection            `json:"pause_collection"`
-	PendingInvoiceItemInterval    SubscriptionPendingInvoiceItemInterval `json:"pending_invoice_item_interval"`
-	PendingSetupIntent            *SetupIntent                           `json:"pending_setup_intent"`
-	PendingUpdate                 *SubscriptionPendingUpdate             `json:"pending_update"`
-	Plan                          *Plan                                  `json:"plan"`
-	Quantity                      *int64 `json:"quantity"`
-	Schedule                      *SubscriptionSchedule                  `json:"schedule"`
-	StartDate                     *int64 `json:"start_date"`
-	Status                        SubscriptionStatus                     `json:"status"`
-	TransferData                  *SubscriptionTransferData              `json:"transfer_data"`
-	TrialEnd                      *int64 `json:"trial_end"`
-	TrialStart                    *int64 `json:"trial_start"`
+	ApplicationFeePercent         *float64 `json:"application_fee_percent,omitempty"`
+	BillingCycleAnchor            *int64 `json:"billing_cycle_anchor,omitempty"`
+	BillingThresholds             *SubscriptionBillingThresholds         `json:"billing_thresholds,omitempty"`
+	CancelAt                      *int64 `json:"cancel_at,omitempty"`
+	CancelAtPeriodEnd             *bool `json:"cancel_at_period_end,omitempty"`
+	CanceledAt                    *int64 `json:"canceled_at,omitempty"`
+	CollectionMethod              SubscriptionCollectionMethod           `json:"collection_method,omitempty"`
+	Created                       *int64 `json:"created,omitempty"`
+	CurrentPeriodEnd              *int64 `json:"current_period_end,omitempty"`
+	CurrentPeriodStart            *int64 `json:"current_period_start,omitempty"`
+	Customer                      *Customer                              `json:"customer,omitempty"`
+	DaysUntilDue                  *int64 `json:"days_until_due,omitempty"`
+	DefaultPaymentMethod          *PaymentMethod                         `json:"default_payment_method,omitempty"`
+	DefaultSource                 *PaymentSource                         `json:"default_source,omitempty"`
+	DefaultTaxRates               []*TaxRate                             `json:"default_tax_rates,omitempty"`
+	Discount                      *Discount                              `json:"discount,omitempty"`
+	EndedAt                       *int64 `json:"ended_at,omitempty"`
+	ID                            *string `json:"id,omitempty"`
+	Items                         *SubscriptionItemList                  `json:"items,omitempty"`
+	LatestInvoice                 *Invoice                               `json:"latest_invoice,omitempty"`
+	Livemode                      *bool `json:"livemode,omitempty"`
+	Metadata                      map[string]string                      `json:"metadata,omitempty"`
+	NextPendingInvoiceItemInvoice *int64 `json:"next_pending_invoice_item_invoice,omitempty"`
+	Object                        *string `json:"object,omitempty"`
+	OnBehalfOf                    *Account                               `json:"on_behalf_of,omitempty"`
+	PauseCollection               SubscriptionPauseCollection            `json:"pause_collection,omitempty"`
+	PendingInvoiceItemInterval    SubscriptionPendingInvoiceItemInterval `json:"pending_invoice_item_interval,omitempty"`
+	PendingSetupIntent            *SetupIntent                           `json:"pending_setup_intent,omitempty"`
+	PendingUpdate                 *SubscriptionPendingUpdate             `json:"pending_update,omitempty"`
+	Plan                          *Plan                                  `json:"plan,omitempty"`
+	Quantity                      *int64 `json:"quantity,omitempty"`
+	Schedule                      *SubscriptionSchedule                  `json:"schedule,omitempty"`
+	StartDate                     *int64 `json:"start_date,omitempty"`
+	Status                        SubscriptionStatus                     `json:"status,omitempty"`
+	TransferData                  *SubscriptionTransferData              `json:"transfer_data,omitempty"`
+	TrialEnd                      *int64 `json:"trial_end,omitempty"`
+	TrialStart                    *int64 `json:"trial_start,omitempty"`
 }
 
 // SubscriptionBillingThresholds is a structure representing the billing thresholds for a subscription.
 type SubscriptionBillingThresholds struct {
-	AmountGTE               *int64 `json:"amount_gte"`
-	ResetBillingCycleAnchor *bool `json:"reset_billing_cycle_anchor"`
+	AmountGTE               *int64 `json:"amount_gte,omitempty"`
+	ResetBillingCycleAnchor *bool `json:"reset_billing_cycle_anchor,omitempty"`
 }
 
 // SubscriptionList is a list object for subscriptions.
 type SubscriptionList struct {
 	APIResource
 	ListMeta
-	Data []*Subscription `json:"data"`
+	Data []*Subscription `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a Subscription.

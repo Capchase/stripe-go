@@ -88,30 +88,30 @@ type CustomerListParams struct {
 // For more details see https://stripe.com/docs/api#customers.
 type Customer struct {
 	APIResource
-	Address             Address                  `json:"address"`
-	Balance             *int64 `json:"balance"`
-	Created             *int64 `json:"created"`
-	Currency            Currency                 `json:"currency"`
-	DefaultSource       *PaymentSource           `json:"default_source"`
-	Deleted             *bool `json:"deleted"`
-	Delinquent          *bool `json:"delinquent"`
-	Description         *string `json:"description"`
-	Discount            *Discount                `json:"discount"`
-	Email               *string `json:"email"`
-	ID                  *string `json:"id"`
-	InvoicePrefix       *string `json:"invoice_prefix"`
-	InvoiceSettings     *CustomerInvoiceSettings `json:"invoice_settings"`
-	Livemode            *bool `json:"livemode"`
-	Metadata            map[string]string        `json:"metadata"`
-	Name                *string `json:"name"`
-	NextInvoiceSequence *int64 `json:"next_invoice_sequence"`
-	Phone               *string `json:"phone"`
-	PreferredLocales    []string                 `json:"preferred_locales"`
-	Shipping            *CustomerShippingDetails `json:"shipping"`
-	Sources             *SourceList              `json:"sources"`
-	Subscriptions       *SubscriptionList        `json:"subscriptions"`
-	TaxExempt           CustomerTaxExempt        `json:"tax_exempt"`
-	TaxIDs              *TaxIDList               `json:"tax_ids"`
+	Address             Address                  `json:"address,omitempty"`
+	Balance             *int64 `json:"balance,omitempty"`
+	Created             *int64 `json:"created,omitempty"`
+	Currency            Currency                 `json:"currency,omitempty"`
+	DefaultSource       *PaymentSource           `json:"default_source,omitempty"`
+	Deleted             *bool `json:"deleted,omitempty"`
+	Delinquent          *bool `json:"delinquent,omitempty"`
+	Description         *string `json:"description,omitempty"`
+	Discount            *Discount                `json:"discount,omitempty"`
+	Email               *string `json:"email,omitempty"`
+	ID                  *string `json:"id,omitempty"`
+	InvoicePrefix       *string `json:"invoice_prefix,omitempty"`
+	InvoiceSettings     *CustomerInvoiceSettings `json:"invoice_settings,omitempty"`
+	Livemode            *bool `json:"livemode,omitempty"`
+	Metadata            map[string]string        `json:"metadata,omitempty"`
+	Name                *string `json:"name,omitempty"`
+	NextInvoiceSequence *int64 `json:"next_invoice_sequence,omitempty"`
+	Phone               *string `json:"phone,omitempty"`
+	PreferredLocales    []string                 `json:"preferred_locales,omitempty"`
+	Shipping            *CustomerShippingDetails `json:"shipping,omitempty"`
+	Sources             *SourceList              `json:"sources,omitempty"`
+	Subscriptions       *SubscriptionList        `json:"subscriptions,omitempty"`
+	TaxExempt           CustomerTaxExempt        `json:"tax_exempt,omitempty"`
+	TaxIDs              *TaxIDList               `json:"tax_ids,omitempty"`
 }
 
 // CustomerInvoiceCustomField represents a custom field associated with the customer's invoices.
@@ -123,23 +123,23 @@ type CustomerInvoiceCustomField struct {
 // CustomerInvoiceSettings is the structure containing the default settings for invoices associated
 // with this customer.
 type CustomerInvoiceSettings struct {
-	CustomFields         []*CustomerInvoiceCustomField `json:"custom_fields"`
-	DefaultPaymentMethod *PaymentMethod                `json:"default_payment_method"`
-	Footer               *string `json:"footer"`
+	CustomFields         []*CustomerInvoiceCustomField `json:"custom_fields,omitempty"`
+	DefaultPaymentMethod *PaymentMethod                `json:"default_payment_method,omitempty"`
+	Footer               *string `json:"footer,omitempty"`
 }
 
 // CustomerList is a list of customers as retrieved from a list endpoint.
 type CustomerList struct {
 	APIResource
 	ListMeta
-	Data []*Customer `json:"data"`
+	Data []*Customer `json:"data,omitempty"`
 }
 
 // CustomerShippingDetails is the structure containing shipping information.
 type CustomerShippingDetails struct {
-	Address Address `json:"address"`
-	Name    *string `json:"name"`
-	Phone   *string `json:"phone"`
+	Address Address `json:"address,omitempty"`
+	Name    *string `json:"name,omitempty"`
+	Phone   *string `json:"phone,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a Customer.

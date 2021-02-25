@@ -58,26 +58,26 @@ type InvoiceItemListParams struct {
 // For more details see https://stripe.com/docs/api#invoiceitems.
 type InvoiceItem struct {
 	APIResource
-	Amount            *int64 `json:"amount"`
-	Currency          Currency          `json:"currency"`
-	Customer          *Customer         `json:"customer"`
-	Date              *int64 `json:"date"`
-	Deleted           *bool `json:"deleted"`
-	Description       *string `json:"description"`
-	Discountable      *bool `json:"discountable"`
-	Discounts         []*Discount       `json:"discounts"`
-	ID                *string `json:"id"`
-	Invoice           *Invoice          `json:"invoice"`
-	Livemode          *bool `json:"livemode"`
-	Metadata          map[string]string `json:"metadata"`
-	Period            *Period           `json:"period"`
-	Plan              *Plan             `json:"plan"`
-	Price             *Price            `json:"price"`
-	Proration         *bool `json:"proration"`
-	Quantity          *int64 `json:"quantity"`
-	Subscription      *Subscription     `json:"subscription"`
-	TaxRates          []*TaxRate        `json:"tax_rates"`
-	UnitAmount        *int64 `json:"unit_amount"`
+	Amount            *int64 `json:"amount,omitempty"`
+	Currency          Currency          `json:"currency,omitempty"`
+	Customer          *Customer         `json:"customer,omitempty"`
+	Date              *int64 `json:"date,omitempty"`
+	Deleted           *bool `json:"deleted,omitempty"`
+	Description       *string `json:"description,omitempty"`
+	Discountable      *bool `json:"discountable,omitempty"`
+	Discounts         []*Discount       `json:"discounts,omitempty"`
+	ID                *string `json:"id,omitempty"`
+	Invoice           *Invoice          `json:"invoice,omitempty"`
+	Livemode          *bool `json:"livemode,omitempty"`
+	Metadata          map[string]string `json:"metadata,omitempty"`
+	Period            *Period           `json:"period,omitempty"`
+	Plan              *Plan             `json:"plan,omitempty"`
+	Price             *Price            `json:"price,omitempty"`
+	Proration         *bool `json:"proration,omitempty"`
+	Quantity          *int64 `json:"quantity,omitempty"`
+	Subscription      *Subscription     `json:"subscription,omitempty"`
+	TaxRates          []*TaxRate        `json:"tax_rates,omitempty"`
+	UnitAmount        *int64 `json:"unit_amount,omitempty"`
 	UnitAmountDecimal *float64 `json:"unit_amount_decimal,string"`
 }
 
@@ -85,7 +85,7 @@ type InvoiceItem struct {
 type InvoiceItemList struct {
 	APIResource
 	ListMeta
-	Data []*InvoiceItem `json:"data"`
+	Data []*InvoiceItem `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of an InvoiceItem.

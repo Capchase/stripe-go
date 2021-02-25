@@ -13,20 +13,20 @@ type ReportTypeParams struct {
 // ReportType is the resource representing a report type.
 type ReportType struct {
 	APIResource
-	DefaultColumns     []string `json:"default_columns"`
-	Created            *int64 `json:"created"`
-	DataAvailableEnd   *int64 `json:"data_available_end"`
-	DataAvailableStart *int64 `json:"data_available_start"`
-	ID                 *string `json:"id"`
-	Name               *string `json:"name"`
-	Object             *string `json:"object"`
-	Updated            *int64 `json:"updated"`
-	Version            *int64 `json:"version"`
+	DefaultColumns     []string `json:"default_columns,omitempty"`
+	Created            *int64 `json:"created,omitempty"`
+	DataAvailableEnd   *int64 `json:"data_available_end,omitempty"`
+	DataAvailableStart *int64 `json:"data_available_start,omitempty"`
+	ID                 *string `json:"id,omitempty"`
+	Name               *string `json:"name,omitempty"`
+	Object             *string `json:"object,omitempty"`
+	Updated            *int64 `json:"updated,omitempty"`
+	Version            *int64 `json:"version,omitempty"`
 }
 
 // ReportTypeList is a list of report types as retrieved from a list endpoint.
 type ReportTypeList struct {
 	APIResource
 	ListMeta
-	Data []*ReportType `json:"data"`
+	Data []*ReportType `json:"data,omitempty"`
 }

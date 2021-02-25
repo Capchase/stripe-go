@@ -29,27 +29,27 @@ type WebhookEndpointListParams struct {
 // For more details see https://stripe.com/docs/api#webhook_endpoints.
 type WebhookEndpoint struct {
 	APIResource
-	APIVersion    *string `json:"api_version"`
-	Application   *string `json:"application"`
-	Connect       *bool `json:"connect"`
-	Created       *int64 `json:"created"`
-	Deleted       *bool `json:"deleted"`
-	Description   *string `json:"description"`
-	EnabledEvents []string          `json:"enabled_events"`
-	ID            *string `json:"id"`
-	Livemode      *bool `json:"livemode"`
-	Metadata      map[string]string `json:"metadata"`
-	Object        *string `json:"object"`
-	Secret        *string `json:"secret"`
-	Status        *string `json:"status"`
-	URL           *string `json:"url"`
+	APIVersion    *string `json:"api_version,omitempty"`
+	Application   *string `json:"application,omitempty"`
+	Connect       *bool `json:"connect,omitempty"`
+	Created       *int64 `json:"created,omitempty"`
+	Deleted       *bool `json:"deleted,omitempty"`
+	Description   *string `json:"description,omitempty"`
+	EnabledEvents []string          `json:"enabled_events,omitempty"`
+	ID            *string `json:"id,omitempty"`
+	Livemode      *bool `json:"livemode,omitempty"`
+	Metadata      map[string]string `json:"metadata,omitempty"`
+	Object        *string `json:"object,omitempty"`
+	Secret        *string `json:"secret,omitempty"`
+	Status        *string `json:"status,omitempty"`
+	URL           *string `json:"url,omitempty"`
 }
 
 // WebhookEndpointList is a list of webhook endpoints as retrieved from a list endpoint.
 type WebhookEndpointList struct {
 	APIResource
 	ListMeta
-	Data []*WebhookEndpoint `json:"data"`
+	Data []*WebhookEndpoint `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a WebhookEndpoint.

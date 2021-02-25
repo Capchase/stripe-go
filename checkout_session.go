@@ -253,87 +253,87 @@ type CheckoutSessionListParams struct {
 // CheckoutSessionCustomerDetailsTaxIDs represent customer's tax IDs at the
 // time of checkout.
 type CheckoutSessionCustomerDetailsTaxIDs struct {
-	Type  CheckoutSessionCustomerDetailsTaxIDsType `json:"type"`
-	Value *string `json:"value"`
+	Type  CheckoutSessionCustomerDetailsTaxIDsType `json:"type,omitempty"`
+	Value *string `json:"value,omitempty"`
 }
 
 // CheckoutSessionCustomerDetails represent the customer details including
 // the tax exempt status and the customer's tax IDs.
 type CheckoutSessionCustomerDetails struct {
-	Email     *string `json:"email"`
-	TaxExempt CheckoutSessionCustomerDetailsTaxExempt `json:"tax_exempt"`
-	TaxIDs    []*CheckoutSessionCustomerDetailsTaxIDs `json:"tax_ids"`
+	Email     *string `json:"email,omitempty"`
+	TaxExempt CheckoutSessionCustomerDetailsTaxExempt `json:"tax_exempt,omitempty"`
+	TaxIDs    []*CheckoutSessionCustomerDetailsTaxIDs `json:"tax_ids,omitempty"`
 }
 
 // CheckoutSessionShippingAddressCollection is the set of parameters allowed for the
 // shipping address collection.
 type CheckoutSessionShippingAddressCollection struct {
-	AllowedCountries []string `json:"allowed_countries"`
+	AllowedCountries []string `json:"allowed_countries,omitempty"`
 }
 
 // CheckoutSessionTotalDetailsBreakdownDiscount represent the details of one discount applied to a session.
 type CheckoutSessionTotalDetailsBreakdownDiscount struct {
-	Amount   *int64 `json:"amount"`
-	Discount *Discount `json:"discount"`
+	Amount   *int64 `json:"amount,omitempty"`
+	Discount *Discount `json:"discount,omitempty"`
 }
 
 // CheckoutSessionTotalDetailsBreakdownTax represent the details of tax rate applied to a session.
 type CheckoutSessionTotalDetailsBreakdownTax struct {
-	Amount  *int64 `json:"amount"`
-	TaxRate *TaxRate `json:"tax_rate"`
+	Amount  *int64 `json:"amount,omitempty"`
+	TaxRate *TaxRate `json:"tax_rate,omitempty"`
 }
 
 // CheckoutSessionTotalDetailsBreakdown is the set of properties detailing a breakdown of taxes and discounts applied to a session if any.
 type CheckoutSessionTotalDetailsBreakdown struct {
-	Discounts []*CheckoutSessionTotalDetailsBreakdownDiscount `json:"discounts"`
-	Taxes     []*CheckoutSessionTotalDetailsBreakdownTax      `json:"taxes"`
+	Discounts []*CheckoutSessionTotalDetailsBreakdownDiscount `json:"discounts,omitempty"`
+	Taxes     []*CheckoutSessionTotalDetailsBreakdownTax      `json:"taxes,omitempty"`
 }
 
 // CheckoutSessionTotalDetails is the set of properties detailing how the amounts were calculated.
 type CheckoutSessionTotalDetails struct {
-	AmountDiscount *int64 `json:"amount_discount"`
-	AmountTax      *int64 `json:"amount_tax"`
-	Breakdown      *CheckoutSessionTotalDetailsBreakdown `json:"breakdown"`
+	AmountDiscount *int64 `json:"amount_discount,omitempty"`
+	AmountTax      *int64 `json:"amount_tax,omitempty"`
+	Breakdown      *CheckoutSessionTotalDetailsBreakdown `json:"breakdown,omitempty"`
 }
 
 // CheckoutSession is the resource representing a Stripe checkout session.
 // For more details see https://stripe.com/docs/api/checkout/sessions/object
 type CheckoutSession struct {
 	APIResource
-	AllowPromotionCodes       *bool `json:"allow_promotion_codes"`
-	CancelURL                 *string `json:"cancel_url"`
-	CustomerDetails           *CheckoutSessionCustomerDetails           `json:"customer_details"`
-	AmountSubtotal            *int64 `json:"amount_subtotal"`
-	AmountTotal               *int64 `json:"amount_total"`
-	ClientReferenceID         *string `json:"client_reference_id"`
-	Currency                  Currency                                  `json:"currency"`
-	Customer                  *Customer                                 `json:"customer"`
-	CustomerEmail             *string `json:"customer_email"`
-	Deleted                   *bool `json:"deleted"`
-	ID                        *string `json:"id"`
-	LineItems                 *LineItemList                             `json:"line_items"`
-	Livemode                  *bool `json:"livemode"`
-	Locale                    *string `json:"locale"`
-	Metadata                  map[string]string                         `json:"metadata"`
-	Mode                      CheckoutSessionMode                       `json:"mode"`
-	Object                    *string `json:"object"`
-	PaymentIntent             *PaymentIntent                            `json:"payment_intent"`
-	PaymentMethodTypes        []string                                  `json:"payment_method_types"`
-	PaymentStatus             CheckoutSessionPaymentStatus              `json:"payment_status"`
-	SetupIntent               *SetupIntent                              `json:"setup_intent"`
-	Shipping                  *ShippingDetails                          `json:"shipping"`
-	ShippingAddressCollection *CheckoutSessionShippingAddressCollection `json:"shipping_address_collection"`
-	Subscription              *Subscription                             `json:"subscription"`
-	SubmitType                CheckoutSessionSubmitType                 `json:"submit_type"`
-	SuccessURL                *string `json:"success_url"`
-	TotalDetails              *CheckoutSessionTotalDetails              `json:"total_details"`
+	AllowPromotionCodes       *bool `json:"allow_promotion_codes,omitempty"`
+	CancelURL                 *string `json:"cancel_url,omitempty"`
+	CustomerDetails           *CheckoutSessionCustomerDetails           `json:"customer_details,omitempty"`
+	AmountSubtotal            *int64 `json:"amount_subtotal,omitempty"`
+	AmountTotal               *int64 `json:"amount_total,omitempty"`
+	ClientReferenceID         *string `json:"client_reference_id,omitempty"`
+	Currency                  Currency                                  `json:"currency,omitempty"`
+	Customer                  *Customer                                 `json:"customer,omitempty"`
+	CustomerEmail             *string `json:"customer_email,omitempty"`
+	Deleted                   *bool `json:"deleted,omitempty"`
+	ID                        *string `json:"id,omitempty"`
+	LineItems                 *LineItemList                             `json:"line_items,omitempty"`
+	Livemode                  *bool `json:"livemode,omitempty"`
+	Locale                    *string `json:"locale,omitempty"`
+	Metadata                  map[string]string                         `json:"metadata,omitempty"`
+	Mode                      CheckoutSessionMode                       `json:"mode,omitempty"`
+	Object                    *string `json:"object,omitempty"`
+	PaymentIntent             *PaymentIntent                            `json:"payment_intent,omitempty"`
+	PaymentMethodTypes        []string                                  `json:"payment_method_types,omitempty"`
+	PaymentStatus             CheckoutSessionPaymentStatus              `json:"payment_status,omitempty"`
+	SetupIntent               *SetupIntent                              `json:"setup_intent,omitempty"`
+	Shipping                  *ShippingDetails                          `json:"shipping,omitempty"`
+	ShippingAddressCollection *CheckoutSessionShippingAddressCollection `json:"shipping_address_collection,omitempty"`
+	Subscription              *Subscription                             `json:"subscription,omitempty"`
+	SubmitType                CheckoutSessionSubmitType                 `json:"submit_type,omitempty"`
+	SuccessURL                *string `json:"success_url,omitempty"`
+	TotalDetails              *CheckoutSessionTotalDetails              `json:"total_details,omitempty"`
 }
 
 // CheckoutSessionList is a list of sessions as retrieved from a list endpoint.
 type CheckoutSessionList struct {
 	APIResource
 	ListMeta
-	Data []*CheckoutSession `json:"data"`
+	Data []*CheckoutSession `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a checkout session.

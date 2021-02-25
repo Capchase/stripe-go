@@ -10,26 +10,26 @@ import (
 // For more details see https://stripe.com/docs/api#events.
 type Event struct {
 	APIResource
-	Account         *string `json:"account"`
-	Created         *int64 `json:"created"`
-	Data            *EventData    `json:"data"`
-	ID              *string `json:"id"`
-	Livemode        *bool `json:"livemode"`
-	PendingWebhooks *int64 `json:"pending_webhooks"`
-	Request         *EventRequest `json:"request"`
-	Type            *string `json:"type"`
+	Account         *string `json:"account,omitempty"`
+	Created         *int64 `json:"created,omitempty"`
+	Data            *EventData    `json:"data,omitempty"`
+	ID              *string `json:"id,omitempty"`
+	Livemode        *bool `json:"livemode,omitempty"`
+	PendingWebhooks *int64 `json:"pending_webhooks,omitempty"`
+	Request         *EventRequest `json:"request,omitempty"`
+	Type            *string `json:"type,omitempty"`
 }
 
 // EventRequest contains information on a request that created an event.
 type EventRequest struct {
 	// ID is the request ID of the request that created an event, if the event
 	// was created by a request.
-	ID *string `json:"id"`
+	ID *string `json:"id,omitempty"`
 
 	// IdempotencyKey is the idempotency key of the request that created an
 	// event, if the event was created by a request and if an idempotency key
 	// was specified for that request.
-	IdempotencyKey *string `json:"idempotency_key"`
+	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
 
 // EventData is the unmarshalled object as a map.
@@ -37,9 +37,9 @@ type EventData struct {
 	// Object is a raw mapping of the API resource contained in the event.
 	// Although marked with json:"-", it's still populated independently by
 	// a custom UnmarshalJSON implementation.
-	Object             map[string]interface{} `json:"-"`
-	PreviousAttributes map[string]interface{} `json:"previous_attributes"`
-	Raw                json.RawMessage        `json:"object"`
+	Object             map[string]interface{} `json:"-,omitempty"`
+	PreviousAttributes map[string]interface{} `json:"previous_attributes,omitempty"`
+	Raw                json.RawMessage        `json:"object,omitempty"`
 }
 
 // EventParams is the set of parameters that can be used when retrieving events.
@@ -52,7 +52,7 @@ type EventParams struct {
 type EventList struct {
 	APIResource
 	ListMeta
-	Data []*Event `json:"data"`
+	Data []*Event `json:"data,omitempty"`
 }
 
 // EventListParams is the set of parameters that can be used when listing events.

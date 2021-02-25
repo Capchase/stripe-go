@@ -14,13 +14,13 @@ type BillingPortalSessionParams struct {
 // BillingPortalSession is the resource representing a billing portal session.
 type BillingPortalSession struct {
 	APIResource
-	Created   *int64 `json:"created"`
-	Customer  *string `json:"customer"`
-	ID        *string `json:"id"`
-	Livemode  *bool `json:"livemode"`
-	Object    *string `json:"object"`
-	ReturnURL *string `json:"return_url"`
-	URL       *string `json:"url"`
+	Created   *int64 `json:"created,omitempty"`
+	Customer  *string `json:"customer,omitempty"`
+	ID        *string `json:"id,omitempty"`
+	Livemode  *bool `json:"livemode,omitempty"`
+	Object    *string `json:"object,omitempty"`
+	ReturnURL *string `json:"return_url,omitempty"`
+	URL       *string `json:"url,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a billing portal session.

@@ -89,18 +89,18 @@ const (
 // The Type should indicate which object is fleshed out.
 // For more details see https://stripe.com/docs/api#retrieve_balance_transaction
 type BalanceTransactionSource struct {
-	ApplicationFee       *ApplicationFee              `json:"-"`
-	Charge               *Charge                      `json:"-"`
-	Dispute              *Dispute                     `json:"-"`
-	ID                   *string `json:"id"`
-	IssuingAuthorization *IssuingAuthorization        `json:"-"`
-	IssuingDispute       *IssuingDispute              `json:"-"`
-	IssuingTransaction   *IssuingAuthorization        `json:"-"`
-	Payout               *Payout                      `json:"-"`
-	Refund               *Refund                      `json:"-"`
-	Reversal             *Reversal                    `json:"-"`
-	Transfer             *Transfer                    `json:"-"`
-	Type                 BalanceTransactionSourceType `json:"object"`
+	ApplicationFee       *ApplicationFee              `json:"-,omitempty"`
+	Charge               *Charge                      `json:"-,omitempty"`
+	Dispute              *Dispute                     `json:"-,omitempty"`
+	ID                   *string `json:"id,omitempty"`
+	IssuingAuthorization *IssuingAuthorization        `json:"-,omitempty"`
+	IssuingDispute       *IssuingDispute              `json:"-,omitempty"`
+	IssuingTransaction   *IssuingAuthorization        `json:"-,omitempty"`
+	Payout               *Payout                      `json:"-,omitempty"`
+	Refund               *Refund                      `json:"-,omitempty"`
+	Reversal             *Reversal                    `json:"-,omitempty"`
+	Transfer             *Transfer                    `json:"-,omitempty"`
+	Type                 BalanceTransactionSourceType `json:"object,omitempty"`
 }
 
 // BalanceTransactionParams is the set of parameters that can be used when retrieving a transaction.
@@ -127,36 +127,36 @@ type BalanceTransactionListParams struct {
 // For more details see https://stripe.com/docs/api/#balance.
 type BalanceTransaction struct {
 	APIResource
-	Amount            *int64 `json:"amount"`
-	AvailableOn       *int64 `json:"available_on"`
-	Created           *int64 `json:"created"`
-	Currency          Currency                            `json:"currency"`
-	Description       *string `json:"description"`
-	ExchangeRate      *float64 `json:"exchange_rate"`
-	ID                *string `json:"id"`
-	Fee               *int64 `json:"fee"`
-	FeeDetails        []*BalanceTransactionFee            `json:"fee_details"`
-	Net               *int64 `json:"net"`
-	ReportingCategory BalanceTransactionReportingCategory `json:"reporting_category"`
-	Source            *BalanceTransactionSource           `json:"source"`
-	Status            BalanceTransactionStatus            `json:"status"`
-	Type              BalanceTransactionType              `json:"type"`
+	Amount            *int64 `json:"amount,omitempty"`
+	AvailableOn       *int64 `json:"available_on,omitempty"`
+	Created           *int64 `json:"created,omitempty"`
+	Currency          Currency                            `json:"currency,omitempty"`
+	Description       *string `json:"description,omitempty"`
+	ExchangeRate      *float64 `json:"exchange_rate,omitempty"`
+	ID                *string `json:"id,omitempty"`
+	Fee               *int64 `json:"fee,omitempty"`
+	FeeDetails        []*BalanceTransactionFee            `json:"fee_details,omitempty"`
+	Net               *int64 `json:"net,omitempty"`
+	ReportingCategory BalanceTransactionReportingCategory `json:"reporting_category,omitempty"`
+	Source            *BalanceTransactionSource           `json:"source,omitempty"`
+	Status            BalanceTransactionStatus            `json:"status,omitempty"`
+	Type              BalanceTransactionType              `json:"type,omitempty"`
 }
 
 // BalanceTransactionList is a list of transactions as returned from a list endpoint.
 type BalanceTransactionList struct {
 	APIResource
 	ListMeta
-	Data []*BalanceTransaction `json:"data"`
+	Data []*BalanceTransaction `json:"data,omitempty"`
 }
 
 // BalanceTransactionFee is a structure that breaks down the fees in a transaction.
 type BalanceTransactionFee struct {
-	Amount      *int64 `json:"amount"`
-	Application *string `json:"application"`
-	Currency    Currency `json:"currency"`
-	Description *string `json:"description"`
-	Type        *string `json:"type"`
+	Amount      *int64 `json:"amount,omitempty"`
+	Application *string `json:"application,omitempty"`
+	Currency    Currency `json:"currency,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Type        *string `json:"type,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a Transaction.

@@ -13,21 +13,21 @@ type OrderReturnParams struct {
 // For more details see https://stripe.com/docs/api#order_returns.
 type OrderReturn struct {
 	APIResource
-	Amount   *int64 `json:"amount"`
-	Created  *int64 `json:"created"`
-	Currency Currency     `json:"currency"`
-	ID       *string `json:"id"`
-	Items    []*OrderItem `json:"items"`
-	Livemode *bool `json:"livemode"`
-	Order    *Order       `json:"order"`
-	Refund   *Refund      `json:"refund"`
+	Amount   *int64 `json:"amount,omitempty"`
+	Created  *int64 `json:"created,omitempty"`
+	Currency Currency     `json:"currency,omitempty"`
+	ID       *string `json:"id,omitempty"`
+	Items    []*OrderItem `json:"items,omitempty"`
+	Livemode *bool `json:"livemode,omitempty"`
+	Order    *Order       `json:"order,omitempty"`
+	Refund   *Refund      `json:"refund,omitempty"`
 }
 
 // OrderReturnList is a list of order returns as retrieved from a list endpoint.
 type OrderReturnList struct {
 	APIResource
 	ListMeta
-	Data []*OrderReturn `json:"data"`
+	Data []*OrderReturn `json:"data,omitempty"`
 }
 
 // OrderReturnListParams is the set of parameters that can be used when listing order returns.

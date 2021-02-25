@@ -34,34 +34,34 @@ type PromotionCodeListParams struct {
 
 // PromotionCodeRestrictions is the set of restrictions associated with a promotion code.
 type PromotionCodeRestrictions struct {
-	FirstTimeTransaction  *bool `json:"first_time_transaction"`
-	MinimumAmount         *int64 `json:"minimum_amount"`
-	MinimumAmountCurrency Currency `json:"minimum_amount_currency"`
+	FirstTimeTransaction  *bool `json:"first_time_transaction,omitempty"`
+	MinimumAmount         *int64 `json:"minimum_amount,omitempty"`
+	MinimumAmountCurrency Currency `json:"minimum_amount_currency,omitempty"`
 }
 
 // PromotionCode is the resource representing a Stripe promotion code.
 type PromotionCode struct {
 	APIResource
-	Active         *bool `json:"active"`
-	Code           *string `json:"code"`
-	Coupon         *Coupon                    `json:"coupon"`
-	Created        *int64 `json:"created"`
-	Customer       *Customer                  `json:"customer"`
-	ExpiresAt      *int64 `json:"expires_at"`
-	ID             *string `json:"id"`
-	Livemode       *bool `json:"livemode"`
-	MaxRedemptions *int64 `json:"max_redemptions"`
-	Metadata       map[string]string          `json:"metadata"`
-	Object         *string `json:"object"`
-	Restrictions   *PromotionCodeRestrictions `json:"restrictions"`
-	TimesRedeemed  *int64 `json:"times_redeemed"`
+	Active         *bool `json:"active,omitempty"`
+	Code           *string `json:"code,omitempty"`
+	Coupon         *Coupon                    `json:"coupon,omitempty"`
+	Created        *int64 `json:"created,omitempty"`
+	Customer       *Customer                  `json:"customer,omitempty"`
+	ExpiresAt      *int64 `json:"expires_at,omitempty"`
+	ID             *string `json:"id,omitempty"`
+	Livemode       *bool `json:"livemode,omitempty"`
+	MaxRedemptions *int64 `json:"max_redemptions,omitempty"`
+	Metadata       map[string]string          `json:"metadata,omitempty"`
+	Object         *string `json:"object,omitempty"`
+	Restrictions   *PromotionCodeRestrictions `json:"restrictions,omitempty"`
+	TimesRedeemed  *int64 `json:"times_redeemed,omitempty"`
 }
 
 // PromotionCodeList is a list of promotion codes as retrieved from a list endpoint.
 type PromotionCodeList struct {
 	APIResource
 	ListMeta
-	Data []*PromotionCode `json:"data"`
+	Data []*PromotionCode `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a PromotionCode.

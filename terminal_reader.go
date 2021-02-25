@@ -24,25 +24,25 @@ type TerminalReaderListParams struct {
 // TerminalReader is the resource representing a Stripe terminal reader.
 type TerminalReader struct {
 	APIResource
-	Deleted         *bool `json:"deleted"`
-	DeviceSwVersion *string `json:"device_sw_version"`
-	DeviceType      *string `json:"device_type"`
-	ID              *string `json:"id"`
-	IPAddress       *string `json:"ip_address"`
-	Label           *string `json:"label"`
-	Livemode        *bool `json:"livemode"`
-	Location        *string `json:"location"`
-	Metadata        map[string]string `json:"metadata"`
-	Object          *string `json:"object"`
-	SerialNumber    *string `json:"serial_number"`
-	Status          *string `json:"status"`
+	Deleted         *bool `json:"deleted,omitempty"`
+	DeviceSwVersion *string `json:"device_sw_version,omitempty"`
+	DeviceType      *string `json:"device_type,omitempty"`
+	ID              *string `json:"id,omitempty"`
+	IPAddress       *string `json:"ip_address,omitempty"`
+	Label           *string `json:"label,omitempty"`
+	Livemode        *bool `json:"livemode,omitempty"`
+	Location        *string `json:"location,omitempty"`
+	Metadata        map[string]string `json:"metadata,omitempty"`
+	Object          *string `json:"object,omitempty"`
+	SerialNumber    *string `json:"serial_number,omitempty"`
+	Status          *string `json:"status,omitempty"`
 }
 
 // TerminalReaderList is a list of terminal readers as retrieved from a list endpoint.
 type TerminalReaderList struct {
 	APIResource
 	ListMeta
-	Data     []*TerminalReader `json:"data"`
-	Location *string           `json:"location"`
-	Status   *string           `json:"status"`
+	Data     []*TerminalReader `json:"data,omitempty"`
+	Location *string           `json:"location,omitempty"`
+	Status   *string           `json:"status,omitempty"`
 }

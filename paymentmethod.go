@@ -236,10 +236,10 @@ type PaymentMethodListParams struct {
 
 // BillingDetails represents the billing details associated with a PaymentMethod.
 type BillingDetails struct {
-	Address *Address `json:"address"`
-	Email   *string `json:"email"`
-	Name    *string `json:"name"`
-	Phone   *string `json:"phone"`
+	Address *Address `json:"address,omitempty"`
+	Email   *string `json:"email,omitempty"`
+	Name    *string `json:"name,omitempty"`
+	Phone   *string `json:"phone,omitempty"`
 }
 
 // PaymentMethodAfterpayClearpay represents the AfterpayClearpay properties.
@@ -252,16 +252,16 @@ type PaymentMethodAlipay struct {
 
 // PaymentMethodAUBECSDebit represents AUBECSDebit-specific properties (Australia Only).
 type PaymentMethodAUBECSDebit struct {
-	BSBNumber   *string `json:"bsb_number"`
-	Fingerprint *string `json:"fingerprint"`
-	Last4       *string `json:"last4"`
+	BSBNumber   *string `json:"bsb_number,omitempty"`
+	Fingerprint *string `json:"fingerprint,omitempty"`
+	Last4       *string `json:"last4,omitempty"`
 }
 
 // PaymentMethodBACSDebit represents the BACS Debit properties.
 type PaymentMethodBACSDebit struct {
-	Fingerprint *string `json:"fingerprint"`
-	Last4       *string `json:"last4"`
-	SortCode    *string `json:"sort_code"`
+	Fingerprint *string `json:"fingerprint,omitempty"`
+	Last4       *string `json:"last4,omitempty"`
+	SortCode    *string `json:"sort_code,omitempty"`
 }
 
 // PaymentMethodBancontact represents the Bancontact properties.
@@ -270,48 +270,48 @@ type PaymentMethodBancontact struct {
 
 // PaymentMethodCardChecks represents the checks associated with a Card PaymentMethod.
 type PaymentMethodCardChecks struct {
-	AddressLine1Check      CardVerification `json:"address_line1_check"`
-	AddressPostalCodeCheck CardVerification `json:"address_postal_code_check"`
-	CVCCheck               CardVerification `json:"cvc_check"`
+	AddressLine1Check      CardVerification `json:"address_line1_check,omitempty"`
+	AddressPostalCodeCheck CardVerification `json:"address_postal_code_check,omitempty"`
+	CVCCheck               CardVerification `json:"cvc_check,omitempty"`
 }
 
 // PaymentMethodCardNetworks represents the card networks that can be used to process the payment.
 type PaymentMethodCardNetworks struct {
-	Available []PaymentMethodCardNetwork `json:"available"`
-	Preferred PaymentMethodCardNetwork   `json:"preferred"`
+	Available []PaymentMethodCardNetwork `json:"available,omitempty"`
+	Preferred PaymentMethodCardNetwork   `json:"preferred,omitempty"`
 }
 
 // PaymentMethodCardThreeDSecureUsage represents the 3DS usage for that Card PaymentMethod.
 type PaymentMethodCardThreeDSecureUsage struct {
-	Supported *bool `json:"supported"`
+	Supported *bool `json:"supported,omitempty"`
 }
 
 // PaymentMethodCardWallet represents the details of the card wallet if this Card PaymentMethod
 // is part of a card wallet.
 type PaymentMethodCardWallet struct {
-	DynamicLast4 *string `json:"dynamic_last4"`
-	Type         PaymentMethodCardWalletType `json:"type"`
+	DynamicLast4 *string `json:"dynamic_last4,omitempty"`
+	Type         PaymentMethodCardWalletType `json:"type,omitempty"`
 }
 
 // PaymentMethodCard represents the card-specific properties.
 type PaymentMethodCard struct {
-	Brand             PaymentMethodCardBrand              `json:"brand"`
-	Checks            *PaymentMethodCardChecks            `json:"checks"`
-	Country           *string `json:"country"`
-	ExpMonth          *uint64 `json:"exp_month"`
-	ExpYear           *uint64 `json:"exp_year"`
-	Fingerprint       *string `json:"fingerprint"`
-	Funding           CardFunding                         `json:"funding"`
-	Last4             *string `json:"last4"`
-	Networks          *PaymentMethodCardNetworks          `json:"networks"`
-	ThreeDSecureUsage *PaymentMethodCardThreeDSecureUsage `json:"three_d_secure_usage"`
-	Wallet            *PaymentMethodCardWallet            `json:"wallet"`
+	Brand             PaymentMethodCardBrand              `json:"brand,omitempty"`
+	Checks            *PaymentMethodCardChecks            `json:"checks,omitempty"`
+	Country           *string `json:"country,omitempty"`
+	ExpMonth          *uint64 `json:"exp_month,omitempty"`
+	ExpYear           *uint64 `json:"exp_year,omitempty"`
+	Fingerprint       *string `json:"fingerprint,omitempty"`
+	Funding           CardFunding                         `json:"funding,omitempty"`
+	Last4             *string `json:"last4,omitempty"`
+	Networks          *PaymentMethodCardNetworks          `json:"networks,omitempty"`
+	ThreeDSecureUsage *PaymentMethodCardThreeDSecureUsage `json:"three_d_secure_usage,omitempty"`
+	Wallet            *PaymentMethodCardWallet            `json:"wallet,omitempty"`
 
 	// Please note that the fields below are for internal use only and are not returned
 	// as part of standard API requests.
-	Description *string `json:"description"`
-	IIN         *string `json:"iin"`
-	Issuer      *string `json:"issuer"`
+	Description *string `json:"description,omitempty"`
+	IIN         *string `json:"iin,omitempty"`
+	Issuer      *string `json:"issuer,omitempty"`
 }
 
 // PaymentMethodCardPresent represents the card-present-specific properties.
@@ -320,14 +320,14 @@ type PaymentMethodCardPresent struct {
 
 // PaymentMethodEPS represents the EPS properties.
 type PaymentMethodEPS struct {
-	Bank *string `json:"bank"`
+	Bank *string `json:"bank,omitempty"`
 }
 
 // PaymentMethodFPX represents FPX-specific properties (Malaysia Only).
 type PaymentMethodFPX struct {
-	AccountHolderType PaymentMethodFPXAccountHolderType `json:"account_holder_type"`
-	Bank              *string `json:"bank"`
-	TransactionID     *string `json:"transaction_id"`
+	AccountHolderType PaymentMethodFPXAccountHolderType `json:"account_holder_type,omitempty"`
+	Bank              *string `json:"bank,omitempty"`
+	TransactionID     *string `json:"transaction_id,omitempty"`
 }
 
 // PaymentMethodGiropay represents the Giropay properties.
@@ -340,8 +340,8 @@ type PaymentMethodGrabpay struct {
 
 // PaymentMethodIdeal represents the iDEAL-specific properties.
 type PaymentMethodIdeal struct {
-	Bank *string `json:"bank"`
-	Bic  *string `json:"bic"`
+	Bank *string `json:"bank,omitempty"`
+	Bic  *string `json:"bic,omitempty"`
 }
 
 // PaymentMethodInteracPresent represents the interac present properties.
@@ -354,66 +354,66 @@ type PaymentMethodOXXO struct {
 
 // PaymentMethodP24 represents the P24 properties.
 type PaymentMethodP24 struct {
-	Bank *string `json:"bank"`
+	Bank *string `json:"bank,omitempty"`
 }
 
 // PaymentMethodSepaDebitGeneratedFrom represents information about the object
 // that generated this PaymentMethod
 type PaymentMethodSepaDebitGeneratedFrom struct {
-	Charge       *Charge       `json:"charge"`
-	SetupAttempt *SetupAttempt `json:"setup_attempt"`
+	Charge       *Charge       `json:"charge,omitempty"`
+	SetupAttempt *SetupAttempt `json:"setup_attempt,omitempty"`
 }
 
 // PaymentMethodSepaDebit represents the SEPA-debit-specific properties.
 type PaymentMethodSepaDebit struct {
-	BankCode      *string `json:"bank_code"`
-	BranchCode    *string `json:"branch_code"`
-	Country       *string `json:"country"`
-	Fingerprint   *string `json:"fingerprint"`
-	Last4         *string `json:"last4"`
-	GeneratedFrom *PaymentMethodSepaDebitGeneratedFrom `json:"generated_from"`
+	BankCode      *string `json:"bank_code,omitempty"`
+	BranchCode    *string `json:"branch_code,omitempty"`
+	Country       *string `json:"country,omitempty"`
+	Fingerprint   *string `json:"fingerprint,omitempty"`
+	Last4         *string `json:"last4,omitempty"`
+	GeneratedFrom *PaymentMethodSepaDebitGeneratedFrom `json:"generated_from,omitempty"`
 }
 
 // PaymentMethodSofort represents the Sofort-specific properties.
 type PaymentMethodSofort struct {
-	Country *string `json:"country"`
+	Country *string `json:"country,omitempty"`
 }
 
 // PaymentMethod is the resource representing a PaymentMethod.
 type PaymentMethod struct {
 	APIResource
-	AfterpayClearpay *PaymentMethodAfterpayClearpay `json:"afterpay_clearpay"`
-	Alipay           *PaymentMethodAlipay           `json:"alipay"`
-	AUBECSDebit      *PaymentMethodAUBECSDebit      `json:"au_becs_debit"`
-	BACSDebit        *PaymentMethodBACSDebit        `json:"bacs_debit"`
-	Bancontact       *PaymentMethodBancontact       `json:"bancontact"`
-	BillingDetails   *BillingDetails                `json:"billing_details"`
-	Card             *PaymentMethodCard             `json:"card"`
-	CardPresent      *PaymentMethodCardPresent      `json:"card_present"`
-	Created          *int64 `json:"created"`
-	Customer         *Customer                      `json:"customer"`
-	EPS              *PaymentMethodEPS              `json:"eps"`
-	FPX              *PaymentMethodFPX              `json:"fpx"`
-	Giropay          *PaymentMethodGiropay          `json:"giropay"`
-	Grabpay          *PaymentMethodGrabpay          `json:"grabpay"`
-	ID               *string `json:"id"`
-	Ideal            *PaymentMethodIdeal            `json:"ideal"`
-	InteracPresent   *PaymentMethodInteracPresent   `json:"interac_present"`
-	Livemode         *bool `json:"livemode"`
-	Metadata         map[string]string              `json:"metadata"`
-	Object           *string `json:"object"`
-	OXXO             *PaymentMethodOXXO             `json:"oxxo"`
-	P24              *PaymentMethodP24              `json:"p24"`
-	SepaDebit        *PaymentMethodSepaDebit        `json:"sepa_debit"`
-	Sofort           *PaymentMethodSofort           `json:"sofort"`
-	Type             PaymentMethodType              `json:"type"`
+	AfterpayClearpay *PaymentMethodAfterpayClearpay `json:"afterpay_clearpay,omitempty"`
+	Alipay           *PaymentMethodAlipay           `json:"alipay,omitempty"`
+	AUBECSDebit      *PaymentMethodAUBECSDebit      `json:"au_becs_debit,omitempty"`
+	BACSDebit        *PaymentMethodBACSDebit        `json:"bacs_debit,omitempty"`
+	Bancontact       *PaymentMethodBancontact       `json:"bancontact,omitempty"`
+	BillingDetails   *BillingDetails                `json:"billing_details,omitempty"`
+	Card             *PaymentMethodCard             `json:"card,omitempty"`
+	CardPresent      *PaymentMethodCardPresent      `json:"card_present,omitempty"`
+	Created          *int64 `json:"created,omitempty"`
+	Customer         *Customer                      `json:"customer,omitempty"`
+	EPS              *PaymentMethodEPS              `json:"eps,omitempty"`
+	FPX              *PaymentMethodFPX              `json:"fpx,omitempty"`
+	Giropay          *PaymentMethodGiropay          `json:"giropay,omitempty"`
+	Grabpay          *PaymentMethodGrabpay          `json:"grabpay,omitempty"`
+	ID               *string `json:"id,omitempty"`
+	Ideal            *PaymentMethodIdeal            `json:"ideal,omitempty"`
+	InteracPresent   *PaymentMethodInteracPresent   `json:"interac_present,omitempty"`
+	Livemode         *bool `json:"livemode,omitempty"`
+	Metadata         map[string]string              `json:"metadata,omitempty"`
+	Object           *string `json:"object,omitempty"`
+	OXXO             *PaymentMethodOXXO             `json:"oxxo,omitempty"`
+	P24              *PaymentMethodP24              `json:"p24,omitempty"`
+	SepaDebit        *PaymentMethodSepaDebit        `json:"sepa_debit,omitempty"`
+	Sofort           *PaymentMethodSofort           `json:"sofort,omitempty"`
+	Type             PaymentMethodType              `json:"type,omitempty"`
 }
 
 // PaymentMethodList is a list of PaymentMethods as retrieved from a list endpoint.
 type PaymentMethodList struct {
 	APIResource
 	ListMeta
-	Data []*PaymentMethod `json:"data"`
+	Data []*PaymentMethod `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a PaymentMethod.

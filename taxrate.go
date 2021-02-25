@@ -30,26 +30,26 @@ type TaxRateListParams struct {
 // For more details see https://stripe.com/docs/api/tax_rates/object.
 type TaxRate struct {
 	APIResource
-	Active       *bool `json:"active"`
-	Country      *string `json:"country"`
-	Created      *int64 `json:"created"`
-	Description  *string `json:"description"`
-	DisplayName  *string `json:"display_name"`
-	ID           *string `json:"id"`
-	Inclusive    *bool `json:"inclusive"`
-	Jurisdiction *string `json:"jurisdiction"`
-	Livemode     *bool `json:"livemode"`
-	Metadata     map[string]string `json:"metadata"`
-	Object       *string `json:"object"`
-	Percentage   *float64 `json:"percentage"`
-	State        *string `json:"state"`
+	Active       *bool `json:"active,omitempty"`
+	Country      *string `json:"country,omitempty"`
+	Created      *int64 `json:"created,omitempty"`
+	Description  *string `json:"description,omitempty"`
+	DisplayName  *string `json:"display_name,omitempty"`
+	ID           *string `json:"id,omitempty"`
+	Inclusive    *bool `json:"inclusive,omitempty"`
+	Jurisdiction *string `json:"jurisdiction,omitempty"`
+	Livemode     *bool `json:"livemode,omitempty"`
+	Metadata     map[string]string `json:"metadata,omitempty"`
+	Object       *string `json:"object,omitempty"`
+	Percentage   *float64 `json:"percentage,omitempty"`
+	State        *string `json:"state,omitempty"`
 }
 
 // TaxRateList is a list of tax rates as retrieved from a list endpoint.
 type TaxRateList struct {
 	APIResource
 	ListMeta
-	Data []*TaxRate `json:"data"`
+	Data []*TaxRate `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a TaxRate.
