@@ -40,19 +40,19 @@ type CustomerBalanceTransactionListParams struct {
 // For more details see https://stripe.com/docs/api/customers/customer_balance_transaction_object
 type CustomerBalanceTransaction struct {
 	APIResource
-	Amount        *int64 `json:"amount"`
-	Created       *int64 `json:"created"`
-	CreditNote    *CreditNote                    `json:"credit_note"`
-	Currency      Currency                       `json:"currency"`
-	Customer      *Customer                      `json:"customer"`
-	Description   *string `json:"description"`
-	EndingBalance *int64 `json:"ending_balance"`
-	ID            *string `json:"id"`
-	Invoice       *Invoice                       `json:"invoice"`
-	Livemode      *bool `json:"livemode"`
-	Metadata      map[string]string              `json:"metadata"`
-	Object        *string `json:"object"`
-	Type          CustomerBalanceTransactionType `json:"type"`
+	Amount        *int64 `json:"amount,omitempty"`
+	Created       *int64 `json:"created,omitempty"`
+	CreditNote    *CreditNote                    `json:"credit_note,omitempty"`
+	Currency      Currency                       `json:"currency,omitempty"`
+	Customer      *Customer                      `json:"customer,omitempty"`
+	Description   *string `json:"description,omitempty"`
+	EndingBalance *int64 `json:"ending_balance,omitempty"`
+	ID            *string `json:"id,omitempty"`
+	Invoice       *Invoice                       `json:"invoice,omitempty"`
+	Livemode      *bool `json:"livemode,omitempty"`
+	Metadata      map[string]string              `json:"metadata,omitempty"`
+	Object        *string `json:"object,omitempty"`
+	Type          CustomerBalanceTransactionType `json:"type,omitempty"`
 }
 
 // CustomerBalanceTransactionList is a list of customer balance transactions as retrieved from a
@@ -60,7 +60,7 @@ type CustomerBalanceTransaction struct {
 type CustomerBalanceTransactionList struct {
 	APIResource
 	ListMeta
-	Data []*CustomerBalanceTransaction `json:"data"`
+	Data []*CustomerBalanceTransaction `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a CustomerBalanceTransaction.

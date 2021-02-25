@@ -60,29 +60,29 @@ type RefundListParams struct {
 // For more details see https://stripe.com/docs/api#refunds.
 type Refund struct {
 	APIResource
-	Amount                    *int64 `json:"amount"`
-	BalanceTransaction        *BalanceTransaction `json:"balance_transaction"`
-	Charge                    *Charge             `json:"charge"`
-	Created                   *int64 `json:"created"`
-	Currency                  Currency            `json:"currency"`
-	FailureReason             RefundFailureReason `json:"failure_reason"`
-	FailureBalanceTransaction *BalanceTransaction `json:"failure_balance_transaction"`
-	ID                        *string `json:"id"`
-	Metadata                  map[string]string   `json:"metadata"`
-	Object                    *string `json:"object"`
-	PaymentIntent             *PaymentIntent      `json:"payment_intent"`
-	Reason                    RefundReason        `json:"reason"`
-	ReceiptNumber             *string `json:"receipt_number"`
-	SourceTransferReversal    *Reversal           `json:"source_transfer_reversal"`
-	Status                    RefundStatus        `json:"status"`
-	TransferReversal          *Reversal           `json:"transfer_reversal"`
+	Amount                    *int64 `json:"amount,omitempty"`
+	BalanceTransaction        *BalanceTransaction `json:"balance_transaction,omitempty"`
+	Charge                    *Charge             `json:"charge,omitempty"`
+	Created                   *int64 `json:"created,omitempty"`
+	Currency                  Currency            `json:"currency,omitempty"`
+	FailureReason             RefundFailureReason `json:"failure_reason,omitempty"`
+	FailureBalanceTransaction *BalanceTransaction `json:"failure_balance_transaction,omitempty"`
+	ID                        *string `json:"id,omitempty"`
+	Metadata                  map[string]string   `json:"metadata,omitempty"`
+	Object                    *string `json:"object,omitempty"`
+	PaymentIntent             *PaymentIntent      `json:"payment_intent,omitempty"`
+	Reason                    RefundReason        `json:"reason,omitempty"`
+	ReceiptNumber             *string `json:"receipt_number,omitempty"`
+	SourceTransferReversal    *Reversal           `json:"source_transfer_reversal,omitempty"`
+	Status                    RefundStatus        `json:"status,omitempty"`
+	TransferReversal          *Reversal           `json:"transfer_reversal,omitempty"`
 }
 
 // RefundList is a list object for refunds.
 type RefundList struct {
 	APIResource
 	ListMeta
-	Data []*Refund `json:"data"`
+	Data []*Refund `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a Refund.

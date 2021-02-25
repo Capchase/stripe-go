@@ -15,18 +15,18 @@ type TerminalLocationListParams struct {
 // TerminalLocation is the resource representing a Stripe terminal location.
 type TerminalLocation struct {
 	APIResource
-	Address     *AccountAddressParams `json:"address"`
-	Deleted     *bool `json:"deleted"`
-	DisplayName *string `json:"display_name"`
-	ID          *string `json:"id"`
-	Livemode    *bool `json:"livemode"`
-	Metadata    map[string]string     `json:"metadata"`
-	Object      *string `json:"object"`
+	Address     *AccountAddressParams `json:"address,omitempty"`
+	Deleted     *bool `json:"deleted,omitempty"`
+	DisplayName *string `json:"display_name,omitempty"`
+	ID          *string `json:"id,omitempty"`
+	Livemode    *bool `json:"livemode,omitempty"`
+	Metadata    map[string]string     `json:"metadata,omitempty"`
+	Object      *string `json:"object,omitempty"`
 }
 
 // TerminalLocationList is a list of terminal readers as retrieved from a list endpoint.
 type TerminalLocationList struct {
 	APIResource
 	ListMeta
-	Data []*TerminalLocation `json:"data"`
+	Data []*TerminalLocation `json:"data,omitempty"`
 }

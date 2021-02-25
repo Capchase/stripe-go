@@ -6,37 +6,37 @@ import (
 
 // LineItemDiscount represent the details of one discount applied to a line item.
 type LineItemDiscount struct {
-	Amount   *int64 `json:"amount"`
-	Discount *Discount `json:"discount"`
+	Amount   *int64 `json:"amount,omitempty"`
+	Discount *Discount `json:"discount,omitempty"`
 }
 
 // LineItemTax represent the details of one tax rate applied to a line item.
 type LineItemTax struct {
-	Amount  *int64 `json:"amount"`
-	TaxRate *TaxRate `json:"tax_rate"`
+	Amount  *int64 `json:"amount,omitempty"`
+	TaxRate *TaxRate `json:"tax_rate,omitempty"`
 }
 
 // LineItem is the resource representing a line item.
 type LineItem struct {
 	APIResource
-	AmountSubtotal *int64 `json:"amount_subtotal"`
-	AmountTotal    *int64 `json:"amount_total"`
-	Currency       Currency            `json:"currency"`
-	Description    *string `json:"description"`
-	Discounts      []*LineItemDiscount `json:"discounts"`
-	Deleted        *bool `json:"deleted"`
-	ID             *string `json:"id"`
-	Object         *string `json:"object"`
-	Price          *Price              `json:"price"`
-	Quantity       *int64 `json:"quantity"`
-	Taxes          []*LineItemTax      `json:"taxes"`
+	AmountSubtotal *int64 `json:"amount_subtotal,omitempty"`
+	AmountTotal    *int64 `json:"amount_total,omitempty"`
+	Currency       Currency            `json:"currency,omitempty"`
+	Description    *string `json:"description,omitempty"`
+	Discounts      []*LineItemDiscount `json:"discounts,omitempty"`
+	Deleted        *bool `json:"deleted,omitempty"`
+	ID             *string `json:"id,omitempty"`
+	Object         *string `json:"object,omitempty"`
+	Price          *Price              `json:"price,omitempty"`
+	Quantity       *int64 `json:"quantity,omitempty"`
+	Taxes          []*LineItemTax      `json:"taxes,omitempty"`
 }
 
 // LineItemList is a list of prices as returned from a list endpoint.
 type LineItemList struct {
 	APIResource
 	ListMeta
-	Data []*LineItem `json:"data"`
+	Data []*LineItem `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a LineItem.

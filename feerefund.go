@@ -23,20 +23,20 @@ type FeeRefundListParams struct {
 // For more details see https://stripe.com/docs/api#fee_refunds.
 type FeeRefund struct {
 	APIResource
-	Amount             *int64 `json:"amount"`
-	BalanceTransaction *BalanceTransaction `json:"balance_transaction"`
-	Created            *int64 `json:"created"`
-	Currency           Currency            `json:"currency"`
-	Fee                *ApplicationFee     `json:"fee"`
-	ID                 *string `json:"id"`
-	Metadata           map[string]string   `json:"metadata"`
+	Amount             *int64 `json:"amount,omitempty"`
+	BalanceTransaction *BalanceTransaction `json:"balance_transaction,omitempty"`
+	Created            *int64 `json:"created,omitempty"`
+	Currency           Currency            `json:"currency,omitempty"`
+	Fee                *ApplicationFee     `json:"fee,omitempty"`
+	ID                 *string `json:"id,omitempty"`
+	Metadata           map[string]string   `json:"metadata,omitempty"`
 }
 
 // FeeRefundList is a list object for application fee refunds.
 type FeeRefundList struct {
 	APIResource
 	ListMeta
-	Data []*FeeRefund `json:"data"`
+	Data []*FeeRefund `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a FeeRefund.

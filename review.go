@@ -54,46 +54,46 @@ type ReviewListParams struct {
 
 // ReviewIPAddressLocation represents information about the IP associated with a review.
 type ReviewIPAddressLocation struct {
-	City      *string `json:"city"`
-	Country   *string `json:"country"`
-	Latitude  *float64 `json:"latitude"`
-	Longitude *float64 `json:"longitude"`
-	Region    *string `json:"region"`
+	City      *string `json:"city,omitempty"`
+	Country   *string `json:"country,omitempty"`
+	Latitude  *float64 `json:"latitude,omitempty"`
+	Longitude *float64 `json:"longitude,omitempty"`
+	Region    *string `json:"region,omitempty"`
 }
 
 // ReviewSession represents information about the browser session associated with a review.
 type ReviewSession struct {
-	Browser  *string `json:"browser"`
-	Device   *string `json:"device"`
-	Platform *string `json:"platform"`
-	Version  *string `json:"version"`
+	Browser  *string `json:"browser,omitempty"`
+	Device   *string `json:"device,omitempty"`
+	Platform *string `json:"platform,omitempty"`
+	Version  *string `json:"version,omitempty"`
 }
 
 // Review is the resource representing a Radar review.
 // For more details see https://stripe.com/docs/api#reviews.
 type Review struct {
 	APIResource
-	BillingZip        *string `json:"billing_zip"`
-	Charge            *Charge                  `json:"charge"`
-	ClosedReason      ReviewClosedReason       `json:"closed_reason"`
-	Created           *int64 `json:"created"`
-	ID                *string `json:"id"`
-	IPAddress         *string `json:"ip_address"`
-	IPAddressLocation *ReviewIPAddressLocation `json:"ip_address_location"`
-	Livemode          *bool `json:"livemode"`
-	Object            *string `json:"object"`
-	Open              *bool `json:"open"`
-	OpenedReason      ReviewOpenedReason       `json:"opened_reason"`
-	PaymentIntent     *PaymentIntent           `json:"payment_intent"`
-	Reason            ReviewReasonType         `json:"reason"`
-	Session           *ReviewSession           `json:"session"`
+	BillingZip        *string `json:"billing_zip,omitempty"`
+	Charge            *Charge                  `json:"charge,omitempty"`
+	ClosedReason      ReviewClosedReason       `json:"closed_reason,omitempty"`
+	Created           *int64 `json:"created,omitempty"`
+	ID                *string `json:"id,omitempty"`
+	IPAddress         *string `json:"ip_address,omitempty"`
+	IPAddressLocation *ReviewIPAddressLocation `json:"ip_address_location,omitempty"`
+	Livemode          *bool `json:"livemode,omitempty"`
+	Object            *string `json:"object,omitempty"`
+	Open              *bool `json:"open,omitempty"`
+	OpenedReason      ReviewOpenedReason       `json:"opened_reason,omitempty"`
+	PaymentIntent     *PaymentIntent           `json:"payment_intent,omitempty"`
+	Reason            ReviewReasonType         `json:"reason,omitempty"`
+	Session           *ReviewSession           `json:"session,omitempty"`
 }
 
 // ReviewList is a list of reviews as retrieved from a list endpoint.
 type ReviewList struct {
 	APIResource
 	ListMeta
-	Data []*Review `json:"data"`
+	Data []*Review `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a Review.

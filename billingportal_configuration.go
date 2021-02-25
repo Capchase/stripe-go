@@ -143,78 +143,78 @@ type BillingPortalConfigurationParams struct {
 // https://stripe.com/docs/api/customer_portal.
 type BillingPortalConfiguration struct {
 	APIResource
-	Active           *bool `json:"active"`
-	Application      *string `json:"application"`
-	BusinessProfile  *BillingPortalConfigurationBusinessProfile `json:"business_profile"`
-	Created          *int64 `json:"created"`
-	DefaultReturnURL *string `json:"default_return_url"`
-	Features         *BillingPortalConfigurationFeatures        `json:"features"`
-	ID               *string `json:"id"`
-	IsDefault        *bool `json:"is_default"`
-	Livemode         *bool `json:"livemode"`
-	Object           *string `json:"object"`
-	Updated          *int64 `json:"updated"`
+	Active           *bool `json:"active,omitempty"`
+	Application      *string `json:"application,omitempty"`
+	BusinessProfile  *BillingPortalConfigurationBusinessProfile `json:"business_profile,omitempty"`
+	Created          *int64 `json:"created,omitempty"`
+	DefaultReturnURL *string `json:"default_return_url,omitempty"`
+	Features         *BillingPortalConfigurationFeatures        `json:"features,omitempty"`
+	ID               *string `json:"id,omitempty"`
+	IsDefault        *bool `json:"is_default,omitempty"`
+	Livemode         *bool `json:"livemode,omitempty"`
+	Object           *string `json:"object,omitempty"`
+	Updated          *int64 `json:"updated,omitempty"`
 }
 
 // BillingPortalConfigurationBusinessProfile represents the business profile
 // details on a portal configuration.
 type BillingPortalConfigurationBusinessProfile struct {
-	Headline          *string `json:"headline"`
-	PrivacyPolicyURL  *string `json:"privacy_policy_url"`
-	TermsOfServiceURL *string `json:"terms_of_service_url"`
+	Headline          *string `json:"headline,omitempty"`
+	PrivacyPolicyURL  *string `json:"privacy_policy_url,omitempty"`
+	TermsOfServiceURL *string `json:"terms_of_service_url,omitempty"`
 }
 
 // BillingPortalConfigurationFeaturesCustomerUpdate represents the customer
 // update details on a portal configuration.
 type BillingPortalConfigurationFeaturesCustomerUpdate struct {
-	AllowedUpdates []BillingPortalConfigurationFeaturesCustomerUpdateAllowedUpdate `json:"allowed_updates"`
-	Enabled        *bool `json:"enabled"`
+	AllowedUpdates []BillingPortalConfigurationFeaturesCustomerUpdateAllowedUpdate `json:"allowed_updates,omitempty"`
+	Enabled        *bool `json:"enabled,omitempty"`
 }
 
 // BillingPortalConfigurationFeaturesInvoiceHistory represents the invoice
 // history details on a portal configuration.
 type BillingPortalConfigurationFeaturesInvoiceHistory struct {
-	Enabled *bool `json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // BillingPortalConfigurationFeaturesPaymentMethodUpdate represents the payment
 // method update details on a portal configuration.
 type BillingPortalConfigurationFeaturesPaymentMethodUpdate struct {
-	Enabled *bool `json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // BillingPortalConfigurationFeaturesSubscriptionCancel represents the
 // subscription cancel details on a portal configuration.
 type BillingPortalConfigurationFeaturesSubscriptionCancel struct {
-	Enabled           *bool `json:"enabled"`
-	Mode              BillingPortalConfigurationFeaturesSubscriptionCancelMode              `json:"mode"`
-	ProrationBehavior BillingPortalConfigurationFeaturesSubscriptionCancelProrationBehavior `json:"proration_behavior"`
+	Enabled           *bool `json:"enabled,omitempty"`
+	Mode              BillingPortalConfigurationFeaturesSubscriptionCancelMode              `json:"mode,omitempty"`
+	ProrationBehavior BillingPortalConfigurationFeaturesSubscriptionCancelProrationBehavior `json:"proration_behavior,omitempty"`
 }
 
 // BillingPortalConfigurationFeaturesSubscriptionUpdateProduct represents the
 // subscription update details on a portal configuration.
 type BillingPortalConfigurationFeaturesSubscriptionUpdateProduct struct {
-	Prices  []string `json:"prices"`
-	Product *string `json:"product"`
+	Prices  []string `json:"prices,omitempty"`
+	Product *string `json:"product,omitempty"`
 }
 
 // BillingPortalConfigurationFeaturesSubscriptionUpdate represents the
 // subscription update details on a portal configuration.
 type BillingPortalConfigurationFeaturesSubscriptionUpdate struct {
-	DefaultAllowedUpdates []BillingPortalConfigurationFeaturesSubscriptionUpdateDefaultAllowedUpdate `json:"default_allowed_updates"`
-	Enabled               *bool `json:"enabled"`
-	Products              []*BillingPortalConfigurationFeaturesSubscriptionUpdateProduct             `json:"products"`
-	ProrationBehavior     BillingPortalConfigurationFeaturesSubscriptionUpdateProrationBehavior      `json:"proration_behavior"`
+	DefaultAllowedUpdates []BillingPortalConfigurationFeaturesSubscriptionUpdateDefaultAllowedUpdate `json:"default_allowed_updates,omitempty"`
+	Enabled               *bool `json:"enabled,omitempty"`
+	Products              []*BillingPortalConfigurationFeaturesSubscriptionUpdateProduct             `json:"products,omitempty"`
+	ProrationBehavior     BillingPortalConfigurationFeaturesSubscriptionUpdateProrationBehavior      `json:"proration_behavior,omitempty"`
 }
 
 // BillingPortalConfigurationFeatures represents details about the features
 // enabled in the portal configuration.
 type BillingPortalConfigurationFeatures struct {
-	CustomerUpdate      *BillingPortalConfigurationFeaturesCustomerUpdate      `json:"customer_update"`
-	InvoiceHistory      *BillingPortalConfigurationFeaturesInvoiceHistory      `json:"invoice_history"`
-	PaymentMethodUpdate *BillingPortalConfigurationFeaturesPaymentMethodUpdate `json:"payment_method_update"`
-	SubscriptionCancel  *BillingPortalConfigurationFeaturesSubscriptionCancel  `json:"subscription_cancel"`
-	SubscriptionUpdate  *BillingPortalConfigurationFeaturesSubscriptionUpdate  `json:"subscription_update"`
+	CustomerUpdate      *BillingPortalConfigurationFeaturesCustomerUpdate      `json:"customer_update,omitempty"`
+	InvoiceHistory      *BillingPortalConfigurationFeaturesInvoiceHistory      `json:"invoice_history,omitempty"`
+	PaymentMethodUpdate *BillingPortalConfigurationFeaturesPaymentMethodUpdate `json:"payment_method_update,omitempty"`
+	SubscriptionCancel  *BillingPortalConfigurationFeaturesSubscriptionCancel  `json:"subscription_cancel,omitempty"`
+	SubscriptionUpdate  *BillingPortalConfigurationFeaturesSubscriptionUpdate  `json:"subscription_update,omitempty"`
 }
 
 // BillingPortalConfigurationList is a list of portal configurations as
@@ -222,7 +222,7 @@ type BillingPortalConfigurationFeatures struct {
 type BillingPortalConfigurationList struct {
 	APIResource
 	ListMeta
-	Data []*BillingPortalConfiguration `json:"data"`
+	Data []*BillingPortalConfiguration `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a BillingPortalConfiguration. This

@@ -51,9 +51,9 @@ const (
 
 // OrderItemParent describes the parent of an order item.
 type OrderItemParent struct {
-	ID   *string `json:"id"`
-	SKU  *SKU                `json:"-"`
-	Type OrderItemParentType `json:"object"`
+	ID   *string `json:"id,omitempty"`
+	SKU  *SKU                `json:"-,omitempty"`
+	Type OrderItemParentType `json:"object,omitempty"`
 }
 
 // OrderParams is the set of parameters that can be used when creating an order.
@@ -93,65 +93,65 @@ type OrderUpdateShippingParams struct {
 
 // Shipping describes the shipping hash on an order.
 type Shipping struct {
-	Address        *Address `json:"address"`
-	Carrier        *string `json:"carrier"`
-	Name           *string `json:"name"`
-	Phone          *string `json:"phone"`
-	TrackingNumber *string `json:"tracking_number"`
+	Address        *Address `json:"address,omitempty"`
+	Carrier        *string `json:"carrier,omitempty"`
+	Name           *string `json:"name,omitempty"`
+	Phone          *string `json:"phone,omitempty"`
+	TrackingNumber *string `json:"tracking_number,omitempty"`
 }
 
 // ShippingMethod describes a shipping method as available on an order.
 type ShippingMethod struct {
-	Amount           *int64 `json:"amount"`
-	ID               *string `json:"id"`
-	Currency         Currency          `json:"currency"`
-	DeliveryEstimate *DeliveryEstimate `json:"delivery_estimate"`
-	Description      *string `json:"description"`
+	Amount           *int64 `json:"amount,omitempty"`
+	ID               *string `json:"id,omitempty"`
+	Currency         Currency          `json:"currency,omitempty"`
+	DeliveryEstimate *DeliveryEstimate `json:"delivery_estimate,omitempty"`
+	Description      *string `json:"description,omitempty"`
 }
 
 // DeliveryEstimate represent the properties available for a shipping method's
 // estimated delivery.
 type DeliveryEstimate struct {
 	// If Type == Exact
-	Date *string `json:"date"`
+	Date *string `json:"date,omitempty"`
 	// If Type == Range
-	Earliest *string `json:"earliest"`
-	Latest   *string `json:"latest"`
-	Type     OrderDeliveryEstimateType `json:"type"`
+	Earliest *string `json:"earliest,omitempty"`
+	Latest   *string `json:"latest,omitempty"`
+	Type     OrderDeliveryEstimateType `json:"type,omitempty"`
 }
 
 // Order is the resource representing a Stripe charge.
 // For more details see https://stripe.com/docs/api#orders.
 type Order struct {
 	APIResource
-	Amount                 *int64 `json:"amount"`
-	AmountReturned         *int64 `json:"amount_returned"`
-	Application            *string `json:"application"`
-	ApplicationFee         *int64 `json:"application_fee"`
-	Charge                 *Charge           `json:"charge"`
-	Created                *int64 `json:"created"`
-	Currency               Currency          `json:"currency"`
-	Customer               Customer          `json:"customer"`
-	Email                  *string `json:"email"`
-	ID                     *string `json:"id"`
-	Items                  []*OrderItem      `json:"items"`
-	Livemode               *bool `json:"livemode"`
-	Metadata               map[string]string `json:"metadata"`
-	Returns                *OrderReturnList  `json:"returns"`
-	SelectedShippingMethod *string           `json:"selected_shipping_method"`
-	Shipping               *Shipping         `json:"shipping"`
-	ShippingMethods        []*ShippingMethod `json:"shipping_methods"`
-	Status                 *string `json:"status"`
-	StatusTransitions      StatusTransitions `json:"status_transitions"`
-	Updated                *int64 `json:"updated"`
-	UpstreamID             *string `json:"upstream_id"`
+	Amount                 *int64 `json:"amount,omitempty"`
+	AmountReturned         *int64 `json:"amount_returned,omitempty"`
+	Application            *string `json:"application,omitempty"`
+	ApplicationFee         *int64 `json:"application_fee,omitempty"`
+	Charge                 *Charge           `json:"charge,omitempty"`
+	Created                *int64 `json:"created,omitempty"`
+	Currency               Currency          `json:"currency,omitempty"`
+	Customer               Customer          `json:"customer,omitempty"`
+	Email                  *string `json:"email,omitempty"`
+	ID                     *string `json:"id,omitempty"`
+	Items                  []*OrderItem      `json:"items,omitempty"`
+	Livemode               *bool `json:"livemode,omitempty"`
+	Metadata               map[string]string `json:"metadata,omitempty"`
+	Returns                *OrderReturnList  `json:"returns,omitempty"`
+	SelectedShippingMethod *string           `json:"selected_shipping_method,omitempty"`
+	Shipping               *Shipping         `json:"shipping,omitempty"`
+	ShippingMethods        []*ShippingMethod `json:"shipping_methods,omitempty"`
+	Status                 *string `json:"status,omitempty"`
+	StatusTransitions      StatusTransitions `json:"status_transitions,omitempty"`
+	Updated                *int64 `json:"updated,omitempty"`
+	UpstreamID             *string `json:"upstream_id,omitempty"`
 }
 
 // OrderList is a list of orders as retrieved from a list endpoint.
 type OrderList struct {
 	APIResource
 	ListMeta
-	Data []*Order `json:"data"`
+	Data []*Order `json:"data,omitempty"`
 }
 
 // OrderListParams is the set of parameters that can be used when listing orders.
@@ -180,10 +180,10 @@ type StatusTransitionsFilterParams struct {
 
 // StatusTransitions are the timestamps at which the order status was updated.
 type StatusTransitions struct {
-	Canceled  *int64 `json:"canceled"`
-	Fulfilled *int64 `json:"fulfilled"`
-	Paid      *int64 `json:"paid"`
-	Returned  *int64 `json:"returned"`
+	Canceled  *int64 `json:"canceled,omitempty"`
+	Fulfilled *int64 `json:"fulfilled,omitempty"`
+	Paid      *int64 `json:"paid,omitempty"`
+	Returned  *int64 `json:"returned,omitempty"`
 }
 
 // OrderPayParams is the set of parameters that can be used when paying orders.
@@ -207,12 +207,12 @@ type OrderItemParams struct {
 
 // OrderItem is the resource representing an order item.
 type OrderItem struct {
-	Amount      *int64 `json:"amount"`
-	Currency    Currency         `json:"currency"`
-	Description *string `json:"description"`
-	Parent      *OrderItemParent `json:"parent"`
-	Quantity    *int64 `json:"quantity"`
-	Type        OrderItemType    `json:"type"`
+	Amount      *int64 `json:"amount,omitempty"`
+	Currency    Currency         `json:"currency,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Parent      *OrderItemParent `json:"parent,omitempty"`
+	Quantity    *int64 `json:"quantity,omitempty"`
+	Type        OrderItemType    `json:"type,omitempty"`
 }
 
 // SetSource adds valid sources to a OrderParams object,

@@ -151,30 +151,30 @@ func (p *BankAccountListParams) AppendTo(body *form.Values, keyParts []string) {
 // BankAccount represents a Stripe bank account.
 type BankAccount struct {
 	APIResource
-	Account                *Account                           `json:"account"`
-	AccountHolderName      *string `json:"account_holder_name"`
-	AccountHolderType      BankAccountAccountHolderType       `json:"account_holder_type"`
-	AvailablePayoutMethods []BankAccountAvailablePayoutMethod `json:"available_payout_methods"`
-	BankName               *string `json:"bank_name"`
-	Country                *string `json:"country"`
-	Currency               Currency                           `json:"currency"`
-	Customer               *Customer                          `json:"customer"`
-	DefaultForCurrency     *bool `json:"default_for_currency"`
-	Deleted                *bool `json:"deleted"`
-	Fingerprint            *string `json:"fingerprint"`
-	ID                     *string `json:"id"`
-	Last4                  *string `json:"last4"`
-	Metadata               map[string]string                  `json:"metadata"`
-	Object                 *string `json:"object"`
-	RoutingNumber          *string `json:"routing_number"`
-	Status                 BankAccountStatus                  `json:"status"`
+	Account                *Account                           `json:"account,omitempty"`
+	AccountHolderName      *string `json:"account_holder_name,omitempty"`
+	AccountHolderType      BankAccountAccountHolderType       `json:"account_holder_type,omitempty"`
+	AvailablePayoutMethods []BankAccountAvailablePayoutMethod `json:"available_payout_methods,omitempty"`
+	BankName               *string `json:"bank_name,omitempty"`
+	Country                *string `json:"country,omitempty"`
+	Currency               Currency                           `json:"currency,omitempty"`
+	Customer               *Customer                          `json:"customer,omitempty"`
+	DefaultForCurrency     *bool `json:"default_for_currency,omitempty"`
+	Deleted                *bool `json:"deleted,omitempty"`
+	Fingerprint            *string `json:"fingerprint,omitempty"`
+	ID                     *string `json:"id,omitempty"`
+	Last4                  *string `json:"last4,omitempty"`
+	Metadata               map[string]string                  `json:"metadata,omitempty"`
+	Object                 *string `json:"object,omitempty"`
+	RoutingNumber          *string `json:"routing_number,omitempty"`
+	Status                 BankAccountStatus                  `json:"status,omitempty"`
 }
 
 // BankAccountList is a list object for bank accounts.
 type BankAccountList struct {
 	APIResource
 	ListMeta
-	Data []*BankAccount `json:"data"`
+	Data []*BankAccount `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of a BankAccount.

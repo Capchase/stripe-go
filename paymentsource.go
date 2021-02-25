@@ -87,19 +87,19 @@ func SourceParamsFor(obj interface{}) (*SourceParams, error) {
 // For more details see https://stripe.com/docs/api#retrieve_charge
 type PaymentSource struct {
 	APIResource
-	BankAccount  *BankAccount      `json:"-"`
-	Card         *Card             `json:"-"`
-	Deleted      *bool             `json:"deleted"`
-	ID           *string           `json:"id"`
-	SourceObject *Source           `json:"-"`
-	Type         PaymentSourceType `json:"object"`
+	BankAccount  *BankAccount      `json:"-,omitempty"`
+	Card         *Card             `json:"-,omitempty"`
+	Deleted      *bool             `json:"deleted,omitempty"`
+	ID           *string           `json:"id,omitempty"`
+	SourceObject *Source           `json:"-,omitempty"`
+	Type         PaymentSourceType `json:"object,omitempty"`
 }
 
 // SourceList is a list object for cards.
 type SourceList struct {
 	APIResource
 	ListMeta
-	Data []*PaymentSource `json:"data"`
+	Data []*PaymentSource `json:"data,omitempty"`
 }
 
 // SourceListParams are used to enumerate the payment sources that are attached
@@ -154,8 +154,8 @@ func (s *PaymentSource) MarshalJSON() ([]byte, error) {
 
 		target = struct {
 			*Card
-			Customer *string           `json:"customer"`
-			Type     PaymentSourceType `json:"object"`
+			Customer *string           `json:"customer,omitempty"`
+			Type     PaymentSourceType `json:"object,omitempty"`
 		}{
 			Card:     s.Card,
 			Customer: customerID,
@@ -163,8 +163,8 @@ func (s *PaymentSource) MarshalJSON() ([]byte, error) {
 		}
 	case PaymentSourceTypeAccount:
 		target = struct {
-			ID   *string           `json:"id"`
-			Type PaymentSourceType `json:"object"`
+			ID   *string           `json:"id,omitempty"`
+			Type PaymentSourceType `json:"object,omitempty"`
 		}{
 			ID:   s.ID,
 			Type: s.Type,
@@ -177,8 +177,8 @@ func (s *PaymentSource) MarshalJSON() ([]byte, error) {
 
 		target = struct {
 			*BankAccount
-			Customer *string           `json:"customer"`
-			Type     PaymentSourceType `json:"object"`
+			Customer *string           `json:"customer,omitempty"`
+			Type     PaymentSourceType `json:"object,omitempty"`
 		}{
 			BankAccount: s.BankAccount,
 			Customer:    customerID,

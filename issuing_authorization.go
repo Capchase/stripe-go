@@ -119,82 +119,82 @@ type IssuingAuthorizationListParams struct {
 
 // IssuingAuthorizationAmountDetails is the resource representing the breakdown of the amount.
 type IssuingAuthorizationAmountDetails struct {
-	ATMFee *int64 `json:"atm_fee"`
+	ATMFee *int64 `json:"atm_fee,omitempty"`
 }
 
 // IssuingAuthorizationMerchantData is the resource representing merchant data on Issuing APIs.
 type IssuingAuthorizationMerchantData struct {
-	Category   *string `json:"category"`
-	City       *string `json:"city"`
-	Country    *string `json:"country"`
-	Name       *string `json:"name"`
-	NetworkID  *string `json:"network_id"`
-	PostalCode *string `json:"postal_code"`
-	State      *string `json:"state"`
+	Category   *string `json:"category,omitempty"`
+	City       *string `json:"city,omitempty"`
+	Country    *string `json:"country,omitempty"`
+	Name       *string `json:"name,omitempty"`
+	NetworkID  *string `json:"network_id,omitempty"`
+	PostalCode *string `json:"postal_code,omitempty"`
+	State      *string `json:"state,omitempty"`
 }
 
 // IssuingAuthorizationPendingRequest is the resource representing details about the pending authorization request.
 type IssuingAuthorizationPendingRequest struct {
-	Amount               *int64 `json:"amount"`
-	AmountDetails        *IssuingAuthorizationAmountDetails `json:"amount_details"`
-	Currency             Currency                           `json:"currency"`
-	IsAmountControllable *bool `json:"is_amount_controllable"`
-	MerchantAmount       *int64 `json:"merchant_amount"`
-	MerchantCurrency     Currency                           `json:"merchant_currency"`
+	Amount               *int64 `json:"amount,omitempty"`
+	AmountDetails        *IssuingAuthorizationAmountDetails `json:"amount_details,omitempty"`
+	Currency             Currency                           `json:"currency,omitempty"`
+	IsAmountControllable *bool `json:"is_amount_controllable,omitempty"`
+	MerchantAmount       *int64 `json:"merchant_amount,omitempty"`
+	MerchantCurrency     Currency                           `json:"merchant_currency,omitempty"`
 }
 
 // IssuingAuthorizationRequestHistory is the resource representing a request history on an issuing authorization.
 type IssuingAuthorizationRequestHistory struct {
-	Amount           *int64 `json:"amount"`
-	AmountDetails    *IssuingAuthorizationAmountDetails       `json:"amount_details"`
-	Approved         *bool `json:"approved"`
-	Created          *int64 `json:"created"`
-	Currency         Currency                                 `json:"currency"`
-	MerchantAmount   *int64 `json:"merchant_amount"`
-	MerchantCurrency Currency                                 `json:"merchant_currency"`
-	Reason           IssuingAuthorizationRequestHistoryReason `json:"reason"`
+	Amount           *int64 `json:"amount,omitempty"`
+	AmountDetails    *IssuingAuthorizationAmountDetails       `json:"amount_details,omitempty"`
+	Approved         *bool `json:"approved,omitempty"`
+	Created          *int64 `json:"created,omitempty"`
+	Currency         Currency                                 `json:"currency,omitempty"`
+	MerchantAmount   *int64 `json:"merchant_amount,omitempty"`
+	MerchantCurrency Currency                                 `json:"merchant_currency,omitempty"`
+	Reason           IssuingAuthorizationRequestHistoryReason `json:"reason,omitempty"`
 }
 
 // IssuingAuthorizationVerificationData is the resource representing verification data on an issuing authorization.
 type IssuingAuthorizationVerificationData struct {
-	AddressLine1Check      IssuingAuthorizationVerificationDataCheck `json:"address_line1_check"`
-	AddressPostalCodeCheck IssuingAuthorizationVerificationDataCheck `json:"address_postal_code_check"`
-	CVCCheck               IssuingAuthorizationVerificationDataCheck `json:"cvc_check"`
-	ExpiryCheck            IssuingAuthorizationVerificationDataCheck `json:"expiry_check"`
+	AddressLine1Check      IssuingAuthorizationVerificationDataCheck `json:"address_line1_check,omitempty"`
+	AddressPostalCodeCheck IssuingAuthorizationVerificationDataCheck `json:"address_postal_code_check,omitempty"`
+	CVCCheck               IssuingAuthorizationVerificationDataCheck `json:"cvc_check,omitempty"`
+	ExpiryCheck            IssuingAuthorizationVerificationDataCheck `json:"expiry_check,omitempty"`
 }
 
 // IssuingAuthorization is the resource representing a Stripe issuing authorization.
 type IssuingAuthorization struct {
 	APIResource
-	Amount              *int64 `json:"amount"`
-	AmountDetails       *IssuingAuthorizationAmountDetails      `json:"amount_details"`
-	Approved            *bool `json:"approved"`
-	AuthorizationMethod IssuingAuthorizationAuthorizationMethod `json:"authorization_method"`
-	BalanceTransactions []*BalanceTransaction                   `json:"balance_transactions"`
-	Card                *IssuingCard                            `json:"card"`
-	Cardholder          *IssuingCardholder                      `json:"cardholder"`
-	Created             *int64 `json:"created"`
-	Currency            Currency                                `json:"currency"`
-	ID                  *string `json:"id"`
-	Livemode            *bool `json:"livemode"`
-	MerchantAmount      *int64 `json:"merchant_amount"`
-	MerchantCurrency    Currency                                `json:"merchant_currency"`
-	MerchantData        *IssuingAuthorizationMerchantData       `json:"merchant_data"`
-	Metadata            map[string]string                       `json:"metadata"`
-	Object              *string `json:"object"`
-	PendingRequest      *IssuingAuthorizationPendingRequest     `json:"pending_request"`
-	RequestHistory      []*IssuingAuthorizationRequestHistory   `json:"request_history"`
-	Status              IssuingAuthorizationStatus              `json:"status"`
-	Transactions        []*IssuingTransaction                   `json:"transactions"`
-	VerificationData    *IssuingAuthorizationVerificationData   `json:"verification_data"`
-	Wallet              IssuingAuthorizationWalletType          `json:"wallet"`
+	Amount              *int64 `json:"amount,omitempty"`
+	AmountDetails       *IssuingAuthorizationAmountDetails      `json:"amount_details,omitempty"`
+	Approved            *bool `json:"approved,omitempty"`
+	AuthorizationMethod IssuingAuthorizationAuthorizationMethod `json:"authorization_method,omitempty"`
+	BalanceTransactions []*BalanceTransaction                   `json:"balance_transactions,omitempty"`
+	Card                *IssuingCard                            `json:"card,omitempty"`
+	Cardholder          *IssuingCardholder                      `json:"cardholder,omitempty"`
+	Created             *int64 `json:"created,omitempty"`
+	Currency            Currency                                `json:"currency,omitempty"`
+	ID                  *string `json:"id,omitempty"`
+	Livemode            *bool `json:"livemode,omitempty"`
+	MerchantAmount      *int64 `json:"merchant_amount,omitempty"`
+	MerchantCurrency    Currency                                `json:"merchant_currency,omitempty"`
+	MerchantData        *IssuingAuthorizationMerchantData       `json:"merchant_data,omitempty"`
+	Metadata            map[string]string                       `json:"metadata,omitempty"`
+	Object              *string `json:"object,omitempty"`
+	PendingRequest      *IssuingAuthorizationPendingRequest     `json:"pending_request,omitempty"`
+	RequestHistory      []*IssuingAuthorizationRequestHistory   `json:"request_history,omitempty"`
+	Status              IssuingAuthorizationStatus              `json:"status,omitempty"`
+	Transactions        []*IssuingTransaction                   `json:"transactions,omitempty"`
+	VerificationData    *IssuingAuthorizationVerificationData   `json:"verification_data,omitempty"`
+	Wallet              IssuingAuthorizationWalletType          `json:"wallet,omitempty"`
 }
 
 // IssuingAuthorizationList is a list of issuing authorizations as retrieved from a list endpoint.
 type IssuingAuthorizationList struct {
 	APIResource
 	ListMeta
-	Data []*IssuingAuthorization `json:"data"`
+	Data []*IssuingAuthorization `json:"data,omitempty"`
 }
 
 // UnmarshalJSON handles deserialization of an IssuingAuthorization.

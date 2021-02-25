@@ -32,30 +32,30 @@ type TopupListParams struct {
 type TopupList struct {
 	APIResource
 	ListMeta
-	Data []*Topup `json:"data"`
+	Data []*Topup `json:"data,omitempty"`
 }
 
 // Topup is the resource representing a Stripe top-up.
 // For more details see https://stripe.com/docs/api#topups.
 type Topup struct {
 	APIResource
-	Amount                   *int64 `json:"amount"`
-	BalanceTransaction       *BalanceTransaction `json:"balance_transaction"`
-	Created                  *int64 `json:"created"`
-	Currency                 Currency            `json:"currency"`
-	Description              *string `json:"description"`
-	ExpectedAvailabilityDate *int64 `json:"expected_availability_date"`
-	FailureCode              *string `json:"failure_code"`
-	FailureMessage           *string `json:"failure_message"`
-	ID                       *string `json:"id"`
-	Livemode                 *bool `json:"livemode"`
-	Metadata                 map[string]string   `json:"metadata"`
-	Object                   *string `json:"object"`
-	Source                   *PaymentSource      `json:"source"`
-	StatementDescriptor      *string `json:"statement_descriptor"`
-	Status                   *string `json:"status"`
-	TransferGroup            *string `json:"transfer_group"`
+	Amount                   *int64 `json:"amount,omitempty"`
+	BalanceTransaction       *BalanceTransaction `json:"balance_transaction,omitempty"`
+	Created                  *int64 `json:"created,omitempty"`
+	Currency                 Currency            `json:"currency,omitempty"`
+	Description              *string `json:"description,omitempty"`
+	ExpectedAvailabilityDate *int64 `json:"expected_availability_date,omitempty"`
+	FailureCode              *string `json:"failure_code,omitempty"`
+	FailureMessage           *string `json:"failure_message,omitempty"`
+	ID                       *string `json:"id,omitempty"`
+	Livemode                 *bool `json:"livemode,omitempty"`
+	Metadata                 map[string]string   `json:"metadata,omitempty"`
+	Object                   *string `json:"object,omitempty"`
+	Source                   *PaymentSource      `json:"source,omitempty"`
+	StatementDescriptor      *string `json:"statement_descriptor,omitempty"`
+	Status                   *string `json:"status,omitempty"`
+	TransferGroup            *string `json:"transfer_group,omitempty"`
 
 	// The following property is deprecated
-	ArrivalDate *int64 `json:"arrival_date"`
+	ArrivalDate *int64 `json:"arrival_date,omitempty"`
 }

@@ -121,7 +121,7 @@ func newAPIResponse(res *http.Response, resBody []byte) *APIResponse {
 // APIResource is a type assigned to structs that may come from Stripe API
 // endpoints and contains facilities common to all of them.
 type APIResource struct {
-	LastResponse *APIResponse `json:"-"`
+	LastResponse *APIResponse `json:"-,omitempty"`
 }
 
 // SetLastResponse sets the HTTP response that returned the API resource.
@@ -133,10 +133,10 @@ func (r *APIResource) SetLastResponse(response *APIResponse) {
 // to. This should be reserved for plugins that wish to identify themselves
 // with Stripe.
 type AppInfo struct {
-	Name      *string `json:"name"`
-	PartnerID *string `json:"partner_id"`
-	URL       *string `json:"url"`
-	Version   *string `json:"version"`
+	Name      *string `json:"name,omitempty"`
+	PartnerID *string `json:"partner_id,omitempty"`
+	URL       *string `json:"url,omitempty"`
+	Version   *string `json:"version,omitempty"`
 }
 
 // formatUserAgent formats an AppInfo in a way that's suitable to be appended
@@ -1108,24 +1108,24 @@ func (nopReadCloser) Close() error { return nil }
 // is serialized and sent in the `X-Stripe-Client-User-Agent` as additional
 // debugging information.
 type stripeClientUserAgent struct {
-	Application     *AppInfo `json:"application"`
-	BindingsVersion *string  `json:"bindings_version"`
-	Language        *string  `json:"lang"`
-	LanguageVersion *string  `json:"lang_version"`
-	Publisher       *string  `json:"publisher"`
-	Uname           *string  `json:"uname"`
+	Application     *AppInfo `json:"application,omitempty"`
+	BindingsVersion *string  `json:"bindings_version,omitempty"`
+	Language        *string  `json:"lang,omitempty"`
+	LanguageVersion *string  `json:"lang_version,omitempty"`
+	Publisher       *string  `json:"publisher,omitempty"`
+	Uname           *string  `json:"uname,omitempty"`
 }
 
 // requestMetrics contains the id and duration of the last request sent
 type requestMetrics struct {
-	RequestDurationMS *int    `json:"request_duration_ms"`
-	RequestID         *string `json:"request_id"`
+	RequestDurationMS *int    `json:"request_duration_ms,omitempty"`
+	RequestID         *string `json:"request_id,omitempty"`
 }
 
 // requestTelemetry contains the payload sent in the
 // `X-Stripe-Client-Telemetry` header when BackendConfig.EnableTelemetry = true.
 type requestTelemetry struct {
-	LastRequestMetrics requestMetrics `json:"last_request_metrics"`
+	LastRequestMetrics requestMetrics `json:"last_request_metrics,omitempty"`
 }
 
 //

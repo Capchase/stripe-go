@@ -38,34 +38,34 @@ type ReportRunListParams struct {
 
 // ReportRunParameters describes the parameters hash on a report run.
 type ReportRunParameters struct {
-	Columns           []string `json:"columns"`
-	ConnectedAccount  *string `json:"connected_account"`
-	Currency          Currency `json:"currency"`
-	IntervalEnd       *int64 `json:"interval_end"`
-	IntervalStart     *int64 `json:"interval_start"`
-	Payout            *string `json:"payout"`
-	ReportingCategory *string `json:"reporting_category"`
-	Timezone          *string `json:"timezone"`
+	Columns           []string `json:"columns,omitempty"`
+	ConnectedAccount  *string `json:"connected_account,omitempty"`
+	Currency          Currency `json:"currency,omitempty"`
+	IntervalEnd       *int64 `json:"interval_end,omitempty"`
+	IntervalStart     *int64 `json:"interval_start,omitempty"`
+	Payout            *string `json:"payout,omitempty"`
+	ReportingCategory *string `json:"reporting_category,omitempty"`
+	Timezone          *string `json:"timezone,omitempty"`
 }
 
 // ReportRun is the resource representing a report run.
 type ReportRun struct {
 	APIResource
-	Created     *int64 `json:"created"`
-	Error       *string `json:"error"`
-	ID          *string `json:"id"`
-	Livemode    *bool `json:"livemode"`
-	Object      *string `json:"object"`
-	Parameters  *ReportRunParameters `json:"parameters"`
-	ReportType  *string `json:"report_type"`
-	Result      *File                `json:"result"`
-	Status      ReportRunStatus      `json:"status"`
-	SucceededAt *int64 `json:"succeeded_at"`
+	Created     *int64 `json:"created,omitempty"`
+	Error       *string `json:"error,omitempty"`
+	ID          *string `json:"id,omitempty"`
+	Livemode    *bool `json:"livemode,omitempty"`
+	Object      *string `json:"object,omitempty"`
+	Parameters  *ReportRunParameters `json:"parameters,omitempty"`
+	ReportType  *string `json:"report_type,omitempty"`
+	Result      *File                `json:"result,omitempty"`
+	Status      ReportRunStatus      `json:"status,omitempty"`
+	SucceededAt *int64 `json:"succeeded_at,omitempty"`
 }
 
 // ReportRunList is a list of report runs as retrieved from a list endpoint.
 type ReportRunList struct {
 	APIResource
 	ListMeta
-	Data []*ReportRun `json:"data"`
+	Data []*ReportRun `json:"data,omitempty"`
 }
