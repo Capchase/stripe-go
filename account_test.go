@@ -130,7 +130,7 @@ func TestAccount_Unmarshal(t *testing.T) {
 	assert.Equal(t, AccountBusinessTypeCompany, account.BusinessType)
 
 	// Assert ExternalAccounts are fully deserialized
-	assert.Equal(t, Bool(true), account.ExternalAccounts.HasMore)
+	assert.Equal(t, true, account.ExternalAccounts.HasMore)
 	assert.Equal(t, 2, len(account.ExternalAccounts.Data))
 	assert.Equal(t, "ba_123", *account.ExternalAccounts.Data[0].ID)
 	assert.Equal(t, "card_123", *account.ExternalAccounts.Data[1].ID)

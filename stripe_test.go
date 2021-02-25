@@ -132,7 +132,7 @@ func TestDo_Retry(t *testing.T) {
 	err = backend.Do(request, bodyBuffer, &response)
 
 	assert.NoError(t, err)
-	assert.Equal(t, message, response.Message)
+	assert.Equal(t, message, *response.Message)
 
 	// We should have seen exactly two requests.
 	assert.Equal(t, 2, requestNum)
@@ -422,7 +422,7 @@ func TestDo_LastResponsePopulated(t *testing.T) {
 	var resource testServerResponse
 	err = backend.Do(request, nil, &resource)
 	assert.NoError(t, err)
-	assert.Equal(t, message, resource.Message)
+	assert.Equal(t, message, *resource.Message)
 
 	assert.Equal(t, "key_123", resource.LastResponse.IdempotencyKey)
 	assert.Equal(t, "other_header", resource.LastResponse.Header.Get("Other-Header"))
@@ -486,7 +486,7 @@ func TestDo_TelemetryDisabled(t *testing.T) {
 		err = backend.Do(request, nil, &response)
 
 		assert.NoError(t, err)
-		assert.Equal(t, message, response.Message)
+		assert.Equal(t, message, *response.Message)
 	}
 
 	// We should have seen exactly two requests.
@@ -531,11 +531,11 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 			assert.NoError(t, err)
 
 			// the second request should include the metrics for the first request
-			assert.Equal(t, telemetry.LastRequestMetrics.RequestID, "req_1")
+			assert.Equal(t, *telemetry.LastRequestMetrics.RequestID, "req_1")
 			assert.True(t, *telemetry.LastRequestMetrics.RequestDurationMS > 20,
 				"request_duration_ms should be > 20ms")
 		default:
-			assert.Fail(t, "Should not have reached request %v", requestNum)
+			assert.Failf(t, "Error", "Should not have reached request %v", requestNum)
 		}
 
 		w.Header().Set("Request-Id", fmt.Sprintf("req_%d", requestNum))
@@ -573,7 +573,7 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 		err = backend.Do(request, nil, &response)
 
 		assert.NoError(t, err)
-		assert.Equal(t, message, response.Message)
+		assert.Equal(t, message, *response.Message)
 	}
 
 	// We should have seen exactly two requests.
@@ -635,7 +635,7 @@ func TestDo_TelemetryEnabledNoDataRace(t *testing.T) {
 			err = backend.Do(request, nil, &response)
 
 			assert.NoError(t, err)
-			assert.Equal(t, message, response.Message)
+			assert.Equal(t, message, *response.Message)
 
 			done <- struct{}{}
 		}()
@@ -985,9 +985,9 @@ func TestStripeClientUserAgentWithAppInfo(t *testing.T) {
 	assert.NoError(t, err)
 
 	decodedAppInfo := userAgent["application"].(map[string]interface{})
-	assert.Equal(t, appInfo.Name, decodedAppInfo["name"])
-	assert.Equal(t, appInfo.URL, decodedAppInfo["url"])
-	assert.Equal(t, appInfo.Version, decodedAppInfo["version"])
+	assert.Equal(t, *appInfo.Name, decodedAppInfo["name"])
+	assert.Equal(t, *appInfo.URL, decodedAppInfo["url"])
+	assert.Equal(t, *appInfo.Version, decodedAppInfo["version"])
 }
 
 func TestResponseToError(t *testing.T) {
@@ -1035,8 +1035,8 @@ func TestResponseToError(t *testing.T) {
 	assert.Equal(t, expectedErr.Code, stripeErr.Code)
 	assert.Equal(t, expectedErr.Msg, stripeErr.Msg)
 	assert.Equal(t, expectedErr.Param, stripeErr.Param)
-	assert.Equal(t, res.Header.Get("Request-Id"), stripeErr.RequestID)
-	assert.Equal(t, res.StatusCode, stripeErr.HTTPStatusCode)
+	assert.Equal(t, res.Header.Get("Request-Id"), *stripeErr.RequestID)
+	assert.Equal(t, res.StatusCode, *stripeErr.HTTPStatusCode)
 	assert.Equal(t, expectedErr.Type, stripeErr.Type)
 	assert.Equal(t, expectedDeclineCode, stripeErr.DeclineCode)
 
