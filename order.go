@@ -51,7 +51,7 @@ const (
 
 // OrderItemParent describes the parent of an order item.
 type OrderItemParent struct {
-	ID   string              `json:"id"`
+	ID   *string `json:"id"`
 	SKU  *SKU                `json:"-"`
 	Type OrderItemParentType `json:"object"`
 }
@@ -94,29 +94,29 @@ type OrderUpdateShippingParams struct {
 // Shipping describes the shipping hash on an order.
 type Shipping struct {
 	Address        *Address `json:"address"`
-	Carrier        string   `json:"carrier"`
-	Name           string   `json:"name"`
-	Phone          string   `json:"phone"`
-	TrackingNumber string   `json:"tracking_number"`
+	Carrier        *string `json:"carrier"`
+	Name           *string `json:"name"`
+	Phone          *string `json:"phone"`
+	TrackingNumber *string `json:"tracking_number"`
 }
 
 // ShippingMethod describes a shipping method as available on an order.
 type ShippingMethod struct {
-	Amount           int64             `json:"amount"`
-	ID               string            `json:"id"`
+	Amount           *int64 `json:"amount"`
+	ID               *string `json:"id"`
 	Currency         Currency          `json:"currency"`
 	DeliveryEstimate *DeliveryEstimate `json:"delivery_estimate"`
-	Description      string            `json:"description"`
+	Description      *string `json:"description"`
 }
 
 // DeliveryEstimate represent the properties available for a shipping method's
 // estimated delivery.
 type DeliveryEstimate struct {
 	// If Type == Exact
-	Date string `json:"date"`
+	Date *string `json:"date"`
 	// If Type == Range
-	Earliest string                    `json:"earliest"`
-	Latest   string                    `json:"latest"`
+	Earliest *string `json:"earliest"`
+	Latest   *string `json:"latest"`
 	Type     OrderDeliveryEstimateType `json:"type"`
 }
 
@@ -124,27 +124,27 @@ type DeliveryEstimate struct {
 // For more details see https://stripe.com/docs/api#orders.
 type Order struct {
 	APIResource
-	Amount                 int64             `json:"amount"`
-	AmountReturned         int64             `json:"amount_returned"`
-	Application            string            `json:"application"`
-	ApplicationFee         int64             `json:"application_fee"`
+	Amount                 *int64 `json:"amount"`
+	AmountReturned         *int64 `json:"amount_returned"`
+	Application            *string `json:"application"`
+	ApplicationFee         *int64 `json:"application_fee"`
 	Charge                 *Charge           `json:"charge"`
-	Created                int64             `json:"created"`
+	Created                *int64 `json:"created"`
 	Currency               Currency          `json:"currency"`
 	Customer               Customer          `json:"customer"`
-	Email                  string            `json:"email"`
-	ID                     string            `json:"id"`
+	Email                  *string `json:"email"`
+	ID                     *string `json:"id"`
 	Items                  []*OrderItem      `json:"items"`
-	Livemode               bool              `json:"livemode"`
+	Livemode               *bool `json:"livemode"`
 	Metadata               map[string]string `json:"metadata"`
 	Returns                *OrderReturnList  `json:"returns"`
 	SelectedShippingMethod *string           `json:"selected_shipping_method"`
 	Shipping               *Shipping         `json:"shipping"`
 	ShippingMethods        []*ShippingMethod `json:"shipping_methods"`
-	Status                 string            `json:"status"`
+	Status                 *string `json:"status"`
 	StatusTransitions      StatusTransitions `json:"status_transitions"`
-	Updated                int64             `json:"updated"`
-	UpstreamID             string            `json:"upstream_id"`
+	Updated                *int64 `json:"updated"`
+	UpstreamID             *string `json:"upstream_id"`
 }
 
 // OrderList is a list of orders as retrieved from a list endpoint.
@@ -180,10 +180,10 @@ type StatusTransitionsFilterParams struct {
 
 // StatusTransitions are the timestamps at which the order status was updated.
 type StatusTransitions struct {
-	Canceled  int64 `json:"canceled"`
-	Fulfilled int64 `json:"fulfilled"`
-	Paid      int64 `json:"paid"`
-	Returned  int64 `json:"returned"`
+	Canceled  *int64 `json:"canceled"`
+	Fulfilled *int64 `json:"fulfilled"`
+	Paid      *int64 `json:"paid"`
+	Returned  *int64 `json:"returned"`
 }
 
 // OrderPayParams is the set of parameters that can be used when paying orders.
@@ -207,11 +207,11 @@ type OrderItemParams struct {
 
 // OrderItem is the resource representing an order item.
 type OrderItem struct {
-	Amount      int64            `json:"amount"`
+	Amount      *int64 `json:"amount"`
 	Currency    Currency         `json:"currency"`
-	Description string           `json:"description"`
+	Description *string `json:"description"`
 	Parent      *OrderItemParent `json:"parent"`
-	Quantity    int64            `json:"quantity"`
+	Quantity    *int64 `json:"quantity"`
 	Type        OrderItemType    `json:"type"`
 }
 

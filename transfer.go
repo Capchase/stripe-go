@@ -17,7 +17,7 @@ const (
 // For more details see https://stripe.com/docs/api/go#transfer_object
 type TransferDestination struct {
 	Account *Account `json:"-"`
-	ID      string   `json:"id"`
+	ID      *string `json:"id"`
 }
 
 // TransferParams is the set of parameters that can be used when creating or updating a transfer.
@@ -47,22 +47,22 @@ type TransferListParams struct {
 // For more details see https://stripe.com/docs/api#transfers.
 type Transfer struct {
 	APIResource
-	Amount             int64                     `json:"amount"`
-	AmountReversed     int64                     `json:"amount_reversed"`
+	Amount             *int64 `json:"amount"`
+	AmountReversed     *int64 `json:"amount_reversed"`
 	BalanceTransaction *BalanceTransaction       `json:"balance_transaction"`
-	Created            int64                     `json:"created"`
+	Created            *int64 `json:"created"`
 	Currency           Currency                  `json:"currency"`
-	Description        string                    `json:"description"`
+	Description        *string `json:"description"`
 	Destination        *TransferDestination      `json:"destination"`
 	DestinationPayment *Charge                   `json:"destination_payment"`
-	ID                 string                    `json:"id"`
-	Livemode           bool                      `json:"livemode"`
+	ID                 *string `json:"id"`
+	Livemode           *bool `json:"livemode"`
 	Metadata           map[string]string         `json:"metadata"`
 	Reversals          *ReversalList             `json:"reversals"`
-	Reversed           bool                      `json:"reversed"`
+	Reversed           *bool `json:"reversed"`
 	SourceTransaction  *BalanceTransactionSource `json:"source_transaction"`
 	SourceType         TransferSourceType        `json:"source_type"`
-	TransferGroup      string                    `json:"transfer_group"`
+	TransferGroup      *string `json:"transfer_group"`
 }
 
 // TransferList is a list of transfers as retrieved from a list endpoint.

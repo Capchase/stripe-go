@@ -183,10 +183,10 @@ const (
 type Error struct {
 	APIResource
 
-	ChargeID    string      `json:"charge,omitempty"`
+	ChargeID    *string `json:"charge,omitempty"`
 	Code        ErrorCode   `json:"code,omitempty"`
 	DeclineCode DeclineCode `json:"decline_code,omitempty"`
-	DocURL      string      `json:"doc_url,omitempty"`
+	DocURL      *string `json:"doc_url,omitempty"`
 
 	// Err contains an internal error with an additional level of granularity
 	// that can be used in some cases to get more detailed information about
@@ -194,20 +194,20 @@ type Error struct {
 	// exactly what went wrong during charging a card.
 	Err error `json:"-"`
 
-	HTTPStatusCode    int               `json:"status,omitempty"`
-	Msg               string            `json:"message"`
-	Param             string            `json:"param,omitempty"`
+	HTTPStatusCode    *int `json:"status,omitempty"`
+	Msg               *string `json:"message"`
+	Param             *string `json:"param,omitempty"`
 	PaymentIntent     *PaymentIntent    `json:"payment_intent,omitempty"`
 	PaymentMethod     *PaymentMethod    `json:"payment_method,omitempty"`
 	PaymentMethodType PaymentMethodType `json:"payment_method_type,omitempty"`
-	RequestID         string            `json:"request_id,omitempty"`
+	RequestID         *string `json:"request_id,omitempty"`
 	SetupIntent       *SetupIntent      `json:"setup_intent,omitempty"`
 	Source            *PaymentSource    `json:"source,omitempty"`
 	Type              ErrorType         `json:"type"`
 
 	// OAuth specific Error properties. Named OAuthError because of name conflict.
-	OAuthError            string `json:"error,omitempty"`
-	OAuthErrorDescription string `json:"error_description,omitempty"`
+	OAuthError            *string `json:"error,omitempty"`
+	OAuthErrorDescription *string `json:"error_description,omitempty"`
 }
 
 // Error serializes the error object to JSON and returns it as a string.

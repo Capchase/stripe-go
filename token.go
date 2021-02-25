@@ -54,17 +54,17 @@ type Token struct {
 
 	BankAccount *BankAccount `json:"bank_account"`
 	Card        *Card        `json:"card"`
-	ClientIP    string       `json:"client_ip"`
-	Created     int64        `json:"created"`
+	ClientIP    *string `json:"client_ip"`
+	Created     *int64 `json:"created"`
 
 	// Email is an undocumented field but included for all tokens created
 	// with Stripe Checkout.
-	Email string `json:"email"`
+	Email *string `json:"email"`
 
-	ID       string    `json:"id"`
-	Livemode bool      `json:"livemode"`
+	ID       *string `json:"id"`
+	Livemode *bool `json:"livemode"`
 	Type     TokenType `json:"type"`
-	Used     bool      `json:"used"`
+	Used     *bool `json:"used"`
 }
 
 // PIIParams are parameters for personal identifiable information (PII).

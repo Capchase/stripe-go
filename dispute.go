@@ -88,16 +88,16 @@ type DisputeListParams struct {
 // For more details see https://stripe.com/docs/api#disputes.
 type Dispute struct {
 	APIResource
-	Amount              int64                 `json:"amount"`
+	Amount              *int64 `json:"amount"`
 	BalanceTransactions []*BalanceTransaction `json:"balance_transactions"`
 	Charge              *Charge               `json:"charge"`
-	Created             int64                 `json:"created"`
+	Created             *int64 `json:"created"`
 	Currency            Currency              `json:"currency"`
 	Evidence            *DisputeEvidence      `json:"evidence"`
 	EvidenceDetails     *EvidenceDetails      `json:"evidence_details"`
-	ID                  string                `json:"id"`
-	IsChargeRefundable  bool                  `json:"is_charge_refundable"`
-	Livemode            bool                  `json:"livemode"`
+	ID                  *string `json:"id"`
+	IsChargeRefundable  *bool `json:"is_charge_refundable"`
+	Livemode            *bool `json:"livemode"`
 	Metadata            map[string]string     `json:"metadata"`
 	PaymentIntent       *PaymentIntent        `json:"payment_intent"`
 	Reason              DisputeReason         `json:"reason"`
@@ -114,10 +114,10 @@ type DisputeList struct {
 // EvidenceDetails is the structure representing more details about
 // the dispute.
 type EvidenceDetails struct {
-	DueBy           int64 `json:"due_by"`
-	HasEvidence     bool  `json:"has_evidence"`
-	PastDue         bool  `json:"past_due"`
-	SubmissionCount int64 `json:"submission_count"`
+	DueBy           *int64 `json:"due_by"`
+	HasEvidence     *bool `json:"has_evidence"`
+	PastDue         *bool `json:"past_due"`
+	SubmissionCount *int64 `json:"submission_count"`
 }
 
 // DisputeEvidence is the structure that contains various details about
@@ -125,33 +125,33 @@ type EvidenceDetails struct {
 // Almost all fields are strings since there structures (i.e. address)
 // do not typically get parsed by anyone and are thus presented as-received.
 type DisputeEvidence struct {
-	AccessActivityLog            string `json:"access_activity_log"`
-	BillingAddress               string `json:"billing_address"`
+	AccessActivityLog            *string `json:"access_activity_log"`
+	BillingAddress               *string `json:"billing_address"`
 	CancellationPolicy           *File  `json:"cancellation_policy"`
-	CancellationPolicyDisclosure string `json:"cancellation_policy_disclosure"`
-	CancellationRebuttal         string `json:"cancellation_rebuttal"`
+	CancellationPolicyDisclosure *string `json:"cancellation_policy_disclosure"`
+	CancellationRebuttal         *string `json:"cancellation_rebuttal"`
 	CustomerCommunication        *File  `json:"customer_communication"`
-	CustomerEmailAddress         string `json:"customer_email_address"`
-	CustomerName                 string `json:"customer_name"`
-	CustomerPurchaseIP           string `json:"customer_purchase_ip"`
+	CustomerEmailAddress         *string `json:"customer_email_address"`
+	CustomerName                 *string `json:"customer_name"`
+	CustomerPurchaseIP           *string `json:"customer_purchase_ip"`
 	CustomerSignature            *File  `json:"customer_signature"`
 	DuplicateChargeDocumentation *File  `json:"duplicate_charge_documentation"`
-	DuplicateChargeExplanation   string `json:"duplicate_charge_explanation"`
-	DuplicateChargeID            string `json:"duplicate_charge_id"`
-	ProductDescription           string `json:"product_description"`
+	DuplicateChargeExplanation   *string `json:"duplicate_charge_explanation"`
+	DuplicateChargeID            *string `json:"duplicate_charge_id"`
+	ProductDescription           *string `json:"product_description"`
 	Receipt                      *File  `json:"receipt"`
 	RefundPolicy                 *File  `json:"refund_policy"`
-	RefundPolicyDisclosure       string `json:"refund_policy_disclosure"`
-	RefundRefusalExplanation     string `json:"refund_refusal_explanation"`
-	ServiceDate                  string `json:"service_date"`
+	RefundPolicyDisclosure       *string `json:"refund_policy_disclosure"`
+	RefundRefusalExplanation     *string `json:"refund_refusal_explanation"`
+	ServiceDate                  *string `json:"service_date"`
 	ServiceDocumentation         *File  `json:"service_documentation"`
-	ShippingAddress              string `json:"shipping_address"`
-	ShippingCarrier              string `json:"shipping_carrier"`
-	ShippingDate                 string `json:"shipping_date"`
+	ShippingAddress              *string `json:"shipping_address"`
+	ShippingCarrier              *string `json:"shipping_carrier"`
+	ShippingDate                 *string `json:"shipping_date"`
 	ShippingDocumentation        *File  `json:"shipping_documentation"`
-	ShippingTrackingNumber       string `json:"shipping_tracking_number"`
+	ShippingTrackingNumber       *string `json:"shipping_tracking_number"`
 	UncategorizedFile            *File  `json:"uncategorized_file"`
-	UncategorizedText            string `json:"uncategorized_text"`
+	UncategorizedText            *string `json:"uncategorized_text"`
 }
 
 // UnmarshalJSON handles deserialization of a Dispute.

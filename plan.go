@@ -69,25 +69,25 @@ const (
 // For more details see https://stripe.com/docs/api#plans.
 type Plan struct {
 	APIResource
-	Active          bool                `json:"active"`
-	AggregateUsage  string              `json:"aggregate_usage"`
-	Amount          int64               `json:"amount"`
-	AmountDecimal   float64             `json:"amount_decimal,string"`
+	Active          *bool `json:"active"`
+	AggregateUsage  *string `json:"aggregate_usage"`
+	Amount          *int64 `json:"amount"`
+	AmountDecimal   *float64 `json:"amount_decimal,string"`
 	BillingScheme   PlanBillingScheme   `json:"billing_scheme"`
-	Created         int64               `json:"created"`
+	Created         *int64 `json:"created"`
 	Currency        Currency            `json:"currency"`
-	Deleted         bool                `json:"deleted"`
-	ID              string              `json:"id"`
+	Deleted         *bool `json:"deleted"`
+	ID              *string `json:"id"`
 	Interval        PlanInterval        `json:"interval"`
-	IntervalCount   int64               `json:"interval_count"`
-	Livemode        bool                `json:"livemode"`
+	IntervalCount   *int64 `json:"interval_count"`
+	Livemode        *bool `json:"livemode"`
 	Metadata        map[string]string   `json:"metadata"`
-	Nickname        string              `json:"nickname"`
+	Nickname        *string `json:"nickname"`
 	Product         *Product            `json:"product"`
 	Tiers           []*PlanTier         `json:"tiers"`
-	TiersMode       string              `json:"tiers_mode"`
+	TiersMode       *string `json:"tiers_mode"`
 	TransformUsage  *PlanTransformUsage `json:"transform_usage"`
-	TrialPeriodDays int64               `json:"trial_period_days"`
+	TrialPeriodDays *int64 `json:"trial_period_days"`
 	UsageType       PlanUsageType       `json:"usage_type"`
 }
 
@@ -133,16 +133,16 @@ type PlanParams struct {
 
 // PlanTier configures tiered pricing
 type PlanTier struct {
-	FlatAmount        int64   `json:"flat_amount"`
-	FlatAmountDecimal float64 `json:"flat_amount_decimal,string"`
-	UnitAmount        int64   `json:"unit_amount"`
-	UnitAmountDecimal float64 `json:"unit_amount_decimal,string"`
-	UpTo              int64   `json:"up_to"`
+	FlatAmount        *int64 `json:"flat_amount"`
+	FlatAmountDecimal *float64 `json:"flat_amount_decimal,string"`
+	UnitAmount        *int64 `json:"unit_amount"`
+	UnitAmountDecimal *float64 `json:"unit_amount_decimal,string"`
+	UpTo              *int64 `json:"up_to"`
 }
 
 // PlanTransformUsage represents the bucket billing configuration.
 type PlanTransformUsage struct {
-	DivideBy int64                   `json:"divide_by"`
+	DivideBy *int64 `json:"divide_by"`
 	Round    PlanTransformUsageRound `json:"round"`
 }
 

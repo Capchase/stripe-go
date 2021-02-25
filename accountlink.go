@@ -32,8 +32,8 @@ type AccountLinkParams struct {
 // For more details see https://stripe.com/docs/api/#account_links.
 type AccountLink struct {
 	APIResource
-	Created   int64  `json:"created"`
-	ExpiresAt int64  `json:"expires_at"`
-	Object    string `json:"object"`
-	URL       string `json:"url"`
+	Created   *int64 `json:"created"`
+	ExpiresAt *int64 `json:"expires_at"`
+	Object    *string `json:"object"`
+	URL       *string `json:"url"`
 }

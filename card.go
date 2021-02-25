@@ -197,51 +197,51 @@ func (p *CardListParams) AppendTo(body *form.Values, keyParts []string) {
 type Card struct {
 	APIResource
 
-	AddressCity            string                      `json:"address_city"`
-	AddressCountry         string                      `json:"address_country"`
-	AddressLine1           string                      `json:"address_line1"`
+	AddressCity            *string `json:"address_city"`
+	AddressCountry         *string `json:"address_country"`
+	AddressLine1           *string `json:"address_line1"`
 	AddressLine1Check      CardVerification            `json:"address_line1_check"`
-	AddressLine2           string                      `json:"address_line2"`
-	AddressState           string                      `json:"address_state"`
-	AddressZip             string                      `json:"address_zip"`
+	AddressLine2           *string `json:"address_line2"`
+	AddressState           *string `json:"address_state"`
+	AddressZip             *string `json:"address_zip"`
 	AddressZipCheck        CardVerification            `json:"address_zip_check"`
 	AvailablePayoutMethods []CardAvailablePayoutMethod `json:"available_payout_methods"`
 	Brand                  CardBrand                   `json:"brand"`
 	CVCCheck               CardVerification            `json:"cvc_check"`
-	Country                string                      `json:"country"`
+	Country                *string `json:"country"`
 	Currency               Currency                    `json:"currency"`
 	Customer               *Customer                   `json:"customer"`
-	DefaultForCurrency     bool                        `json:"default_for_currency"`
-	Deleted                bool                        `json:"deleted"`
+	DefaultForCurrency     *bool `json:"default_for_currency"`
+	Deleted                *bool `json:"deleted"`
 
 	// Description is a succinct summary of the card's information.
 	//
 	// Please note that this field is for internal use only and is not returned
 	// as part of standard API requests.
-	Description string `json:"description"`
+	Description *string `json:"description"`
 
-	DynamicLast4 string      `json:"dynamic_last4"`
-	ExpMonth     uint8       `json:"exp_month"`
-	ExpYear      uint16      `json:"exp_year"`
-	Fingerprint  string      `json:"fingerprint"`
+	DynamicLast4 *string `json:"dynamic_last4"`
+	ExpMonth     *uint8 `json:"exp_month"`
+	ExpYear      *uint16 `json:"exp_year"`
+	Fingerprint  *string `json:"fingerprint"`
 	Funding      CardFunding `json:"funding"`
-	ID           string      `json:"id"`
+	ID           *string `json:"id"`
 
 	// IIN is the card's "Issuer Identification Number".
 	//
 	// Please note that this field is for internal use only and is not returned
 	// as part of standard API requests.
-	IIN string `json:"iin"`
+	IIN *string `json:"iin"`
 
 	// Issuer is a bank or financial institution that provides the card.
 	//
 	// Please note that this field is for internal use only and is not returned
 	// as part of standard API requests.
-	Issuer string `json:"issuer"`
+	Issuer *string `json:"issuer"`
 
-	Last4              string                 `json:"last4"`
+	Last4              *string `json:"last4"`
 	Metadata           map[string]string      `json:"metadata"`
-	Name               string                 `json:"name"`
+	Name               *string `json:"name"`
 	TokenizationMethod CardTokenizationMethod `json:"tokenization_method"`
 }
 

@@ -254,13 +254,13 @@ type CheckoutSessionListParams struct {
 // time of checkout.
 type CheckoutSessionCustomerDetailsTaxIDs struct {
 	Type  CheckoutSessionCustomerDetailsTaxIDsType `json:"type"`
-	Value string                                   `json:"value"`
+	Value *string `json:"value"`
 }
 
 // CheckoutSessionCustomerDetails represent the customer details including
 // the tax exempt status and the customer's tax IDs.
 type CheckoutSessionCustomerDetails struct {
-	Email     string                                  `json:"email"`
+	Email     *string `json:"email"`
 	TaxExempt CheckoutSessionCustomerDetailsTaxExempt `json:"tax_exempt"`
 	TaxIDs    []*CheckoutSessionCustomerDetailsTaxIDs `json:"tax_ids"`
 }
@@ -273,13 +273,13 @@ type CheckoutSessionShippingAddressCollection struct {
 
 // CheckoutSessionTotalDetailsBreakdownDiscount represent the details of one discount applied to a session.
 type CheckoutSessionTotalDetailsBreakdownDiscount struct {
-	Amount   int64     `json:"amount"`
+	Amount   *int64 `json:"amount"`
 	Discount *Discount `json:"discount"`
 }
 
 // CheckoutSessionTotalDetailsBreakdownTax represent the details of tax rate applied to a session.
 type CheckoutSessionTotalDetailsBreakdownTax struct {
-	Amount  int64    `json:"amount"`
+	Amount  *int64 `json:"amount"`
 	TaxRate *TaxRate `json:"tax_rate"`
 }
 
@@ -291,8 +291,8 @@ type CheckoutSessionTotalDetailsBreakdown struct {
 
 // CheckoutSessionTotalDetails is the set of properties detailing how the amounts were calculated.
 type CheckoutSessionTotalDetails struct {
-	AmountDiscount int64                                 `json:"amount_discount"`
-	AmountTax      int64                                 `json:"amount_tax"`
+	AmountDiscount *int64 `json:"amount_discount"`
+	AmountTax      *int64 `json:"amount_tax"`
 	Breakdown      *CheckoutSessionTotalDetailsBreakdown `json:"breakdown"`
 }
 
@@ -300,23 +300,23 @@ type CheckoutSessionTotalDetails struct {
 // For more details see https://stripe.com/docs/api/checkout/sessions/object
 type CheckoutSession struct {
 	APIResource
-	AllowPromotionCodes       bool                                      `json:"allow_promotion_codes"`
-	CancelURL                 string                                    `json:"cancel_url"`
+	AllowPromotionCodes       *bool `json:"allow_promotion_codes"`
+	CancelURL                 *string `json:"cancel_url"`
 	CustomerDetails           *CheckoutSessionCustomerDetails           `json:"customer_details"`
-	AmountSubtotal            int64                                     `json:"amount_subtotal"`
-	AmountTotal               int64                                     `json:"amount_total"`
-	ClientReferenceID         string                                    `json:"client_reference_id"`
+	AmountSubtotal            *int64 `json:"amount_subtotal"`
+	AmountTotal               *int64 `json:"amount_total"`
+	ClientReferenceID         *string `json:"client_reference_id"`
 	Currency                  Currency                                  `json:"currency"`
 	Customer                  *Customer                                 `json:"customer"`
-	CustomerEmail             string                                    `json:"customer_email"`
-	Deleted                   bool                                      `json:"deleted"`
-	ID                        string                                    `json:"id"`
+	CustomerEmail             *string `json:"customer_email"`
+	Deleted                   *bool `json:"deleted"`
+	ID                        *string `json:"id"`
 	LineItems                 *LineItemList                             `json:"line_items"`
-	Livemode                  bool                                      `json:"livemode"`
-	Locale                    string                                    `json:"locale"`
+	Livemode                  *bool `json:"livemode"`
+	Locale                    *string `json:"locale"`
 	Metadata                  map[string]string                         `json:"metadata"`
 	Mode                      CheckoutSessionMode                       `json:"mode"`
-	Object                    string                                    `json:"object"`
+	Object                    *string `json:"object"`
 	PaymentIntent             *PaymentIntent                            `json:"payment_intent"`
 	PaymentMethodTypes        []string                                  `json:"payment_method_types"`
 	PaymentStatus             CheckoutSessionPaymentStatus              `json:"payment_status"`
@@ -325,7 +325,7 @@ type CheckoutSession struct {
 	ShippingAddressCollection *CheckoutSessionShippingAddressCollection `json:"shipping_address_collection"`
 	Subscription              *Subscription                             `json:"subscription"`
 	SubmitType                CheckoutSessionSubmitType                 `json:"submit_type"`
-	SuccessURL                string                                    `json:"success_url"`
+	SuccessURL                *string `json:"success_url"`
 	TotalDetails              *CheckoutSessionTotalDetails              `json:"total_details"`
 }
 

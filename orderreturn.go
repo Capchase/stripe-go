@@ -13,12 +13,12 @@ type OrderReturnParams struct {
 // For more details see https://stripe.com/docs/api#order_returns.
 type OrderReturn struct {
 	APIResource
-	Amount   int64        `json:"amount"`
-	Created  int64        `json:"created"`
+	Amount   *int64 `json:"amount"`
+	Created  *int64 `json:"created"`
 	Currency Currency     `json:"currency"`
-	ID       string       `json:"id"`
+	ID       *string `json:"id"`
 	Items    []*OrderItem `json:"items"`
-	Livemode bool         `json:"livemode"`
+	Livemode *bool `json:"livemode"`
 	Order    *Order       `json:"order"`
 	Refund   *Refund      `json:"refund"`
 }

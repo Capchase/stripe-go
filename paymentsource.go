@@ -89,8 +89,8 @@ type PaymentSource struct {
 	APIResource
 	BankAccount  *BankAccount      `json:"-"`
 	Card         *Card             `json:"-"`
-	Deleted      bool              `json:"deleted"`
-	ID           string            `json:"id"`
+	Deleted      *bool `json:"deleted"`
+	ID           *string `json:"id"`
 	SourceObject *Source           `json:"-"`
 	Type         PaymentSourceType `json:"object"`
 }
@@ -163,7 +163,7 @@ func (s *PaymentSource) MarshalJSON() ([]byte, error) {
 		}
 	case PaymentSourceTypeAccount:
 		target = struct {
-			ID   string            `json:"id"`
+			ID   *string `json:"id"`
 			Type PaymentSourceType `json:"object"`
 		}{
 			ID:   s.ID,

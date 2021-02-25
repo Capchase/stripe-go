@@ -292,25 +292,25 @@ type PaymentIntentListParams struct {
 // PaymentIntentNextActionAlipayHandleRedirect represents the resource for the next action of type
 // "handle_alipay_redirect".
 type PaymentIntentNextActionAlipayHandleRedirect struct {
-	NativeData string `json:"native_data"`
-	NativeURL  string `json:"native_url"`
-	ReturnURL  string `json:"return_url"`
-	URL        string `json:"url"`
+	NativeData *string `json:"native_data"`
+	NativeURL  *string `json:"native_url"`
+	ReturnURL  *string `json:"return_url"`
+	URL        *string `json:"url"`
 }
 
 // PaymentIntentNextActionOXXODisplayDetails represents the resource for the next action of type
 // "oxxo_display_details".
 type PaymentIntentNextActionOXXODisplayDetails struct {
-	ExpiresAfter     int64  `json:"expires_after"`
-	HostedVoucherURL string `json:"hosted_voucher_url"`
-	Number           string `json:"number"`
+	ExpiresAfter     *int64 `json:"expires_after"`
+	HostedVoucherURL *string `json:"hosted_voucher_url"`
+	Number           *string `json:"number"`
 }
 
 // PaymentIntentNextActionRedirectToURL represents the resource for the next action of type
 // "redirect_to_url".
 type PaymentIntentNextActionRedirectToURL struct {
-	ReturnURL string `json:"return_url"`
-	URL       string `json:"url"`
+	ReturnURL *string `json:"return_url"`
+	URL       *string `json:"url"`
 }
 
 // PaymentIntentNextAction represents the type of action to take on a payment intent.
@@ -323,7 +323,7 @@ type PaymentIntentNextAction struct {
 
 // PaymentIntentPaymentMethodOptionsCardInstallmentsPlan describe a specific card installment plan.
 type PaymentIntentPaymentMethodOptionsCardInstallmentsPlan struct {
-	Count    int64                                                         `json:"count"`
+	Count    *int64 `json:"count"`
 	Interval PaymentIntentPaymentMethodOptionsCardInstallmentsPlanInterval `json:"interval"`
 	Type     PaymentIntentPaymentMethodOptionsCardInstallmentsPlanType     `json:"type"`
 }
@@ -332,7 +332,7 @@ type PaymentIntentPaymentMethodOptionsCardInstallmentsPlan struct {
 // a card associated with that payment intent.
 type PaymentIntentPaymentMethodOptionsCardInstallments struct {
 	AvailablePlans []*PaymentIntentPaymentMethodOptionsCardInstallmentsPlan `json:"available_plans"`
-	Enabled        bool                                                     `json:"enabled"`
+	Enabled        *bool `json:"enabled"`
 	Plan           *PaymentIntentPaymentMethodOptionsCardInstallmentsPlan   `json:"plan"`
 }
 
@@ -344,7 +344,7 @@ type PaymentIntentPaymentMethodOptionsAlipay struct {
 // PaymentIntentPaymentMethodOptionsBancontact is the set of bancontact-specific options associated
 // with that payment intent.
 type PaymentIntentPaymentMethodOptionsBancontact struct {
-	PreferredLanguage string `json:"preferred_language"`
+	PreferredLanguage *string `json:"preferred_language"`
 }
 
 // PaymentIntentPaymentMethodOptionsCard is the set of card-specific options associated with that
@@ -358,13 +358,13 @@ type PaymentIntentPaymentMethodOptionsCard struct {
 // PaymentIntentPaymentMethodOptionsOXXO is the set of OXXO-specific options associated
 // with that payment intent.
 type PaymentIntentPaymentMethodOptionsOXXO struct {
-	ExpiresAfterDays int64 `json:"expires_after_days"`
+	ExpiresAfterDays *int64 `json:"expires_after_days"`
 }
 
 // PaymentIntentPaymentMethodOptionsSofort is the set of sofort-specific options associated
 // with that payment intent.
 type PaymentIntentPaymentMethodOptionsSofort struct {
-	PreferredLanguage string `json:"preferred_language"`
+	PreferredLanguage *string `json:"preferred_language"`
 }
 
 // PaymentIntentPaymentMethodOptions is the set of payment method-specific options associated with
@@ -379,7 +379,7 @@ type PaymentIntentPaymentMethodOptions struct {
 
 // PaymentIntentTransferData represents the information for the transfer associated with a payment intent.
 type PaymentIntentTransferData struct {
-	Amount      int64    `json:"amount"`
+	Amount      *int64 `json:"amount"`
 	Destination *Account `json:"destination"`
 }
 
@@ -387,41 +387,41 @@ type PaymentIntentTransferData struct {
 // For more details see https://stripe.com/docs/api#payment_intents.
 type PaymentIntent struct {
 	APIResource
-	Amount                    int64                              `json:"amount"`
-	AmountCapturable          int64                              `json:"amount_capturable"`
-	AmountReceived            int64                              `json:"amount_received"`
+	Amount                    *int64 `json:"amount"`
+	AmountCapturable          *int64 `json:"amount_capturable"`
+	AmountReceived            *int64 `json:"amount_received"`
 	Application               *Application                       `json:"application"`
-	ApplicationFeeAmount      int64                              `json:"application_fee_amount"`
-	CanceledAt                int64                              `json:"canceled_at"`
+	ApplicationFeeAmount      *int64 `json:"application_fee_amount"`
+	CanceledAt                *int64 `json:"canceled_at"`
 	CancellationReason        PaymentIntentCancellationReason    `json:"cancellation_reason"`
 	CaptureMethod             PaymentIntentCaptureMethod         `json:"capture_method"`
 	Charges                   *ChargeList                        `json:"charges"`
-	ClientSecret              string                             `json:"client_secret"`
+	ClientSecret              *string `json:"client_secret"`
 	ConfirmationMethod        PaymentIntentConfirmationMethod    `json:"confirmation_method"`
-	Created                   int64                              `json:"created"`
-	Currency                  string                             `json:"currency"`
+	Created                   *int64 `json:"created"`
+	Currency                  *string `json:"currency"`
 	Customer                  *Customer                          `json:"customer"`
-	Description               string                             `json:"description"`
+	Description               *string `json:"description"`
 	Invoice                   *Invoice                           `json:"invoice"`
 	LastPaymentError          *Error                             `json:"last_payment_error"`
-	Livemode                  bool                               `json:"livemode"`
-	ID                        string                             `json:"id"`
+	Livemode                  *bool `json:"livemode"`
+	ID                        *string `json:"id"`
 	Metadata                  map[string]string                  `json:"metadata"`
 	NextAction                *PaymentIntentNextAction           `json:"next_action"`
 	OnBehalfOf                *Account                           `json:"on_behalf_of"`
 	PaymentMethod             *PaymentMethod                     `json:"payment_method"`
 	PaymentMethodOptions      *PaymentIntentPaymentMethodOptions `json:"payment_method_options"`
 	PaymentMethodTypes        []string                           `json:"payment_method_types"`
-	ReceiptEmail              string                             `json:"receipt_email"`
+	ReceiptEmail              *string `json:"receipt_email"`
 	Review                    *Review                            `json:"review"`
 	SetupFutureUsage          PaymentIntentSetupFutureUsage      `json:"setup_future_usage"`
 	Shipping                  ShippingDetails                    `json:"shipping"`
 	Source                    *PaymentSource                     `json:"source"`
-	StatementDescriptor       string                             `json:"statement_descriptor"`
-	StatementDescriptorSuffix string                             `json:"statement_descriptor_suffix"`
+	StatementDescriptor       *string `json:"statement_descriptor"`
+	StatementDescriptorSuffix *string `json:"statement_descriptor_suffix"`
 	Status                    PaymentIntentStatus                `json:"status"`
 	TransferData              *PaymentIntentTransferData         `json:"transfer_data"`
-	TransferGroup             string                             `json:"transfer_group"`
+	TransferGroup             *string `json:"transfer_group"`
 }
 
 // PaymentIntentList is a list of payment intents as retrieved from a list endpoint.

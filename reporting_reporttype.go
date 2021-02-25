@@ -14,14 +14,14 @@ type ReportTypeParams struct {
 type ReportType struct {
 	APIResource
 	DefaultColumns     []string `json:"default_columns"`
-	Created            int64    `json:"created"`
-	DataAvailableEnd   int64    `json:"data_available_end"`
-	DataAvailableStart int64    `json:"data_available_start"`
-	ID                 string   `json:"id"`
-	Name               string   `json:"name"`
-	Object             string   `json:"object"`
-	Updated            int64    `json:"updated"`
-	Version            int64    `json:"version"`
+	Created            *int64 `json:"created"`
+	DataAvailableEnd   *int64 `json:"data_available_end"`
+	DataAvailableStart *int64 `json:"data_available_start"`
+	ID                 *string `json:"id"`
+	Name               *string `json:"name"`
+	Object             *string `json:"object"`
+	Updated            *int64 `json:"updated"`
+	Version            *int64 `json:"version"`
 }
 
 // ReportTypeList is a list of report types as retrieved from a list endpoint.

@@ -131,19 +131,19 @@ type PersonListParams struct {
 
 // DOB represents a Person's date of birth.
 type DOB struct {
-	Day   int64 `json:"day"`
-	Month int64 `json:"month"`
-	Year  int64 `json:"year"`
+	Day   *int64 `json:"day"`
+	Month *int64 `json:"month"`
+	Year  *int64 `json:"year"`
 }
 
 // Relationship represents how the Person relates to the business.
 type Relationship struct {
-	Director         bool    `json:"director"`
-	Executive        bool    `json:"executive"`
-	Owner            bool    `json:"owner"`
-	PercentOwnership float64 `json:"percent_ownership"`
-	Representative   bool    `json:"representative"`
-	Title            string  `json:"title"`
+	Director         *bool `json:"director"`
+	Executive        *bool `json:"executive"`
+	Owner            *bool `json:"owner"`
+	PercentOwnership *float64 `json:"percent_ownership"`
+	Representative   *bool `json:"representative"`
+	Title            *string `json:"title"`
 }
 
 // Requirements represents what's missing to verify a Person.
@@ -158,7 +158,7 @@ type Requirements struct {
 // PersonVerificationDocument represents the documents associated with a Person.
 type PersonVerificationDocument struct {
 	Back        *File                           `json:"back"`
-	Details     string                          `json:"details"`
+	Details     *string `json:"details"`
 	DetailsCode VerificationDocumentDetailsCode `json:"details_code"`
 	Front       *File                           `json:"front"`
 }
@@ -166,7 +166,7 @@ type PersonVerificationDocument struct {
 // PersonVerification is the structure for a person's verification details.
 type PersonVerification struct {
 	AdditionalDocument *PersonVerificationDocument   `json:"additional_document"`
-	Details            string                        `json:"details"`
+	Details            *string `json:"details"`
 	DetailsCode        PersonVerificationDetailsCode `json:"details_code"`
 	Document           *PersonVerificationDocument   `json:"document"`
 	Status             IdentityVerificationStatus    `json:"status"`
@@ -176,31 +176,31 @@ type PersonVerification struct {
 // For more details see https://stripe.com/docs/api#persons.
 type Person struct {
 	APIResource
-	Account           string                  `json:"account"`
+	Account           *string `json:"account"`
 	Address           *AccountAddress         `json:"address"`
 	AddressKana       *AccountAddress         `json:"address_kana"`
 	AddressKanji      *AccountAddress         `json:"address_kanji"`
-	Deleted           bool                    `json:"deleted"`
+	Deleted           *bool `json:"deleted"`
 	DOB               *DOB                    `json:"dob"`
-	Email             string                  `json:"email"`
-	FirstName         string                  `json:"first_name"`
-	FirstNameKana     string                  `json:"first_name_kana"`
-	FirstNameKanji    string                  `json:"first_name_kanji"`
-	Gender            string                  `json:"gender"`
-	ID                string                  `json:"id"`
-	IDNumberProvided  bool                    `json:"id_number_provided"`
-	LastName          string                  `json:"last_name"`
-	LastNameKana      string                  `json:"last_name_kana"`
-	LastNameKanji     string                  `json:"last_name_kanji"`
-	MaidenName        string                  `json:"maiden_name"`
-	Nationality       string                  `json:"nationality"`
+	Email             *string `json:"email"`
+	FirstName         *string `json:"first_name"`
+	FirstNameKana     *string `json:"first_name_kana"`
+	FirstNameKanji    *string `json:"first_name_kanji"`
+	Gender            *string `json:"gender"`
+	ID                *string `json:"id"`
+	IDNumberProvided  *bool `json:"id_number_provided"`
+	LastName          *string `json:"last_name"`
+	LastNameKana      *string `json:"last_name_kana"`
+	LastNameKanji     *string `json:"last_name_kanji"`
+	MaidenName        *string `json:"maiden_name"`
+	Nationality       *string `json:"nationality"`
 	Metadata          map[string]string       `json:"metadata"`
-	Object            string                  `json:"object"`
-	Phone             string                  `json:"phone"`
+	Object            *string `json:"object"`
+	Phone             *string `json:"phone"`
 	PoliticalExposure PersonPoliticalExposure `json:"political_exposure"`
 	Relationship      *Relationship           `json:"relationship"`
 	Requirements      *Requirements           `json:"requirements"`
-	SSNLast4Provided  bool                    `json:"ssn_last_4_provided"`
+	SSNLast4Provided  *bool `json:"ssn_last_4_provided"`
 	Verification      *PersonVerification     `json:"verification"`
 }
 

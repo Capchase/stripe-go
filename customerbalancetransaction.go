@@ -40,18 +40,18 @@ type CustomerBalanceTransactionListParams struct {
 // For more details see https://stripe.com/docs/api/customers/customer_balance_transaction_object
 type CustomerBalanceTransaction struct {
 	APIResource
-	Amount        int64                          `json:"amount"`
-	Created       int64                          `json:"created"`
+	Amount        *int64 `json:"amount"`
+	Created       *int64 `json:"created"`
 	CreditNote    *CreditNote                    `json:"credit_note"`
 	Currency      Currency                       `json:"currency"`
 	Customer      *Customer                      `json:"customer"`
-	Description   string                         `json:"description"`
-	EndingBalance int64                          `json:"ending_balance"`
-	ID            string                         `json:"id"`
+	Description   *string `json:"description"`
+	EndingBalance *int64 `json:"ending_balance"`
+	ID            *string `json:"id"`
 	Invoice       *Invoice                       `json:"invoice"`
-	Livemode      bool                           `json:"livemode"`
+	Livemode      *bool `json:"livemode"`
 	Metadata      map[string]string              `json:"metadata"`
-	Object        string                         `json:"object"`
+	Object        *string `json:"object"`
 	Type          CustomerBalanceTransactionType `json:"type"`
 }
 

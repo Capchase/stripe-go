@@ -4,8 +4,8 @@ import "encoding/json"
 
 // Application describes the properties for an Application.
 type Application struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID   *string `json:"id"`
+	Name *string `json:"name"`
 }
 
 // UnmarshalJSON handles deserialization of an Application.

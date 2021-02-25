@@ -16,12 +16,12 @@ type TerminalLocationListParams struct {
 type TerminalLocation struct {
 	APIResource
 	Address     *AccountAddressParams `json:"address"`
-	Deleted     bool                  `json:"deleted"`
-	DisplayName string                `json:"display_name"`
-	ID          string                `json:"id"`
-	Livemode    bool                  `json:"livemode"`
+	Deleted     *bool `json:"deleted"`
+	DisplayName *string `json:"display_name"`
+	ID          *string `json:"id"`
+	Livemode    *bool `json:"livemode"`
 	Metadata    map[string]string     `json:"metadata"`
-	Object      string                `json:"object"`
+	Object      *string `json:"object"`
 }
 
 // TerminalLocationList is a list of terminal readers as retrieved from a list endpoint.

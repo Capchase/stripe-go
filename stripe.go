@@ -133,10 +133,10 @@ func (r *APIResource) SetLastResponse(response *APIResponse) {
 // to. This should be reserved for plugins that wish to identify themselves
 // with Stripe.
 type AppInfo struct {
-	Name      string `json:"name"`
-	PartnerID string `json:"partner_id"`
-	URL       string `json:"url"`
-	Version   string `json:"version"`
+	Name      *string `json:"name"`
+	PartnerID *string `json:"partner_id"`
+	URL       *string `json:"url"`
+	Version   *string `json:"version"`
 }
 
 // formatUserAgent formats an AppInfo in a way that's suitable to be appended
@@ -1086,17 +1086,17 @@ func (nopReadCloser) Close() error { return nil }
 // debugging information.
 type stripeClientUserAgent struct {
 	Application     *AppInfo `json:"application"`
-	BindingsVersion string   `json:"bindings_version"`
-	Language        string   `json:"lang"`
-	LanguageVersion string   `json:"lang_version"`
-	Publisher       string   `json:"publisher"`
-	Uname           string   `json:"uname"`
+	BindingsVersion *string `json:"bindings_version"`
+	Language        *string `json:"lang"`
+	LanguageVersion *string `json:"lang_version"`
+	Publisher       *string `json:"publisher"`
+	Uname           *string `json:"uname"`
 }
 
 // requestMetrics contains the id and duration of the last request sent
 type requestMetrics struct {
-	RequestDurationMS int    `json:"request_duration_ms"`
-	RequestID         string `json:"request_id"`
+	RequestDurationMS *int `json:"request_duration_ms"`
+	RequestID         *string `json:"request_id"`
 }
 
 // requestTelemetry contains the payload sent in the

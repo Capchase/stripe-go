@@ -50,23 +50,23 @@ type CouponAppliesTo struct {
 // For more details see https://stripe.com/docs/api#coupons.
 type Coupon struct {
 	APIResource
-	AmountOff        int64             `json:"amount_off"`
+	AmountOff        *int64 `json:"amount_off"`
 	AppliesTo        *CouponAppliesTo  `json:"applies_to"`
-	Created          int64             `json:"created"`
+	Created          *int64 `json:"created"`
 	Currency         Currency          `json:"currency"`
-	Deleted          bool              `json:"deleted"`
+	Deleted          *bool `json:"deleted"`
 	Duration         CouponDuration    `json:"duration"`
-	DurationInMonths int64             `json:"duration_in_months"`
-	ID               string            `json:"id"`
-	Livemode         bool              `json:"livemode"`
-	MaxRedemptions   int64             `json:"max_redemptions"`
+	DurationInMonths *int64 `json:"duration_in_months"`
+	ID               *string `json:"id"`
+	Livemode         *bool `json:"livemode"`
+	MaxRedemptions   *int64 `json:"max_redemptions"`
 	Metadata         map[string]string `json:"metadata"`
-	Name             string            `json:"name"`
-	Object           string            `json:"object"`
-	PercentOff       float64           `json:"percent_off"`
-	RedeemBy         int64             `json:"redeem_by"`
-	TimesRedeemed    int64             `json:"times_redeemed"`
-	Valid            bool              `json:"valid"`
+	Name             *string `json:"name"`
+	Object           *string `json:"object"`
+	PercentOff       *float64 `json:"percent_off"`
+	RedeemBy         *int64 `json:"redeem_by"`
+	TimesRedeemed    *int64 `json:"times_redeemed"`
+	Valid            *bool `json:"valid"`
 }
 
 // CouponList is a list of coupons as retrieved from a list endpoint.

@@ -54,35 +54,35 @@ type ReviewListParams struct {
 
 // ReviewIPAddressLocation represents information about the IP associated with a review.
 type ReviewIPAddressLocation struct {
-	City      string  `json:"city"`
-	Country   string  `json:"country"`
-	Latitude  float64 `json:"latitude"`
-	Longitude float64 `json:"longitude"`
-	Region    string  `json:"region"`
+	City      *string `json:"city"`
+	Country   *string `json:"country"`
+	Latitude  *float64 `json:"latitude"`
+	Longitude *float64 `json:"longitude"`
+	Region    *string `json:"region"`
 }
 
 // ReviewSession represents information about the browser session associated with a review.
 type ReviewSession struct {
-	Browser  string `json:"browser"`
-	Device   string `json:"device"`
-	Platform string `json:"platform"`
-	Version  string `json:"version"`
+	Browser  *string `json:"browser"`
+	Device   *string `json:"device"`
+	Platform *string `json:"platform"`
+	Version  *string `json:"version"`
 }
 
 // Review is the resource representing a Radar review.
 // For more details see https://stripe.com/docs/api#reviews.
 type Review struct {
 	APIResource
-	BillingZip        string                   `json:"billing_zip"`
+	BillingZip        *string `json:"billing_zip"`
 	Charge            *Charge                  `json:"charge"`
 	ClosedReason      ReviewClosedReason       `json:"closed_reason"`
-	Created           int64                    `json:"created"`
-	ID                string                   `json:"id"`
-	IPAddress         string                   `json:"ip_address"`
+	Created           *int64 `json:"created"`
+	ID                *string `json:"id"`
+	IPAddress         *string `json:"ip_address"`
 	IPAddressLocation *ReviewIPAddressLocation `json:"ip_address_location"`
-	Livemode          bool                     `json:"livemode"`
-	Object            string                   `json:"object"`
-	Open              bool                     `json:"open"`
+	Livemode          *bool `json:"livemode"`
+	Object            *string `json:"object"`
+	Open              *bool `json:"open"`
 	OpenedReason      ReviewOpenedReason       `json:"opened_reason"`
 	PaymentIntent     *PaymentIntent           `json:"payment_intent"`
 	Reason            ReviewReasonType         `json:"reason"`

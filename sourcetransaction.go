@@ -17,14 +17,14 @@ type SourceTransactionList struct {
 
 // SourceTransaction is the resource representing a Stripe source transaction.
 type SourceTransaction struct {
-	Amount       int64    `json:"amount"`
-	Created      int64    `json:"created"`
+	Amount       *int64 `json:"amount"`
+	Created      *int64 `json:"created"`
 	Currency     Currency `json:"currency"`
-	CustomerData string   `json:"customer_data"`
-	ID           string   `json:"id"`
-	Livemode     bool     `json:"livemode"`
-	Source       string   `json:"source"`
-	Type         string   `json:"type"`
+	CustomerData *string `json:"customer_data"`
+	ID           *string `json:"id"`
+	Livemode     *bool `json:"livemode"`
+	Source       *string `json:"source"`
+	Type         *string `json:"type"`
 	TypeData     map[string]interface{}
 }
 

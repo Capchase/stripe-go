@@ -26,18 +26,18 @@ type SigmaScheduledQueryRunListParams struct {
 // SigmaScheduledQueryRun is the resource representing a scheduled query run.
 type SigmaScheduledQueryRun struct {
 	APIResource
-	Created              int64                        `json:"created"`
-	DataLoadTime         int64                        `json:"data_load_time"`
-	Error                string                       `json:"error"`
+	Created              *int64 `json:"created"`
+	DataLoadTime         *int64 `json:"data_load_time"`
+	Error                *string `json:"error"`
 	File                 *File                        `json:"file"`
-	ID                   string                       `json:"id"`
-	Livemode             bool                         `json:"livemode"`
-	Object               string                       `json:"object"`
-	ResultAvailableUntil int64                        `json:"result_available_until"`
-	SQL                  string                       `json:"sql"`
+	ID                   *string `json:"id"`
+	Livemode             *bool `json:"livemode"`
+	Object               *string `json:"object"`
+	ResultAvailableUntil *int64 `json:"result_available_until"`
+	SQL                  *string `json:"sql"`
 	Status               SigmaScheduledQueryRunStatus `json:"status"`
-	Query                string                       `json:"query"`
-	Title                string                       `json:"title"`
+	Query                *string `json:"query"`
+	Title                *string `json:"title"`
 }
 
 // SigmaScheduledQueryRunList is a list of scheduled query runs as retrieved from a list endpoint.

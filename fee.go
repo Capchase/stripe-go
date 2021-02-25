@@ -22,17 +22,17 @@ type ApplicationFeeListParams struct {
 type ApplicationFee struct {
 	APIResource
 	Account                *Account            `json:"account"`
-	Amount                 int64               `json:"amount"`
-	AmountRefunded         int64               `json:"amount_refunded"`
-	Application            string              `json:"application"`
+	Amount                 *int64 `json:"amount"`
+	AmountRefunded         *int64 `json:"amount_refunded"`
+	Application            *string `json:"application"`
 	BalanceTransaction     *BalanceTransaction `json:"balance_transaction"`
 	Charge                 *Charge             `json:"charge"`
-	Created                int64               `json:"created"`
+	Created                *int64 `json:"created"`
 	Currency               Currency            `json:"currency"`
-	ID                     string              `json:"id"`
-	Livemode               bool                `json:"livemode"`
+	ID                     *string `json:"id"`
+	Livemode               *bool `json:"livemode"`
 	OriginatingTransaction *Charge             `json:"originating_transaction"`
-	Refunded               bool                `json:"refunded"`
+	Refunded               *bool `json:"refunded"`
 	Refunds                *FeeRefundList      `json:"refunds"`
 }
 

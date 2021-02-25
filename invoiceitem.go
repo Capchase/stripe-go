@@ -58,27 +58,27 @@ type InvoiceItemListParams struct {
 // For more details see https://stripe.com/docs/api#invoiceitems.
 type InvoiceItem struct {
 	APIResource
-	Amount            int64             `json:"amount"`
+	Amount            *int64 `json:"amount"`
 	Currency          Currency          `json:"currency"`
 	Customer          *Customer         `json:"customer"`
-	Date              int64             `json:"date"`
-	Deleted           bool              `json:"deleted"`
-	Description       string            `json:"description"`
-	Discountable      bool              `json:"discountable"`
+	Date              *int64 `json:"date"`
+	Deleted           *bool `json:"deleted"`
+	Description       *string `json:"description"`
+	Discountable      *bool `json:"discountable"`
 	Discounts         []*Discount       `json:"discounts"`
-	ID                string            `json:"id"`
+	ID                *string `json:"id"`
 	Invoice           *Invoice          `json:"invoice"`
-	Livemode          bool              `json:"livemode"`
+	Livemode          *bool `json:"livemode"`
 	Metadata          map[string]string `json:"metadata"`
 	Period            *Period           `json:"period"`
 	Plan              *Plan             `json:"plan"`
 	Price             *Price            `json:"price"`
-	Proration         bool              `json:"proration"`
-	Quantity          int64             `json:"quantity"`
+	Proration         *bool `json:"proration"`
+	Quantity          *int64 `json:"quantity"`
 	Subscription      *Subscription     `json:"subscription"`
 	TaxRates          []*TaxRate        `json:"tax_rates"`
-	UnitAmount        int64             `json:"unit_amount"`
-	UnitAmountDecimal float64           `json:"unit_amount_decimal,string"`
+	UnitAmount        *int64 `json:"unit_amount"`
+	UnitAmountDecimal *float64 `json:"unit_amount_decimal,string"`
 }
 
 // InvoiceItemList is a list of invoice items as retrieved from a list endpoint.
