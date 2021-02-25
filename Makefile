@@ -26,3 +26,6 @@ coverage:
 
 clean:
 	find . -name \*.coverprofile -delete
+
+replace-ptrs:
+	./scripts/replace-ptrs.sh

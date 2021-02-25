@@ -12,21 +12,21 @@ func TestIssuingAuthorizationApprove(t *testing.T) {
 	authorization, err := Approve("iauth_123", &stripe.IssuingAuthorizationApproveParams{})
 	assert.Nil(t, err)
 	assert.NotNil(t, authorization)
-	assert.Equal(t, "issuing.authorization", authorization.Object)
+	assert.Equal(t, "issuing.authorization", *authorization.Object)
 }
 
 func TestIssuingAuthorizationDecline(t *testing.T) {
 	authorization, err := Decline("iauth_123", &stripe.IssuingAuthorizationDeclineParams{})
 	assert.Nil(t, err)
 	assert.NotNil(t, authorization)
-	assert.Equal(t, "issuing.authorization", authorization.Object)
+	assert.Equal(t, "issuing.authorization", *authorization.Object)
 }
 
 func TestIssuingAuthorizationGet(t *testing.T) {
 	authorization, err := Get("iauth_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, authorization)
-	assert.Equal(t, "issuing.authorization", authorization.Object)
+	assert.Equal(t, "issuing.authorization", *authorization.Object)
 }
 
 func TestIssuingAuthorizationList(t *testing.T) {
@@ -46,5 +46,5 @@ func TestIssuingAuthorizationUpdate(t *testing.T) {
 	authorization, err := Update("iauth_123", params)
 	assert.Nil(t, err)
 	assert.NotNil(t, authorization)
-	assert.Equal(t, "issuing.authorization", authorization.Object)
+	assert.Equal(t, "issuing.authorization", *authorization.Object)
 }

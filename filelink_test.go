@@ -18,7 +18,7 @@ func TestFileLink_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := FileLink{ID: "link_123"}
+		v := FileLink{ID: String("link_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

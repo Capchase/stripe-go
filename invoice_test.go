@@ -53,8 +53,8 @@ func TestInvoice_Unmarshal(t *testing.T) {
 	err = json.Unmarshal(bytes, &invoiceUnexpanded)
 	assert.NoError(t, err)
 
-	assert.Equal(t, "in_123", invoiceUnexpanded.ID)
-	assert.Equal(t, "invoice", invoiceUnexpanded.Object)
+	assert.Equal(t, "in_123", *invoiceUnexpanded.ID)
+	assert.Equal(t, "invoice", *invoiceUnexpanded.Object)
 
 	assert.Equal(t, 2, len(invoiceUnexpanded.Discounts))
 	assert.Equal(t, "dis_123", invoiceUnexpanded.Discounts[0].ID)
@@ -128,8 +128,8 @@ func TestInvoice_Unmarshal(t *testing.T) {
 	err = json.Unmarshal(bytes2, &invoiceExpanded)
 	assert.NoError(t, err)
 
-	assert.Equal(t, "in_123", invoiceExpanded.ID)
-	assert.Equal(t, "invoice", invoiceExpanded.Object)
+	assert.Equal(t, "in_123", *invoiceExpanded.ID)
+	assert.Equal(t, "invoice", *invoiceExpanded.Object)
 
 	assert.Equal(t, 2, len(invoiceExpanded.Discounts))
 	assert.Equal(t, "dis_123", invoiceExpanded.Discounts[0].ID)
@@ -169,7 +169,7 @@ func TestInvoice_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := Invoice{ID: "in_123"}
+		v := Invoice{ID: String("in_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

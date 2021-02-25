@@ -60,19 +60,19 @@ type RefundListParams struct {
 // For more details see https://stripe.com/docs/api#refunds.
 type Refund struct {
 	APIResource
-	Amount                    int64               `json:"amount"`
+	Amount                    *int64 `json:"amount"`
 	BalanceTransaction        *BalanceTransaction `json:"balance_transaction"`
 	Charge                    *Charge             `json:"charge"`
-	Created                   int64               `json:"created"`
+	Created                   *int64 `json:"created"`
 	Currency                  Currency            `json:"currency"`
 	FailureReason             RefundFailureReason `json:"failure_reason"`
 	FailureBalanceTransaction *BalanceTransaction `json:"failure_balance_transaction"`
-	ID                        string              `json:"id"`
+	ID                        *string `json:"id"`
 	Metadata                  map[string]string   `json:"metadata"`
-	Object                    string              `json:"object"`
+	Object                    *string `json:"object"`
 	PaymentIntent             *PaymentIntent      `json:"payment_intent"`
 	Reason                    RefundReason        `json:"reason"`
-	ReceiptNumber             string              `json:"receipt_number"`
+	ReceiptNumber             *string `json:"receipt_number"`
 	SourceTransferReversal    *Reversal           `json:"source_transfer_reversal"`
 	Status                    RefundStatus        `json:"status"`
 	TransferReversal          *Reversal           `json:"transfer_reversal"`
@@ -90,7 +90,7 @@ type RefundList struct {
 // property may be an id or the full struct if it was expanded.
 func (r *Refund) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		r.ID = id
+		r.ID = &id
 		return nil
 	}
 

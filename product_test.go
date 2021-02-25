@@ -18,7 +18,7 @@ func TestProduct_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := Product{ID: "prod_123"}
+		v := Product{ID: String("prod_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

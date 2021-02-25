@@ -24,6 +24,6 @@ func TestSetupIntentNextAction_UnmarshalJSON(t *testing.T) {
 	assert.NoError(t, err)
 
 	assert.Equal(t, SetupIntentNextActionTypeRedirectToURL, action.Type)
-	assert.Equal(t, "https://stripe.com", action.RedirectToURL.URL)
-	assert.Equal(t, "https://stripe.com/return", action.RedirectToURL.ReturnURL)
+	assert.Equal(t, "https://stripe.com", *action.RedirectToURL.URL)
+	assert.Equal(t, "https://stripe.com/return", *action.RedirectToURL.ReturnURL)
 }

@@ -119,9 +119,9 @@ func TestAccount_Unmarshal(t *testing.T) {
 	err = json.Unmarshal(bytes, &account)
 	assert.NoError(t, err)
 
-	assert.Equal(t, "acct_123", account.ID)
+	assert.Equal(t, "acct_123", *account.ID)
 
-	assert.Equal(t, "123", account.BusinessProfile.MCC)
+	assert.Equal(t, "123", *account.BusinessProfile.MCC)
 
 	assert.Equal(t, AccountCapabilityStatusActive, account.Capabilities.CardPayments)
 	assert.Equal(t, AccountCapabilityStatus(""), account.Capabilities.LegacyPayments)
@@ -146,19 +146,19 @@ func TestAccount_Unmarshal(t *testing.T) {
 	assert.Equal(t, 1, len(account.Requirements.EventuallyDue))
 	assert.Equal(t, 0, len(account.Requirements.PastDue))
 
-	assert.Equal(t, "file_123", account.Settings.Branding.Icon.ID)
-	assert.Equal(t, "file_234", account.Settings.Branding.Logo.ID)
+	assert.Equal(t, "file_123", *account.Settings.Branding.Icon.ID)
+	assert.Equal(t, "file_234", *account.Settings.Branding.Logo.ID)
 	assert.Equal(t, true, account.Settings.CardPayments.DeclineOn.AVSFailure)
 	assert.Equal(t, false, account.Settings.CardPayments.DeclineOn.CVCFailure)
-	assert.Equal(t, "prefix", account.Settings.CardPayments.StatementDescriptorPrefix)
-	assert.Equal(t, "descriptor", account.Settings.Payments.StatementDescriptor)
+	assert.Equal(t, "prefix", *account.Settings.CardPayments.StatementDescriptorPrefix)
+	assert.Equal(t, "descriptor", *account.Settings.Payments.StatementDescriptor)
 	assert.Equal(t, true, account.Settings.Payouts.DebitNegativeBalances)
 	assert.Equal(t, int64(2), account.Settings.Payouts.Schedule.DelayDays)
 	assert.Equal(t, PayoutIntervalWeekly, account.Settings.Payouts.Schedule.Interval)
 
 	assert.Equal(t, int64(1528573382), account.TOSAcceptance.Date)
-	assert.Equal(t, "127.0.0.1", account.TOSAcceptance.IP)
-	assert.Equal(t, "user agent", account.TOSAcceptance.UserAgent)
+	assert.Equal(t, "127.0.0.1", *account.TOSAcceptance.IP)
+	assert.Equal(t, "user agent", *account.TOSAcceptance.UserAgent)
 	assert.Equal(t, AccountTOSAcceptanceServiceAgreementRecipient, account.TOSAcceptance.ServiceAgreement)
 
 	assert.Equal(t, AccountTypeCustom, account.Type)
@@ -175,7 +175,7 @@ func TestAccount_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := Account{ID: "acct_123"}
+		v := Account{ID: String("acct_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

@@ -18,7 +18,7 @@ func TestTransfer_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := Transfer{ID: "tr_123"}
+		v := Transfer{ID: String("tr_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
@@ -39,7 +39,7 @@ func TestTransferDestination_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := TransferDestination{ID: "acct_123"}
+		v := TransferDestination{ID: String("acct_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

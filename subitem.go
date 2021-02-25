@@ -56,14 +56,14 @@ type SubscriptionItemListParams struct {
 type SubscriptionItem struct {
 	APIResource
 	BillingThresholds SubscriptionItemBillingThresholds `json:"billing_thresholds"`
-	Created           int64                             `json:"created"`
-	Deleted           bool                              `json:"deleted"`
-	ID                string                            `json:"id"`
+	Created           *int64 `json:"created"`
+	Deleted           *bool `json:"deleted"`
+	ID                *string `json:"id"`
 	Metadata          map[string]string                 `json:"metadata"`
 	Plan              *Plan                             `json:"plan"`
 	Price             *Price                            `json:"price"`
-	Quantity          int64                             `json:"quantity"`
-	Subscription      string                            `json:"subscription"`
+	Quantity          *int64 `json:"quantity"`
+	Subscription      *string `json:"subscription"`
 	TaxRates          []*TaxRate                        `json:"tax_rates"`
 }
 

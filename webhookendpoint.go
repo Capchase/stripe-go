@@ -29,20 +29,20 @@ type WebhookEndpointListParams struct {
 // For more details see https://stripe.com/docs/api#webhook_endpoints.
 type WebhookEndpoint struct {
 	APIResource
-	APIVersion    string            `json:"api_version"`
-	Application   string            `json:"application"`
-	Connect       bool              `json:"connect"`
-	Created       int64             `json:"created"`
-	Deleted       bool              `json:"deleted"`
-	Description   string            `json:"description"`
+	APIVersion    *string `json:"api_version"`
+	Application   *string `json:"application"`
+	Connect       *bool `json:"connect"`
+	Created       *int64 `json:"created"`
+	Deleted       *bool `json:"deleted"`
+	Description   *string `json:"description"`
 	EnabledEvents []string          `json:"enabled_events"`
-	ID            string            `json:"id"`
-	Livemode      bool              `json:"livemode"`
+	ID            *string `json:"id"`
+	Livemode      *bool `json:"livemode"`
 	Metadata      map[string]string `json:"metadata"`
-	Object        string            `json:"object"`
-	Secret        string            `json:"secret"`
-	Status        string            `json:"status"`
-	URL           string            `json:"url"`
+	Object        *string `json:"object"`
+	Secret        *string `json:"secret"`
+	Status        *string `json:"status"`
+	URL           *string `json:"url"`
 }
 
 // WebhookEndpointList is a list of webhook endpoints as retrieved from a list endpoint.
@@ -57,7 +57,7 @@ type WebhookEndpointList struct {
 // property may be an id or the full struct if it was expanded.
 func (c *WebhookEndpoint) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		c.ID = id
+		c.ID = &id
 		return nil
 	}
 

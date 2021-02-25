@@ -114,7 +114,7 @@ func BenchmarkAppendTo(b *testing.B) {
 		Ignored:      "123",
 		Int:          123,
 		String:       "123",
-		SubSubStruct: &testSubSubStruct{String: "123"},
+		SubSubStruct: &testSubSubStruct{String: String("123")},
 	}
 
 	for i := 0; i < b.N; i++ {
@@ -181,7 +181,7 @@ func TestAppendTo(t *testing.T) {
 		// be present.
 		want *string
 	}{
-		{"appender", &testStruct{Appender: &testAppender{String: "123"}}, stringPtr("123")},
+		{"appender", &testStruct{Appender: &testAppender{String: String("123")}}, stringPtr("123")},
 
 		{"array[2]", &testStruct{Array: arrayVal}, stringPtr("3")},
 		{"array", &testStruct{Array: arrayVal0}, nil},
@@ -360,7 +360,7 @@ func TestAppendTo(t *testing.T) {
 
 func TestAppendTo_IgnoredFields(t *testing.T) {
 	form := &Values{}
-	data := &testStruct{Ignored: "value"}
+	data := &testStruct{Ignored: String("value")}
 	AppendTo(form, data)
 	assert.Equal(t, &Values{}, form)
 }
@@ -374,7 +374,7 @@ func TestAppendTo_ZeroValues(t *testing.T) {
 
 func TestAppendToPrefixed(t *testing.T) {
 	form := &Values{}
-	data := &testStruct{String: "foo"}
+	data := &testStruct{String: String("foo")}
 	AppendToPrefixed(form, data, []string{"prefix"})
 	assert.Equal(t, []string{"foo"}, form.Get("prefix[string]"))
 }
@@ -401,7 +401,7 @@ func TestCacheConcurrency(t *testing.T) {
 
 	var wg sync.WaitGroup
 	n := 10
-	val := &testStruct{String: "123"}
+	val := &testStruct{String: String("123")}
 
 	for i := 0; i < n; i++ {
 		wg.Add(1)

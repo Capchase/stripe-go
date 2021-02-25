@@ -12,7 +12,7 @@ func TestIssuingCardGet(t *testing.T) {
 	card, err := Get("ic_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, card)
-	assert.Equal(t, "issuing.card", card.Object)
+	assert.Equal(t, "issuing.card", *card.Object)
 }
 
 func TestIssuingCardList(t *testing.T) {
@@ -47,7 +47,7 @@ func TestIssuingCardNew(t *testing.T) {
 	card, err := New(params)
 	assert.Nil(t, err)
 	assert.NotNil(t, card)
-	assert.Equal(t, "issuing.card", card.Object)
+	assert.Equal(t, "issuing.card", *card.Object)
 }
 
 func TestIssuingCardUpdate(t *testing.T) {
@@ -56,5 +56,5 @@ func TestIssuingCardUpdate(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, card)
-	assert.Equal(t, "issuing.card", card.Object)
+	assert.Equal(t, "issuing.card", *card.Object)
 }

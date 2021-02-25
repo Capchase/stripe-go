@@ -4,8 +4,8 @@ import "encoding/json"
 
 // Application describes the properties for an Application.
 type Application struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID   *string `json:"id"`
+	Name *string `json:"name"`
 }
 
 // UnmarshalJSON handles deserialization of an Application.
@@ -13,7 +13,7 @@ type Application struct {
 // property may be an id or the full struct if it was expanded.
 func (a *Application) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		a.ID = id
+		a.ID = &id
 		return nil
 	}
 

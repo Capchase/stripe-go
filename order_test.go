@@ -19,7 +19,7 @@ func TestOrder_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := Order{ID: "or_123"}
+		v := Order{ID: String("or_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
@@ -44,7 +44,7 @@ func TestOrderItem_UnmarshalJSON(t *testing.T) {
 		var orderItem OrderItem
 		err = json.Unmarshal(bytes, &orderItem)
 		assert.NoError(t, err)
-		assert.Equal(t, "TEST-SKU-123", orderItem.Parent.ID)
+		assert.Equal(t, "TEST-SKU-123", *orderItem.Parent.ID)
 	}
 
 	// Try unmarshaling a SKU order item with parent expanded
@@ -64,9 +64,9 @@ func TestOrderItem_UnmarshalJSON(t *testing.T) {
 		var orderItem OrderItem
 		err = json.Unmarshal(bytes, &orderItem)
 		assert.NoError(t, err)
-		assert.Equal(t, "TEST-SKU-123", orderItem.Parent.ID)
+		assert.Equal(t, "TEST-SKU-123", *orderItem.Parent.ID)
 		assert.Equal(t, OrderItemParentTypeSKU, orderItem.Parent.Type)
-		assert.Equal(t, "TEST-SKU-123", orderItem.Parent.SKU.ID)
+		assert.Equal(t, "TEST-SKU-123", *orderItem.Parent.SKU.ID)
 	}
 
 	// Try unmarshaling a coupon order item
@@ -83,7 +83,7 @@ func TestOrderItem_UnmarshalJSON(t *testing.T) {
 		var orderItem OrderItem
 		err = json.Unmarshal(bytes, &orderItem)
 		assert.NoError(t, err)
-		assert.Equal(t, "TEST-COUPON-123", orderItem.Parent.ID)
+		assert.Equal(t, "TEST-COUPON-123", *orderItem.Parent.ID)
 	}
 
 	// Try unmarshaling a shipping order item
@@ -100,7 +100,7 @@ func TestOrderItem_UnmarshalJSON(t *testing.T) {
 		var orderItem OrderItem
 		err = json.Unmarshal(bytes, &orderItem)
 		assert.NoError(t, err)
-		assert.Equal(t, "ship_MZmIpV7v14QZLlRR", orderItem.Parent.ID)
+		assert.Equal(t, "ship_MZmIpV7v14QZLlRR", *orderItem.Parent.ID)
 	}
 }
 

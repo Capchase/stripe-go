@@ -19,7 +19,7 @@ func TestCharge_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := Charge{ID: "ch_123"}
+		v := Charge{ID: String("ch_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
@@ -40,7 +40,7 @@ func TestChargeOutcomeRule_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := ChargeOutcomeRule{ID: "ssr_123"}
+		v := ChargeOutcomeRule{ID: String("ssr_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

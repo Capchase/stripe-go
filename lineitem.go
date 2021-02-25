@@ -6,29 +6,29 @@ import (
 
 // LineItemDiscount represent the details of one discount applied to a line item.
 type LineItemDiscount struct {
-	Amount   int64     `json:"amount"`
+	Amount   *int64 `json:"amount"`
 	Discount *Discount `json:"discount"`
 }
 
 // LineItemTax represent the details of one tax rate applied to a line item.
 type LineItemTax struct {
-	Amount  int64    `json:"amount"`
+	Amount  *int64 `json:"amount"`
 	TaxRate *TaxRate `json:"tax_rate"`
 }
 
 // LineItem is the resource representing a line item.
 type LineItem struct {
 	APIResource
-	AmountSubtotal int64               `json:"amount_subtotal"`
-	AmountTotal    int64               `json:"amount_total"`
+	AmountSubtotal *int64 `json:"amount_subtotal"`
+	AmountTotal    *int64 `json:"amount_total"`
 	Currency       Currency            `json:"currency"`
-	Description    string              `json:"description"`
+	Description    *string `json:"description"`
 	Discounts      []*LineItemDiscount `json:"discounts"`
-	Deleted        bool                `json:"deleted"`
-	ID             string              `json:"id"`
-	Object         string              `json:"object"`
+	Deleted        *bool `json:"deleted"`
+	ID             *string `json:"id"`
+	Object         *string `json:"object"`
 	Price          *Price              `json:"price"`
-	Quantity       int64               `json:"quantity"`
+	Quantity       *int64 `json:"quantity"`
 	Taxes          []*LineItemTax      `json:"taxes"`
 }
 
@@ -44,7 +44,7 @@ type LineItemList struct {
 // property may be an id or the full struct if it was expanded.
 func (s *LineItem) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		s.ID = id
+		s.ID = &id
 		return nil
 	}
 

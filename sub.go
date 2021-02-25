@@ -206,28 +206,28 @@ type SubscriptionListParams struct {
 // SubscriptionPauseCollection if specified, payment collection for this subscription will be paused.
 type SubscriptionPauseCollection struct {
 	Behavior  SubscriptionPauseCollectionBehavior `json:"behavior"`
-	ResumesAt int64                               `json:"resumes_at"`
+	ResumesAt *int64 `json:"resumes_at"`
 }
 
 // SubscriptionPendingInvoiceItemInterval represents the interval at which to invoice pending invoice
 // items.
 type SubscriptionPendingInvoiceItemInterval struct {
 	Interval      SubscriptionPendingInvoiceItemIntervalInterval `json:"interval"`
-	IntervalCount int64                                          `json:"interval_count"`
+	IntervalCount *int64 `json:"interval_count"`
 }
 
 // SubscriptionPendingUpdate represents deferred changes that will be applied when latest invoice is paid.
 type SubscriptionPendingUpdate struct {
-	BillingCycleAnchor int64               `json:"billing_cycle_anchor"`
-	ExpiresAt          int64               `json:"expires_at"`
+	BillingCycleAnchor *int64 `json:"billing_cycle_anchor"`
+	ExpiresAt          *int64 `json:"expires_at"`
 	SubscriptionItems  []*SubscriptionItem `json:"subscription_items"`
-	TrialEnd           int64               `json:"trial_end"`
-	TrialFromPlan      bool                `json:"trial_from_plan"`
+	TrialEnd           *int64 `json:"trial_end"`
+	TrialFromPlan      *bool `json:"trial_from_plan"`
 }
 
 // SubscriptionTransferData represents the information for the transfer_data associated with a subscription.
 type SubscriptionTransferData struct {
-	AmountPercent float64  `json:"amount_percent"`
+	AmountPercent *float64 `json:"amount_percent"`
 	Destination   *Account `json:"destination"`
 }
 
@@ -235,49 +235,49 @@ type SubscriptionTransferData struct {
 // For more details see https://stripe.com/docs/api#subscriptions.
 type Subscription struct {
 	APIResource
-	ApplicationFeePercent         float64                                `json:"application_fee_percent"`
-	BillingCycleAnchor            int64                                  `json:"billing_cycle_anchor"`
+	ApplicationFeePercent         *float64 `json:"application_fee_percent"`
+	BillingCycleAnchor            *int64 `json:"billing_cycle_anchor"`
 	BillingThresholds             *SubscriptionBillingThresholds         `json:"billing_thresholds"`
-	CancelAt                      int64                                  `json:"cancel_at"`
-	CancelAtPeriodEnd             bool                                   `json:"cancel_at_period_end"`
-	CanceledAt                    int64                                  `json:"canceled_at"`
+	CancelAt                      *int64 `json:"cancel_at"`
+	CancelAtPeriodEnd             *bool `json:"cancel_at_period_end"`
+	CanceledAt                    *int64 `json:"canceled_at"`
 	CollectionMethod              SubscriptionCollectionMethod           `json:"collection_method"`
-	Created                       int64                                  `json:"created"`
-	CurrentPeriodEnd              int64                                  `json:"current_period_end"`
-	CurrentPeriodStart            int64                                  `json:"current_period_start"`
+	Created                       *int64 `json:"created"`
+	CurrentPeriodEnd              *int64 `json:"current_period_end"`
+	CurrentPeriodStart            *int64 `json:"current_period_start"`
 	Customer                      *Customer                              `json:"customer"`
-	DaysUntilDue                  int64                                  `json:"days_until_due"`
+	DaysUntilDue                  *int64 `json:"days_until_due"`
 	DefaultPaymentMethod          *PaymentMethod                         `json:"default_payment_method"`
 	DefaultSource                 *PaymentSource                         `json:"default_source"`
 	DefaultTaxRates               []*TaxRate                             `json:"default_tax_rates"`
 	Discount                      *Discount                              `json:"discount"`
-	EndedAt                       int64                                  `json:"ended_at"`
-	ID                            string                                 `json:"id"`
+	EndedAt                       *int64 `json:"ended_at"`
+	ID                            *string `json:"id"`
 	Items                         *SubscriptionItemList                  `json:"items"`
 	LatestInvoice                 *Invoice                               `json:"latest_invoice"`
-	Livemode                      bool                                   `json:"livemode"`
+	Livemode                      *bool `json:"livemode"`
 	Metadata                      map[string]string                      `json:"metadata"`
-	NextPendingInvoiceItemInvoice int64                                  `json:"next_pending_invoice_item_invoice"`
-	Object                        string                                 `json:"object"`
+	NextPendingInvoiceItemInvoice *int64 `json:"next_pending_invoice_item_invoice"`
+	Object                        *string `json:"object"`
 	OnBehalfOf                    *Account                               `json:"on_behalf_of"`
 	PauseCollection               SubscriptionPauseCollection            `json:"pause_collection"`
 	PendingInvoiceItemInterval    SubscriptionPendingInvoiceItemInterval `json:"pending_invoice_item_interval"`
 	PendingSetupIntent            *SetupIntent                           `json:"pending_setup_intent"`
 	PendingUpdate                 *SubscriptionPendingUpdate             `json:"pending_update"`
 	Plan                          *Plan                                  `json:"plan"`
-	Quantity                      int64                                  `json:"quantity"`
+	Quantity                      *int64 `json:"quantity"`
 	Schedule                      *SubscriptionSchedule                  `json:"schedule"`
-	StartDate                     int64                                  `json:"start_date"`
+	StartDate                     *int64 `json:"start_date"`
 	Status                        SubscriptionStatus                     `json:"status"`
 	TransferData                  *SubscriptionTransferData              `json:"transfer_data"`
-	TrialEnd                      int64                                  `json:"trial_end"`
-	TrialStart                    int64                                  `json:"trial_start"`
+	TrialEnd                      *int64 `json:"trial_end"`
+	TrialStart                    *int64 `json:"trial_start"`
 }
 
 // SubscriptionBillingThresholds is a structure representing the billing thresholds for a subscription.
 type SubscriptionBillingThresholds struct {
-	AmountGTE               int64 `json:"amount_gte"`
-	ResetBillingCycleAnchor bool  `json:"reset_billing_cycle_anchor"`
+	AmountGTE               *int64 `json:"amount_gte"`
+	ResetBillingCycleAnchor *bool `json:"reset_billing_cycle_anchor"`
 }
 
 // SubscriptionList is a list object for subscriptions.
@@ -292,7 +292,7 @@ type SubscriptionList struct {
 // property may be an id or the full struct if it was expanded.
 func (s *Subscription) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		s.ID = id
+		s.ID = &id
 		return nil
 	}
 

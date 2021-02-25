@@ -39,28 +39,28 @@ type ReportRunListParams struct {
 // ReportRunParameters describes the parameters hash on a report run.
 type ReportRunParameters struct {
 	Columns           []string `json:"columns"`
-	ConnectedAccount  string   `json:"connected_account"`
+	ConnectedAccount  *string `json:"connected_account"`
 	Currency          Currency `json:"currency"`
-	IntervalEnd       int64    `json:"interval_end"`
-	IntervalStart     int64    `json:"interval_start"`
-	Payout            string   `json:"payout"`
-	ReportingCategory string   `json:"reporting_category"`
-	Timezone          string   `json:"timezone"`
+	IntervalEnd       *int64 `json:"interval_end"`
+	IntervalStart     *int64 `json:"interval_start"`
+	Payout            *string `json:"payout"`
+	ReportingCategory *string `json:"reporting_category"`
+	Timezone          *string `json:"timezone"`
 }
 
 // ReportRun is the resource representing a report run.
 type ReportRun struct {
 	APIResource
-	Created     int64                `json:"created"`
-	Error       string               `json:"error"`
-	ID          string               `json:"id"`
-	Livemode    bool                 `json:"livemode"`
-	Object      string               `json:"object"`
+	Created     *int64 `json:"created"`
+	Error       *string `json:"error"`
+	ID          *string `json:"id"`
+	Livemode    *bool `json:"livemode"`
+	Object      *string `json:"object"`
 	Parameters  *ReportRunParameters `json:"parameters"`
-	ReportType  string               `json:"report_type"`
+	ReportType  *string `json:"report_type"`
 	Result      *File                `json:"result"`
 	Status      ReportRunStatus      `json:"status"`
-	SucceededAt int64                `json:"succeeded_at"`
+	SucceededAt *int64 `json:"succeeded_at"`
 }
 
 // ReportRunList is a list of report runs as retrieved from a list endpoint.

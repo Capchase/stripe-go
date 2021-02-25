@@ -92,7 +92,7 @@ type BalanceTransactionSource struct {
 	ApplicationFee       *ApplicationFee              `json:"-"`
 	Charge               *Charge                      `json:"-"`
 	Dispute              *Dispute                     `json:"-"`
-	ID                   string                       `json:"id"`
+	ID                   *string `json:"id"`
 	IssuingAuthorization *IssuingAuthorization        `json:"-"`
 	IssuingDispute       *IssuingDispute              `json:"-"`
 	IssuingTransaction   *IssuingAuthorization        `json:"-"`
@@ -127,16 +127,16 @@ type BalanceTransactionListParams struct {
 // For more details see https://stripe.com/docs/api/#balance.
 type BalanceTransaction struct {
 	APIResource
-	Amount            int64                               `json:"amount"`
-	AvailableOn       int64                               `json:"available_on"`
-	Created           int64                               `json:"created"`
+	Amount            *int64 `json:"amount"`
+	AvailableOn       *int64 `json:"available_on"`
+	Created           *int64 `json:"created"`
 	Currency          Currency                            `json:"currency"`
-	Description       string                              `json:"description"`
-	ExchangeRate      float64                             `json:"exchange_rate"`
-	ID                string                              `json:"id"`
-	Fee               int64                               `json:"fee"`
+	Description       *string `json:"description"`
+	ExchangeRate      *float64 `json:"exchange_rate"`
+	ID                *string `json:"id"`
+	Fee               *int64 `json:"fee"`
 	FeeDetails        []*BalanceTransactionFee            `json:"fee_details"`
-	Net               int64                               `json:"net"`
+	Net               *int64 `json:"net"`
 	ReportingCategory BalanceTransactionReportingCategory `json:"reporting_category"`
 	Source            *BalanceTransactionSource           `json:"source"`
 	Status            BalanceTransactionStatus            `json:"status"`
@@ -152,11 +152,11 @@ type BalanceTransactionList struct {
 
 // BalanceTransactionFee is a structure that breaks down the fees in a transaction.
 type BalanceTransactionFee struct {
-	Amount      int64    `json:"amount"`
-	Application string   `json:"application"`
+	Amount      *int64 `json:"amount"`
+	Application *string `json:"application"`
 	Currency    Currency `json:"currency"`
-	Description string   `json:"description"`
-	Type        string   `json:"type"`
+	Description *string `json:"description"`
+	Type        *string `json:"type"`
 }
 
 // UnmarshalJSON handles deserialization of a Transaction.
@@ -164,7 +164,7 @@ type BalanceTransactionFee struct {
 // property may be an id or the full struct if it was expanded.
 func (t *BalanceTransaction) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		t.ID = id
+		t.ID = &id
 		return nil
 	}
 
@@ -183,7 +183,7 @@ func (t *BalanceTransaction) UnmarshalJSON(data []byte) error {
 // type of transaction source it refers to is specified in the JSON
 func (s *BalanceTransactionSource) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		s.ID = id
+		s.ID = &id
 		return nil
 	}
 

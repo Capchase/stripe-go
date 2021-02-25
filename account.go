@@ -535,14 +535,14 @@ func (p *AccountExternalAccountParams) AppendTo(body *form.Values, keyParts []st
 
 // AccountBusinessProfile represents optional information related to the business.
 type AccountBusinessProfile struct {
-	MCC                string   `json:"mcc"`
-	Name               string   `json:"name"`
-	ProductDescription string   `json:"product_description"`
+	MCC                *string `json:"mcc"`
+	Name               *string `json:"name"`
+	ProductDescription *string `json:"product_description"`
 	SupportAddress     *Address `json:"support_address"`
-	SupportEmail       string   `json:"support_email"`
-	SupportPhone       string   `json:"support_phone"`
-	SupportURL         string   `json:"support_url"`
-	URL                string   `json:"url"`
+	SupportEmail       *string `json:"support_email"`
+	SupportPhone       *string `json:"support_phone"`
+	SupportURL         *string `json:"support_url"`
+	URL                *string `json:"url"`
 }
 
 // AccountCapabilities is the resource representing the capabilities enabled on that account.
@@ -572,7 +572,7 @@ type AccountCapabilities struct {
 // AccountCompanyVerificationDocument represents details about a company's verification state.
 type AccountCompanyVerificationDocument struct {
 	Back        *File                                         `json:"back"`
-	Details     string                                        `json:"details"`
+	Details     *string `json:"details"`
 	DetailsCode AccountCompanyVerificationDocumentDetailsCode `json:"details_code"`
 	Front       *File                                         `json:"front"`
 }
@@ -587,45 +587,45 @@ type AccountCompany struct {
 	Address            *AccountAddress             `json:"address"`
 	AddressKana        *AccountAddress             `json:"address_kana"`
 	AddressKanji       *AccountAddress             `json:"address_kanji"`
-	DirectorsProvided  bool                        `json:"directors_provided"`
-	ExecutivesProvided bool                        `json:"executives_provided"`
-	Name               string                      `json:"name"`
-	NameKana           string                      `json:"name_kana"`
-	NameKanji          string                      `json:"name_kanji"`
-	OwnersProvided     bool                        `json:"owners_provided"`
-	Phone              string                      `json:"phone"`
-	RegistrationNumber string                      `json:"registration_number"`
+	DirectorsProvided  *bool `json:"directors_provided"`
+	ExecutivesProvided *bool `json:"executives_provided"`
+	Name               *string `json:"name"`
+	NameKana           *string `json:"name_kana"`
+	NameKanji          *string `json:"name_kanji"`
+	OwnersProvided     *bool `json:"owners_provided"`
+	Phone              *string `json:"phone"`
+	RegistrationNumber *string `json:"registration_number"`
 	Structure          AccountCompanyStructure     `json:"structure"`
-	TaxIDProvided      bool                        `json:"tax_id_provided"`
-	TaxIDRegistrar     string                      `json:"tax_id_registrar"`
-	VATIDProvided      bool                        `json:"vat_id_provided"`
+	TaxIDProvided      *bool `json:"tax_id_provided"`
+	TaxIDRegistrar     *string `json:"tax_id_registrar"`
+	VATIDProvided      *bool `json:"vat_id_provided"`
 	Verification       *AccountCompanyVerification `json:"verification"`
 }
 
 // AccountDeclineOn represents card charges decline behavior for that account.
 type AccountDeclineOn struct {
-	AVSFailure bool `json:"avs_failure"`
-	CVCFailure bool `json:"cvc_failure"`
+	AVSFailure *bool `json:"avs_failure"`
+	CVCFailure *bool `json:"cvc_failure"`
 }
 
 // AccountPayoutSchedule is the structure for an account's payout schedule.
 type AccountPayoutSchedule struct {
-	DelayDays     int64          `json:"delay_days"`
+	DelayDays     *int64 `json:"delay_days"`
 	Interval      PayoutInterval `json:"interval"`
-	MonthlyAnchor int64          `json:"monthly_anchor"`
-	WeeklyAnchor  string         `json:"weekly_anchor"`
+	MonthlyAnchor *int64 `json:"monthly_anchor"`
+	WeeklyAnchor  *string `json:"weekly_anchor"`
 }
 
 // AccountRequirementsError represents details about an error with a requirement.
 type AccountRequirementsError struct {
-	Code        string `json:"code"`
-	Reason      string `json:"reason"`
-	Requirement string `json:"requirement"`
+	Code        *string `json:"code"`
+	Reason      *string `json:"reason"`
+	Requirement *string `json:"requirement"`
 }
 
 // AccountRequirements represents information that needs to be collected for an account.
 type AccountRequirements struct {
-	CurrentDeadline     int64                             `json:"current_deadline"`
+	CurrentDeadline     *int64 `json:"current_deadline"`
 	CurrentlyDue        []string                          `json:"currently_due"`
 	DisabledReason      AccountRequirementsDisabledReason `json:"disabled_reason"`
 	Errors              []*AccountRequirementsError       `json:"errors"`
@@ -637,48 +637,48 @@ type AccountRequirements struct {
 // AccountSettingsBACSDebitPayments represents settings specific to the account’s charging
 // via BACS Debit.
 type AccountSettingsBACSDebitPayments struct {
-	DisplayName string `json:"display_name"`
+	DisplayName *string `json:"display_name"`
 }
 
 // AccountSettingsBranding represents settings specific to the account's branding.
 type AccountSettingsBranding struct {
 	Icon           *File  `json:"icon"`
 	Logo           *File  `json:"logo"`
-	PrimaryColor   string `json:"primary_color"`
-	SecondaryColor string `json:"secondary_color"`
+	PrimaryColor   *string `json:"primary_color"`
+	SecondaryColor *string `json:"secondary_color"`
 }
 
 // AccountSettingsCardPayments represents settings specific to card charging on the account.
 type AccountSettingsCardPayments struct {
 	DeclineOn                 *AccountDeclineOn `json:"decline_on"`
-	StatementDescriptorPrefix string            `json:"statement_descriptor_prefix"`
+	StatementDescriptorPrefix *string `json:"statement_descriptor_prefix"`
 }
 
 // AccountSettingsDashboard represents settings specific to the account's Dashboard.
 type AccountSettingsDashboard struct {
-	DisplayName string `json:"display_name"`
-	Timezone    string `json:"timezone"`
+	DisplayName *string `json:"display_name"`
+	Timezone    *string `json:"timezone"`
 }
 
 // AccountSettingsPayments represents settings that apply across payment methods for charging on
 // the account.
 type AccountSettingsPayments struct {
-	StatementDescriptor      string `json:"statement_descriptor"`
-	StatementDescriptorKana  string `json:"statement_descriptor_kana"`
-	StatementDescriptorKanji string `json:"statement_descriptor_kanji"`
+	StatementDescriptor      *string `json:"statement_descriptor"`
+	StatementDescriptorKana  *string `json:"statement_descriptor_kana"`
+	StatementDescriptorKanji *string `json:"statement_descriptor_kanji"`
 }
 
 // AccountSettingsPayouts represents settings specific to the account’s payouts.
 type AccountSettingsPayouts struct {
-	DebitNegativeBalances bool                   `json:"debit_negative_balances"`
+	DebitNegativeBalances *bool `json:"debit_negative_balances"`
 	Schedule              *AccountPayoutSchedule `json:"schedule"`
-	StatementDescriptor   string                 `json:"statement_descriptor"`
+	StatementDescriptor   *string `json:"statement_descriptor"`
 }
 
 // AccountSettingsSEPADebitPayments represents settings specific to the account’s charging
 // via SEPA Debit.
 type AccountSettingsSEPADebitPayments struct {
-	CreditorID string `json:"creditor_id"`
+	CreditorID *string `json:"creditor_id"`
 }
 
 // AccountSettings represents options for customizing how the account functions within Stripe.
@@ -694,9 +694,9 @@ type AccountSettings struct {
 
 // AccountTOSAcceptance represents status of acceptance of our terms of services for the account.
 type AccountTOSAcceptance struct {
-	Date             int64                                `json:"date"`
-	IP               string                               `json:"ip"`
-	UserAgent        string                               `json:"user_agent"`
+	Date             *int64 `json:"date"`
+	IP               *string `json:"ip"`
+	UserAgent        *string `json:"user_agent"`
 	ServiceAgreement AccountTOSAcceptanceServiceAgreement `json:"service_agreement"`
 }
 
@@ -707,20 +707,20 @@ type Account struct {
 	BusinessProfile  *AccountBusinessProfile `json:"business_profile"`
 	BusinessType     AccountBusinessType     `json:"business_type"`
 	Capabilities     *AccountCapabilities    `json:"capabilities"`
-	ChargesEnabled   bool                    `json:"charges_enabled"`
+	ChargesEnabled   *bool `json:"charges_enabled"`
 	Company          *AccountCompany         `json:"company"`
-	Country          string                  `json:"country"`
-	Created          int64                   `json:"created"`
+	Country          *string `json:"country"`
+	Created          *int64 `json:"created"`
 	DefaultCurrency  Currency                `json:"default_currency"`
-	Deleted          bool                    `json:"deleted"`
-	DetailsSubmitted bool                    `json:"details_submitted"`
-	Email            string                  `json:"email"`
+	Deleted          *bool `json:"deleted"`
+	DetailsSubmitted *bool `json:"details_submitted"`
+	Email            *string `json:"email"`
 	ExternalAccounts *ExternalAccountList    `json:"external_accounts"`
-	ID               string                  `json:"id"`
+	ID               *string `json:"id"`
 	Individual       *Person                 `json:"individual"`
 	Metadata         map[string]string       `json:"metadata"`
-	Object           string                  `json:"object"`
-	PayoutsEnabled   bool                    `json:"payouts_enabled"`
+	Object           *string `json:"object"`
+	PayoutsEnabled   *bool `json:"payouts_enabled"`
 	Requirements     *AccountRequirements    `json:"requirements"`
 	Settings         *AccountSettings        `json:"settings"`
 	TOSAcceptance    *AccountTOSAcceptance   `json:"tos_acceptance"`
@@ -732,7 +732,7 @@ type Account struct {
 // property may be an ID or the full struct if it was expanded.
 func (a *Account) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		a.ID = id
+		a.ID = &id
 		return nil
 	}
 
@@ -776,7 +776,7 @@ type ExternalAccount struct {
 	// account is a card.
 	Card *Card
 
-	ID   string              `json:"id"`
+	ID   *string `json:"id"`
 	Type ExternalAccountType `json:"object"`
 }
 
@@ -803,14 +803,14 @@ func (ea *ExternalAccount) UnmarshalJSON(data []byte) error {
 
 // AccountAddress is the structure for an account address.
 type AccountAddress struct {
-	City       string `json:"city"`
-	Country    string `json:"country"`
-	Line1      string `json:"line1"`
-	Line2      string `json:"line2"`
-	PostalCode string `json:"postal_code"`
-	State      string `json:"state"`
+	City       *string `json:"city"`
+	Country    *string `json:"country"`
+	Line1      *string `json:"line1"`
+	Line2      *string `json:"line2"`
+	PostalCode *string `json:"postal_code"`
+	State      *string `json:"state"`
 
 	// Town/cho-me. Note that this is only used for Kana/Kanji representations
 	// of an address.
-	Town string `json:"town"`
+	Town *string `json:"town"`
 }

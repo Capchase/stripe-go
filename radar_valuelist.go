@@ -34,19 +34,19 @@ type RadarValueListListParams struct {
 // RadarValueList is the resource representing a value list.
 type RadarValueList struct {
 	APIResource
-	Alias     string                  `json:"alias"`
-	Created   int64                   `json:"created"`
-	CreatedBy string                  `json:"created_by"`
-	Deleted   bool                    `json:"deleted"`
-	ID        string                  `json:"id"`
+	Alias     *string `json:"alias"`
+	Created   *int64 `json:"created"`
+	CreatedBy *string `json:"created_by"`
+	Deleted   *bool `json:"deleted"`
+	ID        *string `json:"id"`
 	ItemType  RadarValueListItemType  `json:"item_type"`
 	ListItems *RadarValueListItemList `json:"list_items"`
-	Livemode  bool                    `json:"livemode"`
+	Livemode  *bool `json:"livemode"`
 	Metadata  map[string]string       `json:"metadata"`
-	Name      string                  `json:"name"`
-	Object    string                  `json:"object"`
-	Updated   int64                   `json:"updated"`
-	UpdatedBy string                  `json:"updated_by"`
+	Name      *string `json:"name"`
+	Object    *string `json:"object"`
+	Updated   *int64 `json:"updated"`
+	UpdatedBy *string `json:"updated_by"`
 }
 
 // RadarValueListList is a list of value lists as retrieved from a list endpoint.

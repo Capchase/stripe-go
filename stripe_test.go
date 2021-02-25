@@ -68,7 +68,7 @@ func TestContext(t *testing.T) {
 func TestDo_Retry(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -179,7 +179,7 @@ func TestShouldRetry(t *testing.T) {
 	// below to be retried)
 	t.Run("DontRetryOnStripeError", func(t *testing.T) {
 		shouldRetry, _ := c.shouldRetry(
-			&Error{Msg: "An error from Stripe"},
+			&Error{Msg: String("An error from Stripe")},
 			&http.Request{},
 			&http.Response{StatusCode: http.StatusBadRequest},
 			0,
@@ -336,7 +336,7 @@ func TestShouldRetry(t *testing.T) {
 func TestDo_RetryOnTimeout(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	timeout := time.Second
@@ -382,7 +382,7 @@ func TestDo_RetryOnTimeout(t *testing.T) {
 func TestDo_LastResponsePopulated(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -424,10 +424,10 @@ func TestDo_LastResponsePopulated(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, message, resource.Message)
 
-	assert.Equal(t, "key_123", resource.LastResponse.IdempotencyKey)
+	assert.Equal(t, "key_123", *resource.LastResponse.IdempotencyKey)
 	assert.Equal(t, "other_header", resource.LastResponse.Header.Get("Other-Header"))
 	assert.Equal(t, rawJSON, resource.LastResponse.RawJSON)
-	assert.Equal(t, "req_123", resource.LastResponse.RequestID)
+	assert.Equal(t, "req_123", *resource.LastResponse.RequestID)
 	assert.Equal(t,
 		fmt.Sprintf("%v %v", http.StatusCreated, http.StatusText(http.StatusCreated)),
 		resource.LastResponse.Status)
@@ -438,7 +438,7 @@ func TestDo_LastResponsePopulated(t *testing.T) {
 func TestDo_TelemetryDisabled(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -498,12 +498,12 @@ func TestDo_TelemetryDisabled(t *testing.T) {
 func TestDo_TelemetryEnabled(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	type requestMetrics struct {
-		RequestDurationMS int    `json:"request_duration_ms"`
-		RequestID         string `json:"request_id"`
+		RequestDurationMS *int `json:"request_duration_ms"`
+		RequestID         *string `json:"request_id"`
 	}
 
 	type requestTelemetry struct {
@@ -587,7 +587,7 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 func TestDo_TelemetryEnabledNoDataRace(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -656,7 +656,7 @@ func TestDo_Redaction(t *testing.T) {
 	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		w.WriteHeader(402)
-		data, err := json.Marshal(testServerResponse{Error: &Error{PaymentIntent: &PaymentIntent{ClientSecret: "SHOULDBEREDACTED"}}})
+		data, err := json.Marshal(testServerResponse{Error: &Error{PaymentIntent: &PaymentIntent{ClientSecret: String("SHOULDBEREDACTED")}}})
 		assert.NoError(t, err)
 
 		_, err = w.Write(data)
@@ -727,7 +727,7 @@ func TestGetBackendWithConfig_TrimV1Suffix(t *testing.T) {
 		).(*BackendImplementation)
 
 		// The `/v1` suffix has been stripped.
-		assert.Equal(t, "https://api.com", backend.URL)
+		assert.Equal(t, "https://api.com", *backend.URL)
 	}
 
 	// Also support trimming a `/v1/` with an extra trailing slash which is
@@ -740,7 +740,7 @@ func TestGetBackendWithConfig_TrimV1Suffix(t *testing.T) {
 			},
 		).(*BackendImplementation)
 
-		assert.Equal(t, "https://api.com", backend.URL)
+		assert.Equal(t, "https://api.com", *backend.URL)
 	}
 
 	// No-op otherwise.
@@ -752,7 +752,7 @@ func TestGetBackendWithConfig_TrimV1Suffix(t *testing.T) {
 			},
 		).(*BackendImplementation)
 
-		assert.Equal(t, "https://api.com", backend.URL)
+		assert.Equal(t, "https://api.com", *backend.URL)
 	}
 }
 
@@ -760,7 +760,7 @@ func TestParseID(t *testing.T) {
 	// JSON string
 	{
 		id, ok := ParseID([]byte(`"ch_123"`))
-		assert.Equal(t, "ch_123", id)
+		assert.Equal(t, "ch_123", *id)
 		assert.True(t, ok)
 	}
 
@@ -835,7 +835,7 @@ func TestStripeAccount(t *testing.T) {
 
 func TestUnmarshalJSONVerbose(t *testing.T) {
 	type testServerResponse struct {
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	backend := GetBackend(APIBackend).(*BackendImplementation)
@@ -843,13 +843,13 @@ func TestUnmarshalJSONVerbose(t *testing.T) {
 	// Valid JSON
 	{
 		type testServerResponse struct {
-			Message string `json:"message"`
+			Message *string `json:"message"`
 		}
 
 		var sample testServerResponse
 		err := backend.UnmarshalJSONVerbose(200, []byte(`{"message":"hello"}`), &sample)
 		assert.NoError(t, err)
-		assert.Equal(t, "hello", sample.Message)
+		assert.Equal(t, "hello", *sample.Message)
 	}
 
 	// Invalid JSON (short)

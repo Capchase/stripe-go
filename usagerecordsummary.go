@@ -3,13 +3,13 @@ package stripe
 // UsageRecordSummary represents a usage record summary.
 // See https://stripe.com/docs/api#usage_records
 type UsageRecordSummary struct {
-	ID               string  `json:"id"`
-	Invoice          string  `json:"invoice"`
-	Livemode         bool    `json:"livemode"`
-	Object           string  `json:"object"`
+	ID               *string `json:"id"`
+	Invoice          *string `json:"invoice"`
+	Livemode         *bool `json:"livemode"`
+	Object           *string `json:"object"`
 	Period           *Period `json:"period"`
-	SubscriptionItem string  `json:"subscription_item"`
-	TotalUsage       int64   `json:"total_usage"`
+	SubscriptionItem *string `json:"subscription_item"`
+	TotalUsage       *int64 `json:"total_usage"`
 }
 
 // UsageRecordSummaryListParams is the set of parameters that can be used when listing charges.

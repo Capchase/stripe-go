@@ -18,7 +18,7 @@ func TestPromotionCode_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := PromotionCode{ID: "promo_123"}
+		v := PromotionCode{ID: String("promo_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

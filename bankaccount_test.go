@@ -19,7 +19,7 @@ func TestBankAccount_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := BankAccount{ID: "ba_123"}
+		v := BankAccount{ID: String("ba_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

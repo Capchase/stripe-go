@@ -12,14 +12,14 @@ func TestTerminalReaderDel(t *testing.T) {
 	reader, err := Del("loc_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, reader)
-	assert.Equal(t, "terminal.reader", reader.Object)
+	assert.Equal(t, "terminal.reader", *reader.Object)
 }
 
 func TestTerminalReaderGet(t *testing.T) {
 	reader, err := Get("rdr_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, reader)
-	assert.Equal(t, "terminal.reader", reader.Object)
+	assert.Equal(t, "terminal.reader", *reader.Object)
 }
 
 func TestTerminalReaderList(t *testing.T) {
@@ -40,7 +40,7 @@ func TestTerminalReaderNew(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, reader)
-	assert.Equal(t, "terminal.reader", reader.Object)
+	assert.Equal(t, "terminal.reader", *reader.Object)
 }
 
 func TestTerminalReaderUpdate(t *testing.T) {
@@ -49,5 +49,5 @@ func TestTerminalReaderUpdate(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, reader)
-	assert.Equal(t, "terminal.reader", reader.Object)
+	assert.Equal(t, "terminal.reader", *reader.Object)
 }

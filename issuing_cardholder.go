@@ -134,15 +134,15 @@ type IssuingCardholderBilling struct {
 
 // IssuingCardholderCompany represents additional information about a company cardholder.
 type IssuingCardholderCompany struct {
-	TaxIDProvided bool `json:"tax_id_provided"`
+	TaxIDProvided *bool `json:"tax_id_provided"`
 }
 
 // IssuingCardholderIndividualDOB represents the date of birth of the issuing card hoder
 // individual.
 type IssuingCardholderIndividualDOB struct {
-	Day   int64 `json:"day"`
-	Month int64 `json:"month"`
-	Year  int64 `json:"year"`
+	Day   *int64 `json:"day"`
+	Month *int64 `json:"month"`
+	Year  *int64 `json:"year"`
 }
 
 // IssuingCardholderIndividualVerificationDocument represents an identifying
@@ -162,8 +162,8 @@ type IssuingCardholderIndividualVerification struct {
 // individual cardholder.
 type IssuingCardholderIndividual struct {
 	DOB          *IssuingCardholderIndividualDOB          `json:"dob"`
-	FirstName    string                                   `json:"first_name"`
-	LastName     string                                   `json:"last_name"`
+	FirstName    *string `json:"first_name"`
+	LastName     *string `json:"last_name"`
 	Verification *IssuingCardholderIndividualVerification `json:"verification"`
 }
 
@@ -176,7 +176,7 @@ type IssuingCardholderRequirements struct {
 // IssuingCardholderSpendingControlsSpendingLimit is the resource representing a spending limit
 // for an issuing cardholder.
 type IssuingCardholderSpendingControlsSpendingLimit struct {
-	Amount     int64                                                  `json:"amount"`
+	Amount     *int64 `json:"amount"`
 	Categories []string                                               `json:"categories"`
 	Interval   IssuingCardholderSpendingControlsSpendingLimitInterval `json:"interval"`
 }
@@ -195,15 +195,15 @@ type IssuingCardholder struct {
 	APIResource
 	Billing          *IssuingCardholderBilling          `json:"billing"`
 	Company          *IssuingCardholderCompany          `json:"company"`
-	Created          int64                              `json:"created"`
-	Email            string                             `json:"email"`
-	ID               string                             `json:"id"`
+	Created          *int64 `json:"created"`
+	Email            *string `json:"email"`
+	ID               *string `json:"id"`
 	Individual       *IssuingCardholderIndividual       `json:"individual"`
-	Livemode         bool                               `json:"livemode"`
+	Livemode         *bool `json:"livemode"`
 	Metadata         map[string]string                  `json:"metadata"`
-	Name             string                             `json:"name"`
-	Object           string                             `json:"object"`
-	PhoneNumber      string                             `json:"phone_number"`
+	Name             *string `json:"name"`
+	Object           *string `json:"object"`
+	PhoneNumber      *string `json:"phone_number"`
 	Requirements     *IssuingCardholderRequirements     `json:"requirements"`
 	SpendingControls *IssuingCardholderSpendingControls `json:"spending_controls"`
 	Status           IssuingCardholderStatus            `json:"status"`
@@ -222,7 +222,7 @@ type IssuingCardholderList struct {
 // property may be an id or the full struct if it was expanded.
 func (i *IssuingCardholder) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		i.ID = id
+		i.ID = &id
 		return nil
 	}
 

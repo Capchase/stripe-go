@@ -39,7 +39,7 @@ func TestCard_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := Card{ID: "card_123"}
+		v := Card{ID: String("card_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

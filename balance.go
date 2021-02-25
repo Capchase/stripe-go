@@ -23,7 +23,7 @@ type BalanceParams struct {
 type Amount struct {
 	Currency    Currency                    `json:"currency"`
 	SourceTypes map[BalanceSourceType]int64 `json:"source_types"`
-	Value       int64                       `json:"amount"`
+	Value       *int64 `json:"amount"`
 }
 
 // BalanceDetails is the resource representing details about a specific product's balance.
@@ -39,7 +39,7 @@ type Balance struct {
 	ConnectReserved  []*Amount       `json:"connect_reserved"`
 	InstantAvailable []*Amount       `json:"instant_available"`
 	Issuing          *BalanceDetails `json:"issuing"`
-	Livemode         bool            `json:"livemode"`
-	Object           string          `json:"object"`
+	Livemode         *bool `json:"livemode"`
+	Object           *string `json:"object"`
 	Pending          []*Amount       `json:"pending"`
 }

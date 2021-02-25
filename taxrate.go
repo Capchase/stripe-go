@@ -30,19 +30,19 @@ type TaxRateListParams struct {
 // For more details see https://stripe.com/docs/api/tax_rates/object.
 type TaxRate struct {
 	APIResource
-	Active       bool              `json:"active"`
-	Country      string            `json:"country"`
-	Created      int64             `json:"created"`
-	Description  string            `json:"description"`
-	DisplayName  string            `json:"display_name"`
-	ID           string            `json:"id"`
-	Inclusive    bool              `json:"inclusive"`
-	Jurisdiction string            `json:"jurisdiction"`
-	Livemode     bool              `json:"livemode"`
+	Active       *bool `json:"active"`
+	Country      *string `json:"country"`
+	Created      *int64 `json:"created"`
+	Description  *string `json:"description"`
+	DisplayName  *string `json:"display_name"`
+	ID           *string `json:"id"`
+	Inclusive    *bool `json:"inclusive"`
+	Jurisdiction *string `json:"jurisdiction"`
+	Livemode     *bool `json:"livemode"`
 	Metadata     map[string]string `json:"metadata"`
-	Object       string            `json:"object"`
-	Percentage   float64           `json:"percentage"`
-	State        string            `json:"state"`
+	Object       *string `json:"object"`
+	Percentage   *float64 `json:"percentage"`
+	State        *string `json:"state"`
 }
 
 // TaxRateList is a list of tax rates as retrieved from a list endpoint.
@@ -57,7 +57,7 @@ type TaxRateList struct {
 // property may be an id or the full struct if it was expanded.
 func (c *TaxRate) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		c.ID = id
+		c.ID = &id
 		return nil
 	}
 

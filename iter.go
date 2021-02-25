@@ -60,7 +60,7 @@ func (it *Iter) Meta() *ListMeta {
 // It returns false when the iterator stops
 // at the end of the list.
 func (it *Iter) Next() bool {
-	if len(it.values) == 0 && it.meta.HasMore && !it.listParams.Single {
+	if len(it.values) == 0 && *it.meta.HasMore && !it.listParams.Single {
 		// determine if we're moving forward or backwards in paging
 		if it.listParams.EndingBefore != nil {
 			it.listParams.EndingBefore = String(listItemID(it.cur))

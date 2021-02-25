@@ -43,7 +43,7 @@ type CapabilityListParams struct {
 
 // CapabilityRequirements represents information that needs to be collected for a capability.
 type CapabilityRequirements struct {
-	CurrentDeadline     int64                       `json:"current_deadline"`
+	CurrentDeadline     *int64 `json:"current_deadline"`
 	CurrentlyDue        []string                    `json:"currently_due"`
 	DisabledReason      CapabilityDisabledReason    `json:"disabled_reason"`
 	Errors              []*AccountRequirementsError `json:"errors"`
@@ -57,10 +57,10 @@ type CapabilityRequirements struct {
 type Capability struct {
 	APIResource
 	Account      *Account                `json:"account"`
-	ID           string                  `json:"id"`
-	Object       string                  `json:"object"`
-	Requested    bool                    `json:"requested"`
-	RequestedAt  int64                   `json:"requested_at"`
+	ID           *string `json:"id"`
+	Object       *string `json:"object"`
+	Requested    *bool `json:"requested"`
+	RequestedAt  *int64 `json:"requested_at"`
 	Requirements *CapabilityRequirements `json:"requirements"`
 	Status       CapabilityStatus        `json:"status"`
 }
@@ -77,7 +77,7 @@ type CapabilityList struct {
 // property may be an id or the full struct if it was expanded.
 func (c *Capability) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		c.ID = id
+		c.ID = &id
 		return nil
 	}
 

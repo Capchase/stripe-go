@@ -12,7 +12,7 @@ func TestReportRunGet(t *testing.T) {
 	reportrun, err := Get("frr_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, reportrun)
-	assert.Equal(t, "reporting.report_run", reportrun.Object)
+	assert.Equal(t, "reporting.report_run", *reportrun.Object)
 }
 
 func TestReportRunList(t *testing.T) {
@@ -35,5 +35,5 @@ func TestReportRunNew(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, reportrun)
-	assert.Equal(t, "reporting.report_run", reportrun.Object)
+	assert.Equal(t, "reporting.report_run", *reportrun.Object)
 }

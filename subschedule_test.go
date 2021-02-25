@@ -29,7 +29,7 @@ func TestSubscriptionSchedule_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := SubscriptionSchedule{ID: "sub_sched_123"}
+		v := SubscriptionSchedule{ID: String("sub_sched_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

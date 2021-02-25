@@ -12,7 +12,7 @@ func TestIssuingDisputeGet(t *testing.T) {
 	dispute, err := Get("idp_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, dispute)
-	assert.Equal(t, "issuing.dispute", dispute.Object)
+	assert.Equal(t, "issuing.dispute", *dispute.Object)
 }
 
 func TestIssuingDisputeList(t *testing.T) {
@@ -52,7 +52,7 @@ func TestIssuingDisputeNew(t *testing.T) {
 	dispute, err := New(params)
 	assert.Nil(t, err)
 	assert.NotNil(t, dispute)
-	assert.Equal(t, "issuing.dispute", dispute.Object)
+	assert.Equal(t, "issuing.dispute", *dispute.Object)
 }
 
 func TestIssuingDisputeSubmit(t *testing.T) {
@@ -60,7 +60,7 @@ func TestIssuingDisputeSubmit(t *testing.T) {
 	dispute, err := Submit("idp_123", params)
 	assert.Nil(t, err)
 	assert.NotNil(t, dispute)
-	assert.Equal(t, "issuing.dispute", dispute.Object)
+	assert.Equal(t, "issuing.dispute", *dispute.Object)
 }
 
 func TestIssuingDisputeUpdate(t *testing.T) {
@@ -68,5 +68,5 @@ func TestIssuingDisputeUpdate(t *testing.T) {
 	dispute, err := Update("idp_123", params)
 	assert.Nil(t, err)
 	assert.NotNil(t, dispute)
-	assert.Equal(t, "issuing.dispute", dispute.Object)
+	assert.Equal(t, "issuing.dispute", *dispute.Object)
 }

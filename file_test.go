@@ -19,7 +19,7 @@ func TestFile_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := File{ID: "file_123"}
+		v := File{ID: String("file_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

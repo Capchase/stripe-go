@@ -12,10 +12,10 @@ type AddressParams struct {
 
 // Address describes common properties for an Address hash.
 type Address struct {
-	City       string `json:"city"`
-	Country    string `json:"country"`
-	Line1      string `json:"line1"`
-	Line2      string `json:"line2"`
-	PostalCode string `json:"postal_code"`
-	State      string `json:"state"`
+	City       *string `json:"city"`
+	Country    *string `json:"country"`
+	Line1      *string `json:"line1"`
+	Line2      *string `json:"line2"`
+	PostalCode *string `json:"postal_code"`
+	State      *string `json:"state"`
 }

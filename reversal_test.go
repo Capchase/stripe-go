@@ -18,7 +18,7 @@ func TestReversal_UnmarshalJSON(t *testing.T) {
 
 	// Unmarshals from a JSON object
 	{
-		v := Reversal{ID: "trr_123"}
+		v := Reversal{ID: String("trr_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 

@@ -73,23 +73,23 @@ type TaxIDListParams struct {
 // TaxIDVerification represents the verification details of a customer's tax id.
 type TaxIDVerification struct {
 	Status          TaxIDVerificationStatus `json:"status"`
-	VerifiedAddress string                  `json:"verified_address"`
-	VerifiedName    string                  `json:"verified_name"`
+	VerifiedAddress *string `json:"verified_address"`
+	VerifiedName    *string `json:"verified_name"`
 }
 
 // TaxID is the resource representing a customer's tax id.
 // For more details see https://stripe.com/docs/api/customers/tax_id_object
 type TaxID struct {
 	APIResource
-	Country      string             `json:"country"`
-	Created      int64              `json:"created"`
+	Country      *string `json:"country"`
+	Created      *int64 `json:"created"`
 	Customer     *Customer          `json:"customer"`
-	Deleted      bool               `json:"deleted"`
-	ID           string             `json:"id"`
-	Livemode     bool               `json:"livemode"`
-	Object       string             `json:"object"`
+	Deleted      *bool `json:"deleted"`
+	ID           *string `json:"id"`
+	Livemode     *bool `json:"livemode"`
+	Object       *string `json:"object"`
 	Type         TaxIDType          `json:"type"`
-	Value        string             `json:"value"`
+	Value        *string `json:"value"`
 	Verification *TaxIDVerification `json:"verification"`
 }
 
@@ -105,7 +105,7 @@ type TaxIDList struct {
 // property may be an id or the full struct if it was expanded.
 func (c *TaxID) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		c.ID = id
+		c.ID = &id
 		return nil
 	}
 

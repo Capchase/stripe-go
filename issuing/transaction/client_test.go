@@ -12,7 +12,7 @@ func TestIssuingTransactionGet(t *testing.T) {
 	transaction, err := Get("iauth_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, transaction)
-	assert.Equal(t, "issuing.transaction", transaction.Object)
+	assert.Equal(t, "issuing.transaction", *transaction.Object)
 }
 
 func TestIssuingTransactionList(t *testing.T) {
@@ -32,5 +32,5 @@ func TestIssuingTransactionUpdate(t *testing.T) {
 	transaction, err := Update("iauth_123", params)
 	assert.Nil(t, err)
 	assert.NotNil(t, transaction)
-	assert.Equal(t, "issuing.transaction", transaction.Object)
+	assert.Equal(t, "issuing.transaction", *transaction.Object)
 }

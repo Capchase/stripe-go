@@ -74,7 +74,7 @@ const (
 type PayoutDestination struct {
 	BankAccount *BankAccount          `json:"-"`
 	Card        *Card                 `json:"-"`
-	ID          string                `json:"id"`
+	ID          *string `json:"id"`
 	Type        PayoutDestinationType `json:"object"`
 }
 
@@ -112,27 +112,27 @@ type PayoutReverseParams struct {
 // For more details see https://stripe.com/docs/api#payouts.
 type Payout struct {
 	APIResource
-	Amount                    int64               `json:"amount"`
-	ArrivalDate               int64               `json:"arrival_date"`
-	Automatic                 bool                `json:"automatic"`
+	Amount                    *int64 `json:"amount"`
+	ArrivalDate               *int64 `json:"arrival_date"`
+	Automatic                 *bool `json:"automatic"`
 	BalanceTransaction        *BalanceTransaction `json:"balance_transaction"`
 	BankAccount               *BankAccount        `json:"bank_account"`
 	Card                      *Card               `json:"card"`
-	Created                   int64               `json:"created"`
+	Created                   *int64 `json:"created"`
 	Currency                  Currency            `json:"currency"`
 	Description               *string             `json:"description"`
 	Destination               *PayoutDestination  `json:"destination"`
 	FailureBalanceTransaction *BalanceTransaction `json:"failure_balance_transaction"`
 	FailureCode               PayoutFailureCode   `json:"failure_code"`
-	FailureMessage            string              `json:"failure_message"`
-	ID                        string              `json:"id"`
-	Livemode                  bool                `json:"livemode"`
+	FailureMessage            *string `json:"failure_message"`
+	ID                        *string `json:"id"`
+	Livemode                  *bool `json:"livemode"`
 	Metadata                  map[string]string   `json:"metadata"`
 	Method                    PayoutMethodType    `json:"method"`
 	OriginalPayout            *Payout             `json:"original_payout"`
 	ReversedBy                *Payout             `json:"reversed_by"`
 	SourceType                PayoutSourceType    `json:"source_type"`
-	StatementDescriptor       string              `json:"statement_descriptor"`
+	StatementDescriptor       *string `json:"statement_descriptor"`
 	Status                    PayoutStatus        `json:"status"`
 	Type                      PayoutType          `json:"type"`
 }
@@ -149,7 +149,7 @@ type PayoutList struct {
 // property may be an id or the full struct if it was expanded.
 func (p *Payout) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		p.ID = id
+		p.ID = &id
 		return nil
 	}
 
@@ -168,7 +168,7 @@ func (p *Payout) UnmarshalJSON(data []byte) error {
 // type of destination it refers to is specified in the JSON
 func (d *PayoutDestination) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		d.ID = id
+		d.ID = &id
 		return nil
 	}
 
