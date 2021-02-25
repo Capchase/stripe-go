@@ -23,12 +23,12 @@ type FeeRefundListParams struct {
 // For more details see https://stripe.com/docs/api#fee_refunds.
 type FeeRefund struct {
 	APIResource
-	Amount             int64               `json:"amount"`
+	Amount             *int64 `json:"amount"`
 	BalanceTransaction *BalanceTransaction `json:"balance_transaction"`
-	Created            int64               `json:"created"`
+	Created            *int64 `json:"created"`
 	Currency           Currency            `json:"currency"`
 	Fee                *ApplicationFee     `json:"fee"`
-	ID                 string              `json:"id"`
+	ID                 *string `json:"id"`
 	Metadata           map[string]string   `json:"metadata"`
 }
 
@@ -44,7 +44,7 @@ type FeeRefundList struct {
 // property may be an id or the full struct if it was expanded.
 func (r *FeeRefund) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		r.ID = id
+		r.ID = &id
 		return nil
 	}
 

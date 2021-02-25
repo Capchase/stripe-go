@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"path/filepath"
 
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 // FilePurpose is the purpose of a particular file.
@@ -68,16 +68,16 @@ type FileListParams struct {
 // For more details see https://stripe.com/docs/api#file_object.
 type File struct {
 	APIResource
-	Created   int64         `json:"created"`
-	ExpiresAt int64         `json:"expires_at"`
-	Filename  string        `json:"filename"`
-	ID        string        `json:"id"`
+	Created   *int64 `json:"created"`
+	ExpiresAt *int64 `json:"expires_at"`
+	Filename  *string `json:"filename"`
+	ID        *string `json:"id"`
 	Links     *FileLinkList `json:"links"`
-	Object    string        `json:"object"`
+	Object    *string `json:"object"`
 	Purpose   FilePurpose   `json:"purpose"`
-	Size      int64         `json:"size"`
-	Type      string        `json:"type"`
-	URL       string        `json:"url"`
+	Size      *int64 `json:"size"`
+	Type      *string `json:"type"`
+	URL       *string `json:"url"`
 }
 
 // FileList is a list of files as retrieved from a list endpoint.
@@ -141,7 +141,7 @@ func (f *FileParams) GetBody() (*bytes.Buffer, string, error) {
 // property may be an id or the full struct if it was expanded.
 func (f *File) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		f.ID = id
+		f.ID = &id
 		return nil
 	}
 

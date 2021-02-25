@@ -4,29 +4,29 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestIssuingAuthorizationApprove(t *testing.T) {
 	authorization, err := Approve("iauth_123", &stripe.IssuingAuthorizationApproveParams{})
 	assert.Nil(t, err)
 	assert.NotNil(t, authorization)
-	assert.Equal(t, "issuing.authorization", authorization.Object)
+	assert.Equal(t, "issuing.authorization", *authorization.Object)
 }
 
 func TestIssuingAuthorizationDecline(t *testing.T) {
 	authorization, err := Decline("iauth_123", &stripe.IssuingAuthorizationDeclineParams{})
 	assert.Nil(t, err)
 	assert.NotNil(t, authorization)
-	assert.Equal(t, "issuing.authorization", authorization.Object)
+	assert.Equal(t, "issuing.authorization", *authorization.Object)
 }
 
 func TestIssuingAuthorizationGet(t *testing.T) {
 	authorization, err := Get("iauth_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, authorization)
-	assert.Equal(t, "issuing.authorization", authorization.Object)
+	assert.Equal(t, "issuing.authorization", *authorization.Object)
 }
 
 func TestIssuingAuthorizationList(t *testing.T) {
@@ -36,7 +36,7 @@ func TestIssuingAuthorizationList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.IssuingAuthorization())
-	assert.Equal(t, "issuing.authorization", i.IssuingAuthorization().Object)
+	assert.Equal(t, "issuing.authorization", *i.IssuingAuthorization().Object)
 	assert.NotNil(t, i.IssuingAuthorizationList())
 }
 
@@ -46,5 +46,5 @@ func TestIssuingAuthorizationUpdate(t *testing.T) {
 	authorization, err := Update("iauth_123", params)
 	assert.Nil(t, err)
 	assert.NotNil(t, authorization)
-	assert.Equal(t, "issuing.authorization", authorization.Object)
+	assert.Equal(t, "issuing.authorization", *authorization.Object)
 }

@@ -24,15 +24,15 @@ type FileLinkListParams struct {
 // For more details see https://stripe.com/docs/api#file_links.
 type FileLink struct {
 	APIResource
-	Created   int64             `json:"created"`
-	Expired   bool              `json:"expired"`
-	ExpiresAt int64             `json:"expires_at"`
+	Created   *int64 `json:"created"`
+	Expired   *bool `json:"expired"`
+	ExpiresAt *int64 `json:"expires_at"`
 	File      *File             `json:"file"`
-	ID        string            `json:"id"`
-	Livemode  bool              `json:"livemode"`
+	ID        *string `json:"id"`
+	Livemode  *bool `json:"livemode"`
 	Metadata  map[string]string `json:"metadata"`
-	Object    string            `json:"object"`
-	URL       string            `json:"url"`
+	Object    *string `json:"object"`
+	URL       *string `json:"url"`
 }
 
 // UnmarshalJSON handles deserialization of a file link.
@@ -40,7 +40,7 @@ type FileLink struct {
 // property may be an ID or the full struct if it was expanded.
 func (c *FileLink) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		c.ID = id
+		c.ID = &id
 		return nil
 	}
 

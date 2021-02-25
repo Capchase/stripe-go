@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestCheckoutSessionGet(t *testing.T) {
@@ -66,7 +66,7 @@ func TestCheckoutSessionNew(t *testing.T) {
 	session, err := New(params)
 	assert.Nil(t, err)
 	assert.NotNil(t, session)
-	assert.Equal(t, session.LineItems.Data[0].Object, "item")
+	assert.Equal(t, *session.LineItems.Data[0].Object, "item")
 }
 
 func TestCheckoutSessionList(t *testing.T) {

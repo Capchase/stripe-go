@@ -4,15 +4,15 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestIssuingCardGet(t *testing.T) {
 	card, err := Get("ic_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, card)
-	assert.Equal(t, "issuing.card", card.Object)
+	assert.Equal(t, "issuing.card", *card.Object)
 }
 
 func TestIssuingCardList(t *testing.T) {
@@ -22,7 +22,7 @@ func TestIssuingCardList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.IssuingCard())
-	assert.Equal(t, "issuing.card", i.IssuingCard().Object)
+	assert.Equal(t, "issuing.card", *i.IssuingCard().Object)
 	assert.NotNil(t, i.IssuingCardList())
 }
 
@@ -47,7 +47,7 @@ func TestIssuingCardNew(t *testing.T) {
 	card, err := New(params)
 	assert.Nil(t, err)
 	assert.NotNil(t, card)
-	assert.Equal(t, "issuing.card", card.Object)
+	assert.Equal(t, "issuing.card", *card.Object)
 }
 
 func TestIssuingCardUpdate(t *testing.T) {
@@ -56,5 +56,5 @@ func TestIssuingCardUpdate(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, card)
-	assert.Equal(t, "issuing.card", card.Object)
+	assert.Equal(t, "issuing.card", *card.Object)
 }

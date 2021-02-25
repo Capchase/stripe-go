@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 func TestInvoiceParams_AppendTo(t *testing.T) {
@@ -53,18 +53,18 @@ func TestInvoice_Unmarshal(t *testing.T) {
 	err = json.Unmarshal(bytes, &invoiceUnexpanded)
 	assert.NoError(t, err)
 
-	assert.Equal(t, "in_123", invoiceUnexpanded.ID)
-	assert.Equal(t, "invoice", invoiceUnexpanded.Object)
+	assert.Equal(t, "in_123", *invoiceUnexpanded.ID)
+	assert.Equal(t, "invoice", *invoiceUnexpanded.Object)
 
 	assert.Equal(t, 2, len(invoiceUnexpanded.Discounts))
-	assert.Equal(t, "dis_123", invoiceUnexpanded.Discounts[0].ID)
-	assert.Equal(t, "dis_abc", invoiceUnexpanded.Discounts[1].ID)
+	assert.Equal(t, "dis_123", *invoiceUnexpanded.Discounts[0].ID)
+	assert.Equal(t, "dis_abc", *invoiceUnexpanded.Discounts[1].ID)
 
 	assert.Equal(t, 2, len(invoiceUnexpanded.TotalDiscountAmounts))
-	assert.Equal(t, int64(123), invoiceUnexpanded.TotalDiscountAmounts[0].Amount)
-	assert.Equal(t, "dis_123", invoiceUnexpanded.TotalDiscountAmounts[0].Discount.ID)
-	assert.Equal(t, int64(345), invoiceUnexpanded.TotalDiscountAmounts[1].Amount)
-	assert.Equal(t, "dis_abc", invoiceUnexpanded.TotalDiscountAmounts[1].Discount.ID)
+	assert.Equal(t, int64(123), *invoiceUnexpanded.TotalDiscountAmounts[0].Amount)
+	assert.Equal(t, "dis_123", *invoiceUnexpanded.TotalDiscountAmounts[0].Discount.ID)
+	assert.Equal(t, int64(345), *invoiceUnexpanded.TotalDiscountAmounts[1].Amount)
+	assert.Equal(t, "dis_abc", *invoiceUnexpanded.TotalDiscountAmounts[1].Discount.ID)
 
 	invoiceDataExpanded := map[string]interface{}{
 		"id":     "in_123",
@@ -128,34 +128,34 @@ func TestInvoice_Unmarshal(t *testing.T) {
 	err = json.Unmarshal(bytes2, &invoiceExpanded)
 	assert.NoError(t, err)
 
-	assert.Equal(t, "in_123", invoiceExpanded.ID)
-	assert.Equal(t, "invoice", invoiceExpanded.Object)
+	assert.Equal(t, "in_123", *invoiceExpanded.ID)
+	assert.Equal(t, "invoice", *invoiceExpanded.Object)
 
 	assert.Equal(t, 2, len(invoiceExpanded.Discounts))
-	assert.Equal(t, "dis_123", invoiceExpanded.Discounts[0].ID)
-	assert.Equal(t, "discount", invoiceExpanded.Discounts[0].Object)
-	assert.Equal(t, "co_123", invoiceExpanded.Discounts[0].Coupon.ID)
-	assert.Equal(t, "coupon", invoiceExpanded.Discounts[0].Coupon.Object)
-	assert.Equal(t, float64(25.5), invoiceExpanded.Discounts[0].Coupon.PercentOff)
-	assert.Equal(t, "dis_abc", invoiceExpanded.Discounts[1].ID)
-	assert.Equal(t, "discount", invoiceExpanded.Discounts[1].Object)
-	assert.Equal(t, "co_abc", invoiceExpanded.Discounts[1].Coupon.ID)
-	assert.Equal(t, "coupon", invoiceExpanded.Discounts[1].Coupon.Object)
-	assert.Equal(t, float64(35.5), invoiceExpanded.Discounts[1].Coupon.PercentOff)
+	assert.Equal(t, "dis_123", *invoiceExpanded.Discounts[0].ID)
+	assert.Equal(t, "discount", *invoiceExpanded.Discounts[0].Object)
+	assert.Equal(t, "co_123", *invoiceExpanded.Discounts[0].Coupon.ID)
+	assert.Equal(t, "coupon", *invoiceExpanded.Discounts[0].Coupon.Object)
+	assert.Equal(t, float64(25.5), *invoiceExpanded.Discounts[0].Coupon.PercentOff)
+	assert.Equal(t, "dis_abc", *invoiceExpanded.Discounts[1].ID)
+	assert.Equal(t, "discount", *invoiceExpanded.Discounts[1].Object)
+	assert.Equal(t, "co_abc", *invoiceExpanded.Discounts[1].Coupon.ID)
+	assert.Equal(t, "coupon", *invoiceExpanded.Discounts[1].Coupon.Object)
+	assert.Equal(t, float64(35.5), *invoiceExpanded.Discounts[1].Coupon.PercentOff)
 
 	assert.Equal(t, 2, len(invoiceExpanded.TotalDiscountAmounts))
-	assert.Equal(t, int64(123), invoiceExpanded.TotalDiscountAmounts[0].Amount)
-	assert.Equal(t, "dis_123", invoiceExpanded.TotalDiscountAmounts[0].Discount.ID)
-	assert.Equal(t, "discount", invoiceExpanded.TotalDiscountAmounts[0].Discount.Object)
-	assert.Equal(t, "co_123", invoiceExpanded.TotalDiscountAmounts[0].Discount.Coupon.ID)
-	assert.Equal(t, "coupon", invoiceExpanded.TotalDiscountAmounts[0].Discount.Coupon.Object)
-	assert.Equal(t, float64(25.5), invoiceExpanded.TotalDiscountAmounts[0].Discount.Coupon.PercentOff)
-	assert.Equal(t, int64(345), invoiceExpanded.TotalDiscountAmounts[1].Amount)
-	assert.Equal(t, "dis_abc", invoiceExpanded.TotalDiscountAmounts[1].Discount.ID)
-	assert.Equal(t, "discount", invoiceExpanded.TotalDiscountAmounts[1].Discount.Object)
-	assert.Equal(t, "co_abc", invoiceExpanded.TotalDiscountAmounts[1].Discount.Coupon.ID)
-	assert.Equal(t, "coupon", invoiceExpanded.TotalDiscountAmounts[1].Discount.Coupon.Object)
-	assert.Equal(t, float64(35.5), invoiceExpanded.TotalDiscountAmounts[1].Discount.Coupon.PercentOff)
+	assert.Equal(t, int64(123), *invoiceExpanded.TotalDiscountAmounts[0].Amount)
+	assert.Equal(t, "dis_123", *invoiceExpanded.TotalDiscountAmounts[0].Discount.ID)
+	assert.Equal(t, "discount", *invoiceExpanded.TotalDiscountAmounts[0].Discount.Object)
+	assert.Equal(t, "co_123", *invoiceExpanded.TotalDiscountAmounts[0].Discount.Coupon.ID)
+	assert.Equal(t, "coupon", *invoiceExpanded.TotalDiscountAmounts[0].Discount.Coupon.Object)
+	assert.Equal(t, float64(25.5), *invoiceExpanded.TotalDiscountAmounts[0].Discount.Coupon.PercentOff)
+	assert.Equal(t, int64(345), *invoiceExpanded.TotalDiscountAmounts[1].Amount)
+	assert.Equal(t, "dis_abc", *invoiceExpanded.TotalDiscountAmounts[1].Discount.ID)
+	assert.Equal(t, "discount", *invoiceExpanded.TotalDiscountAmounts[1].Discount.Object)
+	assert.Equal(t, "co_abc", *invoiceExpanded.TotalDiscountAmounts[1].Discount.Coupon.ID)
+	assert.Equal(t, "coupon", *invoiceExpanded.TotalDiscountAmounts[1].Discount.Coupon.Object)
+	assert.Equal(t, float64(35.5), *invoiceExpanded.TotalDiscountAmounts[1].Discount.Coupon.PercentOff)
 }
 
 func TestInvoice_UnmarshalJSON(t *testing.T) {
@@ -164,17 +164,17 @@ func TestInvoice_UnmarshalJSON(t *testing.T) {
 		var v Invoice
 		err := json.Unmarshal([]byte(`"in_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "in_123", v.ID)
+		assert.Equal(t, "in_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := Invoice{ID: "in_123"}
+		v := Invoice{ID: String("in_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "in_123", v.ID)
+		assert.Equal(t, "in_123", *v.ID)
 	}
 }

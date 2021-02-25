@@ -4,15 +4,15 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestIssuingDisputeGet(t *testing.T) {
 	dispute, err := Get("idp_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, dispute)
-	assert.Equal(t, "issuing.dispute", dispute.Object)
+	assert.Equal(t, "issuing.dispute", *dispute.Object)
 }
 
 func TestIssuingDisputeList(t *testing.T) {
@@ -26,7 +26,7 @@ func TestIssuingDisputeList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.IssuingDispute())
-	assert.Equal(t, "issuing.dispute", i.IssuingDispute().Object)
+	assert.Equal(t, "issuing.dispute", *i.IssuingDispute().Object)
 	assert.NotNil(t, i.IssuingDisputeList())
 }
 
@@ -52,7 +52,7 @@ func TestIssuingDisputeNew(t *testing.T) {
 	dispute, err := New(params)
 	assert.Nil(t, err)
 	assert.NotNil(t, dispute)
-	assert.Equal(t, "issuing.dispute", dispute.Object)
+	assert.Equal(t, "issuing.dispute", *dispute.Object)
 }
 
 func TestIssuingDisputeSubmit(t *testing.T) {
@@ -60,7 +60,7 @@ func TestIssuingDisputeSubmit(t *testing.T) {
 	dispute, err := Submit("idp_123", params)
 	assert.Nil(t, err)
 	assert.NotNil(t, dispute)
-	assert.Equal(t, "issuing.dispute", dispute.Object)
+	assert.Equal(t, "issuing.dispute", *dispute.Object)
 }
 
 func TestIssuingDisputeUpdate(t *testing.T) {
@@ -68,5 +68,5 @@ func TestIssuingDisputeUpdate(t *testing.T) {
 	dispute, err := Update("idp_123", params)
 	assert.Nil(t, err)
 	assert.NotNil(t, dispute)
-	assert.Equal(t, "issuing.dispute", dispute.Object)
+	assert.Equal(t, "issuing.dispute", *dispute.Object)
 }

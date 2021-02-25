@@ -42,34 +42,34 @@ type ProductParams struct {
 // PackageDimensions represents the dimension of a product or a SKU from the
 // perspective of shipping.
 type PackageDimensions struct {
-	Height float64 `json:"height"`
-	Length float64 `json:"length"`
-	Weight float64 `json:"weight"`
-	Width  float64 `json:"width"`
+	Height *float64 `json:"height"`
+	Length *float64 `json:"length"`
+	Weight *float64 `json:"weight"`
+	Width  *float64 `json:"width"`
 }
 
 // Product is the resource representing a Stripe product.
 // For more details see https://stripe.com/docs/api#products.
 type Product struct {
 	APIResource
-	Active              bool               `json:"active"`
+	Active              *bool `json:"active"`
 	Attributes          []string           `json:"attributes"`
-	Caption             string             `json:"caption"`
-	Created             int64              `json:"created"`
+	Caption             *string `json:"caption"`
+	Created             *int64 `json:"created"`
 	DeactivateOn        []string           `json:"deactivate_on"`
-	Description         string             `json:"description"`
-	ID                  string             `json:"id"`
+	Description         *string `json:"description"`
+	ID                  *string `json:"id"`
 	Images              []string           `json:"images"`
-	Livemode            bool               `json:"livemode"`
+	Livemode            *bool `json:"livemode"`
 	Metadata            map[string]string  `json:"metadata"`
-	Name                string             `json:"name"`
+	Name                *string `json:"name"`
 	PackageDimensions   *PackageDimensions `json:"package_dimensions"`
-	Shippable           bool               `json:"shippable"`
-	StatementDescriptor string             `json:"statement_descriptor"`
+	Shippable           *bool `json:"shippable"`
+	StatementDescriptor *string `json:"statement_descriptor"`
 	Type                ProductType        `json:"type"`
-	UnitLabel           string             `json:"unit_label"`
-	URL                 string             `json:"url"`
-	Updated             int64              `json:"updated"`
+	UnitLabel           *string `json:"unit_label"`
+	URL                 *string `json:"url"`
+	Updated             *int64 `json:"updated"`
 }
 
 // ProductList is a list of products as retrieved from a list endpoint.
@@ -96,7 +96,7 @@ type ProductListParams struct {
 // property may be an id or the full struct if it was expanded.
 func (p *Product) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		p.ID = id
+		p.ID = &id
 		return nil
 	}
 

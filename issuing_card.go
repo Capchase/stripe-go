@@ -159,19 +159,19 @@ type IssuingCardListParams struct {
 type IssuingCardShipping struct {
 	Address        *Address                   `json:"address"`
 	Carrier        IssuingCardShippingCarrier `json:"carrier"`
-	ETA            int64                      `json:"eta"`
-	Name           string                     `json:"name"`
+	ETA            *int64 `json:"eta"`
+	Name           *string `json:"name"`
 	Service        IssuingCardShippingService `json:"service"`
 	Status         IssuingCardShippingStatus  `json:"status"`
-	TrackingNumber string                     `json:"tracking_number"`
-	TrackingURL    string                     `json:"tracking_url"`
+	TrackingNumber *string `json:"tracking_number"`
+	TrackingURL    *string `json:"tracking_url"`
 	Type           IssuingCardShippingType    `json:"type"`
 }
 
 // IssuingCardSpendingControlsSpendingLimit is the resource representing a spending limit
 // for an issuing card.
 type IssuingCardSpendingControlsSpendingLimit struct {
-	Amount     int64                                            `json:"amount"`
+	Amount     *int64 `json:"amount"`
 	Categories []string                                         `json:"categories"`
 	Interval   IssuingCardSpendingControlsSpendingLimitInterval `json:"interval"`
 }
@@ -188,20 +188,20 @@ type IssuingCardSpendingControls struct {
 // IssuingCard is the resource representing a Stripe issuing card.
 type IssuingCard struct {
 	APIResource
-	Brand              string                        `json:"brand"`
+	Brand              *string `json:"brand"`
 	CancellationReason IssuingCardCancellationReason `json:"cancellation_reason"`
 	Cardholder         *IssuingCardholder            `json:"cardholder"`
-	Created            int64                         `json:"created"`
+	Created            *int64 `json:"created"`
 	Currency           Currency                      `json:"currency"`
-	CVC                string                        `json:"cvc"`
-	ExpMonth           int64                         `json:"exp_month"`
-	ExpYear            int64                         `json:"exp_year"`
-	ID                 string                        `json:"id"`
-	Last4              string                        `json:"last4"`
-	Livemode           bool                          `json:"livemode"`
+	CVC                *string `json:"cvc"`
+	ExpMonth           *int64 `json:"exp_month"`
+	ExpYear            *int64 `json:"exp_year"`
+	ID                 *string `json:"id"`
+	Last4              *string `json:"last4"`
+	Livemode           *bool `json:"livemode"`
 	Metadata           map[string]string             `json:"metadata"`
-	Number             string                        `json:"number"`
-	Object             string                        `json:"object"`
+	Number             *string `json:"number"`
+	Object             *string `json:"object"`
 	ReplacedBy         *IssuingCard                  `json:"replaced_by"`
 	ReplacementFor     *IssuingCard                  `json:"replacement_for"`
 	ReplacementReason  IssuingCardReplacementReason  `json:"replacement_reason"`
@@ -223,7 +223,7 @@ type IssuingCardList struct {
 // property may be an id or the full struct if it was expanded.
 func (i *IssuingCard) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		i.ID = id
+		i.ID = &id
 		return nil
 	}
 

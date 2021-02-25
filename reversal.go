@@ -20,16 +20,16 @@ type ReversalListParams struct {
 // Reversal represents a transfer reversal.
 type Reversal struct {
 	APIResource
-	Amount                   int64               `json:"amount"`
+	Amount                   *int64 `json:"amount"`
 	BalanceTransaction       *BalanceTransaction `json:"balance_transaction"`
-	Created                  int64               `json:"created"`
+	Created                  *int64 `json:"created"`
 	Currency                 Currency            `json:"currency"`
-	Description              string              `json:"description"`
+	Description              *string `json:"description"`
 	DestinationPaymentRefund *Refund             `json:"destination_payment_refund"`
-	ID                       string              `json:"id"`
+	ID                       *string `json:"id"`
 	Metadata                 map[string]string   `json:"metadata"`
 	SourceRefund             *Refund             `json:"source_refund"`
-	Transfer                 string              `json:"transfer"`
+	Transfer                 *string `json:"transfer"`
 }
 
 // ReversalList is a list of object for reversals.
@@ -44,7 +44,7 @@ type ReversalList struct {
 // property may be an id or the full struct if it was expanded.
 func (r *Reversal) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		r.ID = id
+		r.ID = &id
 		return nil
 	}
 

@@ -13,18 +13,18 @@ func TestBalanceTransaction_UnmarshalJSON(t *testing.T) {
 		var v BalanceTransaction
 		err := json.Unmarshal([]byte(`"bt_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "bt_123", v.ID)
+		assert.Equal(t, "bt_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := BalanceTransaction{ID: "bt_123"}
+		v := BalanceTransaction{ID: String("bt_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "bt_123", v.ID)
+		assert.Equal(t, "bt_123", *v.ID)
 	}
 }
 
@@ -34,7 +34,7 @@ func TestBalanceTransactionSource_UnmarshalJSON(t *testing.T) {
 		var v BalanceTransactionSource
 		err := json.Unmarshal([]byte(`"ch_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ch_123", v.ID)
+		assert.Equal(t, "ch_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -51,6 +51,6 @@ func TestBalanceTransactionSource_UnmarshalJSON(t *testing.T) {
 
 		// The source has a field for each possible type, so the charge is
 		// located one level down
-		assert.Equal(t, "ch_123", v.Charge.ID)
+		assert.Equal(t, "ch_123", *v.Charge.ID)
 	}
 }

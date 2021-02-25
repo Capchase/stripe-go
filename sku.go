@@ -46,7 +46,7 @@ type SKUParams struct {
 
 // Inventory represents the inventory options of a SKU.
 type Inventory struct {
-	Quantity int64             `json:"quantity"`
+	Quantity *int64 `json:"quantity"`
 	Type     SKUInventoryType  `json:"type"`
 	Value    SKUInventoryValue `json:"value"`
 }
@@ -55,20 +55,20 @@ type Inventory struct {
 // For more details see https://stripe.com/docs/api#skus.
 type SKU struct {
 	APIResource
-	Active            bool               `json:"active"`
+	Active            *bool `json:"active"`
 	Attributes        map[string]string  `json:"attributes"`
-	Created           int64              `json:"created"`
+	Created           *int64 `json:"created"`
 	Currency          Currency           `json:"currency"`
-	Description       string             `json:"description"`
-	ID                string             `json:"id"`
-	Image             string             `json:"image"`
+	Description       *string `json:"description"`
+	ID                *string `json:"id"`
+	Image             *string `json:"image"`
 	Inventory         *Inventory         `json:"inventory"`
-	Livemode          bool               `json:"livemode"`
+	Livemode          *bool `json:"livemode"`
 	Metadata          map[string]string  `json:"metadata"`
 	PackageDimensions *PackageDimensions `json:"package_dimensions"`
-	Price             int64              `json:"price"`
+	Price             *int64 `json:"price"`
 	Product           *Product           `json:"product"`
-	Updated           int64              `json:"updated"`
+	Updated           *int64 `json:"updated"`
 }
 
 // SKUList is a list of SKUs as returned from a list endpoint.
@@ -93,7 +93,7 @@ type SKUListParams struct {
 // property may be an id or the full struct if it was expanded.
 func (s *SKU) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		s.ID = id
+		s.ID = &id
 		return nil
 	}
 

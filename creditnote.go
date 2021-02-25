@@ -120,14 +120,14 @@ type CreditNoteVoidParams struct {
 
 // CreditNoteDiscountAmount represents the aggregate amounts calculated per discount for all line items.
 type CreditNoteDiscountAmount struct {
-	Amount   int64     `json:"amount"`
+	Amount   *int64 `json:"amount"`
 	Discount *Discount `json:"discount"`
 }
 
 // CreditNoteTaxAmount represent the tax amount applied to a credit note.
 type CreditNoteTaxAmount struct {
-	Amount    int64    `json:"amount"`
-	Inclusive bool     `json:"inclusive"`
+	Amount    *int64 `json:"amount"`
+	Inclusive *bool `json:"inclusive"`
 	TaxRate   *TaxRate `json:"tax_rate"`
 }
 
@@ -135,56 +135,56 @@ type CreditNoteTaxAmount struct {
 // For more details see https://stripe.com/docs/api/credit_notes/object.
 type CreditNote struct {
 	APIResource
-	Amount                     int64                       `json:"amount"`
-	Created                    int64                       `json:"created"`
+	Amount                     *int64 `json:"amount"`
+	Created                    *int64 `json:"created"`
 	Currency                   Currency                    `json:"currency"`
 	Customer                   *Customer                   `json:"customer"`
 	CustomerBalanceTransaction *CustomerBalanceTransaction `json:"customer_balance_transaction"`
-	DiscountAmount             int64                       `json:"discount_amount"`
+	DiscountAmount             *int64 `json:"discount_amount"`
 	DiscountAmounts            []*CreditNoteDiscountAmount `json:"discount_amounts"`
 	Invoice                    *Invoice                    `json:"invoice"`
-	ID                         string                      `json:"id"`
+	ID                         *string `json:"id"`
 	Lines                      *CreditNoteLineItemList     `json:"lines"`
-	Livemode                   bool                        `json:"livemode"`
-	Memo                       string                      `json:"memo"`
+	Livemode                   *bool `json:"livemode"`
+	Memo                       *string `json:"memo"`
 	Metadata                   map[string]string           `json:"metadata"`
-	Number                     string                      `json:"number"`
-	Object                     string                      `json:"object"`
-	OutOfBandAmount            int64                       `json:"out_of_band_amount"`
-	PDF                        string                      `json:"pdf"`
+	Number                     *string `json:"number"`
+	Object                     *string `json:"object"`
+	OutOfBandAmount            *int64 `json:"out_of_band_amount"`
+	PDF                        *string `json:"pdf"`
 	Reason                     CreditNoteReason            `json:"reason"`
 	Refund                     *Refund                     `json:"refund"`
 	Status                     CreditNoteStatus            `json:"status"`
-	Subtotal                   int64                       `json:"subtotal"`
+	Subtotal                   *int64 `json:"subtotal"`
 	TaxAmounts                 []*CreditNoteTaxAmount      `json:"tax_amounts"`
-	Total                      int64                       `json:"total"`
+	Total                      *int64 `json:"total"`
 	Type                       CreditNoteType              `json:"type"`
-	VoidedAt                   int64                       `json:"voided_at"`
+	VoidedAt                   *int64 `json:"voided_at"`
 }
 
 // CreditNoteLineItemDiscountAmount represents the amount of discount calculated per discount for this line item.
 type CreditNoteLineItemDiscountAmount struct {
-	Amount   int64     `json:"amount"`
+	Amount   *int64 `json:"amount"`
 	Discount *Discount `json:"discount"`
 }
 
 // CreditNoteLineItem is the resource representing a Stripe credit note line item.
 // For more details see https://stripe.com/docs/api/credit_notes/line_item
 type CreditNoteLineItem struct {
-	Amount            int64                               `json:"amount"`
-	Description       string                              `json:"description"`
-	DiscountAmount    int64                               `json:"discount_amount"`
+	Amount            *int64 `json:"amount"`
+	Description       *string `json:"description"`
+	DiscountAmount    *int64 `json:"discount_amount"`
 	DiscountAmounts   []*CreditNoteLineItemDiscountAmount `json:"discount_amounts"`
-	ID                string                              `json:"id"`
-	InvoiceLineItem   string                              `json:"invoice_line_item"`
-	Livemode          bool                                `json:"livemode"`
-	Object            string                              `json:"object"`
-	Quantity          int64                               `json:"quantity"`
+	ID                *string `json:"id"`
+	InvoiceLineItem   *string `json:"invoice_line_item"`
+	Livemode          *bool `json:"livemode"`
+	Object            *string `json:"object"`
+	Quantity          *int64 `json:"quantity"`
 	TaxAmounts        []*CreditNoteTaxAmount              `json:"tax_amounts"`
 	TaxRates          []*TaxRate                          `json:"tax_rates"`
 	Type              CreditNoteLineItemType              `json:"type"`
-	UnitAmount        int64                               `json:"unit_amount"`
-	UnitAmountDecimal float64                             `json:"unit_amount_decimal,string"`
+	UnitAmount        *int64 `json:"unit_amount"`
+	UnitAmountDecimal *float64 `json:"unit_amount_decimal,string"`
 }
 
 // CreditNoteList is a list of credit notes as retrieved from a list endpoint.
@@ -206,7 +206,7 @@ type CreditNoteLineItemList struct {
 // property may be an id or the full struct if it was expanded.
 func (i *CreditNote) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		i.ID = id
+		i.ID = &id
 		return nil
 	}
 

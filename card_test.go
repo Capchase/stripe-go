@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 func TestCardListParams_AppendTo(t *testing.T) {
@@ -34,18 +34,18 @@ func TestCard_UnmarshalJSON(t *testing.T) {
 		var v Card
 		err := json.Unmarshal([]byte(`"card_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "card_123", v.ID)
+		assert.Equal(t, "card_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := Card{ID: "card_123"}
+		v := Card{ID: String("card_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "card_123", v.ID)
+		assert.Equal(t, "card_123", *v.ID)
 	}
 }
 

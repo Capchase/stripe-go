@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 func TestSubscriptionParams_AppendTo(t *testing.T) {
@@ -40,17 +40,17 @@ func TestSubscription_UnmarshalJSON(t *testing.T) {
 		var v Subscription
 		err := json.Unmarshal([]byte(`"sub_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "sub_123", v.ID)
+		assert.Equal(t, "sub_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := Subscription{ID: "sub_123"}
+		v := Subscription{ID: String("sub_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "sub_123", v.ID)
+		assert.Equal(t, "sub_123", *v.ID)
 	}
 }

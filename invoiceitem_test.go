@@ -13,17 +13,17 @@ func TestInvoiceItem_UnmarshalJSON(t *testing.T) {
 		var v InvoiceItem
 		err := json.Unmarshal([]byte(`"ii_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ii_123", v.ID)
+		assert.Equal(t, "ii_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := InvoiceItem{ID: "ii_123"}
+		v := InvoiceItem{ID: String("ii_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ii_123", v.ID)
+		assert.Equal(t, "ii_123", *v.ID)
 	}
 }

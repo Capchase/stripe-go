@@ -56,13 +56,13 @@ type MandateCustomerAcceptanceOffline struct {
 // MandateCustomerAcceptanceOnline represents details about the customer acceptance of an online
 // mandate.
 type MandateCustomerAcceptanceOnline struct {
-	IPAddress string `json:"ip_address"`
-	UserAgent string `json:"user_agent"`
+	IPAddress *string `json:"ip_address"`
+	UserAgent *string `json:"user_agent"`
 }
 
 // MandateCustomerAcceptance represents details about the customer acceptance for a mandate.
 type MandateCustomerAcceptance struct {
-	AcceptedAt int64                             `json:"accepted_at"`
+	AcceptedAt *int64 `json:"accepted_at"`
 	Offline    *MandateCustomerAcceptanceOffline `json:"offline"`
 	Online     *MandateCustomerAcceptanceOnline  `json:"online"`
 	Type       MandateCustomerAcceptanceType     `json:"type"`
@@ -75,15 +75,15 @@ type MandateMultiUse struct {
 // MandatePaymentMethodDetailsAUBECSDebit represents details about the Australia BECS debit account
 // associated with this mandate.
 type MandatePaymentMethodDetailsAUBECSDebit struct {
-	URL string `json:"url"`
+	URL *string `json:"url"`
 }
 
 // MandatePaymentMethodDetailsBACSDebit represents details about the BACS debit account
 // associated with this mandate.
 type MandatePaymentMethodDetailsBACSDebit struct {
 	NetworkStatus MandatePaymentMethodDetailsBACSDebitNetworkStatus `json:"network_status"`
-	Reference     string                                            `json:"reference"`
-	URL           string                                            `json:"url"`
+	Reference     *string `json:"reference"`
+	URL           *string `json:"url"`
 }
 
 // MandatePaymentMethodDetailsCard represents details about the card associated with this mandate.
@@ -93,8 +93,8 @@ type MandatePaymentMethodDetailsCard struct {
 // MandatePaymentMethodDetailsSepaDebit represents details about the SEPA debit bank account
 // associated with this mandate.
 type MandatePaymentMethodDetailsSepaDebit struct {
-	Reference string `json:"reference"`
-	URL       string `json:"url"`
+	Reference *string `json:"reference"`
+	URL       *string `json:"url"`
 }
 
 // MandatePaymentMethodDetails represents details about the payment method associated with this
@@ -109,7 +109,7 @@ type MandatePaymentMethodDetails struct {
 
 // MandateSingleUse represents details about a single-use mandate.
 type MandateSingleUse struct {
-	Amount   int64    `json:"amount"`
+	Amount   *int64 `json:"amount"`
 	Currency Currency `json:"currency"`
 }
 
@@ -117,10 +117,10 @@ type MandateSingleUse struct {
 type Mandate struct {
 	APIResource
 	CustomerAcceptance   *MandateCustomerAcceptance   `json:"customer_acceptance"`
-	ID                   string                       `json:"id"`
-	Livemode             bool                         `json:"livemode"`
+	ID                   *string `json:"id"`
+	Livemode             *bool `json:"livemode"`
 	MultiUse             *MandateMultiUse             `json:"multi_use"`
-	Object               string                       `json:"object"`
+	Object               *string `json:"object"`
 	PaymentMethod        *PaymentMethod               `json:"payment_method"`
 	PaymentMethodDetails *MandatePaymentMethodDetails `json:"payment_method_details"`
 	SingleUse            *MandateSingleUse            `json:"single_use"`
@@ -133,7 +133,7 @@ type Mandate struct {
 // property may be an id or the full struct if it was expanded.
 func (i *Mandate) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		i.ID = id
+		i.ID = &id
 		return nil
 	}
 

@@ -145,8 +145,8 @@ type SetupIntentListParams struct {
 // SetupIntentNextActionRedirectToURL represents the resource for the next action of type
 // "redirect_to_url".
 type SetupIntentNextActionRedirectToURL struct {
-	ReturnURL string `json:"return_url"`
-	URL       string `json:"url"`
+	ReturnURL *string `json:"return_url"`
+	URL       *string `json:"url"`
 }
 
 // SetupIntentNextAction represents the type of action to take on a setup intent.
@@ -173,18 +173,18 @@ type SetupIntent struct {
 	APIResource
 	Application          *Application                     `json:"application"`
 	CancellationReason   SetupIntentCancellationReason    `json:"cancellation_reason"`
-	ClientSecret         string                           `json:"client_secret"`
-	Created              int64                            `json:"created"`
+	ClientSecret         *string `json:"client_secret"`
+	Created              *int64 `json:"created"`
 	Customer             *Customer                        `json:"customer"`
-	Description          string                           `json:"description"`
-	ID                   string                           `json:"id"`
+	Description          *string `json:"description"`
+	ID                   *string `json:"id"`
 	LastSetupError       *Error                           `json:"last_setup_error"`
 	LatestAttempt        *SetupAttempt                    `json:"latest_attempt"`
-	Livemode             bool                             `json:"livemode"`
+	Livemode             *bool `json:"livemode"`
 	Mandate              *Mandate                         `json:"mandate"`
 	Metadata             map[string]string                `json:"metadata"`
 	NextAction           *SetupIntentNextAction           `json:"next_action"`
-	Object               string                           `json:"object"`
+	Object               *string `json:"object"`
 	OnBehalfOf           *Account                         `json:"on_behalf_of"`
 	PaymentMethod        *PaymentMethod                   `json:"payment_method"`
 	PaymentMethodOptions *SetupIntentPaymentMethodOptions `json:"payment_method_options"`
@@ -206,7 +206,7 @@ type SetupIntentList struct {
 // property may be an id or the full struct if it was expanded.
 func (p *SetupIntent) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		p.ID = id
+		p.ID = &id
 		return nil
 	}
 

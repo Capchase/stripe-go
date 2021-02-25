@@ -4,15 +4,15 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestSigmaScheduledQueryRunGet(t *testing.T) {
 	run, err := Get("sqr_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, run)
-	assert.Equal(t, "scheduled_query_run", run.Object)
+	assert.Equal(t, "scheduled_query_run", *run.Object)
 }
 
 func TestSigmaScheduledQueryRunList(t *testing.T) {
@@ -22,6 +22,6 @@ func TestSigmaScheduledQueryRunList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.SigmaScheduledQueryRun())
-	assert.Equal(t, "scheduled_query_run", i.SigmaScheduledQueryRun().Object)
+	assert.Equal(t, "scheduled_query_run", *i.SigmaScheduledQueryRun().Object)
 	assert.NotNil(t, i.SigmaScheduledQueryRunList())
 }

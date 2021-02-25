@@ -41,10 +41,10 @@ type RadarEarlyFraudWarningList struct {
 // more details see https://stripe.com/docs/api/early_fraud_warnings/object.
 type RadarEarlyFraudWarning struct {
 	APIResource
-	Actionable bool                            `json:"actionable"`
+	Actionable *bool `json:"actionable"`
 	Charge     *Charge                         `json:"charge"`
-	Created    int64                           `json:"created"`
+	Created    *int64 `json:"created"`
 	FraudType  RadarEarlyFraudWarningFraudType `json:"fraud_type"`
-	ID         string                          `json:"id"`
-	Livemode   bool                            `json:"livemode"`
+	ID         *string `json:"id"`
+	Livemode   *bool `json:"livemode"`
 }

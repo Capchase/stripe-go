@@ -34,27 +34,27 @@ type PromotionCodeListParams struct {
 
 // PromotionCodeRestrictions is the set of restrictions associated with a promotion code.
 type PromotionCodeRestrictions struct {
-	FirstTimeTransaction  bool     `json:"first_time_transaction"`
-	MinimumAmount         int64    `json:"minimum_amount"`
+	FirstTimeTransaction  *bool `json:"first_time_transaction"`
+	MinimumAmount         *int64 `json:"minimum_amount"`
 	MinimumAmountCurrency Currency `json:"minimum_amount_currency"`
 }
 
 // PromotionCode is the resource representing a Stripe promotion code.
 type PromotionCode struct {
 	APIResource
-	Active         bool                       `json:"active"`
-	Code           string                     `json:"code"`
+	Active         *bool `json:"active"`
+	Code           *string `json:"code"`
 	Coupon         *Coupon                    `json:"coupon"`
-	Created        int64                      `json:"created"`
+	Created        *int64 `json:"created"`
 	Customer       *Customer                  `json:"customer"`
-	ExpiresAt      int64                      `json:"expires_at"`
-	ID             string                     `json:"id"`
-	Livemode       bool                       `json:"livemode"`
-	MaxRedemptions int64                      `json:"max_redemptions"`
+	ExpiresAt      *int64 `json:"expires_at"`
+	ID             *string `json:"id"`
+	Livemode       *bool `json:"livemode"`
+	MaxRedemptions *int64 `json:"max_redemptions"`
 	Metadata       map[string]string          `json:"metadata"`
-	Object         string                     `json:"object"`
+	Object         *string `json:"object"`
 	Restrictions   *PromotionCodeRestrictions `json:"restrictions"`
-	TimesRedeemed  int64                      `json:"times_redeemed"`
+	TimesRedeemed  *int64 `json:"times_redeemed"`
 }
 
 // PromotionCodeList is a list of promotion codes as retrieved from a list endpoint.
@@ -69,7 +69,7 @@ type PromotionCodeList struct {
 // property may be an id or the full struct if it was expanded.
 func (c *PromotionCode) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		c.ID = id
+		c.ID = &id
 		return nil
 	}
 

@@ -4,7 +4,7 @@ package mandate
 import (
 	"net/http"
 
-	stripe "github.com/stripe/stripe-go/v72"
+	stripe "github.com/Capchase/stripe-go/v72"
 )
 
 // Client is used to invoke mandates APIs.

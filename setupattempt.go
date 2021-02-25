@@ -82,19 +82,19 @@ type SetupAttemptPaymentMethodDetailsCardThreeDSecure struct {
 	AuthenticationFlow SetupAttemptPaymentMethodDetailsCardThreeDSecureAuthenticationFlow `json:"authentication_flow"`
 	Result             SetupAttemptPaymentMethodDetailsCardThreeDSecureResult             `json:"result"`
 	ResultReason       SetupAttemptPaymentMethodDetailsCardThreeDSecureResultReason       `json:"result_reason"`
-	Version            string                                                             `json:"version"`
+	Version            *string `json:"version"`
 }
 
 // SetupAttemptPaymentMethodDetailsBancontact represents details about the Bancontact PaymentMethod.
 type SetupAttemptPaymentMethodDetailsBancontact struct {
-	BankCode                  string         `json:"bank_code"`
-	BankName                  string         `json:"bank_name"`
-	Bic                       string         `json:"bic"`
+	BankCode                  *string `json:"bank_code"`
+	BankName                  *string `json:"bank_name"`
+	Bic                       *string `json:"bic"`
 	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit"`
 	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate"`
-	IbanLast4                 string         `json:"iban_last4"`
-	PreferredLanguage         string         `json:"preferred_language"`
-	VerifiedName              string         `json:"verified_name"`
+	IbanLast4                 *string `json:"iban_last4"`
+	PreferredLanguage         *string `json:"preferred_language"`
+	VerifiedName              *string `json:"verified_name"`
 }
 
 // SetupAttemptPaymentMethodDetailsCard represents details about the Card PaymentMethod.
@@ -104,24 +104,24 @@ type SetupAttemptPaymentMethodDetailsCard struct {
 
 // SetupAttemptPaymentMethodDetailsIdeal represents details about the Bancontact PaymentMethod.
 type SetupAttemptPaymentMethodDetailsIdeal struct {
-	Bank                      string         `json:"bank"`
-	Bic                       string         `json:"bic"`
+	Bank                      *string `json:"bank"`
+	Bic                       *string `json:"bic"`
 	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit"`
 	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate"`
-	IbanLast4                 string         `json:"iban_last4"`
-	VerifiedName              string         `json:"verified_name"`
+	IbanLast4                 *string `json:"iban_last4"`
+	VerifiedName              *string `json:"verified_name"`
 }
 
 // SetupAttemptPaymentMethodDetailsSofort represents details about the Bancontact PaymentMethod.
 type SetupAttemptPaymentMethodDetailsSofort struct {
-	BankCode                  string         `json:"bank_code"`
-	BankName                  string         `json:"bank_name"`
-	Bic                       string         `json:"bic"`
+	BankCode                  *string `json:"bank_code"`
+	BankName                  *string `json:"bank_name"`
+	Bic                       *string `json:"bic"`
 	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit"`
 	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate"`
-	IbanLast4                 string         `json:"iban_last4"`
-	PreferredLanguage         string         `json:"preferred_language"`
-	VerifiedName              string         `json:"verified_name"`
+	IbanLast4                 *string `json:"iban_last4"`
+	PreferredLanguage         *string `json:"preferred_language"`
+	VerifiedName              *string `json:"verified_name"`
 }
 
 // SetupAttemptPaymentMethodDetails represents the details about the PaymentMethod associated with the setup attempt.
@@ -137,11 +137,11 @@ type SetupAttemptPaymentMethodDetails struct {
 type SetupAttempt struct {
 	APIResource
 	Application          *Application                      `json:"application"`
-	Created              int64                             `json:"created"`
+	Created              *int64 `json:"created"`
 	Customer             *Customer                         `json:"customer"`
-	ID                   string                            `json:"id"`
-	Livemode             bool                              `json:"livemode"`
-	Object               string                            `json:"object"`
+	ID                   *string `json:"id"`
+	Livemode             *bool `json:"livemode"`
+	Object               *string `json:"object"`
 	OnBehalfOf           *Account                          `json:"on_behalf_of"`
 	PaymentMethod        *PaymentMethod                    `json:"payment_method"`
 	PaymentMethodDetails *SetupAttemptPaymentMethodDetails `json:"payment_method_details"`
@@ -162,7 +162,7 @@ type SetupAttemptList struct {
 // property may be an id or the full struct if it was expanded.
 func (p *SetupAttempt) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		p.ID = id
+		p.ID = &id
 		return nil
 	}
 

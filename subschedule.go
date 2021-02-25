@@ -3,7 +3,7 @@ package stripe
 import (
 	"encoding/json"
 
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 // SubscriptionScheduleEndBehavior describe what happens to a schedule when it ends.
@@ -173,20 +173,20 @@ type SubscriptionScheduleListParams struct {
 
 // SubscriptionScheduleCurrentPhase is a structure the current phase's period.
 type SubscriptionScheduleCurrentPhase struct {
-	EndDate   int64 `json:"end_date"`
-	StartDate int64 `json:"start_date"`
+	EndDate   *int64 `json:"end_date"`
+	StartDate *int64 `json:"start_date"`
 }
 
 // SubscriptionScheduleInvoiceSettings is a structure representing the settings applied to invoices
 // associated with a subscription schedule.
 type SubscriptionScheduleInvoiceSettings struct {
-	DaysUntilDue int64 `json:"days_until_due"`
+	DaysUntilDue *int64 `json:"days_until_due"`
 }
 
 // SubscriptionScheduleDefaultSettings is a structure representing the
 // subscription schedule’s default settings.
 type SubscriptionScheduleDefaultSettings struct {
-	ApplicationFeePercent float64                                     `json:"application_fee_percent,string"`
+	ApplicationFeePercent *float64 `json:"application_fee_percent,string"`
 	BillingCycleAnchor    SubscriptionSchedulePhaseBillingCycleAnchor `json:"billing_cycle_anchor"`
 	BillingThresholds     *SubscriptionBillingThresholds              `json:"billing_thresholds"`
 	CollectionMethod      SubscriptionCollectionMethod                `json:"collection_method"`
@@ -198,7 +198,7 @@ type SubscriptionScheduleDefaultSettings struct {
 // SubscriptionSchedulePhaseAddInvoiceItem represents the invoice items to add when the phase starts.
 type SubscriptionSchedulePhaseAddInvoiceItem struct {
 	Price    *Price     `json:"price"`
-	Quantity int64      `json:"quantity"`
+	Quantity *int64 `json:"quantity"`
 	TaxRates []*TaxRate `json:"tax_rates"`
 }
 
@@ -207,42 +207,42 @@ type SubscriptionSchedulePhaseItem struct {
 	BillingThresholds *SubscriptionItemBillingThresholds `json:"billing_thresholds"`
 	Plan              *Plan                              `json:"plan"`
 	Price             *Price                             `json:"price"`
-	Quantity          int64                              `json:"quantity"`
+	Quantity          *int64 `json:"quantity"`
 	TaxRates          []*TaxRate                         `json:"tax_rates"`
 }
 
 // SubscriptionSchedulePhase is a structure a phase of a subscription schedule.
 type SubscriptionSchedulePhase struct {
 	AddInvoiceItems       []*SubscriptionSchedulePhaseAddInvoiceItem  `json:"add_invoice_items"`
-	ApplicationFeePercent float64                                     `json:"application_fee_percent"`
+	ApplicationFeePercent *float64 `json:"application_fee_percent"`
 	BillingCycleAnchor    SubscriptionSchedulePhaseBillingCycleAnchor `json:"billing_cycle_anchor"`
 	BillingThresholds     *SubscriptionBillingThresholds              `json:"billing_thresholds"`
 	CollectionMethod      SubscriptionCollectionMethod                `json:"collection_method"`
 	Coupon                *Coupon                                     `json:"coupon"`
 	DefaultPaymentMethod  *PaymentMethod                              `json:"default_payment_method"`
 	DefaultTaxRates       []*TaxRate                                  `json:"default_tax_rates"`
-	EndDate               int64                                       `json:"end_date"`
+	EndDate               *int64 `json:"end_date"`
 	InvoiceSettings       *SubscriptionScheduleInvoiceSettings        `json:"invoice_settings"`
 	Items                 []*SubscriptionSchedulePhaseItem            `json:"items"`
-	StartDate             int64                                       `json:"start_date"`
+	StartDate             *int64 `json:"start_date"`
 	TransferData          *SubscriptionTransferData                   `json:"transfer_data"`
-	TrialEnd              int64                                       `json:"trial_end"`
+	TrialEnd              *int64 `json:"trial_end"`
 }
 
 // SubscriptionSchedule is the resource representing a Stripe subscription schedule.
 type SubscriptionSchedule struct {
 	APIResource
-	CanceledAt           int64                                `json:"canceled_at"`
-	CompletedAt          int64                                `json:"completed_at"`
-	Created              int64                                `json:"created"`
+	CanceledAt           *int64 `json:"canceled_at"`
+	CompletedAt          *int64 `json:"completed_at"`
+	Created              *int64 `json:"created"`
 	CurrentPhase         *SubscriptionScheduleCurrentPhase    `json:"current_phase"`
 	Customer             *Customer                            `json:"customer"`
 	DefaultSettings      *SubscriptionScheduleDefaultSettings `json:"default_settings"`
 	EndBehavior          SubscriptionScheduleEndBehavior      `json:"end_behavior"`
-	ID                   string                               `json:"id"`
-	Livemode             bool                                 `json:"livemode"`
+	ID                   *string `json:"id"`
+	Livemode             *bool `json:"livemode"`
 	Metadata             map[string]string                    `json:"metadata"`
-	Object               string                               `json:"object"`
+	Object               *string `json:"object"`
 	Phases               []*SubscriptionSchedulePhase         `json:"phases"`
 	ReleasedSubscription *Subscription                        `json:"released_subscription"`
 	Status               SubscriptionScheduleStatus           `json:"status"`
@@ -261,7 +261,7 @@ type SubscriptionScheduleList struct {
 // property may be an id or the full struct if it was expanded.
 func (s *SubscriptionSchedule) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		s.ID = id
+		s.ID = &id
 		return nil
 	}
 

@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 func TestBankAccount_UnmarshalJSON(t *testing.T) {
@@ -14,18 +14,18 @@ func TestBankAccount_UnmarshalJSON(t *testing.T) {
 		var v BankAccount
 		err := json.Unmarshal([]byte(`"ba_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ba_123", v.ID)
+		assert.Equal(t, "ba_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := BankAccount{ID: "ba_123"}
+		v := BankAccount{ID: String("ba_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ba_123", v.ID)
+		assert.Equal(t, "ba_123", *v.ID)
 	}
 }
 

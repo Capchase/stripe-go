@@ -4,15 +4,15 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestReportRunGet(t *testing.T) {
 	reportrun, err := Get("frr_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, reportrun)
-	assert.Equal(t, "reporting.report_run", reportrun.Object)
+	assert.Equal(t, "reporting.report_run", *reportrun.Object)
 }
 
 func TestReportRunList(t *testing.T) {
@@ -22,7 +22,7 @@ func TestReportRunList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.ReportRun())
-	assert.Equal(t, "reporting.report_run", i.ReportRun().Object)
+	assert.Equal(t, "reporting.report_run", *i.ReportRun().Object)
 	assert.NotNil(t, i.ReportRunList())
 }
 
@@ -35,5 +35,5 @@ func TestReportRunNew(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, reportrun)
-	assert.Equal(t, "reporting.report_run", reportrun.Object)
+	assert.Equal(t, "reporting.report_run", *reportrun.Object)
 }

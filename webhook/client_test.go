@@ -54,7 +54,7 @@ func TestTokenNew(t *testing.T) {
 	evt, err := ConstructEvent(p.payload, p.header, p.secret)
 	if err != nil {
 		t.Errorf("Error validating signature: %v", err)
-	} else if evt.ID != "evt_test_webhook" {
+	} else if *evt.ID != "evt_test_webhook" {
 		t.Errorf("Expected a parsed event matching the test payload, got %v", evt)
 	}
 

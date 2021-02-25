@@ -9,7 +9,7 @@ type TerminalConnectionTokenParams struct {
 // TerminalConnectionToken is the resource representing a Stripe terminal connection token.
 type TerminalConnectionToken struct {
 	APIResource
-	Location string `json:"location"`
-	Object   string `json:"object"`
-	Secret   string `json:"secret"`
+	Location *string `json:"location"`
+	Object   *string `json:"object"`
+	Secret   *string `json:"secret"`
 }

@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 func TestPrice_Unmarshal(t *testing.T) {
@@ -45,13 +45,13 @@ func TestPrice_Unmarshal(t *testing.T) {
 
 	assert.Equal(t, PriceRecurringAggregateUsageLastDuringPeriod, price.Recurring.AggregateUsage)
 	assert.Equal(t, PriceRecurringIntervalMonth, price.Recurring.Interval)
-	assert.Equal(t, int64(6), price.Recurring.IntervalCount)
+	assert.Equal(t, int64(6), *price.Recurring.IntervalCount)
 	assert.Equal(t, PriceRecurringUsageTypeMetered, price.Recurring.UsageType)
 	assert.Equal(t, 3, len(price.Tiers))
-	assert.Equal(t, 0.0111111111, price.Tiers[0].FlatAmountDecimal)
-	assert.Equal(t, int64(5), price.Tiers[0].UpTo)
+	assert.Equal(t, 0.0111111111, *price.Tiers[0].FlatAmountDecimal)
+	assert.Equal(t, int64(5), *price.Tiers[0].UpTo)
 	assert.Equal(t, PriceTiersModeVolume, price.TiersMode)
-	assert.Equal(t, 0.0123456789, price.UnitAmountDecimal)
+	assert.Equal(t, 0.0123456789, *price.UnitAmountDecimal)
 }
 
 func TestPriceTierParams_AppendTo(t *testing.T) {

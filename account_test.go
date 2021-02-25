@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 func TestAccountExternalAccountParams_AppendTo(t *testing.T) {
@@ -119,9 +119,9 @@ func TestAccount_Unmarshal(t *testing.T) {
 	err = json.Unmarshal(bytes, &account)
 	assert.NoError(t, err)
 
-	assert.Equal(t, "acct_123", account.ID)
+	assert.Equal(t, "acct_123", *account.ID)
 
-	assert.Equal(t, "123", account.BusinessProfile.MCC)
+	assert.Equal(t, "123", *account.BusinessProfile.MCC)
 
 	assert.Equal(t, AccountCapabilityStatusActive, account.Capabilities.CardPayments)
 	assert.Equal(t, AccountCapabilityStatus(""), account.Capabilities.LegacyPayments)
@@ -132,33 +132,33 @@ func TestAccount_Unmarshal(t *testing.T) {
 	// Assert ExternalAccounts are fully deserialized
 	assert.Equal(t, true, account.ExternalAccounts.HasMore)
 	assert.Equal(t, 2, len(account.ExternalAccounts.Data))
-	assert.Equal(t, "ba_123", account.ExternalAccounts.Data[0].ID)
-	assert.Equal(t, "card_123", account.ExternalAccounts.Data[1].ID)
+	assert.Equal(t, "ba_123", *account.ExternalAccounts.Data[0].ID)
+	assert.Equal(t, "card_123", *account.ExternalAccounts.Data[1].ID)
 
 	assert.Equal(t, "value1", account.Metadata["key1"])
 	assert.Equal(t, "value2", account.Metadata["key2"])
 
-	assert.Equal(t, int64(1234567890), account.Requirements.CurrentDeadline)
+	assert.Equal(t, int64(1234567890), *account.Requirements.CurrentDeadline)
 	assert.Equal(t, 2, len(account.Requirements.CurrentlyDue))
 	assert.Equal(t, AccountRequirementsDisabledReasonFieldsNeeded, account.Requirements.DisabledReason)
 	assert.Equal(t, 1, len(account.Requirements.Errors))
-	assert.Equal(t, "invalid_value_other", account.Requirements.Errors[0].Code)
+	assert.Equal(t, "invalid_value_other", *account.Requirements.Errors[0].Code)
 	assert.Equal(t, 1, len(account.Requirements.EventuallyDue))
 	assert.Equal(t, 0, len(account.Requirements.PastDue))
 
-	assert.Equal(t, "file_123", account.Settings.Branding.Icon.ID)
-	assert.Equal(t, "file_234", account.Settings.Branding.Logo.ID)
-	assert.Equal(t, true, account.Settings.CardPayments.DeclineOn.AVSFailure)
-	assert.Equal(t, false, account.Settings.CardPayments.DeclineOn.CVCFailure)
-	assert.Equal(t, "prefix", account.Settings.CardPayments.StatementDescriptorPrefix)
-	assert.Equal(t, "descriptor", account.Settings.Payments.StatementDescriptor)
-	assert.Equal(t, true, account.Settings.Payouts.DebitNegativeBalances)
-	assert.Equal(t, int64(2), account.Settings.Payouts.Schedule.DelayDays)
+	assert.Equal(t, "file_123", *account.Settings.Branding.Icon.ID)
+	assert.Equal(t, "file_234", *account.Settings.Branding.Logo.ID)
+	assert.Equal(t, Bool(true), account.Settings.CardPayments.DeclineOn.AVSFailure)
+	assert.Equal(t, Bool(false), account.Settings.CardPayments.DeclineOn.CVCFailure)
+	assert.Equal(t, "prefix", *account.Settings.CardPayments.StatementDescriptorPrefix)
+	assert.Equal(t, "descriptor", *account.Settings.Payments.StatementDescriptor)
+	assert.Equal(t, Bool(true), account.Settings.Payouts.DebitNegativeBalances)
+	assert.Equal(t, int64(2), *account.Settings.Payouts.Schedule.DelayDays)
 	assert.Equal(t, PayoutIntervalWeekly, account.Settings.Payouts.Schedule.Interval)
 
-	assert.Equal(t, int64(1528573382), account.TOSAcceptance.Date)
-	assert.Equal(t, "127.0.0.1", account.TOSAcceptance.IP)
-	assert.Equal(t, "user agent", account.TOSAcceptance.UserAgent)
+	assert.Equal(t, int64(1528573382), *account.TOSAcceptance.Date)
+	assert.Equal(t, "127.0.0.1", *account.TOSAcceptance.IP)
+	assert.Equal(t, "user agent", *account.TOSAcceptance.UserAgent)
 	assert.Equal(t, AccountTOSAcceptanceServiceAgreementRecipient, account.TOSAcceptance.ServiceAgreement)
 
 	assert.Equal(t, AccountTypeCustom, account.Type)
@@ -170,18 +170,18 @@ func TestAccount_UnmarshalJSON(t *testing.T) {
 		var v Account
 		err := json.Unmarshal([]byte(`"acct_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "acct_123", v.ID)
+		assert.Equal(t, "acct_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := Account{ID: "acct_123"}
+		v := Account{ID: String("acct_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "acct_123", v.ID)
+		assert.Equal(t, "acct_123", *v.ID)
 	}
 }
 
@@ -200,7 +200,7 @@ func TestExternalAccount_UnmarshalJSON(t *testing.T) {
 
 		// The external account has a field for each possible type, so the
 		// bank account is located one level down
-		assert.Equal(t, "ba_123", v.BankAccount.ID)
+		assert.Equal(t, "ba_123", *v.BankAccount.ID)
 	}
 }
 

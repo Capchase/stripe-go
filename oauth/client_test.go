@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestAuthorizeURL(t *testing.T) {
@@ -167,12 +167,12 @@ func TestNewOAuthToken(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, token)
-	assert.Equal(t, token.AccessToken, "sk_123")
-	assert.Equal(t, token.Livemode, false)
-	assert.Equal(t, token.RefreshToken, "rt_123")
+	assert.Equal(t, *token.AccessToken, "sk_123")
+	assert.Equal(t, *token.Livemode, false)
+	assert.Equal(t, *token.RefreshToken, "rt_123")
 	assert.Equal(t, token.TokenType, stripe.OAuthTokenTypeBearer)
-	assert.Equal(t, token.StripePublishableKey, "pk_123")
-	assert.Equal(t, token.StripeUserID, "acct_123")
+	assert.Equal(t, *token.StripePublishableKey, "pk_123")
+	assert.Equal(t, *token.StripeUserID, "acct_123")
 	assert.Equal(t, token.Scope, stripe.OAuthScopeTypeReadWrite)
 }
 
@@ -227,9 +227,9 @@ func TestNewOAuthTokenWithError(t *testing.T) {
 	assert.NotNil(t, err)
 
 	stripeErr := err.(*stripe.Error)
-	assert.Equal(t, 400, stripeErr.HTTPStatusCode)
-	assert.Equal(t, "Authorization code does not exist", stripeErr.OAuthErrorDescription)
-	assert.Equal(t, "invalid_grant", stripeErr.OAuthError)
+	assert.Equal(t, 400, *stripeErr.HTTPStatusCode)
+	assert.Equal(t, "Authorization code does not exist", *stripeErr.OAuthErrorDescription)
+	assert.Equal(t, "invalid_grant", *stripeErr.OAuthError)
 }
 
 func TestDeauthorize(t *testing.T) {
@@ -259,5 +259,5 @@ func TestDeauthorize(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, deauthorization)
-	assert.Equal(t, deauthorization.StripeUserID, "acct_123")
+	assert.Equal(t, *deauthorization.StripeUserID, "acct_123")
 }

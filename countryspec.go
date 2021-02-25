@@ -15,7 +15,7 @@ type VerificationFieldsList struct {
 type CountrySpec struct {
 	APIResource
 	DefaultCurrency                Currency                                        `json:"default_currency"`
-	ID                             string                                          `json:"id"`
+	ID                             *string `json:"id"`
 	SupportedBankAccountCurrencies map[Currency][]Country                          `json:"supported_bank_account_currencies"`
 	SupportedPaymentCurrencies     []Currency                                      `json:"supported_payment_currencies"`
 	SupportedPaymentMethods        []string                                        `json:"supported_payment_methods"`

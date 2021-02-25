@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 func TestSourceObjectParams_AppendTo(t *testing.T) {
@@ -35,8 +35,8 @@ func TestSource_UnmarshalJSON(t *testing.T) {
 		var v Source
 		err := json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "src_123", v.ID)
-		assert.Equal(t, "ach", v.Type)
+		assert.Equal(t, "src_123", *v.ID)
+		assert.Equal(t, "ach", *v.Type)
 
 		// The source data is extracted to the special TypeData field
 		assert.Equal(t, "bar", v.TypeData["foo"])
@@ -50,7 +50,7 @@ func TestSource_UnmarshalJSON(t *testing.T) {
 		var v Source
 		err := json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "src_123", v.ID)
-		assert.Equal(t, "ach", v.Type)
+		assert.Equal(t, "src_123", *v.ID)
+		assert.Equal(t, "ach", *v.Type)
 	}
 }

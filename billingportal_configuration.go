@@ -143,50 +143,50 @@ type BillingPortalConfigurationParams struct {
 // https://stripe.com/docs/api/customer_portal.
 type BillingPortalConfiguration struct {
 	APIResource
-	Active           bool                                       `json:"active"`
-	Application      string                                     `json:"application"`
+	Active           *bool `json:"active"`
+	Application      *string `json:"application"`
 	BusinessProfile  *BillingPortalConfigurationBusinessProfile `json:"business_profile"`
-	Created          int64                                      `json:"created"`
-	DefaultReturnURL string                                     `json:"default_return_url"`
+	Created          *int64 `json:"created"`
+	DefaultReturnURL *string `json:"default_return_url"`
 	Features         *BillingPortalConfigurationFeatures        `json:"features"`
-	ID               string                                     `json:"id"`
-	IsDefault        bool                                       `json:"is_default"`
-	Livemode         bool                                       `json:"livemode"`
-	Object           string                                     `json:"object"`
-	Updated          int64                                      `json:"updated"`
+	ID               *string `json:"id"`
+	IsDefault        *bool `json:"is_default"`
+	Livemode         *bool `json:"livemode"`
+	Object           *string `json:"object"`
+	Updated          *int64 `json:"updated"`
 }
 
 // BillingPortalConfigurationBusinessProfile represents the business profile
 // details on a portal configuration.
 type BillingPortalConfigurationBusinessProfile struct {
-	Headline          string `json:"headline"`
-	PrivacyPolicyURL  string `json:"privacy_policy_url"`
-	TermsOfServiceURL string `json:"terms_of_service_url"`
+	Headline          *string `json:"headline"`
+	PrivacyPolicyURL  *string `json:"privacy_policy_url"`
+	TermsOfServiceURL *string `json:"terms_of_service_url"`
 }
 
 // BillingPortalConfigurationFeaturesCustomerUpdate represents the customer
 // update details on a portal configuration.
 type BillingPortalConfigurationFeaturesCustomerUpdate struct {
 	AllowedUpdates []BillingPortalConfigurationFeaturesCustomerUpdateAllowedUpdate `json:"allowed_updates"`
-	Enabled        bool                                                            `json:"enabled"`
+	Enabled        *bool `json:"enabled"`
 }
 
 // BillingPortalConfigurationFeaturesInvoiceHistory represents the invoice
 // history details on a portal configuration.
 type BillingPortalConfigurationFeaturesInvoiceHistory struct {
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled"`
 }
 
 // BillingPortalConfigurationFeaturesPaymentMethodUpdate represents the payment
 // method update details on a portal configuration.
 type BillingPortalConfigurationFeaturesPaymentMethodUpdate struct {
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled"`
 }
 
 // BillingPortalConfigurationFeaturesSubscriptionCancel represents the
 // subscription cancel details on a portal configuration.
 type BillingPortalConfigurationFeaturesSubscriptionCancel struct {
-	Enabled           bool                                                                  `json:"enabled"`
+	Enabled           *bool `json:"enabled"`
 	Mode              BillingPortalConfigurationFeaturesSubscriptionCancelMode              `json:"mode"`
 	ProrationBehavior BillingPortalConfigurationFeaturesSubscriptionCancelProrationBehavior `json:"proration_behavior"`
 }
@@ -195,14 +195,14 @@ type BillingPortalConfigurationFeaturesSubscriptionCancel struct {
 // subscription update details on a portal configuration.
 type BillingPortalConfigurationFeaturesSubscriptionUpdateProduct struct {
 	Prices  []string `json:"prices"`
-	Product string   `json:"product"`
+	Product *string `json:"product"`
 }
 
 // BillingPortalConfigurationFeaturesSubscriptionUpdate represents the
 // subscription update details on a portal configuration.
 type BillingPortalConfigurationFeaturesSubscriptionUpdate struct {
 	DefaultAllowedUpdates []BillingPortalConfigurationFeaturesSubscriptionUpdateDefaultAllowedUpdate `json:"default_allowed_updates"`
-	Enabled               bool                                                                       `json:"enabled"`
+	Enabled               *bool `json:"enabled"`
 	Products              []*BillingPortalConfigurationFeaturesSubscriptionUpdateProduct             `json:"products"`
 	ProrationBehavior     BillingPortalConfigurationFeaturesSubscriptionUpdateProrationBehavior      `json:"proration_behavior"`
 }
@@ -230,7 +230,7 @@ type BillingPortalConfigurationList struct {
 // the full struct if it was expanded.
 func (c *BillingPortalConfiguration) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		c.ID = id
+		c.ID = &id
 		return nil
 	}
 

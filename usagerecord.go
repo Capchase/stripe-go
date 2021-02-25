@@ -10,11 +10,11 @@ const (
 // See https://stripe.com/docs/api#usage_records
 type UsageRecord struct {
 	APIResource
-	ID               string `json:"id"`
-	Livemode         bool   `json:"livemode"`
-	Quantity         int64  `json:"quantity"`
-	SubscriptionItem string `json:"subscription_item"`
-	Timestamp        int64  `json:"timestamp"`
+	ID               *string `json:"id"`
+	Livemode         *bool `json:"livemode"`
+	Quantity         *int64 `json:"quantity"`
+	SubscriptionItem *string `json:"subscription_item"`
+	Timestamp        *int64 `json:"timestamp"`
 }
 
 // UsageRecordParams create a usage record for a specified subscription item

@@ -4,22 +4,22 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestTerminalLocationDel(t *testing.T) {
 	location, err := Del("loc_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, location)
-	assert.Equal(t, "terminal.location", location.Object)
+	assert.Equal(t, "terminal.location", *location.Object)
 }
 
 func TestTerminalLocationGet(t *testing.T) {
 	location, err := Get("loc_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, location)
-	assert.Equal(t, "terminal.location", location.Object)
+	assert.Equal(t, "terminal.location", *location.Object)
 }
 
 func TestTerminalLocationList(t *testing.T) {
@@ -29,7 +29,7 @@ func TestTerminalLocationList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.TerminalLocation())
-	assert.Equal(t, "terminal.location", i.TerminalLocation().Object)
+	assert.Equal(t, "terminal.location", *i.TerminalLocation().Object)
 	assert.NotNil(t, i.TerminalLocationList())
 }
 
@@ -46,7 +46,7 @@ func TestTerminalLocationNew(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, location)
-	assert.Equal(t, "terminal.location", location.Object)
+	assert.Equal(t, "terminal.location", *location.Object)
 }
 
 func TestTerminalLocationUpdate(t *testing.T) {
@@ -55,5 +55,5 @@ func TestTerminalLocationUpdate(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, location)
-	assert.Equal(t, "terminal.location", location.Object)
+	assert.Equal(t, "terminal.location", *location.Object)
 }

@@ -16,7 +16,7 @@ lint:
 	golint -set_exit_status ./...
 
 test:
-	go run scripts/test_with_stripe_mock/main.go -race ./...
+	go test -v -race -count 1 ./...
 
 vet:
 	go vet ./...
@@ -26,3 +26,6 @@ coverage:
 
 clean:
 	find . -name \*.coverprofile -delete
+
+replace-ptrs:
+	./scripts/replace-ptrs.sh

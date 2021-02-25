@@ -17,7 +17,7 @@ func TestSourceTransaction_UnmarshalJSON(t *testing.T) {
 		var v SourceTransaction
 		err := json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ach", v.Type)
+		assert.Equal(t, "ach", *v.Type)
 
 		// The source data is extracted to the special TypeData field
 		assert.Equal(t, "bar", v.TypeData["foo"])
@@ -31,6 +31,6 @@ func TestSourceTransaction_UnmarshalJSON(t *testing.T) {
 		var v SourceTransaction
 		err := json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ach", v.Type)
+		assert.Equal(t, "ach", *v.Type)
 	}
 }

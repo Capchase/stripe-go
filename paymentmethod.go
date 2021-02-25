@@ -237,9 +237,9 @@ type PaymentMethodListParams struct {
 // BillingDetails represents the billing details associated with a PaymentMethod.
 type BillingDetails struct {
 	Address *Address `json:"address"`
-	Email   string   `json:"email"`
-	Name    string   `json:"name"`
-	Phone   string   `json:"phone"`
+	Email   *string `json:"email"`
+	Name    *string `json:"name"`
+	Phone   *string `json:"phone"`
 }
 
 // PaymentMethodAfterpayClearpay represents the AfterpayClearpay properties.
@@ -252,16 +252,16 @@ type PaymentMethodAlipay struct {
 
 // PaymentMethodAUBECSDebit represents AUBECSDebit-specific properties (Australia Only).
 type PaymentMethodAUBECSDebit struct {
-	BSBNumber   string `json:"bsb_number"`
-	Fingerprint string `json:"fingerprint"`
-	Last4       string `json:"last4"`
+	BSBNumber   *string `json:"bsb_number"`
+	Fingerprint *string `json:"fingerprint"`
+	Last4       *string `json:"last4"`
 }
 
 // PaymentMethodBACSDebit represents the BACS Debit properties.
 type PaymentMethodBACSDebit struct {
-	Fingerprint string `json:"fingerprint"`
-	Last4       string `json:"last4"`
-	SortCode    string `json:"sort_code"`
+	Fingerprint *string `json:"fingerprint"`
+	Last4       *string `json:"last4"`
+	SortCode    *string `json:"sort_code"`
 }
 
 // PaymentMethodBancontact represents the Bancontact properties.
@@ -283,13 +283,13 @@ type PaymentMethodCardNetworks struct {
 
 // PaymentMethodCardThreeDSecureUsage represents the 3DS usage for that Card PaymentMethod.
 type PaymentMethodCardThreeDSecureUsage struct {
-	Supported bool `json:"supported"`
+	Supported *bool `json:"supported"`
 }
 
 // PaymentMethodCardWallet represents the details of the card wallet if this Card PaymentMethod
 // is part of a card wallet.
 type PaymentMethodCardWallet struct {
-	DynamicLast4 string                      `json:"dynamic_last4"`
+	DynamicLast4 *string `json:"dynamic_last4"`
 	Type         PaymentMethodCardWalletType `json:"type"`
 }
 
@@ -297,21 +297,21 @@ type PaymentMethodCardWallet struct {
 type PaymentMethodCard struct {
 	Brand             PaymentMethodCardBrand              `json:"brand"`
 	Checks            *PaymentMethodCardChecks            `json:"checks"`
-	Country           string                              `json:"country"`
-	ExpMonth          uint64                              `json:"exp_month"`
-	ExpYear           uint64                              `json:"exp_year"`
-	Fingerprint       string                              `json:"fingerprint"`
+	Country           *string `json:"country"`
+	ExpMonth          *uint64 `json:"exp_month"`
+	ExpYear           *uint64 `json:"exp_year"`
+	Fingerprint       *string `json:"fingerprint"`
 	Funding           CardFunding                         `json:"funding"`
-	Last4             string                              `json:"last4"`
+	Last4             *string `json:"last4"`
 	Networks          *PaymentMethodCardNetworks          `json:"networks"`
 	ThreeDSecureUsage *PaymentMethodCardThreeDSecureUsage `json:"three_d_secure_usage"`
 	Wallet            *PaymentMethodCardWallet            `json:"wallet"`
 
 	// Please note that the fields below are for internal use only and are not returned
 	// as part of standard API requests.
-	Description string `json:"description"`
-	IIN         string `json:"iin"`
-	Issuer      string `json:"issuer"`
+	Description *string `json:"description"`
+	IIN         *string `json:"iin"`
+	Issuer      *string `json:"issuer"`
 }
 
 // PaymentMethodCardPresent represents the card-present-specific properties.
@@ -320,14 +320,14 @@ type PaymentMethodCardPresent struct {
 
 // PaymentMethodEPS represents the EPS properties.
 type PaymentMethodEPS struct {
-	Bank string `json:"bank"`
+	Bank *string `json:"bank"`
 }
 
 // PaymentMethodFPX represents FPX-specific properties (Malaysia Only).
 type PaymentMethodFPX struct {
 	AccountHolderType PaymentMethodFPXAccountHolderType `json:"account_holder_type"`
-	Bank              string                            `json:"bank"`
-	TransactionID     string                            `json:"transaction_id"`
+	Bank              *string `json:"bank"`
+	TransactionID     *string `json:"transaction_id"`
 }
 
 // PaymentMethodGiropay represents the Giropay properties.
@@ -340,8 +340,8 @@ type PaymentMethodGrabpay struct {
 
 // PaymentMethodIdeal represents the iDEAL-specific properties.
 type PaymentMethodIdeal struct {
-	Bank string `json:"bank"`
-	Bic  string `json:"bic"`
+	Bank *string `json:"bank"`
+	Bic  *string `json:"bic"`
 }
 
 // PaymentMethodInteracPresent represents the interac present properties.
@@ -354,7 +354,7 @@ type PaymentMethodOXXO struct {
 
 // PaymentMethodP24 represents the P24 properties.
 type PaymentMethodP24 struct {
-	Bank string `json:"bank"`
+	Bank *string `json:"bank"`
 }
 
 // PaymentMethodSepaDebitGeneratedFrom represents information about the object
@@ -366,17 +366,17 @@ type PaymentMethodSepaDebitGeneratedFrom struct {
 
 // PaymentMethodSepaDebit represents the SEPA-debit-specific properties.
 type PaymentMethodSepaDebit struct {
-	BankCode      string                               `json:"bank_code"`
-	BranchCode    string                               `json:"branch_code"`
-	Country       string                               `json:"country"`
-	Fingerprint   string                               `json:"fingerprint"`
-	Last4         string                               `json:"last4"`
+	BankCode      *string `json:"bank_code"`
+	BranchCode    *string `json:"branch_code"`
+	Country       *string `json:"country"`
+	Fingerprint   *string `json:"fingerprint"`
+	Last4         *string `json:"last4"`
 	GeneratedFrom *PaymentMethodSepaDebitGeneratedFrom `json:"generated_from"`
 }
 
 // PaymentMethodSofort represents the Sofort-specific properties.
 type PaymentMethodSofort struct {
-	Country string `json:"country"`
+	Country *string `json:"country"`
 }
 
 // PaymentMethod is the resource representing a PaymentMethod.
@@ -390,18 +390,18 @@ type PaymentMethod struct {
 	BillingDetails   *BillingDetails                `json:"billing_details"`
 	Card             *PaymentMethodCard             `json:"card"`
 	CardPresent      *PaymentMethodCardPresent      `json:"card_present"`
-	Created          int64                          `json:"created"`
+	Created          *int64 `json:"created"`
 	Customer         *Customer                      `json:"customer"`
 	EPS              *PaymentMethodEPS              `json:"eps"`
 	FPX              *PaymentMethodFPX              `json:"fpx"`
 	Giropay          *PaymentMethodGiropay          `json:"giropay"`
 	Grabpay          *PaymentMethodGrabpay          `json:"grabpay"`
-	ID               string                         `json:"id"`
+	ID               *string `json:"id"`
 	Ideal            *PaymentMethodIdeal            `json:"ideal"`
 	InteracPresent   *PaymentMethodInteracPresent   `json:"interac_present"`
-	Livemode         bool                           `json:"livemode"`
+	Livemode         *bool `json:"livemode"`
 	Metadata         map[string]string              `json:"metadata"`
-	Object           string                         `json:"object"`
+	Object           *string `json:"object"`
 	OXXO             *PaymentMethodOXXO             `json:"oxxo"`
 	P24              *PaymentMethodP24              `json:"p24"`
 	SepaDebit        *PaymentMethodSepaDebit        `json:"sepa_debit"`
@@ -421,7 +421,7 @@ type PaymentMethodList struct {
 // property may be an id or the full struct if it was expanded.
 func (i *PaymentMethod) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		i.ID = id
+		i.ID = &id
 		return nil
 	}
 

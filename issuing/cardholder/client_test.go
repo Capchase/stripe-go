@@ -4,15 +4,15 @@ import (
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
-	stripe "github.com/stripe/stripe-go/v72"
-	_ "github.com/stripe/stripe-go/v72/testing"
+	stripe "github.com/Capchase/stripe-go/v72"
+	_ "github.com/Capchase/stripe-go/v72/testing"
 )
 
 func TestIssuingCardholderGet(t *testing.T) {
 	cardholder, err := Get("ich_123", nil)
 	assert.Nil(t, err)
 	assert.NotNil(t, cardholder)
-	assert.Equal(t, "issuing.cardholder", cardholder.Object)
+	assert.Equal(t, "issuing.cardholder", *cardholder.Object)
 }
 
 func TestIssuingCardholderList(t *testing.T) {
@@ -22,7 +22,7 @@ func TestIssuingCardholderList(t *testing.T) {
 	assert.True(t, i.Next())
 	assert.Nil(t, i.Err())
 	assert.NotNil(t, i.IssuingCardholder())
-	assert.Equal(t, "issuing.cardholder", i.IssuingCardholder().Object)
+	assert.Equal(t, "issuing.cardholder", *i.IssuingCardholder().Object)
 	assert.NotNil(t, i.IssuingCardholderList())
 }
 
@@ -69,7 +69,7 @@ func TestIssuingCardholderNew(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, cardholder)
-	assert.Equal(t, "issuing.cardholder", cardholder.Object)
+	assert.Equal(t, "issuing.cardholder", *cardholder.Object)
 }
 
 // IssuingCardholderSpendingControlsSpendingLimitParams is the set of parameters that can be used to
@@ -99,5 +99,5 @@ func TestIssuingCardholderUpdate(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	assert.NotNil(t, cardholder)
-	assert.Equal(t, "issuing.cardholder", cardholder.Object)
+	assert.Equal(t, "issuing.cardholder", *cardholder.Object)
 }

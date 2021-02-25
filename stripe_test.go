@@ -68,7 +68,7 @@ func TestContext(t *testing.T) {
 func TestDo_Retry(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -90,7 +90,7 @@ func TestDo_Retry(t *testing.T) {
 			w.Write([]byte(`{"error":"Conflict (this should be retried)."}`))
 
 		case 1:
-			response := testServerResponse{Message: message}
+			response := testServerResponse{Message: &message}
 
 			data, err := json.Marshal(response)
 			assert.NoError(t, err)
@@ -132,7 +132,7 @@ func TestDo_Retry(t *testing.T) {
 	err = backend.Do(request, bodyBuffer, &response)
 
 	assert.NoError(t, err)
-	assert.Equal(t, message, response.Message)
+	assert.Equal(t, message, *response.Message)
 
 	// We should have seen exactly two requests.
 	assert.Equal(t, 2, requestNum)
@@ -179,7 +179,7 @@ func TestShouldRetry(t *testing.T) {
 	// below to be retried)
 	t.Run("DontRetryOnStripeError", func(t *testing.T) {
 		shouldRetry, _ := c.shouldRetry(
-			&Error{Msg: "An error from Stripe"},
+			&Error{Msg: String("An error from Stripe")},
 			&http.Request{},
 			&http.Response{StatusCode: http.StatusBadRequest},
 			0,
@@ -336,7 +336,7 @@ func TestShouldRetry(t *testing.T) {
 func TestDo_RetryOnTimeout(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	timeout := time.Second
@@ -382,11 +382,11 @@ func TestDo_RetryOnTimeout(t *testing.T) {
 func TestDo_LastResponsePopulated(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
-	expectedResponse := testServerResponse{Message: message}
+	expectedResponse := testServerResponse{Message: &message}
 	rawJSON, err := json.Marshal(expectedResponse)
 	assert.NoError(t, err)
 
@@ -422,7 +422,7 @@ func TestDo_LastResponsePopulated(t *testing.T) {
 	var resource testServerResponse
 	err = backend.Do(request, nil, &resource)
 	assert.NoError(t, err)
-	assert.Equal(t, message, resource.Message)
+	assert.Equal(t, message, *resource.Message)
 
 	assert.Equal(t, "key_123", resource.LastResponse.IdempotencyKey)
 	assert.Equal(t, "other_header", resource.LastResponse.Header.Get("Other-Header"))
@@ -438,7 +438,7 @@ func TestDo_LastResponsePopulated(t *testing.T) {
 func TestDo_TelemetryDisabled(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -448,7 +448,7 @@ func TestDo_TelemetryDisabled(t *testing.T) {
 		// none of the requests should include telemetry metrics
 		assert.Equal(t, r.Header.Get("X-Stripe-Client-Telemetry"), "")
 
-		response := testServerResponse{Message: message}
+		response := testServerResponse{Message: &message}
 
 		data, err := json.Marshal(response)
 		assert.NoError(t, err)
@@ -486,7 +486,7 @@ func TestDo_TelemetryDisabled(t *testing.T) {
 		err = backend.Do(request, nil, &response)
 
 		assert.NoError(t, err)
-		assert.Equal(t, message, response.Message)
+		assert.Equal(t, message, *response.Message)
 	}
 
 	// We should have seen exactly two requests.
@@ -498,12 +498,12 @@ func TestDo_TelemetryDisabled(t *testing.T) {
 func TestDo_TelemetryEnabled(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	type requestMetrics struct {
-		RequestDurationMS int    `json:"request_duration_ms"`
-		RequestID         string `json:"request_id"`
+		RequestDurationMS *int    `json:"request_duration_ms"`
+		RequestID         *string `json:"request_id"`
 	}
 
 	type requestTelemetry struct {
@@ -531,15 +531,15 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 			assert.NoError(t, err)
 
 			// the second request should include the metrics for the first request
-			assert.Equal(t, telemetry.LastRequestMetrics.RequestID, "req_1")
-			assert.True(t, telemetry.LastRequestMetrics.RequestDurationMS > 20,
+			assert.Equal(t, *telemetry.LastRequestMetrics.RequestID, "req_1")
+			assert.True(t, *telemetry.LastRequestMetrics.RequestDurationMS > 20,
 				"request_duration_ms should be > 20ms")
 		default:
-			assert.Fail(t, "Should not have reached request %v", requestNum)
+			assert.Failf(t, "Error", "Should not have reached request %v", requestNum)
 		}
 
 		w.Header().Set("Request-Id", fmt.Sprintf("req_%d", requestNum))
-		response := testServerResponse{Message: message}
+		response := testServerResponse{Message: &message}
 
 		data, err := json.Marshal(response)
 		assert.NoError(t, err)
@@ -573,7 +573,7 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 		err = backend.Do(request, nil, &response)
 
 		assert.NoError(t, err)
-		assert.Equal(t, message, response.Message)
+		assert.Equal(t, message, *response.Message)
 	}
 
 	// We should have seen exactly two requests.
@@ -587,7 +587,7 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 func TestDo_TelemetryEnabledNoDataRace(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -597,7 +597,7 @@ func TestDo_TelemetryEnabledNoDataRace(t *testing.T) {
 		reqID := atomic.AddInt32(&requestNum, 1)
 
 		w.Header().Set("Request-Id", fmt.Sprintf("req_%d", reqID))
-		response := testServerResponse{Message: message}
+		response := testServerResponse{Message: &message}
 
 		data, err := json.Marshal(response)
 		assert.NoError(t, err)
@@ -635,7 +635,7 @@ func TestDo_TelemetryEnabledNoDataRace(t *testing.T) {
 			err = backend.Do(request, nil, &response)
 
 			assert.NoError(t, err)
-			assert.Equal(t, message, response.Message)
+			assert.Equal(t, message, *response.Message)
 
 			done <- struct{}{}
 		}()
@@ -656,7 +656,7 @@ func TestDo_Redaction(t *testing.T) {
 	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		w.WriteHeader(402)
-		data, err := json.Marshal(testServerResponse{Error: &Error{PaymentIntent: &PaymentIntent{ClientSecret: "SHOULDBEREDACTED"}}})
+		data, err := json.Marshal(testServerResponse{Error: &Error{PaymentIntent: &PaymentIntent{ClientSecret: String("SHOULDBEREDACTED")}}})
 		assert.NoError(t, err)
 
 		_, err = w.Write(data)
@@ -835,7 +835,7 @@ func TestStripeAccount(t *testing.T) {
 
 func TestUnmarshalJSONVerbose(t *testing.T) {
 	type testServerResponse struct {
-		Message string `json:"message"`
+		Message *string `json:"message"`
 	}
 
 	backend := GetBackend(APIBackend).(*BackendImplementation)
@@ -843,13 +843,13 @@ func TestUnmarshalJSONVerbose(t *testing.T) {
 	// Valid JSON
 	{
 		type testServerResponse struct {
-			Message string `json:"message"`
+			Message *string `json:"message"`
 		}
 
 		var sample testServerResponse
 		err := backend.UnmarshalJSONVerbose(200, []byte(`{"message":"hello"}`), &sample)
 		assert.NoError(t, err)
-		assert.Equal(t, "hello", sample.Message)
+		assert.Equal(t, "hello", *sample.Message)
 	}
 
 	// Invalid JSON (short)
@@ -894,10 +894,10 @@ func TestUserAgent(t *testing.T) {
 
 func TestUserAgentWithAppInfo(t *testing.T) {
 	appInfo := &AppInfo{
-		Name:      "MyAwesomePlugin",
-		PartnerID: "partner_1234",
-		URL:       "https://myawesomeplugin.info",
-		Version:   "1.2.34",
+		Name:      String("MyAwesomePlugin"),
+		PartnerID: String("partner_1234"),
+		URL:       String("https://myawesomeplugin.info"),
+		Version:   String("1.2.34"),
 	}
 	SetAppInfo(appInfo)
 	defer SetAppInfo(nil)
@@ -965,9 +965,9 @@ func TestStripeClientUserAgent(t *testing.T) {
 
 func TestStripeClientUserAgentWithAppInfo(t *testing.T) {
 	appInfo := &AppInfo{
-		Name:    "MyAwesomePlugin",
-		URL:     "https://myawesomeplugin.info",
-		Version: "1.2.34",
+		Name:    String("MyAwesomePlugin"),
+		URL:     String("https://myawesomeplugin.info"),
+		Version: String("1.2.34"),
 	}
 	SetAppInfo(appInfo)
 	defer SetAppInfo(nil)
@@ -985,9 +985,9 @@ func TestStripeClientUserAgentWithAppInfo(t *testing.T) {
 	assert.NoError(t, err)
 
 	decodedAppInfo := userAgent["application"].(map[string]interface{})
-	assert.Equal(t, appInfo.Name, decodedAppInfo["name"])
-	assert.Equal(t, appInfo.URL, decodedAppInfo["url"])
-	assert.Equal(t, appInfo.Version, decodedAppInfo["version"])
+	assert.Equal(t, *appInfo.Name, decodedAppInfo["name"])
+	assert.Equal(t, *appInfo.URL, decodedAppInfo["url"])
+	assert.Equal(t, *appInfo.Version, decodedAppInfo["version"])
 }
 
 func TestResponseToError(t *testing.T) {
@@ -1005,8 +1005,8 @@ func TestResponseToError(t *testing.T) {
 	// JSON and inject into our conversion function.
 	expectedErr := &Error{
 		Code:  ErrorCodeMissing,
-		Msg:   "That card was declined",
-		Param: "expiry_date",
+		Msg:   String("That card was declined"),
+		Param: String("expiry_date"),
 		Type:  ErrorTypeCard,
 	}
 	bytes, err := json.Marshal(expectedErr)
@@ -1035,8 +1035,8 @@ func TestResponseToError(t *testing.T) {
 	assert.Equal(t, expectedErr.Code, stripeErr.Code)
 	assert.Equal(t, expectedErr.Msg, stripeErr.Msg)
 	assert.Equal(t, expectedErr.Param, stripeErr.Param)
-	assert.Equal(t, res.Header.Get("Request-Id"), stripeErr.RequestID)
-	assert.Equal(t, res.StatusCode, stripeErr.HTTPStatusCode)
+	assert.Equal(t, res.Header.Get("Request-Id"), *stripeErr.RequestID)
+	assert.Equal(t, res.StatusCode, *stripeErr.HTTPStatusCode)
 	assert.Equal(t, expectedErr.Type, stripeErr.Type)
 	assert.Equal(t, expectedDeclineCode, stripeErr.DeclineCode)
 

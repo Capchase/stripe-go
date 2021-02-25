@@ -22,7 +22,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 //
@@ -133,22 +133,22 @@ func (r *APIResource) SetLastResponse(response *APIResponse) {
 // to. This should be reserved for plugins that wish to identify themselves
 // with Stripe.
 type AppInfo struct {
-	Name      string `json:"name"`
-	PartnerID string `json:"partner_id"`
-	URL       string `json:"url"`
-	Version   string `json:"version"`
+	Name      *string `json:"name"`
+	PartnerID *string `json:"partner_id"`
+	URL       *string `json:"url"`
+	Version   *string `json:"version"`
 }
 
 // formatUserAgent formats an AppInfo in a way that's suitable to be appended
 // to a User-Agent string. Note that this format is shared between all
 // libraries so if it's changed, it should be changed everywhere.
 func (a *AppInfo) formatUserAgent() string {
-	str := a.Name
-	if a.Version != "" {
-		str += "/" + a.Version
+	str := *a.Name
+	if *a.Version != "" {
+		str += "/" + *a.Version
 	}
-	if a.URL != "" {
-		str += " (" + a.URL + ")"
+	if *a.URL != "" {
+		str += " (" + *a.URL + ")"
 	}
 	return str
 }
@@ -403,7 +403,7 @@ func (s *BackendImplementation) Do(req *http.Request, body *bytes.Buffer, v Last
 		//
 		// And our original bug report here:
 		//
-		//     https://github.com/stripe/stripe-go/issues/642
+		//     https://github.com/Capchase/stripe-go/issues/642
 		//
 		// To workaround the problem, we put a fresh `Body` onto the `Request`
 		// every time we execute it, and this seems to empirically resolve the
@@ -421,7 +421,7 @@ func (s *BackendImplementation) Do(req *http.Request, body *bytes.Buffer, v Last
 			// usually not used, but it doesn't hurt to set it in case it's
 			// needed. See:
 			//
-			//     https://github.com/stripe/stripe-go/issues/710
+			//     https://github.com/Capchase/stripe-go/issues/710
 			//
 			req.GetBody = func() (io.ReadCloser, error) {
 				reader := bytes.NewReader(body.Bytes())
@@ -491,8 +491,8 @@ func (s *BackendImplementation) Do(req *http.Request, body *bytes.Buffer, v Last
 		reqID := res.Header.Get("Request-Id")
 		if len(reqID) > 0 {
 			metrics := requestMetrics{
-				RequestDurationMS: int(requestDuration / time.Millisecond),
-				RequestID:         reqID,
+				RequestDurationMS: Int(int(requestDuration / time.Millisecond)),
+				RequestID:         &reqID,
 			}
 
 			// If the metrics buffer is full, discard the new metrics. Otherwise, add
@@ -538,8 +538,8 @@ func (s *BackendImplementation) ResponseToError(res *http.Response, resBody []by
 		err := errors.New(string(resBody))
 		return err
 	}
-	raw.Error.HTTPStatusCode = res.StatusCode
-	raw.Error.RequestID = res.Header.Get("Request-Id")
+	raw.Error.HTTPStatusCode = &res.StatusCode
+	raw.Error.RequestID = String(res.Header.Get("Request-Id"))
 
 	var typedError error
 	switch raw.Error.Type {
@@ -923,6 +923,29 @@ func GetBackendWithConfig(backendType SupportedBackend, config *BackendConfig) B
 	return nil
 }
 
+// Int returns a pointer to the int value passed in.
+func Int(v int) *int {
+	return &v
+}
+
+// IntValue returns the value of the int pointer passed in or
+// 0 if the pointer is nil.
+func IntValue(v *int) int {
+	if v != nil {
+		return *v
+	}
+	return 0
+}
+
+// IntSlice returns a slice of int pointers given a slice of ints.
+func IntSlice(v []int) []*int {
+	out := make([]*int, len(v))
+	for i := range v {
+		out[i] = &v[i]
+	}
+	return out
+}
+
 // Int64 returns a pointer to the int64 value passed in.
 func Int64(v int64) *int64 {
 	return &v
@@ -987,7 +1010,7 @@ func ParseID(data []byte) (string, bool) {
 
 // SetAppInfo sets app information. See AppInfo.
 func SetAppInfo(info *AppInfo) {
-	if info != nil && info.Name == "" {
+	if info != nil && *info.Name == "" {
 		panic(fmt.Errorf("App info name cannot be empty"))
 	}
 	appInfo = info
@@ -1086,17 +1109,17 @@ func (nopReadCloser) Close() error { return nil }
 // debugging information.
 type stripeClientUserAgent struct {
 	Application     *AppInfo `json:"application"`
-	BindingsVersion string   `json:"bindings_version"`
-	Language        string   `json:"lang"`
-	LanguageVersion string   `json:"lang_version"`
-	Publisher       string   `json:"publisher"`
-	Uname           string   `json:"uname"`
+	BindingsVersion *string  `json:"bindings_version"`
+	Language        *string  `json:"lang"`
+	LanguageVersion *string  `json:"lang_version"`
+	Publisher       *string  `json:"publisher"`
+	Uname           *string  `json:"uname"`
 }
 
 // requestMetrics contains the id and duration of the last request sent
 type requestMetrics struct {
-	RequestDurationMS int    `json:"request_duration_ms"`
-	RequestID         string `json:"request_id"`
+	RequestDurationMS *int    `json:"request_duration_ms"`
+	RequestID         *string `json:"request_id"`
 }
 
 // requestTelemetry contains the payload sent in the
@@ -1196,11 +1219,11 @@ func initUserAgent() {
 
 	stripeUserAgent := &stripeClientUserAgent{
 		Application:     appInfo,
-		BindingsVersion: clientversion,
-		Language:        "go",
-		LanguageVersion: runtime.Version(),
-		Publisher:       "stripe",
-		Uname:           getUname(),
+		BindingsVersion: String(clientversion),
+		Language:        String("go"),
+		LanguageVersion: String(runtime.Version()),
+		Publisher:       String("stripe"),
+		Uname:           String(getUname()),
 	}
 	marshaled, err := json.Marshal(stripeUserAgent)
 	// Encoding this struct should never be a problem, so we're okay to panic

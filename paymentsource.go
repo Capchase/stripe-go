@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/stripe/stripe-go/v72/form"
+	"github.com/Capchase/stripe-go/v72/form"
 )
 
 // PaymentSourceType consts represent valid payment sources.
@@ -89,8 +89,8 @@ type PaymentSource struct {
 	APIResource
 	BankAccount  *BankAccount      `json:"-"`
 	Card         *Card             `json:"-"`
-	Deleted      bool              `json:"deleted"`
-	ID           string            `json:"id"`
+	Deleted      *bool             `json:"deleted"`
+	ID           *string           `json:"id"`
 	SourceObject *Source           `json:"-"`
 	Type         PaymentSourceType `json:"object"`
 }
@@ -114,7 +114,7 @@ type SourceListParams struct {
 // type of payment instrument it refers to is specified in the JSON
 func (s *PaymentSource) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		s.ID = id
+		s.ID = &id
 		return nil
 	}
 
@@ -149,7 +149,7 @@ func (s *PaymentSource) MarshalJSON() ([]byte, error) {
 	case PaymentSourceTypeCard:
 		var customerID *string
 		if s.Card.Customer != nil {
-			customerID = &s.Card.Customer.ID
+			customerID = s.Card.Customer.ID
 		}
 
 		target = struct {
@@ -163,7 +163,7 @@ func (s *PaymentSource) MarshalJSON() ([]byte, error) {
 		}
 	case PaymentSourceTypeAccount:
 		target = struct {
-			ID   string            `json:"id"`
+			ID   *string           `json:"id"`
 			Type PaymentSourceType `json:"object"`
 		}{
 			ID:   s.ID,
@@ -172,7 +172,7 @@ func (s *PaymentSource) MarshalJSON() ([]byte, error) {
 	case PaymentSourceTypeBankAccount:
 		var customerID *string
 		if s.BankAccount.Customer != nil {
-			customerID = &s.BankAccount.Customer.ID
+			customerID = s.BankAccount.Customer.ID
 		}
 
 		target = struct {

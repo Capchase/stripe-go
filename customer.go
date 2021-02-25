@@ -89,23 +89,23 @@ type CustomerListParams struct {
 type Customer struct {
 	APIResource
 	Address             Address                  `json:"address"`
-	Balance             int64                    `json:"balance"`
-	Created             int64                    `json:"created"`
+	Balance             *int64 `json:"balance"`
+	Created             *int64 `json:"created"`
 	Currency            Currency                 `json:"currency"`
 	DefaultSource       *PaymentSource           `json:"default_source"`
-	Deleted             bool                     `json:"deleted"`
-	Delinquent          bool                     `json:"delinquent"`
-	Description         string                   `json:"description"`
+	Deleted             *bool `json:"deleted"`
+	Delinquent          *bool `json:"delinquent"`
+	Description         *string `json:"description"`
 	Discount            *Discount                `json:"discount"`
-	Email               string                   `json:"email"`
-	ID                  string                   `json:"id"`
-	InvoicePrefix       string                   `json:"invoice_prefix"`
+	Email               *string `json:"email"`
+	ID                  *string `json:"id"`
+	InvoicePrefix       *string `json:"invoice_prefix"`
 	InvoiceSettings     *CustomerInvoiceSettings `json:"invoice_settings"`
-	Livemode            bool                     `json:"livemode"`
+	Livemode            *bool `json:"livemode"`
 	Metadata            map[string]string        `json:"metadata"`
-	Name                string                   `json:"name"`
-	NextInvoiceSequence int64                    `json:"next_invoice_sequence"`
-	Phone               string                   `json:"phone"`
+	Name                *string `json:"name"`
+	NextInvoiceSequence *int64 `json:"next_invoice_sequence"`
+	Phone               *string `json:"phone"`
 	PreferredLocales    []string                 `json:"preferred_locales"`
 	Shipping            *CustomerShippingDetails `json:"shipping"`
 	Sources             *SourceList              `json:"sources"`
@@ -125,7 +125,7 @@ type CustomerInvoiceCustomField struct {
 type CustomerInvoiceSettings struct {
 	CustomFields         []*CustomerInvoiceCustomField `json:"custom_fields"`
 	DefaultPaymentMethod *PaymentMethod                `json:"default_payment_method"`
-	Footer               string                        `json:"footer"`
+	Footer               *string `json:"footer"`
 }
 
 // CustomerList is a list of customers as retrieved from a list endpoint.
@@ -138,8 +138,8 @@ type CustomerList struct {
 // CustomerShippingDetails is the structure containing shipping information.
 type CustomerShippingDetails struct {
 	Address Address `json:"address"`
-	Name    string  `json:"name"`
-	Phone   string  `json:"phone"`
+	Name    *string `json:"name"`
+	Phone   *string `json:"phone"`
 }
 
 // UnmarshalJSON handles deserialization of a Customer.
@@ -147,7 +147,7 @@ type CustomerShippingDetails struct {
 // property may be an id or the full struct if it was expanded.
 func (c *Customer) UnmarshalJSON(data []byte) error {
 	if id, ok := ParseID(data); ok {
-		c.ID = id
+		c.ID = &id
 		return nil
 	}
 

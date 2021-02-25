@@ -13,17 +13,17 @@ func TestPromotionCode_UnmarshalJSON(t *testing.T) {
 		var v PromotionCode
 		err := json.Unmarshal([]byte(`"promo_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "promo_123", v.ID)
+		assert.Equal(t, "promo_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := PromotionCode{ID: "promo_123"}
+		v := PromotionCode{ID: String("promo_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "promo_123", v.ID)
+		assert.Equal(t, "promo_123", *v.ID)
 	}
 }

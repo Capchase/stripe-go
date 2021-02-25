@@ -13,18 +13,18 @@ func TestPayout_UnmarshalJSON(t *testing.T) {
 		var v Payout
 		err := json.Unmarshal([]byte(`"po_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "po_123", v.ID)
+		assert.Equal(t, "po_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
 	{
-		v := Payout{ID: "po_123"}
+		v := Payout{ID: String("po_123")}
 		data, err := json.Marshal(&v)
 		assert.NoError(t, err)
 
 		err = json.Unmarshal(data, &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "po_123", v.ID)
+		assert.Equal(t, "po_123", *v.ID)
 	}
 }
 
@@ -34,7 +34,7 @@ func TestPayoutDestination_UnmarshalJSON(t *testing.T) {
 		var v PayoutDestination
 		err := json.Unmarshal([]byte(`"ba_123"`), &v)
 		assert.NoError(t, err)
-		assert.Equal(t, "ba_123", v.ID)
+		assert.Equal(t, "ba_123", *v.ID)
 	}
 
 	// Unmarshals from a JSON object
@@ -51,6 +51,6 @@ func TestPayoutDestination_UnmarshalJSON(t *testing.T) {
 
 		// The destination has a field for each possible type, so the bank
 		// account is located one level down
-		assert.Equal(t, "ba_123", v.BankAccount.ID)
+		assert.Equal(t, "ba_123", *v.BankAccount.ID)
 	}
 }
