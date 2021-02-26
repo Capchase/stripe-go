@@ -131,7 +131,23 @@ func GetIter(container ListParamsContainer, query Query) *Iter {
 //
 
 func listItemID(x interface{}) string {
-	return reflect.ValueOf(x).Elem().FieldByName("ID").String()
+	val := reflect.ValueOf(x)
+
+	// dereference x if its a pointer
+	if val.Kind() == reflect.Ptr {
+		val = val.Elem()
+	}
+
+	idVal := val.FieldByName("ID")
+
+	// dereference idVal if its a pointer
+	// as we do not want to get strings of the
+	// type "<*string Value>"
+	if idVal.Kind() == reflect.Ptr {
+		idVal = idVal.Elem()
+	}
+
+	return idVal.String()
 }
 
 func reverse(a []interface{}) {

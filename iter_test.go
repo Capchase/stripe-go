@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	assert "github.com/stretchr/testify/require"
 	"github.com/Capchase/stripe-go/v72/form"
+	assert "github.com/stretchr/testify/require"
 )
 
 func TestIterEmpty(t *testing.T) {
@@ -141,6 +141,32 @@ func TestIterListAndMeta(t *testing.T) {
 	it := GetIter(nil, tq.query)
 	assert.Equal(t, list, it.List())
 	assert.Equal(t, listMeta, it.Meta())
+}
+
+func TestIterListItemID(t *testing.T) {
+	t.Run("Stripe_Charge_Ptr", func(t *testing.T) {
+		ch := &Charge{ID: String("ch_id")}
+		assert.Equal(t, "ch_id", listItemID(ch))
+	})
+
+	t.Run("Stripe_Charge", func(t *testing.T) {
+		ch := Charge{ID: String("ch_id")}
+		assert.Equal(t, "ch_id", listItemID(ch))
+	})
+
+	t.Run("Other_Struct_Ptr", func(t *testing.T) {
+		other := struct {
+			ID string
+		}{ID: "other_id"}
+		assert.Equal(t, "other_id", listItemID(&other))
+	})
+
+	t.Run("Other_Struct", func(t *testing.T) {
+		other := struct {
+			ID string
+		}{ID: "other_id"}
+		assert.Equal(t, "other_id", listItemID(other))
+	})
 }
 
 //
