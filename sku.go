@@ -46,36 +46,36 @@ type SKUParams struct {
 
 // Inventory represents the inventory options of a SKU.
 type Inventory struct {
-	Quantity *int64 `json:"quantity,omitempty"`
-	Type     SKUInventoryType  `json:"type,omitempty"`
-	Value    SKUInventoryValue `json:"value,omitempty"`
+	Quantity *int64 `json:"quantity"`
+	Type     SKUInventoryType  `json:"type"`
+	Value    SKUInventoryValue `json:"value"`
 }
 
 // SKU is the resource representing a SKU.
 // For more details see https://stripe.com/docs/api#skus.
 type SKU struct {
 	APIResource
-	Active            *bool `json:"active,omitempty"`
-	Attributes        map[string]string  `json:"attributes,omitempty"`
-	Created           *int64 `json:"created,omitempty"`
-	Currency          Currency           `json:"currency,omitempty"`
-	Description       *string `json:"description,omitempty"`
-	ID                *string `json:"id,omitempty"`
-	Image             *string `json:"image,omitempty"`
-	Inventory         *Inventory         `json:"inventory,omitempty"`
-	Livemode          *bool `json:"livemode,omitempty"`
-	Metadata          map[string]string  `json:"metadata,omitempty"`
-	PackageDimensions *PackageDimensions `json:"package_dimensions,omitempty"`
-	Price             *int64 `json:"price,omitempty"`
-	Product           *Product           `json:"product,omitempty"`
-	Updated           *int64 `json:"updated,omitempty"`
+	Active            *bool `json:"active"`
+	Attributes        map[string]string  `json:"attributes"`
+	Created           *int64 `json:"created"`
+	Currency          Currency           `json:"currency"`
+	Description       *string `json:"description"`
+	ID                *string `json:"id"`
+	Image             *string `json:"image"`
+	Inventory         *Inventory         `json:"inventory"`
+	Livemode          *bool `json:"livemode"`
+	Metadata          map[string]string  `json:"metadata"`
+	PackageDimensions *PackageDimensions `json:"package_dimensions"`
+	Price             *int64 `json:"price"`
+	Product           *Product           `json:"product"`
+	Updated           *int64 `json:"updated"`
 }
 
 // SKUList is a list of SKUs as returned from a list endpoint.
 type SKUList struct {
 	APIResource
 	ListMeta
-	Data []*SKU `json:"data,omitempty"`
+	Data []*SKU `json:"data"`
 }
 
 // SKUListParams is the set of parameters that can be used when listing SKUs.

@@ -535,196 +535,196 @@ func (p *AccountExternalAccountParams) AppendTo(body *form.Values, keyParts []st
 
 // AccountBusinessProfile represents optional information related to the business.
 type AccountBusinessProfile struct {
-	MCC                *string `json:"mcc,omitempty"`
-	Name               *string `json:"name,omitempty"`
-	ProductDescription *string `json:"product_description,omitempty"`
-	SupportAddress     *Address `json:"support_address,omitempty"`
-	SupportEmail       *string `json:"support_email,omitempty"`
-	SupportPhone       *string `json:"support_phone,omitempty"`
-	SupportURL         *string `json:"support_url,omitempty"`
-	URL                *string `json:"url,omitempty"`
+	MCC                *string `json:"mcc"`
+	Name               *string `json:"name"`
+	ProductDescription *string `json:"product_description"`
+	SupportAddress     *Address `json:"support_address"`
+	SupportEmail       *string `json:"support_email"`
+	SupportPhone       *string `json:"support_phone"`
+	SupportURL         *string `json:"support_url"`
+	URL                *string `json:"url"`
 }
 
 // AccountCapabilities is the resource representing the capabilities enabled on that account.
 type AccountCapabilities struct {
-	AUBECSDebitPayments     AccountCapabilityStatus `json:"au_becs_debit_payments,omitempty"`
-	BACSDebitPayments       AccountCapabilityStatus `json:"bacs_debit_payments,omitempty"`
-	BancontactPayments      AccountCapabilityStatus `json:"bancontact_payments,omitempty"`
-	CardIssuing             AccountCapabilityStatus `json:"card_issuing,omitempty"`
-	CardPayments            AccountCapabilityStatus `json:"card_payments,omitempty"`
-	CartesBancairesPayments AccountCapabilityStatus `json:"cartes_bancaires_payments,omitempty"`
-	EPSPayments             AccountCapabilityStatus `json:"eps_payments,omitempty"`
-	FPXPayments             AccountCapabilityStatus `json:"fpx_payments,omitempty"`
-	GiropayPayments         AccountCapabilityStatus `json:"giropay_payments,omitempty"`
-	GrabpayPayments         AccountCapabilityStatus `json:"grabpay_payments,omitempty"`
-	IdealPayments           AccountCapabilityStatus `json:"ideal_payments,omitempty"`
-	JCBPayments             AccountCapabilityStatus `json:"jcb_payments,omitempty"`
-	LegacyPayments          AccountCapabilityStatus `json:"legacy_payments,omitempty"`
-	OXXOPayments            AccountCapabilityStatus `json:"oxxo_payments,omitempty"`
-	P24Payments             AccountCapabilityStatus `json:"p24_payments,omitempty"`
-	SEPADebitPayments       AccountCapabilityStatus `json:"sepa_debit_payments,omitempty"`
-	SofortPayments          AccountCapabilityStatus `json:"sofort_payments,omitempty"`
-	TaxReportingUS1099K     AccountCapabilityStatus `json:"tax_reporting_us_1099_k,omitempty"`
-	TaxReportingUS1099MISC  AccountCapabilityStatus `json:"tax_reporting_us_1099_misc,omitempty"`
-	Transfers               AccountCapabilityStatus `json:"transfers,omitempty"`
+	AUBECSDebitPayments     AccountCapabilityStatus `json:"au_becs_debit_payments"`
+	BACSDebitPayments       AccountCapabilityStatus `json:"bacs_debit_payments"`
+	BancontactPayments      AccountCapabilityStatus `json:"bancontact_payments"`
+	CardIssuing             AccountCapabilityStatus `json:"card_issuing"`
+	CardPayments            AccountCapabilityStatus `json:"card_payments"`
+	CartesBancairesPayments AccountCapabilityStatus `json:"cartes_bancaires_payments"`
+	EPSPayments             AccountCapabilityStatus `json:"eps_payments"`
+	FPXPayments             AccountCapabilityStatus `json:"fpx_payments"`
+	GiropayPayments         AccountCapabilityStatus `json:"giropay_payments"`
+	GrabpayPayments         AccountCapabilityStatus `json:"grabpay_payments"`
+	IdealPayments           AccountCapabilityStatus `json:"ideal_payments"`
+	JCBPayments             AccountCapabilityStatus `json:"jcb_payments"`
+	LegacyPayments          AccountCapabilityStatus `json:"legacy_payments"`
+	OXXOPayments            AccountCapabilityStatus `json:"oxxo_payments"`
+	P24Payments             AccountCapabilityStatus `json:"p24_payments"`
+	SEPADebitPayments       AccountCapabilityStatus `json:"sepa_debit_payments"`
+	SofortPayments          AccountCapabilityStatus `json:"sofort_payments"`
+	TaxReportingUS1099K     AccountCapabilityStatus `json:"tax_reporting_us_1099_k"`
+	TaxReportingUS1099MISC  AccountCapabilityStatus `json:"tax_reporting_us_1099_misc"`
+	Transfers               AccountCapabilityStatus `json:"transfers"`
 }
 
 // AccountCompanyVerificationDocument represents details about a company's verification state.
 type AccountCompanyVerificationDocument struct {
-	Back        *File                                         `json:"back,omitempty"`
-	Details     *string `json:"details,omitempty"`
-	DetailsCode AccountCompanyVerificationDocumentDetailsCode `json:"details_code,omitempty"`
-	Front       *File                                         `json:"front,omitempty"`
+	Back        *File                                         `json:"back"`
+	Details     *string `json:"details"`
+	DetailsCode AccountCompanyVerificationDocumentDetailsCode `json:"details_code"`
+	Front       *File                                         `json:"front"`
 }
 
 // AccountCompanyVerification represents details about a company's verification state.
 type AccountCompanyVerification struct {
-	Document *AccountCompanyVerificationDocument `json:"document,omitempty"`
+	Document *AccountCompanyVerificationDocument `json:"document"`
 }
 
 // AccountCompany represents details about the company or business associated with the account.
 type AccountCompany struct {
-	Address            *AccountAddress             `json:"address,omitempty"`
-	AddressKana        *AccountAddress             `json:"address_kana,omitempty"`
-	AddressKanji       *AccountAddress             `json:"address_kanji,omitempty"`
-	DirectorsProvided  *bool `json:"directors_provided,omitempty"`
-	ExecutivesProvided *bool `json:"executives_provided,omitempty"`
-	Name               *string `json:"name,omitempty"`
-	NameKana           *string `json:"name_kana,omitempty"`
-	NameKanji          *string `json:"name_kanji,omitempty"`
-	OwnersProvided     *bool `json:"owners_provided,omitempty"`
-	Phone              *string `json:"phone,omitempty"`
-	RegistrationNumber *string `json:"registration_number,omitempty"`
-	Structure          AccountCompanyStructure     `json:"structure,omitempty"`
-	TaxIDProvided      *bool `json:"tax_id_provided,omitempty"`
-	TaxIDRegistrar     *string `json:"tax_id_registrar,omitempty"`
-	VATIDProvided      *bool `json:"vat_id_provided,omitempty"`
-	Verification       *AccountCompanyVerification `json:"verification,omitempty"`
+	Address            *AccountAddress             `json:"address"`
+	AddressKana        *AccountAddress             `json:"address_kana"`
+	AddressKanji       *AccountAddress             `json:"address_kanji"`
+	DirectorsProvided  *bool `json:"directors_provided"`
+	ExecutivesProvided *bool `json:"executives_provided"`
+	Name               *string `json:"name"`
+	NameKana           *string `json:"name_kana"`
+	NameKanji          *string `json:"name_kanji"`
+	OwnersProvided     *bool `json:"owners_provided"`
+	Phone              *string `json:"phone"`
+	RegistrationNumber *string `json:"registration_number"`
+	Structure          AccountCompanyStructure     `json:"structure"`
+	TaxIDProvided      *bool `json:"tax_id_provided"`
+	TaxIDRegistrar     *string `json:"tax_id_registrar"`
+	VATIDProvided      *bool `json:"vat_id_provided"`
+	Verification       *AccountCompanyVerification `json:"verification"`
 }
 
 // AccountDeclineOn represents card charges decline behavior for that account.
 type AccountDeclineOn struct {
-	AVSFailure *bool `json:"avs_failure,omitempty"`
-	CVCFailure *bool `json:"cvc_failure,omitempty"`
+	AVSFailure *bool `json:"avs_failure"`
+	CVCFailure *bool `json:"cvc_failure"`
 }
 
 // AccountPayoutSchedule is the structure for an account's payout schedule.
 type AccountPayoutSchedule struct {
-	DelayDays     *int64 `json:"delay_days,omitempty"`
-	Interval      PayoutInterval `json:"interval,omitempty"`
-	MonthlyAnchor *int64 `json:"monthly_anchor,omitempty"`
-	WeeklyAnchor  *string `json:"weekly_anchor,omitempty"`
+	DelayDays     *int64 `json:"delay_days"`
+	Interval      PayoutInterval `json:"interval"`
+	MonthlyAnchor *int64 `json:"monthly_anchor"`
+	WeeklyAnchor  *string `json:"weekly_anchor"`
 }
 
 // AccountRequirementsError represents details about an error with a requirement.
 type AccountRequirementsError struct {
-	Code        *string `json:"code,omitempty"`
-	Reason      *string `json:"reason,omitempty"`
-	Requirement *string `json:"requirement,omitempty"`
+	Code        *string `json:"code"`
+	Reason      *string `json:"reason"`
+	Requirement *string `json:"requirement"`
 }
 
 // AccountRequirements represents information that needs to be collected for an account.
 type AccountRequirements struct {
-	CurrentDeadline     *int64 `json:"current_deadline,omitempty"`
-	CurrentlyDue        []string                          `json:"currently_due,omitempty"`
-	DisabledReason      AccountRequirementsDisabledReason `json:"disabled_reason,omitempty"`
-	Errors              []*AccountRequirementsError       `json:"errors,omitempty"`
-	EventuallyDue       []string                          `json:"eventually_due,omitempty"`
-	PastDue             []string                          `json:"past_due,omitempty"`
-	PendingVerification []string                          `json:"pending_verification,omitempty"`
+	CurrentDeadline     *int64 `json:"current_deadline"`
+	CurrentlyDue        []string                          `json:"currently_due"`
+	DisabledReason      AccountRequirementsDisabledReason `json:"disabled_reason"`
+	Errors              []*AccountRequirementsError       `json:"errors"`
+	EventuallyDue       []string                          `json:"eventually_due"`
+	PastDue             []string                          `json:"past_due"`
+	PendingVerification []string                          `json:"pending_verification"`
 }
 
 // AccountSettingsBACSDebitPayments represents settings specific to the account’s charging
 // via BACS Debit.
 type AccountSettingsBACSDebitPayments struct {
-	DisplayName *string `json:"display_name,omitempty"`
+	DisplayName *string `json:"display_name"`
 }
 
 // AccountSettingsBranding represents settings specific to the account's branding.
 type AccountSettingsBranding struct {
-	Icon           *File  `json:"icon,omitempty"`
-	Logo           *File  `json:"logo,omitempty"`
-	PrimaryColor   *string `json:"primary_color,omitempty"`
-	SecondaryColor *string `json:"secondary_color,omitempty"`
+	Icon           *File  `json:"icon"`
+	Logo           *File  `json:"logo"`
+	PrimaryColor   *string `json:"primary_color"`
+	SecondaryColor *string `json:"secondary_color"`
 }
 
 // AccountSettingsCardPayments represents settings specific to card charging on the account.
 type AccountSettingsCardPayments struct {
-	DeclineOn                 *AccountDeclineOn `json:"decline_on,omitempty"`
-	StatementDescriptorPrefix *string `json:"statement_descriptor_prefix,omitempty"`
+	DeclineOn                 *AccountDeclineOn `json:"decline_on"`
+	StatementDescriptorPrefix *string `json:"statement_descriptor_prefix"`
 }
 
 // AccountSettingsDashboard represents settings specific to the account's Dashboard.
 type AccountSettingsDashboard struct {
-	DisplayName *string `json:"display_name,omitempty"`
-	Timezone    *string `json:"timezone,omitempty"`
+	DisplayName *string `json:"display_name"`
+	Timezone    *string `json:"timezone"`
 }
 
 // AccountSettingsPayments represents settings that apply across payment methods for charging on
 // the account.
 type AccountSettingsPayments struct {
-	StatementDescriptor      *string `json:"statement_descriptor,omitempty"`
-	StatementDescriptorKana  *string `json:"statement_descriptor_kana,omitempty"`
-	StatementDescriptorKanji *string `json:"statement_descriptor_kanji,omitempty"`
+	StatementDescriptor      *string `json:"statement_descriptor"`
+	StatementDescriptorKana  *string `json:"statement_descriptor_kana"`
+	StatementDescriptorKanji *string `json:"statement_descriptor_kanji"`
 }
 
 // AccountSettingsPayouts represents settings specific to the account’s payouts.
 type AccountSettingsPayouts struct {
-	DebitNegativeBalances *bool `json:"debit_negative_balances,omitempty"`
-	Schedule              *AccountPayoutSchedule `json:"schedule,omitempty"`
-	StatementDescriptor   *string `json:"statement_descriptor,omitempty"`
+	DebitNegativeBalances *bool `json:"debit_negative_balances"`
+	Schedule              *AccountPayoutSchedule `json:"schedule"`
+	StatementDescriptor   *string `json:"statement_descriptor"`
 }
 
 // AccountSettingsSEPADebitPayments represents settings specific to the account’s charging
 // via SEPA Debit.
 type AccountSettingsSEPADebitPayments struct {
-	CreditorID *string `json:"creditor_id,omitempty"`
+	CreditorID *string `json:"creditor_id"`
 }
 
 // AccountSettings represents options for customizing how the account functions within Stripe.
 type AccountSettings struct {
-	BACSDebitPayments *AccountSettingsBACSDebitPayments `json:"bacs_debit_payments,omitempty"`
-	Branding          *AccountSettingsBranding          `json:"branding,omitempty"`
-	CardPayments      *AccountSettingsCardPayments      `json:"card_payments,omitempty"`
-	Dashboard         *AccountSettingsDashboard         `json:"dashboard,omitempty"`
-	Payments          *AccountSettingsPayments          `json:"payments,omitempty"`
-	Payouts           *AccountSettingsPayouts           `json:"payouts,omitempty"`
-	SEPADebitPayments *AccountSettingsSEPADebitPayments `json:"sepa_debit_payments,omitempty"`
+	BACSDebitPayments *AccountSettingsBACSDebitPayments `json:"bacs_debit_payments"`
+	Branding          *AccountSettingsBranding          `json:"branding"`
+	CardPayments      *AccountSettingsCardPayments      `json:"card_payments"`
+	Dashboard         *AccountSettingsDashboard         `json:"dashboard"`
+	Payments          *AccountSettingsPayments          `json:"payments"`
+	Payouts           *AccountSettingsPayouts           `json:"payouts"`
+	SEPADebitPayments *AccountSettingsSEPADebitPayments `json:"sepa_debit_payments"`
 }
 
 // AccountTOSAcceptance represents status of acceptance of our terms of services for the account.
 type AccountTOSAcceptance struct {
-	Date             *int64 `json:"date,omitempty"`
-	IP               *string `json:"ip,omitempty"`
-	UserAgent        *string `json:"user_agent,omitempty"`
-	ServiceAgreement AccountTOSAcceptanceServiceAgreement `json:"service_agreement,omitempty"`
+	Date             *int64 `json:"date"`
+	IP               *string `json:"ip"`
+	UserAgent        *string `json:"user_agent"`
+	ServiceAgreement AccountTOSAcceptanceServiceAgreement `json:"service_agreement"`
 }
 
 // Account is the resource representing your Stripe account.
 // For more details see https://stripe.com/docs/api/#account.
 type Account struct {
 	APIResource
-	BusinessProfile  *AccountBusinessProfile `json:"business_profile,omitempty"`
-	BusinessType     AccountBusinessType     `json:"business_type,omitempty"`
-	Capabilities     *AccountCapabilities    `json:"capabilities,omitempty"`
-	ChargesEnabled   *bool `json:"charges_enabled,omitempty"`
-	Company          *AccountCompany         `json:"company,omitempty"`
-	Country          *string `json:"country,omitempty"`
-	Created          *int64 `json:"created,omitempty"`
-	DefaultCurrency  Currency                `json:"default_currency,omitempty"`
-	Deleted          *bool `json:"deleted,omitempty"`
-	DetailsSubmitted *bool `json:"details_submitted,omitempty"`
-	Email            *string `json:"email,omitempty"`
-	ExternalAccounts *ExternalAccountList    `json:"external_accounts,omitempty"`
-	ID               *string `json:"id,omitempty"`
-	Individual       *Person                 `json:"individual,omitempty"`
-	Metadata         map[string]string       `json:"metadata,omitempty"`
-	Object           *string `json:"object,omitempty"`
-	PayoutsEnabled   *bool `json:"payouts_enabled,omitempty"`
-	Requirements     *AccountRequirements    `json:"requirements,omitempty"`
-	Settings         *AccountSettings        `json:"settings,omitempty"`
-	TOSAcceptance    *AccountTOSAcceptance   `json:"tos_acceptance,omitempty"`
-	Type             AccountType             `json:"type,omitempty"`
+	BusinessProfile  *AccountBusinessProfile `json:"business_profile"`
+	BusinessType     AccountBusinessType     `json:"business_type"`
+	Capabilities     *AccountCapabilities    `json:"capabilities"`
+	ChargesEnabled   *bool `json:"charges_enabled"`
+	Company          *AccountCompany         `json:"company"`
+	Country          *string `json:"country"`
+	Created          *int64 `json:"created"`
+	DefaultCurrency  Currency                `json:"default_currency"`
+	Deleted          *bool `json:"deleted"`
+	DetailsSubmitted *bool `json:"details_submitted"`
+	Email            *string `json:"email"`
+	ExternalAccounts *ExternalAccountList    `json:"external_accounts"`
+	ID               *string `json:"id"`
+	Individual       *Person                 `json:"individual"`
+	Metadata         map[string]string       `json:"metadata"`
+	Object           *string `json:"object"`
+	PayoutsEnabled   *bool `json:"payouts_enabled"`
+	Requirements     *AccountRequirements    `json:"requirements"`
+	Settings         *AccountSettings        `json:"settings"`
+	TOSAcceptance    *AccountTOSAcceptance   `json:"tos_acceptance"`
+	Type             AccountType             `json:"type"`
 }
 
 // UnmarshalJSON handles deserialization of an account.
@@ -750,7 +750,7 @@ func (a *Account) UnmarshalJSON(data []byte) error {
 type AccountList struct {
 	APIResource
 	ListMeta
-	Data []*Account `json:"data,omitempty"`
+	Data []*Account `json:"data"`
 }
 
 // ExternalAccountList is a list of external accounts that may be either bank
@@ -761,7 +761,7 @@ type ExternalAccountList struct {
 
 	// Values contains any external accounts (bank accounts and/or cards)
 	// currently attached to this account.
-	Data []*ExternalAccount `json:"data,omitempty"`
+	Data []*ExternalAccount `json:"data"`
 }
 
 // ExternalAccount is an external account (a bank account or card) that's
@@ -776,8 +776,8 @@ type ExternalAccount struct {
 	// account is a card.
 	Card *Card
 
-	ID   *string `json:"id,omitempty"`
-	Type ExternalAccountType `json:"object,omitempty"`
+	ID   *string `json:"id"`
+	Type ExternalAccountType `json:"object"`
 }
 
 // UnmarshalJSON implements Unmarshaler.UnmarshalJSON.
@@ -803,14 +803,14 @@ func (ea *ExternalAccount) UnmarshalJSON(data []byte) error {
 
 // AccountAddress is the structure for an account address.
 type AccountAddress struct {
-	City       *string `json:"city,omitempty"`
-	Country    *string `json:"country,omitempty"`
-	Line1      *string `json:"line1,omitempty"`
-	Line2      *string `json:"line2,omitempty"`
-	PostalCode *string `json:"postal_code,omitempty"`
-	State      *string `json:"state,omitempty"`
+	City       *string `json:"city"`
+	Country    *string `json:"country"`
+	Line1      *string `json:"line1"`
+	Line2      *string `json:"line2"`
+	PostalCode *string `json:"postal_code"`
+	State      *string `json:"state"`
 
 	// Town/cho-me. Note that this is only used for Kana/Kanji representations
 	// of an address.
-	Town *string `json:"town,omitempty"`
+	Town *string `json:"town"`
 }

@@ -26,25 +26,25 @@ type SigmaScheduledQueryRunListParams struct {
 // SigmaScheduledQueryRun is the resource representing a scheduled query run.
 type SigmaScheduledQueryRun struct {
 	APIResource
-	Created              *int64 `json:"created,omitempty"`
-	DataLoadTime         *int64 `json:"data_load_time,omitempty"`
-	Error                *string `json:"error,omitempty"`
-	File                 *File                        `json:"file,omitempty"`
-	ID                   *string `json:"id,omitempty"`
-	Livemode             *bool `json:"livemode,omitempty"`
-	Object               *string `json:"object,omitempty"`
-	ResultAvailableUntil *int64 `json:"result_available_until,omitempty"`
-	SQL                  *string `json:"sql,omitempty"`
-	Status               SigmaScheduledQueryRunStatus `json:"status,omitempty"`
-	Query                *string `json:"query,omitempty"`
-	Title                *string `json:"title,omitempty"`
+	Created              *int64 `json:"created"`
+	DataLoadTime         *int64 `json:"data_load_time"`
+	Error                *string `json:"error"`
+	File                 *File                        `json:"file"`
+	ID                   *string `json:"id"`
+	Livemode             *bool `json:"livemode"`
+	Object               *string `json:"object"`
+	ResultAvailableUntil *int64 `json:"result_available_until"`
+	SQL                  *string `json:"sql"`
+	Status               SigmaScheduledQueryRunStatus `json:"status"`
+	Query                *string `json:"query"`
+	Title                *string `json:"title"`
 }
 
 // SigmaScheduledQueryRunList is a list of scheduled query runs as retrieved from a list endpoint.
 type SigmaScheduledQueryRunList struct {
 	APIResource
 	ListMeta
-	Data []*SigmaScheduledQueryRun `json:"data,omitempty"`
+	Data []*SigmaScheduledQueryRun `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of an SigmaScheduledQueryRun.

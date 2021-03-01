@@ -192,10 +192,10 @@ type Error struct {
 	// that can be used in some cases to get more detailed information about
 	// what went wrong. For example, Err may hold a CardError that indicates
 	// exactly what went wrong during charging a card.
-	Err error `json:"-,omitempty"`
+	Err error `json:"-"`
 
 	HTTPStatusCode    *int              `json:"status,omitempty"`
-	Msg               *string           `json:"message,omitempty"`
+	Msg               *string           `json:"message"`
 	Param             *string           `json:"param,omitempty"`
 	PaymentIntent     *PaymentIntent    `json:"payment_intent,omitempty"`
 	PaymentMethod     *PaymentMethod    `json:"payment_method,omitempty"`
@@ -203,7 +203,7 @@ type Error struct {
 	RequestID         *string           `json:"request_id,omitempty"`
 	SetupIntent       *SetupIntent      `json:"setup_intent,omitempty"`
 	Source            *PaymentSource    `json:"source,omitempty"`
-	Type              ErrorType         `json:"type,omitempty"`
+	Type              ErrorType         `json:"type"`
 
 	// OAuth specific Error properties. Named OAuthError because of name conflict.
 	OAuthError            *string `json:"error,omitempty"`

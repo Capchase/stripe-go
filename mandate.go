@@ -56,16 +56,16 @@ type MandateCustomerAcceptanceOffline struct {
 // MandateCustomerAcceptanceOnline represents details about the customer acceptance of an online
 // mandate.
 type MandateCustomerAcceptanceOnline struct {
-	IPAddress *string `json:"ip_address,omitempty"`
-	UserAgent *string `json:"user_agent,omitempty"`
+	IPAddress *string `json:"ip_address"`
+	UserAgent *string `json:"user_agent"`
 }
 
 // MandateCustomerAcceptance represents details about the customer acceptance for a mandate.
 type MandateCustomerAcceptance struct {
-	AcceptedAt *int64 `json:"accepted_at,omitempty"`
-	Offline    *MandateCustomerAcceptanceOffline `json:"offline,omitempty"`
-	Online     *MandateCustomerAcceptanceOnline  `json:"online,omitempty"`
-	Type       MandateCustomerAcceptanceType     `json:"type,omitempty"`
+	AcceptedAt *int64 `json:"accepted_at"`
+	Offline    *MandateCustomerAcceptanceOffline `json:"offline"`
+	Online     *MandateCustomerAcceptanceOnline  `json:"online"`
+	Type       MandateCustomerAcceptanceType     `json:"type"`
 }
 
 // MandateMultiUse represents details about a multi-use mandate.
@@ -75,15 +75,15 @@ type MandateMultiUse struct {
 // MandatePaymentMethodDetailsAUBECSDebit represents details about the Australia BECS debit account
 // associated with this mandate.
 type MandatePaymentMethodDetailsAUBECSDebit struct {
-	URL *string `json:"url,omitempty"`
+	URL *string `json:"url"`
 }
 
 // MandatePaymentMethodDetailsBACSDebit represents details about the BACS debit account
 // associated with this mandate.
 type MandatePaymentMethodDetailsBACSDebit struct {
-	NetworkStatus MandatePaymentMethodDetailsBACSDebitNetworkStatus `json:"network_status,omitempty"`
-	Reference     *string `json:"reference,omitempty"`
-	URL           *string `json:"url,omitempty"`
+	NetworkStatus MandatePaymentMethodDetailsBACSDebitNetworkStatus `json:"network_status"`
+	Reference     *string `json:"reference"`
+	URL           *string `json:"url"`
 }
 
 // MandatePaymentMethodDetailsCard represents details about the card associated with this mandate.
@@ -93,39 +93,39 @@ type MandatePaymentMethodDetailsCard struct {
 // MandatePaymentMethodDetailsSepaDebit represents details about the SEPA debit bank account
 // associated with this mandate.
 type MandatePaymentMethodDetailsSepaDebit struct {
-	Reference *string `json:"reference,omitempty"`
-	URL       *string `json:"url,omitempty"`
+	Reference *string `json:"reference"`
+	URL       *string `json:"url"`
 }
 
 // MandatePaymentMethodDetails represents details about the payment method associated with this
 // mandate.
 type MandatePaymentMethodDetails struct {
-	AUBECSDebit *MandatePaymentMethodDetailsAUBECSDebit `json:"au_becs_debit,omitempty"`
-	BACSDebit   *MandatePaymentMethodDetailsBACSDebit   `json:"bacs_debit,omitempty"`
-	Card        *MandatePaymentMethodDetailsCard        `json:"card,omitempty"`
-	SepaDebit   *MandatePaymentMethodDetailsSepaDebit   `json:"sepa_debit,omitempty"`
-	Type        PaymentMethodType                       `json:"type,omitempty"`
+	AUBECSDebit *MandatePaymentMethodDetailsAUBECSDebit `json:"au_becs_debit"`
+	BACSDebit   *MandatePaymentMethodDetailsBACSDebit   `json:"bacs_debit"`
+	Card        *MandatePaymentMethodDetailsCard        `json:"card"`
+	SepaDebit   *MandatePaymentMethodDetailsSepaDebit   `json:"sepa_debit"`
+	Type        PaymentMethodType                       `json:"type"`
 }
 
 // MandateSingleUse represents details about a single-use mandate.
 type MandateSingleUse struct {
-	Amount   *int64 `json:"amount,omitempty"`
-	Currency Currency `json:"currency,omitempty"`
+	Amount   *int64 `json:"amount"`
+	Currency Currency `json:"currency"`
 }
 
 // Mandate is the resource representing a Mandate.
 type Mandate struct {
 	APIResource
-	CustomerAcceptance   *MandateCustomerAcceptance   `json:"customer_acceptance,omitempty"`
-	ID                   *string `json:"id,omitempty"`
-	Livemode             *bool `json:"livemode,omitempty"`
-	MultiUse             *MandateMultiUse             `json:"multi_use,omitempty"`
-	Object               *string `json:"object,omitempty"`
-	PaymentMethod        *PaymentMethod               `json:"payment_method,omitempty"`
-	PaymentMethodDetails *MandatePaymentMethodDetails `json:"payment_method_details,omitempty"`
-	SingleUse            *MandateSingleUse            `json:"single_use,omitempty"`
-	Status               MandateStatus                `json:"status,omitempty"`
-	Type                 MandateType                  `json:"type,omitempty"`
+	CustomerAcceptance   *MandateCustomerAcceptance   `json:"customer_acceptance"`
+	ID                   *string `json:"id"`
+	Livemode             *bool `json:"livemode"`
+	MultiUse             *MandateMultiUse             `json:"multi_use"`
+	Object               *string `json:"object"`
+	PaymentMethod        *PaymentMethod               `json:"payment_method"`
+	PaymentMethodDetails *MandatePaymentMethodDetails `json:"payment_method_details"`
+	SingleUse            *MandateSingleUse            `json:"single_use"`
+	Status               MandateStatus                `json:"status"`
+	Type                 MandateType                  `json:"type"`
 }
 
 // UnmarshalJSON handles deserialization of a Mandate.

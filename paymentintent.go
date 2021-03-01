@@ -292,48 +292,48 @@ type PaymentIntentListParams struct {
 // PaymentIntentNextActionAlipayHandleRedirect represents the resource for the next action of type
 // "handle_alipay_redirect".
 type PaymentIntentNextActionAlipayHandleRedirect struct {
-	NativeData *string `json:"native_data,omitempty"`
-	NativeURL  *string `json:"native_url,omitempty"`
-	ReturnURL  *string `json:"return_url,omitempty"`
-	URL        *string `json:"url,omitempty"`
+	NativeData *string `json:"native_data"`
+	NativeURL  *string `json:"native_url"`
+	ReturnURL  *string `json:"return_url"`
+	URL        *string `json:"url"`
 }
 
 // PaymentIntentNextActionOXXODisplayDetails represents the resource for the next action of type
 // "oxxo_display_details".
 type PaymentIntentNextActionOXXODisplayDetails struct {
-	ExpiresAfter     *int64 `json:"expires_after,omitempty"`
-	HostedVoucherURL *string `json:"hosted_voucher_url,omitempty"`
-	Number           *string `json:"number,omitempty"`
+	ExpiresAfter     *int64 `json:"expires_after"`
+	HostedVoucherURL *string `json:"hosted_voucher_url"`
+	Number           *string `json:"number"`
 }
 
 // PaymentIntentNextActionRedirectToURL represents the resource for the next action of type
 // "redirect_to_url".
 type PaymentIntentNextActionRedirectToURL struct {
-	ReturnURL *string `json:"return_url,omitempty"`
-	URL       *string `json:"url,omitempty"`
+	ReturnURL *string `json:"return_url"`
+	URL       *string `json:"url"`
 }
 
 // PaymentIntentNextAction represents the type of action to take on a payment intent.
 type PaymentIntentNextAction struct {
-	AlipayHandleRedirect *PaymentIntentNextActionAlipayHandleRedirect `json:"alipay_handle_redirect,omitempty"`
-	OXXODisplayDetails   *PaymentIntentNextActionOXXODisplayDetails   `json:"oxxo_display_details,omitempty"`
-	RedirectToURL        *PaymentIntentNextActionRedirectToURL        `json:"redirect_to_url,omitempty"`
-	Type                 PaymentIntentNextActionType                  `json:"type,omitempty"`
+	AlipayHandleRedirect *PaymentIntentNextActionAlipayHandleRedirect `json:"alipay_handle_redirect"`
+	OXXODisplayDetails   *PaymentIntentNextActionOXXODisplayDetails   `json:"oxxo_display_details"`
+	RedirectToURL        *PaymentIntentNextActionRedirectToURL        `json:"redirect_to_url"`
+	Type                 PaymentIntentNextActionType                  `json:"type"`
 }
 
 // PaymentIntentPaymentMethodOptionsCardInstallmentsPlan describe a specific card installment plan.
 type PaymentIntentPaymentMethodOptionsCardInstallmentsPlan struct {
-	Count    *int64 `json:"count,omitempty"`
-	Interval PaymentIntentPaymentMethodOptionsCardInstallmentsPlanInterval `json:"interval,omitempty"`
-	Type     PaymentIntentPaymentMethodOptionsCardInstallmentsPlanType     `json:"type,omitempty"`
+	Count    *int64 `json:"count"`
+	Interval PaymentIntentPaymentMethodOptionsCardInstallmentsPlanInterval `json:"interval"`
+	Type     PaymentIntentPaymentMethodOptionsCardInstallmentsPlanType     `json:"type"`
 }
 
 // PaymentIntentPaymentMethodOptionsCardInstallments describe the installment options available for
 // a card associated with that payment intent.
 type PaymentIntentPaymentMethodOptionsCardInstallments struct {
-	AvailablePlans []*PaymentIntentPaymentMethodOptionsCardInstallmentsPlan `json:"available_plans,omitempty"`
-	Enabled        *bool `json:"enabled,omitempty"`
-	Plan           *PaymentIntentPaymentMethodOptionsCardInstallmentsPlan   `json:"plan,omitempty"`
+	AvailablePlans []*PaymentIntentPaymentMethodOptionsCardInstallmentsPlan `json:"available_plans"`
+	Enabled        *bool `json:"enabled"`
+	Plan           *PaymentIntentPaymentMethodOptionsCardInstallmentsPlan   `json:"plan"`
 }
 
 // PaymentIntentPaymentMethodOptionsAlipay is the set of Alipay-specific options associated
@@ -344,91 +344,91 @@ type PaymentIntentPaymentMethodOptionsAlipay struct {
 // PaymentIntentPaymentMethodOptionsBancontact is the set of bancontact-specific options associated
 // with that payment intent.
 type PaymentIntentPaymentMethodOptionsBancontact struct {
-	PreferredLanguage *string `json:"preferred_language,omitempty"`
+	PreferredLanguage *string `json:"preferred_language"`
 }
 
 // PaymentIntentPaymentMethodOptionsCard is the set of card-specific options associated with that
 // payment intent.
 type PaymentIntentPaymentMethodOptionsCard struct {
-	Installments        *PaymentIntentPaymentMethodOptionsCardInstallments       `json:"installments,omitempty"`
-	Network             PaymentMethodCardNetwork                                 `json:"network,omitempty"`
-	RequestThreeDSecure PaymentIntentPaymentMethodOptionsCardRequestThreeDSecure `json:"request_three_d_secure,omitempty"`
+	Installments        *PaymentIntentPaymentMethodOptionsCardInstallments       `json:"installments"`
+	Network             PaymentMethodCardNetwork                                 `json:"network"`
+	RequestThreeDSecure PaymentIntentPaymentMethodOptionsCardRequestThreeDSecure `json:"request_three_d_secure"`
 }
 
 // PaymentIntentPaymentMethodOptionsOXXO is the set of OXXO-specific options associated
 // with that payment intent.
 type PaymentIntentPaymentMethodOptionsOXXO struct {
-	ExpiresAfterDays *int64 `json:"expires_after_days,omitempty"`
+	ExpiresAfterDays *int64 `json:"expires_after_days"`
 }
 
 // PaymentIntentPaymentMethodOptionsSofort is the set of sofort-specific options associated
 // with that payment intent.
 type PaymentIntentPaymentMethodOptionsSofort struct {
-	PreferredLanguage *string `json:"preferred_language,omitempty"`
+	PreferredLanguage *string `json:"preferred_language"`
 }
 
 // PaymentIntentPaymentMethodOptions is the set of payment method-specific options associated with
 // that payment intent.
 type PaymentIntentPaymentMethodOptions struct {
-	Alipay     *PaymentIntentPaymentMethodOptionsAlipay     `json:"alipay,omitempty"`
-	Bancontact *PaymentIntentPaymentMethodOptionsBancontact `json:"bancontact,omitempty"`
-	Card       *PaymentIntentPaymentMethodOptionsCard       `json:"card,omitempty"`
-	OXXO       *PaymentIntentPaymentMethodOptionsOXXO       `json:"oxxo,omitempty"`
-	Sofort     *PaymentIntentPaymentMethodOptionsSofort     `json:"sofort,omitempty"`
+	Alipay     *PaymentIntentPaymentMethodOptionsAlipay     `json:"alipay"`
+	Bancontact *PaymentIntentPaymentMethodOptionsBancontact `json:"bancontact"`
+	Card       *PaymentIntentPaymentMethodOptionsCard       `json:"card"`
+	OXXO       *PaymentIntentPaymentMethodOptionsOXXO       `json:"oxxo"`
+	Sofort     *PaymentIntentPaymentMethodOptionsSofort     `json:"sofort"`
 }
 
 // PaymentIntentTransferData represents the information for the transfer associated with a payment intent.
 type PaymentIntentTransferData struct {
-	Amount      *int64 `json:"amount,omitempty"`
-	Destination *Account `json:"destination,omitempty"`
+	Amount      *int64 `json:"amount"`
+	Destination *Account `json:"destination"`
 }
 
 // PaymentIntent is the resource representing a Stripe payout.
 // For more details see https://stripe.com/docs/api#payment_intents.
 type PaymentIntent struct {
 	APIResource
-	Amount                    *int64 `json:"amount,omitempty"`
-	AmountCapturable          *int64 `json:"amount_capturable,omitempty"`
-	AmountReceived            *int64 `json:"amount_received,omitempty"`
-	Application               *Application                       `json:"application,omitempty"`
-	ApplicationFeeAmount      *int64 `json:"application_fee_amount,omitempty"`
-	CanceledAt                *int64 `json:"canceled_at,omitempty"`
-	CancellationReason        PaymentIntentCancellationReason    `json:"cancellation_reason,omitempty"`
-	CaptureMethod             PaymentIntentCaptureMethod         `json:"capture_method,omitempty"`
-	Charges                   *ChargeList                        `json:"charges,omitempty"`
-	ClientSecret              *string `json:"client_secret,omitempty"`
-	ConfirmationMethod        PaymentIntentConfirmationMethod    `json:"confirmation_method,omitempty"`
-	Created                   *int64 `json:"created,omitempty"`
-	Currency                  *string `json:"currency,omitempty"`
-	Customer                  *Customer                          `json:"customer,omitempty"`
-	Description               *string `json:"description,omitempty"`
-	Invoice                   *Invoice                           `json:"invoice,omitempty"`
-	LastPaymentError          *Error                             `json:"last_payment_error,omitempty"`
-	Livemode                  *bool `json:"livemode,omitempty"`
-	ID                        *string `json:"id,omitempty"`
-	Metadata                  map[string]string                  `json:"metadata,omitempty"`
-	NextAction                *PaymentIntentNextAction           `json:"next_action,omitempty"`
-	OnBehalfOf                *Account                           `json:"on_behalf_of,omitempty"`
-	PaymentMethod             *PaymentMethod                     `json:"payment_method,omitempty"`
-	PaymentMethodOptions      *PaymentIntentPaymentMethodOptions `json:"payment_method_options,omitempty"`
-	PaymentMethodTypes        []string                           `json:"payment_method_types,omitempty"`
-	ReceiptEmail              *string `json:"receipt_email,omitempty"`
-	Review                    *Review                            `json:"review,omitempty"`
-	SetupFutureUsage          PaymentIntentSetupFutureUsage      `json:"setup_future_usage,omitempty"`
-	Shipping                  ShippingDetails                    `json:"shipping,omitempty"`
-	Source                    *PaymentSource                     `json:"source,omitempty"`
-	StatementDescriptor       *string `json:"statement_descriptor,omitempty"`
-	StatementDescriptorSuffix *string `json:"statement_descriptor_suffix,omitempty"`
-	Status                    PaymentIntentStatus                `json:"status,omitempty"`
-	TransferData              *PaymentIntentTransferData         `json:"transfer_data,omitempty"`
-	TransferGroup             *string `json:"transfer_group,omitempty"`
+	Amount                    *int64 `json:"amount"`
+	AmountCapturable          *int64 `json:"amount_capturable"`
+	AmountReceived            *int64 `json:"amount_received"`
+	Application               *Application                       `json:"application"`
+	ApplicationFeeAmount      *int64 `json:"application_fee_amount"`
+	CanceledAt                *int64 `json:"canceled_at"`
+	CancellationReason        PaymentIntentCancellationReason    `json:"cancellation_reason"`
+	CaptureMethod             PaymentIntentCaptureMethod         `json:"capture_method"`
+	Charges                   *ChargeList                        `json:"charges"`
+	ClientSecret              *string `json:"client_secret"`
+	ConfirmationMethod        PaymentIntentConfirmationMethod    `json:"confirmation_method"`
+	Created                   *int64 `json:"created"`
+	Currency                  *string `json:"currency"`
+	Customer                  *Customer                          `json:"customer"`
+	Description               *string `json:"description"`
+	Invoice                   *Invoice                           `json:"invoice"`
+	LastPaymentError          *Error                             `json:"last_payment_error"`
+	Livemode                  *bool `json:"livemode"`
+	ID                        *string `json:"id"`
+	Metadata                  map[string]string                  `json:"metadata"`
+	NextAction                *PaymentIntentNextAction           `json:"next_action"`
+	OnBehalfOf                *Account                           `json:"on_behalf_of"`
+	PaymentMethod             *PaymentMethod                     `json:"payment_method"`
+	PaymentMethodOptions      *PaymentIntentPaymentMethodOptions `json:"payment_method_options"`
+	PaymentMethodTypes        []string                           `json:"payment_method_types"`
+	ReceiptEmail              *string `json:"receipt_email"`
+	Review                    *Review                            `json:"review"`
+	SetupFutureUsage          PaymentIntentSetupFutureUsage      `json:"setup_future_usage"`
+	Shipping                  ShippingDetails                    `json:"shipping"`
+	Source                    *PaymentSource                     `json:"source"`
+	StatementDescriptor       *string `json:"statement_descriptor"`
+	StatementDescriptorSuffix *string `json:"statement_descriptor_suffix"`
+	Status                    PaymentIntentStatus                `json:"status"`
+	TransferData              *PaymentIntentTransferData         `json:"transfer_data"`
+	TransferGroup             *string `json:"transfer_group"`
 }
 
 // PaymentIntentList is a list of payment intents as retrieved from a list endpoint.
 type PaymentIntentList struct {
 	APIResource
 	ListMeta
-	Data []*PaymentIntent `json:"data,omitempty"`
+	Data []*PaymentIntent `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a Payment Intent.

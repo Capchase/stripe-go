@@ -21,25 +21,25 @@ type BalanceParams struct {
 
 // Amount is a structure wrapping an amount value and its currency.
 type Amount struct {
-	Currency    Currency                    `json:"currency,omitempty"`
-	SourceTypes map[BalanceSourceType]int64 `json:"source_types,omitempty"`
-	Value       *int64 `json:"amount,omitempty"`
+	Currency    Currency                    `json:"currency"`
+	SourceTypes map[BalanceSourceType]int64 `json:"source_types"`
+	Value       *int64 `json:"amount"`
 }
 
 // BalanceDetails is the resource representing details about a specific product's balance.
 type BalanceDetails struct {
-	Available []*Amount `json:"available,omitempty"`
+	Available []*Amount `json:"available"`
 }
 
 // Balance is the resource representing your Stripe balance.
 // For more details see https://stripe.com/docs/api/#balance.
 type Balance struct {
 	APIResource
-	Available        []*Amount       `json:"available,omitempty"`
-	ConnectReserved  []*Amount       `json:"connect_reserved,omitempty"`
-	InstantAvailable []*Amount       `json:"instant_available,omitempty"`
-	Issuing          *BalanceDetails `json:"issuing,omitempty"`
-	Livemode         *bool `json:"livemode,omitempty"`
-	Object           *string `json:"object,omitempty"`
-	Pending          []*Amount       `json:"pending,omitempty"`
+	Available        []*Amount       `json:"available"`
+	ConnectReserved  []*Amount       `json:"connect_reserved"`
+	InstantAvailable []*Amount       `json:"instant_available"`
+	Issuing          *BalanceDetails `json:"issuing"`
+	Livemode         *bool `json:"livemode"`
+	Object           *string `json:"object"`
+	Pending          []*Amount       `json:"pending"`
 }

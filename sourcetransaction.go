@@ -12,19 +12,19 @@ type SourceTransactionListParams struct {
 type SourceTransactionList struct {
 	APIResource
 	ListMeta
-	Data []*SourceTransaction `json:"data,omitempty"`
+	Data []*SourceTransaction `json:"data"`
 }
 
 // SourceTransaction is the resource representing a Stripe source transaction.
 type SourceTransaction struct {
-	Amount       *int64   `json:"amount,omitempty"`
-	Created      *int64   `json:"created,omitempty"`
-	Currency     Currency `json:"currency,omitempty"`
-	CustomerData *string  `json:"customer_data,omitempty"`
-	ID           *string  `json:"id,omitempty"`
-	Livemode     *bool    `json:"livemode,omitempty"`
-	Source       *string  `json:"source,omitempty"`
-	Type         *string  `json:"type,omitempty"`
+	Amount       *int64   `json:"amount"`
+	Created      *int64   `json:"created"`
+	Currency     Currency `json:"currency"`
+	CustomerData *string  `json:"customer_data"`
+	ID           *string  `json:"id"`
+	Livemode     *bool    `json:"livemode"`
+	Source       *string  `json:"source"`
+	Type         *string  `json:"type"`
 	TypeData     map[string]interface{}
 }
 

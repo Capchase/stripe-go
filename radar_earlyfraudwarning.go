@@ -34,17 +34,17 @@ type RadarEarlyFraudWarningListParams struct {
 type RadarEarlyFraudWarningList struct {
 	APIResource
 	ListMeta
-	Values []*RadarEarlyFraudWarning `json:"data,omitempty"`
+	Values []*RadarEarlyFraudWarning `json:"data"`
 }
 
 // RadarEarlyFraudWarning is the resource representing an early fraud warning. For
 // more details see https://stripe.com/docs/api/early_fraud_warnings/object.
 type RadarEarlyFraudWarning struct {
 	APIResource
-	Actionable *bool `json:"actionable,omitempty"`
-	Charge     *Charge                         `json:"charge,omitempty"`
-	Created    *int64 `json:"created,omitempty"`
-	FraudType  RadarEarlyFraudWarningFraudType `json:"fraud_type,omitempty"`
-	ID         *string `json:"id,omitempty"`
-	Livemode   *bool `json:"livemode,omitempty"`
+	Actionable *bool `json:"actionable"`
+	Charge     *Charge                         `json:"charge"`
+	Created    *int64 `json:"created"`
+	FraudType  RadarEarlyFraudWarningFraudType `json:"fraud_type"`
+	ID         *string `json:"id"`
+	Livemode   *bool `json:"livemode"`
 }

@@ -68,7 +68,7 @@ func TestContext(t *testing.T) {
 func TestDo_Retry(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message *string `json:"message,omitempty"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -336,7 +336,7 @@ func TestShouldRetry(t *testing.T) {
 func TestDo_RetryOnTimeout(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message *string `json:"message,omitempty"`
+		Message *string `json:"message"`
 	}
 
 	timeout := time.Second
@@ -382,7 +382,7 @@ func TestDo_RetryOnTimeout(t *testing.T) {
 func TestDo_LastResponsePopulated(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message *string `json:"message,omitempty"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -438,7 +438,7 @@ func TestDo_LastResponsePopulated(t *testing.T) {
 func TestDo_TelemetryDisabled(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message *string `json:"message,omitempty"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -498,16 +498,16 @@ func TestDo_TelemetryDisabled(t *testing.T) {
 func TestDo_TelemetryEnabled(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message *string `json:"message,omitempty"`
+		Message *string `json:"message"`
 	}
 
 	type requestMetrics struct {
-		RequestDurationMS *int    `json:"request_duration_ms,omitempty"`
-		RequestID         *string `json:"request_id,omitempty"`
+		RequestDurationMS *int    `json:"request_duration_ms"`
+		RequestID         *string `json:"request_id"`
 	}
 
 	type requestTelemetry struct {
-		LastRequestMetrics requestMetrics `json:"last_request_metrics,omitempty"`
+		LastRequestMetrics requestMetrics `json:"last_request_metrics"`
 	}
 
 	message := "Hello, client."
@@ -587,7 +587,7 @@ func TestDo_TelemetryEnabled(t *testing.T) {
 func TestDo_TelemetryEnabledNoDataRace(t *testing.T) {
 	type testServerResponse struct {
 		APIResource
-		Message *string `json:"message,omitempty"`
+		Message *string `json:"message"`
 	}
 
 	message := "Hello, client."
@@ -650,7 +650,7 @@ func TestDo_TelemetryEnabledNoDataRace(t *testing.T) {
 
 func TestDo_Redaction(t *testing.T) {
 	type testServerResponse struct {
-		Error *Error `json:"error,omitempty"`
+		Error *Error `json:"error"`
 	}
 
 	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -835,7 +835,7 @@ func TestStripeAccount(t *testing.T) {
 
 func TestUnmarshalJSONVerbose(t *testing.T) {
 	type testServerResponse struct {
-		Message *string `json:"message,omitempty"`
+		Message *string `json:"message"`
 	}
 
 	backend := GetBackend(APIBackend).(*BackendImplementation)
@@ -843,7 +843,7 @@ func TestUnmarshalJSONVerbose(t *testing.T) {
 	// Valid JSON
 	{
 		type testServerResponse struct {
-			Message *string `json:"message,omitempty"`
+			Message *string `json:"message"`
 		}
 
 		var sample testServerResponse

@@ -197,59 +197,59 @@ func (p *CardListParams) AppendTo(body *form.Values, keyParts []string) {
 type Card struct {
 	APIResource
 
-	AddressCity            *string `json:"address_city,omitempty"`
-	AddressCountry         *string `json:"address_country,omitempty"`
-	AddressLine1           *string `json:"address_line1,omitempty"`
-	AddressLine1Check      CardVerification            `json:"address_line1_check,omitempty"`
-	AddressLine2           *string `json:"address_line2,omitempty"`
-	AddressState           *string `json:"address_state,omitempty"`
-	AddressZip             *string `json:"address_zip,omitempty"`
-	AddressZipCheck        CardVerification            `json:"address_zip_check,omitempty"`
-	AvailablePayoutMethods []CardAvailablePayoutMethod `json:"available_payout_methods,omitempty"`
-	Brand                  CardBrand                   `json:"brand,omitempty"`
-	CVCCheck               CardVerification            `json:"cvc_check,omitempty"`
-	Country                *string `json:"country,omitempty"`
-	Currency               Currency                    `json:"currency,omitempty"`
-	Customer               *Customer                   `json:"customer,omitempty"`
-	DefaultForCurrency     *bool `json:"default_for_currency,omitempty"`
-	Deleted                *bool `json:"deleted,omitempty"`
+	AddressCity            *string `json:"address_city"`
+	AddressCountry         *string `json:"address_country"`
+	AddressLine1           *string `json:"address_line1"`
+	AddressLine1Check      CardVerification            `json:"address_line1_check"`
+	AddressLine2           *string `json:"address_line2"`
+	AddressState           *string `json:"address_state"`
+	AddressZip             *string `json:"address_zip"`
+	AddressZipCheck        CardVerification            `json:"address_zip_check"`
+	AvailablePayoutMethods []CardAvailablePayoutMethod `json:"available_payout_methods"`
+	Brand                  CardBrand                   `json:"brand"`
+	CVCCheck               CardVerification            `json:"cvc_check"`
+	Country                *string `json:"country"`
+	Currency               Currency                    `json:"currency"`
+	Customer               *Customer                   `json:"customer"`
+	DefaultForCurrency     *bool `json:"default_for_currency"`
+	Deleted                *bool `json:"deleted"`
 
 	// Description is a succinct summary of the card's information.
 	//
 	// Please note that this field is for internal use only and is not returned
 	// as part of standard API requests.
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description"`
 
-	DynamicLast4 *string `json:"dynamic_last4,omitempty"`
-	ExpMonth     *uint8 `json:"exp_month,omitempty"`
-	ExpYear      *uint16 `json:"exp_year,omitempty"`
-	Fingerprint  *string `json:"fingerprint,omitempty"`
-	Funding      CardFunding `json:"funding,omitempty"`
-	ID           *string `json:"id,omitempty"`
+	DynamicLast4 *string `json:"dynamic_last4"`
+	ExpMonth     *uint8 `json:"exp_month"`
+	ExpYear      *uint16 `json:"exp_year"`
+	Fingerprint  *string `json:"fingerprint"`
+	Funding      CardFunding `json:"funding"`
+	ID           *string `json:"id"`
 
 	// IIN is the card's "Issuer Identification Number".
 	//
 	// Please note that this field is for internal use only and is not returned
 	// as part of standard API requests.
-	IIN *string `json:"iin,omitempty"`
+	IIN *string `json:"iin"`
 
 	// Issuer is a bank or financial institution that provides the card.
 	//
 	// Please note that this field is for internal use only and is not returned
 	// as part of standard API requests.
-	Issuer *string `json:"issuer,omitempty"`
+	Issuer *string `json:"issuer"`
 
-	Last4              *string `json:"last4,omitempty"`
-	Metadata           map[string]string      `json:"metadata,omitempty"`
-	Name               *string `json:"name,omitempty"`
-	TokenizationMethod CardTokenizationMethod `json:"tokenization_method,omitempty"`
+	Last4              *string `json:"last4"`
+	Metadata           map[string]string      `json:"metadata"`
+	Name               *string `json:"name"`
+	TokenizationMethod CardTokenizationMethod `json:"tokenization_method"`
 }
 
 // CardList is a list object for cards.
 type CardList struct {
 	APIResource
 	ListMeta
-	Data []*Card `json:"data,omitempty"`
+	Data []*Card `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a Card.

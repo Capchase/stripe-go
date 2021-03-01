@@ -49,87 +49,87 @@ type IssuingTransactionListParams struct {
 
 // IssuingTransactionAmountDetails is the resource representing the breakdown of the amount.
 type IssuingTransactionAmountDetails struct {
-	ATMFee *int64 `json:"atm_fee,omitempty"`
+	ATMFee *int64 `json:"atm_fee"`
 }
 
 // IssuingTransactionPurchaseDetailsFlightSegment contains extra information about the flight in this transaction.
 type IssuingTransactionPurchaseDetailsFlightSegment struct {
-	ArrivalAirportCode   *string `json:"arrival_airport_code,omitempty"`
-	Carrier              *string `json:"carrier,omitempty"`
-	DepartureAirportCode *string `json:"departure_airport_code,omitempty"`
-	FlightNumber         *string `json:"flight_number,omitempty"`
-	ServiceClass         *string `json:"service_class,omitempty"`
-	StopoverAllowed      *bool `json:"stopover_allowed,omitempty"`
+	ArrivalAirportCode   *string `json:"arrival_airport_code"`
+	Carrier              *string `json:"carrier"`
+	DepartureAirportCode *string `json:"departure_airport_code"`
+	FlightNumber         *string `json:"flight_number"`
+	ServiceClass         *string `json:"service_class"`
+	StopoverAllowed      *bool `json:"stopover_allowed"`
 }
 
 // IssuingTransactionPurchaseDetailsFlight contains extra information about the flight in this transaction.
 type IssuingTransactionPurchaseDetailsFlight struct {
-	DepartureAt   *int64 `json:"departure_at,omitempty"`
-	PassengerName *string `json:"passenger_name,omitempty"`
-	Refundable    *bool `json:"refundable,omitempty"`
-	Segments      []*IssuingTransactionPurchaseDetailsFlightSegment `json:"segments,omitempty"`
-	TravelAgency  *string `json:"travel_agency,omitempty"`
+	DepartureAt   *int64 `json:"departure_at"`
+	PassengerName *string `json:"passenger_name"`
+	Refundable    *bool `json:"refundable"`
+	Segments      []*IssuingTransactionPurchaseDetailsFlightSegment `json:"segments"`
+	TravelAgency  *string `json:"travel_agency"`
 }
 
 // IssuingTransactionPurchaseDetailsFuel contains extra information about the fuel purchase in this transaction.
 type IssuingTransactionPurchaseDetailsFuel struct {
-	Type            IssuingTransactionPurchaseDetailsFuelType `json:"type,omitempty"`
-	Unit            IssuingTransactionPurchaseDetailsFuelUnit `json:"unit,omitempty"`
+	Type            IssuingTransactionPurchaseDetailsFuelType `json:"type"`
+	Unit            IssuingTransactionPurchaseDetailsFuelUnit `json:"unit"`
 	UnitCostDecimal *float64 `json:"unit_cost_decimal,string"`
 	VolumeDecimal   *float64 `json:"volume_decimal,string"`
 }
 
 // IssuingTransactionPurchaseDetailsLodging contains extra information about the lodging purchase in this transaction.
 type IssuingTransactionPurchaseDetailsLodging struct {
-	CheckInAt *int64 `json:"check_in_at,omitempty"`
-	Nights    *int64 `json:"nights,omitempty"`
+	CheckInAt *int64 `json:"check_in_at"`
+	Nights    *int64 `json:"nights"`
 }
 
 // IssuingTransactionPurchaseDetailsReceipt contains extra information about the line items this transaction.
 type IssuingTransactionPurchaseDetailsReceipt struct {
-	Description *string `json:"description,omitempty"`
-	Quantity    *float64 `json:"quantity,omitempty"`
-	Total       *int64 `json:"total,omitempty"`
-	UnitCost    *int64 `json:"unit_cost,omitempty"`
+	Description *string `json:"description"`
+	Quantity    *float64 `json:"quantity"`
+	Total       *int64 `json:"total"`
+	UnitCost    *int64 `json:"unit_cost"`
 }
 
 // IssuingTransactionPurchaseDetails contains extra information provided by the merchant.
 type IssuingTransactionPurchaseDetails struct {
-	Flight    *IssuingTransactionPurchaseDetailsFlight    `json:"flight,omitempty"`
-	Fuel      *IssuingTransactionPurchaseDetailsFuel      `json:"fuel,omitempty"`
-	Lodging   *IssuingTransactionPurchaseDetailsLodging   `json:"lodging,omitempty"`
-	Receipt   []*IssuingTransactionPurchaseDetailsReceipt `json:"receipt,omitempty"`
-	Reference *string `json:"reference,omitempty"`
+	Flight    *IssuingTransactionPurchaseDetailsFlight    `json:"flight"`
+	Fuel      *IssuingTransactionPurchaseDetailsFuel      `json:"fuel"`
+	Lodging   *IssuingTransactionPurchaseDetailsLodging   `json:"lodging"`
+	Receipt   []*IssuingTransactionPurchaseDetailsReceipt `json:"receipt"`
+	Reference *string `json:"reference"`
 }
 
 // IssuingTransaction is the resource representing a Stripe issuing transaction.
 type IssuingTransaction struct {
 	APIResource
-	Amount             *int64 `json:"amount,omitempty"`
-	AmountDetails      *IssuingTransactionAmountDetails   `json:"amount_details,omitempty"`
-	Authorization      *IssuingAuthorization              `json:"authorization,omitempty"`
-	BalanceTransaction *BalanceTransaction                `json:"balance_transaction,omitempty"`
-	Card               *IssuingCard                       `json:"card,omitempty"`
-	Cardholder         *IssuingCardholder                 `json:"cardholder,omitempty"`
-	Created            *int64 `json:"created,omitempty"`
-	Currency           Currency                           `json:"currency,omitempty"`
-	Dispute            *IssuingDispute                    `json:"dispute,omitempty"`
-	ID                 *string `json:"id,omitempty"`
-	Livemode           *bool `json:"livemode,omitempty"`
-	MerchantData       *IssuingAuthorizationMerchantData  `json:"merchant_data,omitempty"`
-	MerchantAmount     *int64 `json:"merchant_amount,omitempty"`
-	MerchantCurrency   Currency                           `json:"merchant_currency,omitempty"`
-	Metadata           map[string]string                  `json:"metadata,omitempty"`
-	Object             *string `json:"object,omitempty"`
-	PurchaseDetails    *IssuingTransactionPurchaseDetails `json:"purchase_details,omitempty"`
-	Type               IssuingTransactionType             `json:"type,omitempty"`
+	Amount             *int64 `json:"amount"`
+	AmountDetails      *IssuingTransactionAmountDetails   `json:"amount_details"`
+	Authorization      *IssuingAuthorization              `json:"authorization"`
+	BalanceTransaction *BalanceTransaction                `json:"balance_transaction"`
+	Card               *IssuingCard                       `json:"card"`
+	Cardholder         *IssuingCardholder                 `json:"cardholder"`
+	Created            *int64 `json:"created"`
+	Currency           Currency                           `json:"currency"`
+	Dispute            *IssuingDispute                    `json:"dispute"`
+	ID                 *string `json:"id"`
+	Livemode           *bool `json:"livemode"`
+	MerchantData       *IssuingAuthorizationMerchantData  `json:"merchant_data"`
+	MerchantAmount     *int64 `json:"merchant_amount"`
+	MerchantCurrency   Currency                           `json:"merchant_currency"`
+	Metadata           map[string]string                  `json:"metadata"`
+	Object             *string `json:"object"`
+	PurchaseDetails    *IssuingTransactionPurchaseDetails `json:"purchase_details"`
+	Type               IssuingTransactionType             `json:"type"`
 }
 
 // IssuingTransactionList is a list of issuing transactions as retrieved from a list endpoint.
 type IssuingTransactionList struct {
 	APIResource
 	ListMeta
-	Data []*IssuingTransaction `json:"data,omitempty"`
+	Data []*IssuingTransaction `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of an IssuingTransaction.

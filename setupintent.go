@@ -145,60 +145,60 @@ type SetupIntentListParams struct {
 // SetupIntentNextActionRedirectToURL represents the resource for the next action of type
 // "redirect_to_url".
 type SetupIntentNextActionRedirectToURL struct {
-	ReturnURL *string `json:"return_url,omitempty"`
-	URL       *string `json:"url,omitempty"`
+	ReturnURL *string `json:"return_url"`
+	URL       *string `json:"url"`
 }
 
 // SetupIntentNextAction represents the type of action to take on a setup intent.
 type SetupIntentNextAction struct {
-	RedirectToURL *SetupIntentNextActionRedirectToURL `json:"redirect_to_url,omitempty"`
-	Type          SetupIntentNextActionType           `json:"type,omitempty"`
+	RedirectToURL *SetupIntentNextActionRedirectToURL `json:"redirect_to_url"`
+	Type          SetupIntentNextActionType           `json:"type"`
 }
 
 // SetupIntentPaymentMethodOptionsCard represents the card-specific options applied to a
 // SetupIntent.
 type SetupIntentPaymentMethodOptionsCard struct {
-	RequestThreeDSecure SetupIntentPaymentMethodOptionsCardRequestThreeDSecure `json:"request_three_d_secure,omitempty"`
+	RequestThreeDSecure SetupIntentPaymentMethodOptionsCardRequestThreeDSecure `json:"request_three_d_secure"`
 }
 
 // SetupIntentPaymentMethodOptions represents the type-specific payment method options applied to a
 // SetupIntent.
 type SetupIntentPaymentMethodOptions struct {
-	Card *SetupIntentPaymentMethodOptionsCard `json:"card,omitempty"`
+	Card *SetupIntentPaymentMethodOptionsCard `json:"card"`
 }
 
 // SetupIntent is the resource representing a Stripe payout.
 // For more details see https://stripe.com/docs/api#payment_intents.
 type SetupIntent struct {
 	APIResource
-	Application          *Application                     `json:"application,omitempty"`
-	CancellationReason   SetupIntentCancellationReason    `json:"cancellation_reason,omitempty"`
-	ClientSecret         *string `json:"client_secret,omitempty"`
-	Created              *int64 `json:"created,omitempty"`
-	Customer             *Customer                        `json:"customer,omitempty"`
-	Description          *string `json:"description,omitempty"`
-	ID                   *string `json:"id,omitempty"`
-	LastSetupError       *Error                           `json:"last_setup_error,omitempty"`
-	LatestAttempt        *SetupAttempt                    `json:"latest_attempt,omitempty"`
-	Livemode             *bool `json:"livemode,omitempty"`
-	Mandate              *Mandate                         `json:"mandate,omitempty"`
-	Metadata             map[string]string                `json:"metadata,omitempty"`
-	NextAction           *SetupIntentNextAction           `json:"next_action,omitempty"`
-	Object               *string `json:"object,omitempty"`
-	OnBehalfOf           *Account                         `json:"on_behalf_of,omitempty"`
-	PaymentMethod        *PaymentMethod                   `json:"payment_method,omitempty"`
-	PaymentMethodOptions *SetupIntentPaymentMethodOptions `json:"payment_method_options,omitempty"`
-	PaymentMethodTypes   []string                         `json:"payment_method_types,omitempty"`
-	SingleUseMandate     *Mandate                         `json:"single_use_mandate,omitempty"`
-	Status               SetupIntentStatus                `json:"status,omitempty"`
-	Usage                SetupIntentUsage                 `json:"usage,omitempty"`
+	Application          *Application                     `json:"application"`
+	CancellationReason   SetupIntentCancellationReason    `json:"cancellation_reason"`
+	ClientSecret         *string `json:"client_secret"`
+	Created              *int64 `json:"created"`
+	Customer             *Customer                        `json:"customer"`
+	Description          *string `json:"description"`
+	ID                   *string `json:"id"`
+	LastSetupError       *Error                           `json:"last_setup_error"`
+	LatestAttempt        *SetupAttempt                    `json:"latest_attempt"`
+	Livemode             *bool `json:"livemode"`
+	Mandate              *Mandate                         `json:"mandate"`
+	Metadata             map[string]string                `json:"metadata"`
+	NextAction           *SetupIntentNextAction           `json:"next_action"`
+	Object               *string `json:"object"`
+	OnBehalfOf           *Account                         `json:"on_behalf_of"`
+	PaymentMethod        *PaymentMethod                   `json:"payment_method"`
+	PaymentMethodOptions *SetupIntentPaymentMethodOptions `json:"payment_method_options"`
+	PaymentMethodTypes   []string                         `json:"payment_method_types"`
+	SingleUseMandate     *Mandate                         `json:"single_use_mandate"`
+	Status               SetupIntentStatus                `json:"status"`
+	Usage                SetupIntentUsage                 `json:"usage"`
 }
 
 // SetupIntentList is a list of setup intents as retrieved from a list endpoint.
 type SetupIntentList struct {
 	APIResource
 	ListMeta
-	Data []*SetupIntent `json:"data,omitempty"`
+	Data []*SetupIntent `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a SetupIntent.

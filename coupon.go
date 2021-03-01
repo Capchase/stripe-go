@@ -43,37 +43,37 @@ type CouponListParams struct {
 
 // CouponAppliesTo represents the products a coupon applies to.
 type CouponAppliesTo struct {
-	Products []string `json:"products,omitempty"`
+	Products []string `json:"products"`
 }
 
 // Coupon is the resource representing a Stripe coupon.
 // For more details see https://stripe.com/docs/api#coupons.
 type Coupon struct {
 	APIResource
-	AmountOff        *int64 `json:"amount_off,omitempty"`
-	AppliesTo        *CouponAppliesTo  `json:"applies_to,omitempty"`
-	Created          *int64 `json:"created,omitempty"`
-	Currency         Currency          `json:"currency,omitempty"`
-	Deleted          *bool `json:"deleted,omitempty"`
-	Duration         CouponDuration    `json:"duration,omitempty"`
-	DurationInMonths *int64 `json:"duration_in_months,omitempty"`
-	ID               *string `json:"id,omitempty"`
-	Livemode         *bool `json:"livemode,omitempty"`
-	MaxRedemptions   *int64 `json:"max_redemptions,omitempty"`
-	Metadata         map[string]string `json:"metadata,omitempty"`
-	Name             *string `json:"name,omitempty"`
-	Object           *string `json:"object,omitempty"`
-	PercentOff       *float64 `json:"percent_off,omitempty"`
-	RedeemBy         *int64 `json:"redeem_by,omitempty"`
-	TimesRedeemed    *int64 `json:"times_redeemed,omitempty"`
-	Valid            *bool `json:"valid,omitempty"`
+	AmountOff        *int64 `json:"amount_off"`
+	AppliesTo        *CouponAppliesTo  `json:"applies_to"`
+	Created          *int64 `json:"created"`
+	Currency         Currency          `json:"currency"`
+	Deleted          *bool `json:"deleted"`
+	Duration         CouponDuration    `json:"duration"`
+	DurationInMonths *int64 `json:"duration_in_months"`
+	ID               *string `json:"id"`
+	Livemode         *bool `json:"livemode"`
+	MaxRedemptions   *int64 `json:"max_redemptions"`
+	Metadata         map[string]string `json:"metadata"`
+	Name             *string `json:"name"`
+	Object           *string `json:"object"`
+	PercentOff       *float64 `json:"percent_off"`
+	RedeemBy         *int64 `json:"redeem_by"`
+	TimesRedeemed    *int64 `json:"times_redeemed"`
+	Valid            *bool `json:"valid"`
 }
 
 // CouponList is a list of coupons as retrieved from a list endpoint.
 type CouponList struct {
 	APIResource
 	ListMeta
-	Data []*Coupon `json:"data,omitempty"`
+	Data []*Coupon `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a Coupon.

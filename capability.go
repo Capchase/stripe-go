@@ -43,33 +43,33 @@ type CapabilityListParams struct {
 
 // CapabilityRequirements represents information that needs to be collected for a capability.
 type CapabilityRequirements struct {
-	CurrentDeadline     *int64 `json:"current_deadline,omitempty"`
-	CurrentlyDue        []string                    `json:"currently_due,omitempty"`
-	DisabledReason      CapabilityDisabledReason    `json:"disabled_reason,omitempty"`
-	Errors              []*AccountRequirementsError `json:"errors,omitempty"`
-	EventuallyDue       []string                    `json:"eventually_due,omitempty"`
-	PastDue             []string                    `json:"past_due,omitempty"`
-	PendingVerification []string                    `json:"pending_verification,omitempty"`
+	CurrentDeadline     *int64 `json:"current_deadline"`
+	CurrentlyDue        []string                    `json:"currently_due"`
+	DisabledReason      CapabilityDisabledReason    `json:"disabled_reason"`
+	Errors              []*AccountRequirementsError `json:"errors"`
+	EventuallyDue       []string                    `json:"eventually_due"`
+	PastDue             []string                    `json:"past_due"`
+	PendingVerification []string                    `json:"pending_verification"`
 }
 
 // Capability is the resource representing a Stripe capability.
 // For more details see https://stripe.com/docs/api/capabilities
 type Capability struct {
 	APIResource
-	Account      *Account                `json:"account,omitempty"`
-	ID           *string `json:"id,omitempty"`
-	Object       *string `json:"object,omitempty"`
-	Requested    *bool `json:"requested,omitempty"`
-	RequestedAt  *int64 `json:"requested_at,omitempty"`
-	Requirements *CapabilityRequirements `json:"requirements,omitempty"`
-	Status       CapabilityStatus        `json:"status,omitempty"`
+	Account      *Account                `json:"account"`
+	ID           *string `json:"id"`
+	Object       *string `json:"object"`
+	Requested    *bool `json:"requested"`
+	RequestedAt  *int64 `json:"requested_at"`
+	Requirements *CapabilityRequirements `json:"requirements"`
+	Status       CapabilityStatus        `json:"status"`
 }
 
 // CapabilityList is a list of capabilities as retrieved from a list endpoint.
 type CapabilityList struct {
 	APIResource
 	ListMeta
-	Data []*Capability `json:"data,omitempty"`
+	Data []*Capability `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a Capability.

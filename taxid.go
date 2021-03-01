@@ -72,32 +72,32 @@ type TaxIDListParams struct {
 
 // TaxIDVerification represents the verification details of a customer's tax id.
 type TaxIDVerification struct {
-	Status          TaxIDVerificationStatus `json:"status,omitempty"`
-	VerifiedAddress *string `json:"verified_address,omitempty"`
-	VerifiedName    *string `json:"verified_name,omitempty"`
+	Status          TaxIDVerificationStatus `json:"status"`
+	VerifiedAddress *string `json:"verified_address"`
+	VerifiedName    *string `json:"verified_name"`
 }
 
 // TaxID is the resource representing a customer's tax id.
 // For more details see https://stripe.com/docs/api/customers/tax_id_object
 type TaxID struct {
 	APIResource
-	Country      *string `json:"country,omitempty"`
-	Created      *int64 `json:"created,omitempty"`
-	Customer     *Customer          `json:"customer,omitempty"`
-	Deleted      *bool `json:"deleted,omitempty"`
-	ID           *string `json:"id,omitempty"`
-	Livemode     *bool `json:"livemode,omitempty"`
-	Object       *string `json:"object,omitempty"`
-	Type         TaxIDType          `json:"type,omitempty"`
-	Value        *string `json:"value,omitempty"`
-	Verification *TaxIDVerification `json:"verification,omitempty"`
+	Country      *string `json:"country"`
+	Created      *int64 `json:"created"`
+	Customer     *Customer          `json:"customer"`
+	Deleted      *bool `json:"deleted"`
+	ID           *string `json:"id"`
+	Livemode     *bool `json:"livemode"`
+	Object       *string `json:"object"`
+	Type         TaxIDType          `json:"type"`
+	Value        *string `json:"value"`
+	Verification *TaxIDVerification `json:"verification"`
 }
 
 // TaxIDList is a list of tax ids as retrieved from a list endpoint.
 type TaxIDList struct {
 	APIResource
 	ListMeta
-	Data []*TaxID `json:"data,omitempty"`
+	Data []*TaxID `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a TaxID.

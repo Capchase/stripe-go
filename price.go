@@ -160,50 +160,50 @@ type PriceListParams struct {
 
 // PriceRecurring represents the recurring components of a price.
 type PriceRecurring struct {
-	AggregateUsage  PriceRecurringAggregateUsage `json:"aggregate_usage,omitempty"`
-	Interval        PriceRecurringInterval       `json:"interval,omitempty"`
-	IntervalCount   *int64 `json:"interval_count,omitempty"`
-	TrialPeriodDays *int64 `json:"trial_period_days,omitempty"`
-	UsageType       PriceRecurringUsageType      `json:"usage_type,omitempty"`
+	AggregateUsage  PriceRecurringAggregateUsage `json:"aggregate_usage"`
+	Interval        PriceRecurringInterval       `json:"interval"`
+	IntervalCount   *int64 `json:"interval_count"`
+	TrialPeriodDays *int64 `json:"trial_period_days"`
+	UsageType       PriceRecurringUsageType      `json:"usage_type"`
 }
 
 // PriceTier configures tiered pricing
 type PriceTier struct {
-	FlatAmount        *int64 `json:"flat_amount,omitempty"`
+	FlatAmount        *int64 `json:"flat_amount"`
 	FlatAmountDecimal *float64 `json:"flat_amount_decimal,string"`
-	UnitAmount        *int64 `json:"unit_amount,omitempty"`
+	UnitAmount        *int64 `json:"unit_amount"`
 	UnitAmountDecimal *float64 `json:"unit_amount_decimal,string"`
-	UpTo              *int64 `json:"up_to,omitempty"`
+	UpTo              *int64 `json:"up_to"`
 }
 
 // PriceTransformQuantity represents how to calculate the final amount based on the quantity.
 type PriceTransformQuantity struct {
-	DivideBy *int64 `json:"divide_by,omitempty"`
-	Round    PriceTransformQuantityRound `json:"round,omitempty"`
+	DivideBy *int64 `json:"divide_by"`
+	Round    PriceTransformQuantityRound `json:"round"`
 }
 
 // Price is the resource representing a Stripe price.
 // For more details see https://stripe.com/docs/api#prices.
 type Price struct {
 	APIResource
-	Active            *bool `json:"active,omitempty"`
-	BillingScheme     PriceBillingScheme      `json:"billing_scheme,omitempty"`
-	Created           *int64 `json:"created,omitempty"`
-	Currency          Currency                `json:"currency,omitempty"`
-	Deleted           *bool `json:"deleted,omitempty"`
-	ID                *string `json:"id,omitempty"`
-	Livemode          *bool `json:"livemode,omitempty"`
-	LookupKey         *string `json:"lookup_key,omitempty"`
-	Metadata          map[string]string       `json:"metadata,omitempty"`
-	Nickname          *string `json:"nickname,omitempty"`
-	Object            *string `json:"object,omitempty"`
-	Product           *Product                `json:"product,omitempty"`
-	Recurring         *PriceRecurring         `json:"recurring,omitempty"`
-	Tiers             []*PriceTier            `json:"tiers,omitempty"`
-	TiersMode         PriceTiersMode          `json:"tiers_mode,omitempty"`
-	TransformQuantity *PriceTransformQuantity `json:"transform_quantity,omitempty"`
-	Type              PriceType               `json:"type,omitempty"`
-	UnitAmount        *int64 `json:"unit_amount,omitempty"`
+	Active            *bool `json:"active"`
+	BillingScheme     PriceBillingScheme      `json:"billing_scheme"`
+	Created           *int64 `json:"created"`
+	Currency          Currency                `json:"currency"`
+	Deleted           *bool `json:"deleted"`
+	ID                *string `json:"id"`
+	Livemode          *bool `json:"livemode"`
+	LookupKey         *string `json:"lookup_key"`
+	Metadata          map[string]string       `json:"metadata"`
+	Nickname          *string `json:"nickname"`
+	Object            *string `json:"object"`
+	Product           *Product                `json:"product"`
+	Recurring         *PriceRecurring         `json:"recurring"`
+	Tiers             []*PriceTier            `json:"tiers"`
+	TiersMode         PriceTiersMode          `json:"tiers_mode"`
+	TransformQuantity *PriceTransformQuantity `json:"transform_quantity"`
+	Type              PriceType               `json:"type"`
+	UnitAmount        *int64 `json:"unit_amount"`
 	UnitAmountDecimal *float64 `json:"unit_amount_decimal,string"`
 }
 
@@ -211,7 +211,7 @@ type Price struct {
 type PriceList struct {
 	APIResource
 	ListMeta
-	Data []*Price `json:"data,omitempty"`
+	Data []*Price `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a Price.

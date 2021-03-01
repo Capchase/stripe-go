@@ -79,82 +79,82 @@ type SetupAttemptListParams struct {
 
 // SetupAttemptPaymentMethodDetailsCardThreeDSecure represents details about 3DS associated with the setup attempt's payment method.
 type SetupAttemptPaymentMethodDetailsCardThreeDSecure struct {
-	AuthenticationFlow SetupAttemptPaymentMethodDetailsCardThreeDSecureAuthenticationFlow `json:"authentication_flow,omitempty"`
-	Result             SetupAttemptPaymentMethodDetailsCardThreeDSecureResult             `json:"result,omitempty"`
-	ResultReason       SetupAttemptPaymentMethodDetailsCardThreeDSecureResultReason       `json:"result_reason,omitempty"`
-	Version            *string `json:"version,omitempty"`
+	AuthenticationFlow SetupAttemptPaymentMethodDetailsCardThreeDSecureAuthenticationFlow `json:"authentication_flow"`
+	Result             SetupAttemptPaymentMethodDetailsCardThreeDSecureResult             `json:"result"`
+	ResultReason       SetupAttemptPaymentMethodDetailsCardThreeDSecureResultReason       `json:"result_reason"`
+	Version            *string `json:"version"`
 }
 
 // SetupAttemptPaymentMethodDetailsBancontact represents details about the Bancontact PaymentMethod.
 type SetupAttemptPaymentMethodDetailsBancontact struct {
-	BankCode                  *string `json:"bank_code,omitempty"`
-	BankName                  *string `json:"bank_name,omitempty"`
-	Bic                       *string `json:"bic,omitempty"`
-	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit,omitempty"`
-	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate,omitempty"`
-	IbanLast4                 *string `json:"iban_last4,omitempty"`
-	PreferredLanguage         *string `json:"preferred_language,omitempty"`
-	VerifiedName              *string `json:"verified_name,omitempty"`
+	BankCode                  *string `json:"bank_code"`
+	BankName                  *string `json:"bank_name"`
+	Bic                       *string `json:"bic"`
+	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit"`
+	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate"`
+	IbanLast4                 *string `json:"iban_last4"`
+	PreferredLanguage         *string `json:"preferred_language"`
+	VerifiedName              *string `json:"verified_name"`
 }
 
 // SetupAttemptPaymentMethodDetailsCard represents details about the Card PaymentMethod.
 type SetupAttemptPaymentMethodDetailsCard struct {
-	ThreeDSecure *SetupAttemptPaymentMethodDetailsCardThreeDSecure `json:"three_d_secure,omitempty"`
+	ThreeDSecure *SetupAttemptPaymentMethodDetailsCardThreeDSecure `json:"three_d_secure"`
 }
 
 // SetupAttemptPaymentMethodDetailsIdeal represents details about the Bancontact PaymentMethod.
 type SetupAttemptPaymentMethodDetailsIdeal struct {
-	Bank                      *string `json:"bank,omitempty"`
-	Bic                       *string `json:"bic,omitempty"`
-	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit,omitempty"`
-	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate,omitempty"`
-	IbanLast4                 *string `json:"iban_last4,omitempty"`
-	VerifiedName              *string `json:"verified_name,omitempty"`
+	Bank                      *string `json:"bank"`
+	Bic                       *string `json:"bic"`
+	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit"`
+	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate"`
+	IbanLast4                 *string `json:"iban_last4"`
+	VerifiedName              *string `json:"verified_name"`
 }
 
 // SetupAttemptPaymentMethodDetailsSofort represents details about the Bancontact PaymentMethod.
 type SetupAttemptPaymentMethodDetailsSofort struct {
-	BankCode                  *string `json:"bank_code,omitempty"`
-	BankName                  *string `json:"bank_name,omitempty"`
-	Bic                       *string `json:"bic,omitempty"`
-	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit,omitempty"`
-	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate,omitempty"`
-	IbanLast4                 *string `json:"iban_last4,omitempty"`
-	PreferredLanguage         *string `json:"preferred_language,omitempty"`
-	VerifiedName              *string `json:"verified_name,omitempty"`
+	BankCode                  *string `json:"bank_code"`
+	BankName                  *string `json:"bank_name"`
+	Bic                       *string `json:"bic"`
+	GeneratedSepaDebit        *PaymentMethod `json:"generated_sepa_debit"`
+	GeneratedSepaDebitMandate *Mandate       `json:"generated_sepa_debit_mandate"`
+	IbanLast4                 *string `json:"iban_last4"`
+	PreferredLanguage         *string `json:"preferred_language"`
+	VerifiedName              *string `json:"verified_name"`
 }
 
 // SetupAttemptPaymentMethodDetails represents the details about the PaymentMethod associated with the setup attempt.
 type SetupAttemptPaymentMethodDetails struct {
-	Bancontact *SetupAttemptPaymentMethodDetailsBancontact `json:"bancontact,omitempty"`
-	Card       *SetupAttemptPaymentMethodDetailsCard       `json:"card,omitempty"`
-	Ideal      *SetupAttemptPaymentMethodDetailsIdeal      `json:"ideal,omitempty"`
-	Sofort     *SetupAttemptPaymentMethodDetailsSofort     `json:"sofort,omitempty"`
-	Type       SetupAttemptPaymentMethodDetailsType        `json:"type,omitempty"`
+	Bancontact *SetupAttemptPaymentMethodDetailsBancontact `json:"bancontact"`
+	Card       *SetupAttemptPaymentMethodDetailsCard       `json:"card"`
+	Ideal      *SetupAttemptPaymentMethodDetailsIdeal      `json:"ideal"`
+	Sofort     *SetupAttemptPaymentMethodDetailsSofort     `json:"sofort"`
+	Type       SetupAttemptPaymentMethodDetailsType        `json:"type"`
 }
 
 // SetupAttempt is the resource representing a Stripe setup attempt.
 type SetupAttempt struct {
 	APIResource
-	Application          *Application                      `json:"application,omitempty"`
-	Created              *int64 `json:"created,omitempty"`
-	Customer             *Customer                         `json:"customer,omitempty"`
-	ID                   *string `json:"id,omitempty"`
-	Livemode             *bool `json:"livemode,omitempty"`
-	Object               *string `json:"object,omitempty"`
-	OnBehalfOf           *Account                          `json:"on_behalf_of,omitempty"`
-	PaymentMethod        *PaymentMethod                    `json:"payment_method,omitempty"`
-	PaymentMethodDetails *SetupAttemptPaymentMethodDetails `json:"payment_method_details,omitempty"`
-	SetupError           *Error                            `json:"setup_error,omitempty"`
-	Status               SetupAttemptStatus                `json:"status,omitempty"`
-	Usage                SetupAttemptUsage                 `json:"usage,omitempty"`
+	Application          *Application                      `json:"application"`
+	Created              *int64 `json:"created"`
+	Customer             *Customer                         `json:"customer"`
+	ID                   *string `json:"id"`
+	Livemode             *bool `json:"livemode"`
+	Object               *string `json:"object"`
+	OnBehalfOf           *Account                          `json:"on_behalf_of"`
+	PaymentMethod        *PaymentMethod                    `json:"payment_method"`
+	PaymentMethodDetails *SetupAttemptPaymentMethodDetails `json:"payment_method_details"`
+	SetupError           *Error                            `json:"setup_error"`
+	Status               SetupAttemptStatus                `json:"status"`
+	Usage                SetupAttemptUsage                 `json:"usage"`
 }
 
 // SetupAttemptList is a list of setup attempts as retrieved from a list endpoint.
 type SetupAttemptList struct {
 	APIResource
 	ListMeta
-	Data []*SetupAttempt `json:"data,omitempty"`
+	Data []*SetupAttempt `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a SetupAttempt.

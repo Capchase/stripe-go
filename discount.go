@@ -11,18 +11,18 @@ type DiscountParams struct {
 // For more details see https://stripe.com/docs/api#discounts.
 type Discount struct {
 	APIResource
-	CheckoutSession *CheckoutSession `json:"checkout_session,omitempty"`
-	Coupon          *Coupon          `json:"coupon,omitempty"`
-	Customer        *string `json:"customer,omitempty"`
-	Deleted         *bool `json:"deleted,omitempty"`
-	End             *int64 `json:"end,omitempty"`
-	ID              *string `json:"id,omitempty"`
-	Invoice         *string `json:"invoice,omitempty"`
-	InvoiceItem     *string `json:"invoice_item,omitempty"`
-	Object          *string `json:"object,omitempty"`
-	PromotionCode   *PromotionCode   `json:"promotion_code,omitempty"`
-	Start           *int64 `json:"start,omitempty"`
-	Subscription    *string `json:"subscription,omitempty"`
+	CheckoutSession *CheckoutSession `json:"checkout_session"`
+	Coupon          *Coupon          `json:"coupon"`
+	Customer        *string `json:"customer"`
+	Deleted         *bool `json:"deleted"`
+	End             *int64 `json:"end"`
+	ID              *string `json:"id"`
+	Invoice         *string `json:"invoice"`
+	InvoiceItem     *string `json:"invoice_item"`
+	Object          *string `json:"object"`
+	PromotionCode   *PromotionCode   `json:"promotion_code"`
+	Start           *int64 `json:"start"`
+	Subscription    *string `json:"subscription"`
 }
 
 // UnmarshalJSON handles deserialization of a Discount.

@@ -129,92 +129,92 @@ type IssuingCardholderListParams struct {
 
 // IssuingCardholderBilling is the resource representing the billing hash with the Issuing APIs.
 type IssuingCardholderBilling struct {
-	Address *Address `json:"address,omitempty"`
+	Address *Address `json:"address"`
 }
 
 // IssuingCardholderCompany represents additional information about a company cardholder.
 type IssuingCardholderCompany struct {
-	TaxIDProvided *bool `json:"tax_id_provided,omitempty"`
+	TaxIDProvided *bool `json:"tax_id_provided"`
 }
 
 // IssuingCardholderIndividualDOB represents the date of birth of the issuing card hoder
 // individual.
 type IssuingCardholderIndividualDOB struct {
-	Day   *int64 `json:"day,omitempty"`
-	Month *int64 `json:"month,omitempty"`
-	Year  *int64 `json:"year,omitempty"`
+	Day   *int64 `json:"day"`
+	Month *int64 `json:"month"`
+	Year  *int64 `json:"year"`
 }
 
 // IssuingCardholderIndividualVerificationDocument represents an identifying
 // document, either a passport or local ID card.
 type IssuingCardholderIndividualVerificationDocument struct {
-	Back  *File `json:"back,omitempty"`
-	Front *File `json:"front,omitempty"`
+	Back  *File `json:"back"`
+	Front *File `json:"front"`
 }
 
 // IssuingCardholderIndividualVerification represents the Government-issued ID
 // document for this cardholder
 type IssuingCardholderIndividualVerification struct {
-	Document *IssuingCardholderIndividualVerificationDocument `json:"document,omitempty"`
+	Document *IssuingCardholderIndividualVerificationDocument `json:"document"`
 }
 
 // IssuingCardholderIndividual represents additional information about an
 // individual cardholder.
 type IssuingCardholderIndividual struct {
-	DOB          *IssuingCardholderIndividualDOB          `json:"dob,omitempty"`
-	FirstName    *string `json:"first_name,omitempty"`
-	LastName     *string `json:"last_name,omitempty"`
-	Verification *IssuingCardholderIndividualVerification `json:"verification,omitempty"`
+	DOB          *IssuingCardholderIndividualDOB          `json:"dob"`
+	FirstName    *string `json:"first_name"`
+	LastName     *string `json:"last_name"`
+	Verification *IssuingCardholderIndividualVerification `json:"verification"`
 }
 
 // IssuingCardholderRequirements contains the verification requirements for the cardholder.
 type IssuingCardholderRequirements struct {
-	DisabledReason IssuingCardholderRequirementsDisabledReason `json:"disabled_reason,omitempty"`
-	PastDue        []string                                    `json:"past_due,omitempty"`
+	DisabledReason IssuingCardholderRequirementsDisabledReason `json:"disabled_reason"`
+	PastDue        []string                                    `json:"past_due"`
 }
 
 // IssuingCardholderSpendingControlsSpendingLimit is the resource representing a spending limit
 // for an issuing cardholder.
 type IssuingCardholderSpendingControlsSpendingLimit struct {
-	Amount     *int64 `json:"amount,omitempty"`
-	Categories []string                                               `json:"categories,omitempty"`
-	Interval   IssuingCardholderSpendingControlsSpendingLimitInterval `json:"interval,omitempty"`
+	Amount     *int64 `json:"amount"`
+	Categories []string                                               `json:"categories"`
+	Interval   IssuingCardholderSpendingControlsSpendingLimitInterval `json:"interval"`
 }
 
 // IssuingCardholderSpendingControls is the resource representing spending controls
 // for an issuing cardholder.
 type IssuingCardholderSpendingControls struct {
-	AllowedCategories      []string                                          `json:"allowed_categories,omitempty"`
-	BlockedCategories      []string                                          `json:"blocked_categories,omitempty"`
-	SpendingLimits         []*IssuingCardholderSpendingControlsSpendingLimit `json:"spending_limits,omitempty"`
-	SpendingLimitsCurrency Currency                                          `json:"spending_limits_currency,omitempty"`
+	AllowedCategories      []string                                          `json:"allowed_categories"`
+	BlockedCategories      []string                                          `json:"blocked_categories"`
+	SpendingLimits         []*IssuingCardholderSpendingControlsSpendingLimit `json:"spending_limits"`
+	SpendingLimitsCurrency Currency                                          `json:"spending_limits_currency"`
 }
 
 // IssuingCardholder is the resource representing a Stripe issuing cardholder.
 type IssuingCardholder struct {
 	APIResource
-	Billing          *IssuingCardholderBilling          `json:"billing,omitempty"`
-	Company          *IssuingCardholderCompany          `json:"company,omitempty"`
-	Created          *int64 `json:"created,omitempty"`
-	Email            *string `json:"email,omitempty"`
-	ID               *string `json:"id,omitempty"`
-	Individual       *IssuingCardholderIndividual       `json:"individual,omitempty"`
-	Livemode         *bool `json:"livemode,omitempty"`
-	Metadata         map[string]string                  `json:"metadata,omitempty"`
-	Name             *string `json:"name,omitempty"`
-	Object           *string `json:"object,omitempty"`
-	PhoneNumber      *string `json:"phone_number,omitempty"`
-	Requirements     *IssuingCardholderRequirements     `json:"requirements,omitempty"`
-	SpendingControls *IssuingCardholderSpendingControls `json:"spending_controls,omitempty"`
-	Status           IssuingCardholderStatus            `json:"status,omitempty"`
-	Type             IssuingCardholderType              `json:"type,omitempty"`
+	Billing          *IssuingCardholderBilling          `json:"billing"`
+	Company          *IssuingCardholderCompany          `json:"company"`
+	Created          *int64 `json:"created"`
+	Email            *string `json:"email"`
+	ID               *string `json:"id"`
+	Individual       *IssuingCardholderIndividual       `json:"individual"`
+	Livemode         *bool `json:"livemode"`
+	Metadata         map[string]string                  `json:"metadata"`
+	Name             *string `json:"name"`
+	Object           *string `json:"object"`
+	PhoneNumber      *string `json:"phone_number"`
+	Requirements     *IssuingCardholderRequirements     `json:"requirements"`
+	SpendingControls *IssuingCardholderSpendingControls `json:"spending_controls"`
+	Status           IssuingCardholderStatus            `json:"status"`
+	Type             IssuingCardholderType              `json:"type"`
 }
 
 // IssuingCardholderList is a list of issuing cardholders as retrieved from a list endpoint.
 type IssuingCardholderList struct {
 	APIResource
 	ListMeta
-	Data []*IssuingCardholder `json:"data,omitempty"`
+	Data []*IssuingCardholder `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of an IssuingCardholder.

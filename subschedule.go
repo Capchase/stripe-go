@@ -173,87 +173,87 @@ type SubscriptionScheduleListParams struct {
 
 // SubscriptionScheduleCurrentPhase is a structure the current phase's period.
 type SubscriptionScheduleCurrentPhase struct {
-	EndDate   *int64 `json:"end_date,omitempty"`
-	StartDate *int64 `json:"start_date,omitempty"`
+	EndDate   *int64 `json:"end_date"`
+	StartDate *int64 `json:"start_date"`
 }
 
 // SubscriptionScheduleInvoiceSettings is a structure representing the settings applied to invoices
 // associated with a subscription schedule.
 type SubscriptionScheduleInvoiceSettings struct {
-	DaysUntilDue *int64 `json:"days_until_due,omitempty"`
+	DaysUntilDue *int64 `json:"days_until_due"`
 }
 
 // SubscriptionScheduleDefaultSettings is a structure representing the
 // subscription schedule’s default settings.
 type SubscriptionScheduleDefaultSettings struct {
 	ApplicationFeePercent *float64 `json:"application_fee_percent,string"`
-	BillingCycleAnchor    SubscriptionSchedulePhaseBillingCycleAnchor `json:"billing_cycle_anchor,omitempty"`
-	BillingThresholds     *SubscriptionBillingThresholds              `json:"billing_thresholds,omitempty"`
-	CollectionMethod      SubscriptionCollectionMethod                `json:"collection_method,omitempty"`
-	DefaultPaymentMethod  *PaymentMethod                              `json:"default_payment_method,omitempty"`
-	InvoiceSettings       *SubscriptionScheduleInvoiceSettings        `json:"invoice_settings,omitempty"`
-	TransferData          *SubscriptionTransferData                   `json:"transfer_data,omitempty"`
+	BillingCycleAnchor    SubscriptionSchedulePhaseBillingCycleAnchor `json:"billing_cycle_anchor"`
+	BillingThresholds     *SubscriptionBillingThresholds              `json:"billing_thresholds"`
+	CollectionMethod      SubscriptionCollectionMethod                `json:"collection_method"`
+	DefaultPaymentMethod  *PaymentMethod                              `json:"default_payment_method"`
+	InvoiceSettings       *SubscriptionScheduleInvoiceSettings        `json:"invoice_settings"`
+	TransferData          *SubscriptionTransferData                   `json:"transfer_data"`
 }
 
 // SubscriptionSchedulePhaseAddInvoiceItem represents the invoice items to add when the phase starts.
 type SubscriptionSchedulePhaseAddInvoiceItem struct {
-	Price    *Price     `json:"price,omitempty"`
-	Quantity *int64 `json:"quantity,omitempty"`
-	TaxRates []*TaxRate `json:"tax_rates,omitempty"`
+	Price    *Price     `json:"price"`
+	Quantity *int64 `json:"quantity"`
+	TaxRates []*TaxRate `json:"tax_rates"`
 }
 
 // SubscriptionSchedulePhaseItem represents plan details for a given phase
 type SubscriptionSchedulePhaseItem struct {
-	BillingThresholds *SubscriptionItemBillingThresholds `json:"billing_thresholds,omitempty"`
-	Plan              *Plan                              `json:"plan,omitempty"`
-	Price             *Price                             `json:"price,omitempty"`
-	Quantity          *int64 `json:"quantity,omitempty"`
-	TaxRates          []*TaxRate                         `json:"tax_rates,omitempty"`
+	BillingThresholds *SubscriptionItemBillingThresholds `json:"billing_thresholds"`
+	Plan              *Plan                              `json:"plan"`
+	Price             *Price                             `json:"price"`
+	Quantity          *int64 `json:"quantity"`
+	TaxRates          []*TaxRate                         `json:"tax_rates"`
 }
 
 // SubscriptionSchedulePhase is a structure a phase of a subscription schedule.
 type SubscriptionSchedulePhase struct {
-	AddInvoiceItems       []*SubscriptionSchedulePhaseAddInvoiceItem  `json:"add_invoice_items,omitempty"`
-	ApplicationFeePercent *float64 `json:"application_fee_percent,omitempty"`
-	BillingCycleAnchor    SubscriptionSchedulePhaseBillingCycleAnchor `json:"billing_cycle_anchor,omitempty"`
-	BillingThresholds     *SubscriptionBillingThresholds              `json:"billing_thresholds,omitempty"`
-	CollectionMethod      SubscriptionCollectionMethod                `json:"collection_method,omitempty"`
-	Coupon                *Coupon                                     `json:"coupon,omitempty"`
-	DefaultPaymentMethod  *PaymentMethod                              `json:"default_payment_method,omitempty"`
-	DefaultTaxRates       []*TaxRate                                  `json:"default_tax_rates,omitempty"`
-	EndDate               *int64 `json:"end_date,omitempty"`
-	InvoiceSettings       *SubscriptionScheduleInvoiceSettings        `json:"invoice_settings,omitempty"`
-	Items                 []*SubscriptionSchedulePhaseItem            `json:"items,omitempty"`
-	StartDate             *int64 `json:"start_date,omitempty"`
-	TransferData          *SubscriptionTransferData                   `json:"transfer_data,omitempty"`
-	TrialEnd              *int64 `json:"trial_end,omitempty"`
+	AddInvoiceItems       []*SubscriptionSchedulePhaseAddInvoiceItem  `json:"add_invoice_items"`
+	ApplicationFeePercent *float64 `json:"application_fee_percent"`
+	BillingCycleAnchor    SubscriptionSchedulePhaseBillingCycleAnchor `json:"billing_cycle_anchor"`
+	BillingThresholds     *SubscriptionBillingThresholds              `json:"billing_thresholds"`
+	CollectionMethod      SubscriptionCollectionMethod                `json:"collection_method"`
+	Coupon                *Coupon                                     `json:"coupon"`
+	DefaultPaymentMethod  *PaymentMethod                              `json:"default_payment_method"`
+	DefaultTaxRates       []*TaxRate                                  `json:"default_tax_rates"`
+	EndDate               *int64 `json:"end_date"`
+	InvoiceSettings       *SubscriptionScheduleInvoiceSettings        `json:"invoice_settings"`
+	Items                 []*SubscriptionSchedulePhaseItem            `json:"items"`
+	StartDate             *int64 `json:"start_date"`
+	TransferData          *SubscriptionTransferData                   `json:"transfer_data"`
+	TrialEnd              *int64 `json:"trial_end"`
 }
 
 // SubscriptionSchedule is the resource representing a Stripe subscription schedule.
 type SubscriptionSchedule struct {
 	APIResource
-	CanceledAt           *int64 `json:"canceled_at,omitempty"`
-	CompletedAt          *int64 `json:"completed_at,omitempty"`
-	Created              *int64 `json:"created,omitempty"`
-	CurrentPhase         *SubscriptionScheduleCurrentPhase    `json:"current_phase,omitempty"`
-	Customer             *Customer                            `json:"customer,omitempty"`
-	DefaultSettings      *SubscriptionScheduleDefaultSettings `json:"default_settings,omitempty"`
-	EndBehavior          SubscriptionScheduleEndBehavior      `json:"end_behavior,omitempty"`
-	ID                   *string `json:"id,omitempty"`
-	Livemode             *bool `json:"livemode,omitempty"`
-	Metadata             map[string]string                    `json:"metadata,omitempty"`
-	Object               *string `json:"object,omitempty"`
-	Phases               []*SubscriptionSchedulePhase         `json:"phases,omitempty"`
-	ReleasedSubscription *Subscription                        `json:"released_subscription,omitempty"`
-	Status               SubscriptionScheduleStatus           `json:"status,omitempty"`
-	Subscription         *Subscription                        `json:"subscription,omitempty"`
+	CanceledAt           *int64 `json:"canceled_at"`
+	CompletedAt          *int64 `json:"completed_at"`
+	Created              *int64 `json:"created"`
+	CurrentPhase         *SubscriptionScheduleCurrentPhase    `json:"current_phase"`
+	Customer             *Customer                            `json:"customer"`
+	DefaultSettings      *SubscriptionScheduleDefaultSettings `json:"default_settings"`
+	EndBehavior          SubscriptionScheduleEndBehavior      `json:"end_behavior"`
+	ID                   *string `json:"id"`
+	Livemode             *bool `json:"livemode"`
+	Metadata             map[string]string                    `json:"metadata"`
+	Object               *string `json:"object"`
+	Phases               []*SubscriptionSchedulePhase         `json:"phases"`
+	ReleasedSubscription *Subscription                        `json:"released_subscription"`
+	Status               SubscriptionScheduleStatus           `json:"status"`
+	Subscription         *Subscription                        `json:"subscription"`
 }
 
 // SubscriptionScheduleList is a list object for subscription schedules.
 type SubscriptionScheduleList struct {
 	APIResource
 	ListMeta
-	Data []*SubscriptionSchedule `json:"data,omitempty"`
+	Data []*SubscriptionSchedule `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a SubscriptionSchedule.

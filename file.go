@@ -68,23 +68,23 @@ type FileListParams struct {
 // For more details see https://stripe.com/docs/api#file_object.
 type File struct {
 	APIResource
-	Created   *int64 `json:"created,omitempty"`
-	ExpiresAt *int64 `json:"expires_at,omitempty"`
-	Filename  *string `json:"filename,omitempty"`
-	ID        *string `json:"id,omitempty"`
-	Links     *FileLinkList `json:"links,omitempty"`
-	Object    *string `json:"object,omitempty"`
-	Purpose   FilePurpose   `json:"purpose,omitempty"`
-	Size      *int64 `json:"size,omitempty"`
-	Type      *string `json:"type,omitempty"`
-	URL       *string `json:"url,omitempty"`
+	Created   *int64 `json:"created"`
+	ExpiresAt *int64 `json:"expires_at"`
+	Filename  *string `json:"filename"`
+	ID        *string `json:"id"`
+	Links     *FileLinkList `json:"links"`
+	Object    *string `json:"object"`
+	Purpose   FilePurpose   `json:"purpose"`
+	Size      *int64 `json:"size"`
+	Type      *string `json:"type"`
+	URL       *string `json:"url"`
 }
 
 // FileList is a list of files as retrieved from a list endpoint.
 type FileList struct {
 	APIResource
 	ListMeta
-	Data []*File `json:"data,omitempty"`
+	Data []*File `json:"data"`
 }
 
 // GetBody gets an appropriate multipart form payload to use in a request body

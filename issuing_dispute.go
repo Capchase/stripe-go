@@ -181,103 +181,103 @@ type IssuingDisputeSubmitParams struct {
 
 // IssuingDisputeEvidenceCanceled is the resource representing the evidence of an issuing dispute with a reason set to canceled.
 type IssuingDisputeEvidenceCanceled struct {
-	AdditionalDocumentation    *File                                      `json:"additional_documentation,omitempty"`
-	CanceledAt                 *int64 `json:"canceled_at,omitempty"`
-	CancellationPolicyProvided *bool `json:"cancellation_policy_provided,omitempty"`
-	CancellationReason         *string `json:"cancellation_reason,omitempty"`
-	ExpectedAt                 *int64 `json:"expected_at,omitempty"`
-	Explanation                *string `json:"explanation,omitempty"`
-	ProductDescription         *string `json:"product_description,omitempty"`
-	ProductType                IssuingDisputeEvidenceCanceledProductType  `json:"product_type,omitempty"`
-	ReturnStatus               IssuingDisputeEvidenceCanceledReturnStatus `json:"return_status,omitempty"`
-	ReturnedAt                 *int64 `json:"returned_at,omitempty"`
+	AdditionalDocumentation    *File                                      `json:"additional_documentation"`
+	CanceledAt                 *int64 `json:"canceled_at"`
+	CancellationPolicyProvided *bool `json:"cancellation_policy_provided"`
+	CancellationReason         *string `json:"cancellation_reason"`
+	ExpectedAt                 *int64 `json:"expected_at"`
+	Explanation                *string `json:"explanation"`
+	ProductDescription         *string `json:"product_description"`
+	ProductType                IssuingDisputeEvidenceCanceledProductType  `json:"product_type"`
+	ReturnStatus               IssuingDisputeEvidenceCanceledReturnStatus `json:"return_status"`
+	ReturnedAt                 *int64 `json:"returned_at"`
 }
 
 // IssuingDisputeEvidenceDuplicate is the resource representing the evidence of an issuing dispute with a reason set to duplicate.
 type IssuingDisputeEvidenceDuplicate struct {
-	AdditionalDocumentation *File  `json:"additional_documentation,omitempty"`
-	CardStatement           *File  `json:"card_statement,omitempty"`
-	CashReceipt             *File  `json:"cash_receipt,omitempty"`
-	CheckImage              *File  `json:"check_image,omitempty"`
-	Explanation             *string `json:"explanation,omitempty"`
-	OriginalTransaction     *string `json:"original_transaction,omitempty"`
+	AdditionalDocumentation *File  `json:"additional_documentation"`
+	CardStatement           *File  `json:"card_statement"`
+	CashReceipt             *File  `json:"cash_receipt"`
+	CheckImage              *File  `json:"check_image"`
+	Explanation             *string `json:"explanation"`
+	OriginalTransaction     *string `json:"original_transaction"`
 }
 
 // IssuingDisputeEvidenceFraudulent is the resource representing the evidence of an issuing dispute with a reason set to fraudulent.
 type IssuingDisputeEvidenceFraudulent struct {
-	AdditionalDocumentation *File  `json:"additional_documentation,omitempty"`
-	Explanation             *string `json:"explanation,omitempty"`
+	AdditionalDocumentation *File  `json:"additional_documentation"`
+	Explanation             *string `json:"explanation"`
 }
 
 // IssuingDisputeEvidenceMerchandiseNotAsDescribed is the resource representing the evidence of an issuing dispute with a reason set to merchandise not as described.
 type IssuingDisputeEvidenceMerchandiseNotAsDescribed struct {
-	AdditionalDocumentation *File                                                       `json:"additional_documentation,omitempty"`
-	Explanation             *string `json:"explanation,omitempty"`
-	ReceivedAt              *int64 `json:"received_at,omitempty"`
-	ReturnDescription       *string `json:"return_description,omitempty"`
-	ReturnStatus            IssuingDisputeEvidenceMerchandiseNotAsDescribedReturnStatus `json:"return_status,omitempty"`
-	ReturnedAt              *int64 `json:"returned_at,omitempty"`
+	AdditionalDocumentation *File                                                       `json:"additional_documentation"`
+	Explanation             *string `json:"explanation"`
+	ReceivedAt              *int64 `json:"received_at"`
+	ReturnDescription       *string `json:"return_description"`
+	ReturnStatus            IssuingDisputeEvidenceMerchandiseNotAsDescribedReturnStatus `json:"return_status"`
+	ReturnedAt              *int64 `json:"returned_at"`
 }
 
 // IssuingDisputeEvidenceNotReceived is the resource representing the evidence of an issuing dispute with a reason set to not received.
 type IssuingDisputeEvidenceNotReceived struct {
-	AdditionalDocumentation *File                                        `json:"additional_documentation,omitempty"`
-	ExpectedAt              *int64 `json:"expected_at,omitempty"`
-	Explanation             *string `json:"explanation,omitempty"`
-	ProductDescription      *string `json:"product_description,omitempty"`
-	ProductType             IssuingDisputeEvidenceNotReceivedProductType `json:"product_type,omitempty"`
+	AdditionalDocumentation *File                                        `json:"additional_documentation"`
+	ExpectedAt              *int64 `json:"expected_at"`
+	Explanation             *string `json:"explanation"`
+	ProductDescription      *string `json:"product_description"`
+	ProductType             IssuingDisputeEvidenceNotReceivedProductType `json:"product_type"`
 }
 
 // IssuingDisputeEvidenceOther is the resource representing the evidence of an issuing dispute with a reason set to other.
 type IssuingDisputeEvidenceOther struct {
-	AdditionalDocumentation *File                                  `json:"additional_documentation,omitempty"`
-	Explanation             *string `json:"explanation,omitempty"`
-	ProductDescription      *string `json:"product_description,omitempty"`
-	ProductType             IssuingDisputeEvidenceOtherProductType `json:"product_type,omitempty"`
+	AdditionalDocumentation *File                                  `json:"additional_documentation"`
+	Explanation             *string `json:"explanation"`
+	ProductDescription      *string `json:"product_description"`
+	ProductType             IssuingDisputeEvidenceOtherProductType `json:"product_type"`
 }
 
 // IssuingDisputeEvidenceServiceNotAsDescribed is the resource representing the evidence of an issuing dispute with a reason set to service not as described.
 type IssuingDisputeEvidenceServiceNotAsDescribed struct {
-	AdditionalDocumentation *File                                                  `json:"additional_documentation,omitempty"`
-	CanceledAt              *int64 `json:"canceled_at,omitempty"`
-	Explanation             *string `json:"explanation,omitempty"`
-	ProductDescription      *string `json:"product_description,omitempty"`
-	ProductType             IssuingDisputeEvidenceServiceNotAsDescribedProductType `json:"product_type,omitempty"`
+	AdditionalDocumentation *File                                                  `json:"additional_documentation"`
+	CanceledAt              *int64 `json:"canceled_at"`
+	Explanation             *string `json:"explanation"`
+	ProductDescription      *string `json:"product_description"`
+	ProductType             IssuingDisputeEvidenceServiceNotAsDescribedProductType `json:"product_type"`
 }
 
 // IssuingDisputeEvidence is the resource representing the evidence of an issuing dispute.
 type IssuingDisputeEvidence struct {
-	Canceled                  *IssuingDisputeEvidenceCanceled                  `json:"canceled,omitempty"`
-	Duplicate                 *IssuingDisputeEvidenceDuplicate                 `json:"duplicate,omitempty"`
-	Fraudulent                *IssuingDisputeEvidenceFraudulent                `json:"fraudulent,omitempty"`
-	MerchandiseNotAsDescribed *IssuingDisputeEvidenceMerchandiseNotAsDescribed `json:"merchandise_not_as_described,omitempty"`
-	NotReceived               *IssuingDisputeEvidenceNotReceived               `json:"not_received,omitempty"`
-	Other                     *IssuingDisputeEvidenceOther                     `json:"other,omitempty"`
-	Reason                    IssuingDisputeEvidenceReason                     `json:"reason,omitempty"`
-	ServiceNotAsDescribed     *IssuingDisputeEvidenceServiceNotAsDescribed     `json:"service_not_as_described,omitempty"`
+	Canceled                  *IssuingDisputeEvidenceCanceled                  `json:"canceled"`
+	Duplicate                 *IssuingDisputeEvidenceDuplicate                 `json:"duplicate"`
+	Fraudulent                *IssuingDisputeEvidenceFraudulent                `json:"fraudulent"`
+	MerchandiseNotAsDescribed *IssuingDisputeEvidenceMerchandiseNotAsDescribed `json:"merchandise_not_as_described"`
+	NotReceived               *IssuingDisputeEvidenceNotReceived               `json:"not_received"`
+	Other                     *IssuingDisputeEvidenceOther                     `json:"other"`
+	Reason                    IssuingDisputeEvidenceReason                     `json:"reason"`
+	ServiceNotAsDescribed     *IssuingDisputeEvidenceServiceNotAsDescribed     `json:"service_not_as_described"`
 }
 
 // IssuingDispute is the resource representing an issuing dispute.
 type IssuingDispute struct {
 	APIResource
-	Amount              *int64 `json:"amount,omitempty"`
-	BalanceTransactions []*BalanceTransaction   `json:"balance_transactions,omitempty"`
-	Created             *int64 `json:"created,omitempty"`
-	Currency            Currency                `json:"currency,omitempty"`
-	Evidence            *IssuingDisputeEvidence `json:"evidence,omitempty"`
-	ID                  *string `json:"id,omitempty"`
-	Livemode            *bool `json:"livemode,omitempty"`
-	Metadata            map[string]string       `json:"metadata,omitempty"`
-	Object              *string `json:"object,omitempty"`
-	Status              *IssuingDisputeStatus   `json:"status,omitempty"`
-	Transaction         *IssuingTransaction     `json:"transaction,omitempty"`
+	Amount              *int64 `json:"amount"`
+	BalanceTransactions []*BalanceTransaction   `json:"balance_transactions"`
+	Created             *int64 `json:"created"`
+	Currency            Currency                `json:"currency"`
+	Evidence            *IssuingDisputeEvidence `json:"evidence"`
+	ID                  *string `json:"id"`
+	Livemode            *bool `json:"livemode"`
+	Metadata            map[string]string       `json:"metadata"`
+	Object              *string `json:"object"`
+	Status              *IssuingDisputeStatus   `json:"status"`
+	Transaction         *IssuingTransaction     `json:"transaction"`
 }
 
 // IssuingDisputeList is a list of issuing disputes as retrieved from a list endpoint.
 type IssuingDisputeList struct {
 	APIResource
 	ListMeta
-	Data []*IssuingDispute `json:"data,omitempty"`
+	Data []*IssuingDispute `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of an IssuingDispute.

@@ -272,202 +272,202 @@ type InvoiceVoidParams struct {
 // For more details see https://stripe.com/docs/api#invoice_object.
 type Invoice struct {
 	APIResource
-	AccountCountry               *string `json:"account_country,omitempty"`
-	AccountName                  *string `json:"account_name,omitempty"`
-	AccountTaxIDs                []*TaxID                 `json:"account_tax_ids,omitempty"`
-	AmountDue                    *int64 `json:"amount_due,omitempty"`
-	AmountPaid                   *int64 `json:"amount_paid,omitempty"`
-	AmountRemaining              *int64 `json:"amount_remaining,omitempty"`
-	ApplicationFeeAmount         *int64 `json:"application_fee_amount,omitempty"`
-	AttemptCount                 *int64 `json:"attempt_count,omitempty"`
-	Attempted                    *bool `json:"attempted,omitempty"`
-	AutoAdvance                  *bool `json:"auto_advance,omitempty"`
-	BillingReason                InvoiceBillingReason     `json:"billing_reason,omitempty"`
-	Charge                       *Charge                  `json:"charge,omitempty"`
-	CollectionMethod             *InvoiceCollectionMethod `json:"collection_method,omitempty"`
-	Created                      *int64 `json:"created,omitempty"`
-	Currency                     Currency                 `json:"currency,omitempty"`
-	CustomFields                 []*InvoiceCustomField    `json:"custom_fields,omitempty"`
-	Customer                     *Customer                `json:"customer,omitempty"`
-	CustomerAddress              *Address                 `json:"customer_address,omitempty"`
-	CustomerEmail                *string `json:"customer_email,omitempty"`
-	CustomerName                 *string                  `json:"customer_name,omitempty"`
-	CustomerPhone                *string                  `json:"customer_phone,omitempty"`
-	CustomerShipping             *CustomerShippingDetails `json:"customer_shipping,omitempty"`
-	CustomerTaxExempt            CustomerTaxExempt        `json:"customer_tax_exempt,omitempty"`
-	CustomerTaxIDs               []*InvoiceCustomerTaxID  `json:"customer_tax_ids,omitempty"`
-	DefaultPaymentMethod         *PaymentMethod           `json:"default_payment_method,omitempty"`
-	DefaultSource                *PaymentSource           `json:"default_source,omitempty"`
-	DefaultTaxRates              []*TaxRate               `json:"default_tax_rates,omitempty"`
-	Deleted                      *bool `json:"deleted,omitempty"`
-	Description                  *string `json:"description,omitempty"`
-	Discount                     *Discount                `json:"discount,omitempty"`
-	Discounts                    []*Discount              `json:"discounts,omitempty"`
-	DueDate                      *int64 `json:"due_date,omitempty"`
-	EndingBalance                *int64 `json:"ending_balance,omitempty"`
-	Footer                       *string `json:"footer,omitempty"`
-	HostedInvoiceURL             *string `json:"hosted_invoice_url,omitempty"`
-	ID                           *string `json:"id,omitempty"`
-	InvoicePDF                   *string `json:"invoice_pdf,omitempty"`
-	LastFinalizationError        *Error                   `json:"last_finalization_error,omitempty"`
-	Lines                        *InvoiceLineList         `json:"lines,omitempty"`
-	Livemode                     *bool `json:"livemode,omitempty"`
-	Metadata                     map[string]string        `json:"metadata,omitempty"`
-	NextPaymentAttempt           *int64 `json:"next_payment_attempt,omitempty"`
-	Number                       *string `json:"number,omitempty"`
-	Object                       *string `json:"object,omitempty"`
-	OnBehalfOf                   *Account                 `json:"on_behalf_of,omitempty"`
-	Paid                         *bool `json:"paid,omitempty"`
-	PaymentIntent                *PaymentIntent           `json:"payment_intent,omitempty"`
-	PaymentSettings              *InvoicePaymentSettings  `json:"payment_settings,omitempty"`
-	PeriodEnd                    *int64 `json:"period_end,omitempty"`
-	PeriodStart                  *int64 `json:"period_start,omitempty"`
-	PostPaymentCreditNotesAmount *int64 `json:"post_payment_credit_notes_amount,omitempty"`
-	PrePaymentCreditNotesAmount  *int64 `json:"pre_payment_credit_notes_amount,omitempty"`
-	ReceiptNumber                *string `json:"receipt_number,omitempty"`
-	StartingBalance              *int64 `json:"starting_balance,omitempty"`
-	StatementDescriptor          *string `json:"statement_descriptor,omitempty"`
-	Status                       InvoiceStatus            `json:"status,omitempty"`
-	StatusTransitions            InvoiceStatusTransitions `json:"status_transitions,omitempty"`
-	Subscription                 *Subscription            `json:"subscription,omitempty"`
-	SubscriptionProrationDate    *int64 `json:"subscription_proration_date,omitempty"`
-	Subtotal                     *int64 `json:"subtotal,omitempty"`
-	Tax                          *int64 `json:"tax,omitempty"`
-	ThreasholdReason             *InvoiceThresholdReason  `json:"threshold_reason,omitempty"`
-	Total                        *int64 `json:"total,omitempty"`
-	TotalDiscountAmounts         []*InvoiceDiscountAmount `json:"total_discount_amounts,omitempty"`
-	TotalTaxAmounts              []*InvoiceTaxAmount      `json:"total_tax_amounts,omitempty"`
-	TransferData                 *InvoiceTransferData     `json:"transfer_data,omitempty"`
-	WebhooksDeliveredAt          *int64 `json:"webhooks_delivered_at,omitempty"`
+	AccountCountry               *string `json:"account_country"`
+	AccountName                  *string `json:"account_name"`
+	AccountTaxIDs                []*TaxID                 `json:"account_tax_ids"`
+	AmountDue                    *int64 `json:"amount_due"`
+	AmountPaid                   *int64 `json:"amount_paid"`
+	AmountRemaining              *int64 `json:"amount_remaining"`
+	ApplicationFeeAmount         *int64 `json:"application_fee_amount"`
+	AttemptCount                 *int64 `json:"attempt_count"`
+	Attempted                    *bool `json:"attempted"`
+	AutoAdvance                  *bool `json:"auto_advance"`
+	BillingReason                InvoiceBillingReason     `json:"billing_reason"`
+	Charge                       *Charge                  `json:"charge"`
+	CollectionMethod             *InvoiceCollectionMethod `json:"collection_method"`
+	Created                      *int64 `json:"created"`
+	Currency                     Currency                 `json:"currency"`
+	CustomFields                 []*InvoiceCustomField    `json:"custom_fields"`
+	Customer                     *Customer                `json:"customer"`
+	CustomerAddress              *Address                 `json:"customer_address"`
+	CustomerEmail                *string `json:"customer_email"`
+	CustomerName                 *string                  `json:"customer_name"`
+	CustomerPhone                *string                  `json:"customer_phone"`
+	CustomerShipping             *CustomerShippingDetails `json:"customer_shipping"`
+	CustomerTaxExempt            CustomerTaxExempt        `json:"customer_tax_exempt"`
+	CustomerTaxIDs               []*InvoiceCustomerTaxID  `json:"customer_tax_ids"`
+	DefaultPaymentMethod         *PaymentMethod           `json:"default_payment_method"`
+	DefaultSource                *PaymentSource           `json:"default_source"`
+	DefaultTaxRates              []*TaxRate               `json:"default_tax_rates"`
+	Deleted                      *bool `json:"deleted"`
+	Description                  *string `json:"description"`
+	Discount                     *Discount                `json:"discount"`
+	Discounts                    []*Discount              `json:"discounts"`
+	DueDate                      *int64 `json:"due_date"`
+	EndingBalance                *int64 `json:"ending_balance"`
+	Footer                       *string `json:"footer"`
+	HostedInvoiceURL             *string `json:"hosted_invoice_url"`
+	ID                           *string `json:"id"`
+	InvoicePDF                   *string `json:"invoice_pdf"`
+	LastFinalizationError        *Error                   `json:"last_finalization_error"`
+	Lines                        *InvoiceLineList         `json:"lines"`
+	Livemode                     *bool `json:"livemode"`
+	Metadata                     map[string]string        `json:"metadata"`
+	NextPaymentAttempt           *int64 `json:"next_payment_attempt"`
+	Number                       *string `json:"number"`
+	Object                       *string `json:"object"`
+	OnBehalfOf                   *Account                 `json:"on_behalf_of"`
+	Paid                         *bool `json:"paid"`
+	PaymentIntent                *PaymentIntent           `json:"payment_intent"`
+	PaymentSettings              *InvoicePaymentSettings  `json:"payment_settings"`
+	PeriodEnd                    *int64 `json:"period_end"`
+	PeriodStart                  *int64 `json:"period_start"`
+	PostPaymentCreditNotesAmount *int64 `json:"post_payment_credit_notes_amount"`
+	PrePaymentCreditNotesAmount  *int64 `json:"pre_payment_credit_notes_amount"`
+	ReceiptNumber                *string `json:"receipt_number"`
+	StartingBalance              *int64 `json:"starting_balance"`
+	StatementDescriptor          *string `json:"statement_descriptor"`
+	Status                       InvoiceStatus            `json:"status"`
+	StatusTransitions            InvoiceStatusTransitions `json:"status_transitions"`
+	Subscription                 *Subscription            `json:"subscription"`
+	SubscriptionProrationDate    *int64 `json:"subscription_proration_date"`
+	Subtotal                     *int64 `json:"subtotal"`
+	Tax                          *int64 `json:"tax"`
+	ThreasholdReason             *InvoiceThresholdReason  `json:"threshold_reason"`
+	Total                        *int64 `json:"total"`
+	TotalDiscountAmounts         []*InvoiceDiscountAmount `json:"total_discount_amounts"`
+	TotalTaxAmounts              []*InvoiceTaxAmount      `json:"total_tax_amounts"`
+	TransferData                 *InvoiceTransferData     `json:"transfer_data"`
+	WebhooksDeliveredAt          *int64 `json:"webhooks_delivered_at"`
 }
 
 // InvoiceCustomField is a structure representing a custom field on an invoice.
 type InvoiceCustomField struct {
-	Name  *string `json:"name,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Name  *string `json:"name"`
+	Value *string `json:"value"`
 }
 
 // InvoiceCustomerTaxID is a structure representing a customer tax id on an invoice.
 type InvoiceCustomerTaxID struct {
-	Type  TaxIDType `json:"type,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Type  TaxIDType `json:"type"`
+	Value *string `json:"value"`
 }
 
 // InvoiceDiscountAmount represents the aggregate amounts calculated per discount for all line items.
 type InvoiceDiscountAmount struct {
-	Amount   *int64 `json:"amount,omitempty"`
-	Discount *Discount `json:"discount,omitempty"`
+	Amount   *int64 `json:"amount"`
+	Discount *Discount `json:"discount"`
 }
 
 // InvoiceTaxAmount is a structure representing one of the tax amounts on an invoice.
 type InvoiceTaxAmount struct {
-	Amount    *int64 `json:"amount,omitempty"`
-	Inclusive *bool `json:"inclusive,omitempty"`
-	TaxRate   *TaxRate `json:"tax_rate,omitempty"`
+	Amount    *int64 `json:"amount"`
+	Inclusive *bool `json:"inclusive"`
+	TaxRate   *TaxRate `json:"tax_rate"`
 }
 
 // InvoiceThresholdReason is a structure representing a reason for a billing threshold.
 type InvoiceThresholdReason struct {
-	AmountGTE   *int64 `json:"amount_gte,omitempty"`
-	ItemReasons []*InvoiceThresholdReasonItemReason `json:"item_reasons,omitempty"`
+	AmountGTE   *int64 `json:"amount_gte"`
+	ItemReasons []*InvoiceThresholdReasonItemReason `json:"item_reasons"`
 }
 
 // InvoiceThresholdReasonItemReason is a structure representing the line items that
 // triggered an invoice.
 type InvoiceThresholdReasonItemReason struct {
-	LineItemIDs []string `json:"line_item_ids,omitempty"`
-	UsageGTE    *int64 `json:"usage_gte,omitempty"`
+	LineItemIDs []string `json:"line_item_ids"`
+	UsageGTE    *int64 `json:"usage_gte"`
 }
 
 // InvoiceList is a list of invoices as retrieved from a list endpoint.
 type InvoiceList struct {
 	APIResource
 	ListMeta
-	Data []*Invoice `json:"data,omitempty"`
+	Data []*Invoice `json:"data"`
 }
 
 // InvoiceLineDiscountAmount represents the amount of discount calculated per discount for this line item.
 type InvoiceLineDiscountAmount struct {
-	Amount   *int64 `json:"amount,omitempty"`
-	Discount *Discount `json:"discount,omitempty"`
+	Amount   *int64 `json:"amount"`
+	Discount *Discount `json:"discount"`
 }
 
 // InvoiceLine is the resource representing a Stripe invoice line item.
 // For more details see https://stripe.com/docs/api#invoice_line_item_object.
 type InvoiceLine struct {
-	Amount           *int64 `json:"amount,omitempty"`
-	Currency         Currency                     `json:"currency,omitempty"`
-	Description      *string `json:"description,omitempty"`
-	Discountable     *bool `json:"discountable,omitempty"`
-	Discounts        []*Discount                  `json:"discounts,omitempty"`
-	DiscountAmounts  []*InvoiceLineDiscountAmount `json:"discount_amounts,omitempty"`
-	ID               *string `json:"id,omitempty"`
-	InvoiceItem      *string `json:"invoice_item,omitempty"`
-	Livemode         *bool `json:"livemode,omitempty"`
-	Metadata         map[string]string            `json:"metadata,omitempty"`
-	Object           *string `json:"object,omitempty"`
-	Period           *Period                      `json:"period,omitempty"`
-	Plan             *Plan                        `json:"plan,omitempty"`
-	Price            *Price                       `json:"price,omitempty"`
-	Proration        *bool `json:"proration,omitempty"`
-	Quantity         *int64 `json:"quantity,omitempty"`
-	Subscription     *string `json:"subscription,omitempty"`
-	SubscriptionItem *string `json:"subscription_item,omitempty"`
-	TaxAmounts       []*InvoiceTaxAmount          `json:"tax_amounts,omitempty"`
-	TaxRates         []*TaxRate                   `json:"tax_rates,omitempty"`
-	Type             InvoiceLineType              `json:"type,omitempty"`
-	UnifiedProration *bool `json:"unified_proration,omitempty"`
+	Amount           *int64 `json:"amount"`
+	Currency         Currency                     `json:"currency"`
+	Description      *string `json:"description"`
+	Discountable     *bool `json:"discountable"`
+	Discounts        []*Discount                  `json:"discounts"`
+	DiscountAmounts  []*InvoiceLineDiscountAmount `json:"discount_amounts"`
+	ID               *string `json:"id"`
+	InvoiceItem      *string `json:"invoice_item"`
+	Livemode         *bool `json:"livemode"`
+	Metadata         map[string]string            `json:"metadata"`
+	Object           *string `json:"object"`
+	Period           *Period                      `json:"period"`
+	Plan             *Plan                        `json:"plan"`
+	Price            *Price                       `json:"price"`
+	Proration        *bool `json:"proration"`
+	Quantity         *int64 `json:"quantity"`
+	Subscription     *string `json:"subscription"`
+	SubscriptionItem *string `json:"subscription_item"`
+	TaxAmounts       []*InvoiceTaxAmount          `json:"tax_amounts"`
+	TaxRates         []*TaxRate                   `json:"tax_rates"`
+	Type             InvoiceLineType              `json:"type"`
+	UnifiedProration *bool `json:"unified_proration"`
 }
 
 // InvoiceTransferData represents the information for the transfer_data associated with an invoice.
 type InvoiceTransferData struct {
-	Amount      *int64 `json:"amount,omitempty"`
-	Destination *Account `json:"destination,omitempty"`
+	Amount      *int64 `json:"amount"`
+	Destination *Account `json:"destination"`
 }
 
 // Period is a structure representing a start and end dates.
 type Period struct {
-	End   *int64 `json:"end,omitempty"`
-	Start *int64 `json:"start,omitempty"`
+	End   *int64 `json:"end"`
+	Start *int64 `json:"start"`
 }
 
 // InvoiceLineList is a list object for invoice line items.
 type InvoiceLineList struct {
 	APIResource
 	ListMeta
-	Data []*InvoiceLine `json:"data,omitempty"`
+	Data []*InvoiceLine `json:"data"`
 }
 
 // InvoicePaymentSettingsPaymentMethodOptionsBancontact contains details about the Bancontact
 // payment method options to pass to the invoice's PaymentIntent.
 type InvoicePaymentSettingsPaymentMethodOptionsBancontact struct {
-	PreferredLanguage *string `json:"preferred_language,omitempty"`
+	PreferredLanguage *string `json:"preferred_language"`
 }
 
 // InvoicePaymentSettingsPaymentMethodOptionsCard contains details about the Card payment
 // method options to pass to the invoice's PaymentIntent.
 type InvoicePaymentSettingsPaymentMethodOptionsCard struct {
-	RequestThreeDSecure InvoicePaymentSettingsPaymentMethodOptionsCardRequestThreeDSecure `json:"request_three_d_secure,omitempty"`
+	RequestThreeDSecure InvoicePaymentSettingsPaymentMethodOptionsCardRequestThreeDSecure `json:"request_three_d_secure"`
 }
 
 // InvoicePaymentSettingsPaymentMethodOptions represents payment-method-specific configuration to provide to the invoice's PaymentIntent.
 type InvoicePaymentSettingsPaymentMethodOptions struct {
-	Bancontact *InvoicePaymentSettingsPaymentMethodOptionsBancontact `json:"bancontact,omitempty"`
-	Card       *InvoicePaymentSettingsPaymentMethodOptionsCard       `json:"card,omitempty"`
+	Bancontact *InvoicePaymentSettingsPaymentMethodOptionsBancontact `json:"bancontact"`
+	Card       *InvoicePaymentSettingsPaymentMethodOptionsCard       `json:"card"`
 }
 
 // InvoicePaymentSettings represents configuration settings to provide to the invoice's PaymentIntent.
 type InvoicePaymentSettings struct {
-	PaymentMethodOptions *InvoicePaymentSettingsPaymentMethodOptions `json:"payment_method_options,omitempty"`
-	PaymentMethodTypes   []InvoicePaymentSettingsPaymentMethodType   `json:"payment_method_types,omitempty"`
+	PaymentMethodOptions *InvoicePaymentSettingsPaymentMethodOptions `json:"payment_method_options"`
+	PaymentMethodTypes   []InvoicePaymentSettingsPaymentMethodType   `json:"payment_method_types"`
 }
 
 // InvoiceStatusTransitions are the timestamps at which the invoice status was updated.
 type InvoiceStatusTransitions struct {
-	FinalizedAt           *int64 `json:"finalized_at,omitempty"`
-	MarkedUncollectibleAt *int64 `json:"marked_uncollectible_at,omitempty"`
-	PaidAt                *int64 `json:"paid_at,omitempty"`
-	VoidedAt              *int64 `json:"voided_at,omitempty"`
+	FinalizedAt           *int64 `json:"finalized_at"`
+	MarkedUncollectibleAt *int64 `json:"marked_uncollectible_at"`
+	PaidAt                *int64 `json:"paid_at"`
+	VoidedAt              *int64 `json:"voided_at"`
 }
 
 // UnmarshalJSON handles deserialization of an Invoice.

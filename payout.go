@@ -72,10 +72,10 @@ const (
 // The Type should indicate which object is fleshed out
 // For more details see https://stripe.com/docs/api/go#payout_object
 type PayoutDestination struct {
-	BankAccount *BankAccount          `json:"-,omitempty"`
-	Card        *Card                 `json:"-,omitempty"`
-	ID          *string `json:"id,omitempty"`
-	Type        PayoutDestinationType `json:"object,omitempty"`
+	BankAccount *BankAccount          `json:"-"`
+	Card        *Card                 `json:"-"`
+	ID          *string `json:"id"`
+	Type        PayoutDestinationType `json:"object"`
 }
 
 // PayoutParams is the set of parameters that can be used when creating or updating a payout.
@@ -112,36 +112,36 @@ type PayoutReverseParams struct {
 // For more details see https://stripe.com/docs/api#payouts.
 type Payout struct {
 	APIResource
-	Amount                    *int64 `json:"amount,omitempty"`
-	ArrivalDate               *int64 `json:"arrival_date,omitempty"`
-	Automatic                 *bool `json:"automatic,omitempty"`
-	BalanceTransaction        *BalanceTransaction `json:"balance_transaction,omitempty"`
-	BankAccount               *BankAccount        `json:"bank_account,omitempty"`
-	Card                      *Card               `json:"card,omitempty"`
-	Created                   *int64 `json:"created,omitempty"`
-	Currency                  Currency            `json:"currency,omitempty"`
-	Description               *string             `json:"description,omitempty"`
-	Destination               *PayoutDestination  `json:"destination,omitempty"`
-	FailureBalanceTransaction *BalanceTransaction `json:"failure_balance_transaction,omitempty"`
-	FailureCode               PayoutFailureCode   `json:"failure_code,omitempty"`
-	FailureMessage            *string `json:"failure_message,omitempty"`
-	ID                        *string `json:"id,omitempty"`
-	Livemode                  *bool `json:"livemode,omitempty"`
-	Metadata                  map[string]string   `json:"metadata,omitempty"`
-	Method                    PayoutMethodType    `json:"method,omitempty"`
-	OriginalPayout            *Payout             `json:"original_payout,omitempty"`
-	ReversedBy                *Payout             `json:"reversed_by,omitempty"`
-	SourceType                PayoutSourceType    `json:"source_type,omitempty"`
-	StatementDescriptor       *string `json:"statement_descriptor,omitempty"`
-	Status                    PayoutStatus        `json:"status,omitempty"`
-	Type                      PayoutType          `json:"type,omitempty"`
+	Amount                    *int64 `json:"amount"`
+	ArrivalDate               *int64 `json:"arrival_date"`
+	Automatic                 *bool `json:"automatic"`
+	BalanceTransaction        *BalanceTransaction `json:"balance_transaction"`
+	BankAccount               *BankAccount        `json:"bank_account"`
+	Card                      *Card               `json:"card"`
+	Created                   *int64 `json:"created"`
+	Currency                  Currency            `json:"currency"`
+	Description               *string             `json:"description"`
+	Destination               *PayoutDestination  `json:"destination"`
+	FailureBalanceTransaction *BalanceTransaction `json:"failure_balance_transaction"`
+	FailureCode               PayoutFailureCode   `json:"failure_code"`
+	FailureMessage            *string `json:"failure_message"`
+	ID                        *string `json:"id"`
+	Livemode                  *bool `json:"livemode"`
+	Metadata                  map[string]string   `json:"metadata"`
+	Method                    PayoutMethodType    `json:"method"`
+	OriginalPayout            *Payout             `json:"original_payout"`
+	ReversedBy                *Payout             `json:"reversed_by"`
+	SourceType                PayoutSourceType    `json:"source_type"`
+	StatementDescriptor       *string `json:"statement_descriptor"`
+	Status                    PayoutStatus        `json:"status"`
+	Type                      PayoutType          `json:"type"`
 }
 
 // PayoutList is a list of payouts as retrieved from a list endpoint.
 type PayoutList struct {
 	APIResource
 	ListMeta
-	Data []*Payout `json:"data,omitempty"`
+	Data []*Payout `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a Payout.

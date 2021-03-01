@@ -20,23 +20,23 @@ type ReversalListParams struct {
 // Reversal represents a transfer reversal.
 type Reversal struct {
 	APIResource
-	Amount                   *int64 `json:"amount,omitempty"`
-	BalanceTransaction       *BalanceTransaction `json:"balance_transaction,omitempty"`
-	Created                  *int64 `json:"created,omitempty"`
-	Currency                 Currency            `json:"currency,omitempty"`
-	Description              *string `json:"description,omitempty"`
-	DestinationPaymentRefund *Refund             `json:"destination_payment_refund,omitempty"`
-	ID                       *string `json:"id,omitempty"`
-	Metadata                 map[string]string   `json:"metadata,omitempty"`
-	SourceRefund             *Refund             `json:"source_refund,omitempty"`
-	Transfer                 *string `json:"transfer,omitempty"`
+	Amount                   *int64 `json:"amount"`
+	BalanceTransaction       *BalanceTransaction `json:"balance_transaction"`
+	Created                  *int64 `json:"created"`
+	Currency                 Currency            `json:"currency"`
+	Description              *string `json:"description"`
+	DestinationPaymentRefund *Refund             `json:"destination_payment_refund"`
+	ID                       *string `json:"id"`
+	Metadata                 map[string]string   `json:"metadata"`
+	SourceRefund             *Refund             `json:"source_refund"`
+	Transfer                 *string `json:"transfer"`
 }
 
 // ReversalList is a list of object for reversals.
 type ReversalList struct {
 	APIResource
 	ListMeta
-	Data []*Reversal `json:"data,omitempty"`
+	Data []*Reversal `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a Reversal.

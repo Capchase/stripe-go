@@ -55,16 +55,16 @@ type SubscriptionItemListParams struct {
 // For more details see https://stripe.com/docs/api#subscription_items.
 type SubscriptionItem struct {
 	APIResource
-	BillingThresholds SubscriptionItemBillingThresholds `json:"billing_thresholds,omitempty"`
-	Created           *int64 `json:"created,omitempty"`
-	Deleted           *bool `json:"deleted,omitempty"`
-	ID                *string `json:"id,omitempty"`
-	Metadata          map[string]string                 `json:"metadata,omitempty"`
-	Plan              *Plan                             `json:"plan,omitempty"`
-	Price             *Price                            `json:"price,omitempty"`
-	Quantity          *int64 `json:"quantity,omitempty"`
-	Subscription      *string `json:"subscription,omitempty"`
-	TaxRates          []*TaxRate                        `json:"tax_rates,omitempty"`
+	BillingThresholds SubscriptionItemBillingThresholds `json:"billing_thresholds"`
+	Created           *int64 `json:"created"`
+	Deleted           *bool `json:"deleted"`
+	ID                *string `json:"id"`
+	Metadata          map[string]string                 `json:"metadata"`
+	Plan              *Plan                             `json:"plan"`
+	Price             *Price                            `json:"price"`
+	Quantity          *int64 `json:"quantity"`
+	Subscription      *string `json:"subscription"`
+	TaxRates          []*TaxRate                        `json:"tax_rates"`
 }
 
 // SubscriptionItemBillingThresholds is a structure representing the billing thresholds for a
@@ -77,5 +77,5 @@ type SubscriptionItemBillingThresholds struct {
 type SubscriptionItemList struct {
 	APIResource
 	ListMeta
-	Data []*SubscriptionItem `json:"data,omitempty"`
+	Data []*SubscriptionItem `json:"data"`
 }

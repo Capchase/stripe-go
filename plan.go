@@ -69,33 +69,33 @@ const (
 // For more details see https://stripe.com/docs/api#plans.
 type Plan struct {
 	APIResource
-	Active          *bool `json:"active,omitempty"`
-	AggregateUsage  *string `json:"aggregate_usage,omitempty"`
-	Amount          *int64 `json:"amount,omitempty"`
+	Active          *bool `json:"active"`
+	AggregateUsage  *string `json:"aggregate_usage"`
+	Amount          *int64 `json:"amount"`
 	AmountDecimal   *float64 `json:"amount_decimal,string"`
-	BillingScheme   PlanBillingScheme   `json:"billing_scheme,omitempty"`
-	Created         *int64 `json:"created,omitempty"`
-	Currency        Currency            `json:"currency,omitempty"`
-	Deleted         *bool `json:"deleted,omitempty"`
-	ID              *string `json:"id,omitempty"`
-	Interval        PlanInterval        `json:"interval,omitempty"`
-	IntervalCount   *int64 `json:"interval_count,omitempty"`
-	Livemode        *bool `json:"livemode,omitempty"`
-	Metadata        map[string]string   `json:"metadata,omitempty"`
-	Nickname        *string `json:"nickname,omitempty"`
-	Product         *Product            `json:"product,omitempty"`
-	Tiers           []*PlanTier         `json:"tiers,omitempty"`
-	TiersMode       *string `json:"tiers_mode,omitempty"`
-	TransformUsage  *PlanTransformUsage `json:"transform_usage,omitempty"`
-	TrialPeriodDays *int64 `json:"trial_period_days,omitempty"`
-	UsageType       PlanUsageType       `json:"usage_type,omitempty"`
+	BillingScheme   PlanBillingScheme   `json:"billing_scheme"`
+	Created         *int64 `json:"created"`
+	Currency        Currency            `json:"currency"`
+	Deleted         *bool `json:"deleted"`
+	ID              *string `json:"id"`
+	Interval        PlanInterval        `json:"interval"`
+	IntervalCount   *int64 `json:"interval_count"`
+	Livemode        *bool `json:"livemode"`
+	Metadata        map[string]string   `json:"metadata"`
+	Nickname        *string `json:"nickname"`
+	Product         *Product            `json:"product"`
+	Tiers           []*PlanTier         `json:"tiers"`
+	TiersMode       *string `json:"tiers_mode"`
+	TransformUsage  *PlanTransformUsage `json:"transform_usage"`
+	TrialPeriodDays *int64 `json:"trial_period_days"`
+	UsageType       PlanUsageType       `json:"usage_type"`
 }
 
 // PlanList is a list of plans as returned from a list endpoint.
 type PlanList struct {
 	APIResource
 	ListMeta
-	Data []*Plan `json:"data,omitempty"`
+	Data []*Plan `json:"data"`
 }
 
 // PlanListParams is the set of parameters that can be used when listing plans.
@@ -133,17 +133,17 @@ type PlanParams struct {
 
 // PlanTier configures tiered pricing
 type PlanTier struct {
-	FlatAmount        *int64 `json:"flat_amount,omitempty"`
+	FlatAmount        *int64 `json:"flat_amount"`
 	FlatAmountDecimal *float64 `json:"flat_amount_decimal,string"`
-	UnitAmount        *int64 `json:"unit_amount,omitempty"`
+	UnitAmount        *int64 `json:"unit_amount"`
 	UnitAmountDecimal *float64 `json:"unit_amount_decimal,string"`
-	UpTo              *int64 `json:"up_to,omitempty"`
+	UpTo              *int64 `json:"up_to"`
 }
 
 // PlanTransformUsage represents the bucket billing configuration.
 type PlanTransformUsage struct {
-	DivideBy *int64 `json:"divide_by,omitempty"`
-	Round    PlanTransformUsageRound `json:"round,omitempty"`
+	DivideBy *int64 `json:"divide_by"`
+	Round    PlanTransformUsageRound `json:"round"`
 }
 
 // PlanTransformUsageParams represents the bucket billing configuration.

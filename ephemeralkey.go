@@ -17,14 +17,14 @@ type EphemeralKey struct {
 	APIResource
 
 	AssociatedObjects []struct {
-		ID   *string `json:"id,omitempty"`
-		Type *string `json:"type,omitempty"`
-	} `json:"associated_objects,omitempty"`
+		ID   *string `json:"id"`
+		Type *string `json:"type"`
+	} `json:"associated_objects"`
 
-	Created  *int64 `json:"created,omitempty"`
-	Expires  *int64 `json:"expires,omitempty"`
-	ID       *string `json:"id,omitempty"`
-	Livemode *bool `json:"livemode,omitempty"`
+	Created  *int64 `json:"created"`
+	Expires  *int64 `json:"expires"`
+	ID       *string `json:"id"`
+	Livemode *bool `json:"livemode"`
 
 	// RawJSON is provided so that it may be passed back to the frontend
 	// unchanged.  Ephemeral keys are issued on behalf of another client which
@@ -32,7 +32,7 @@ type EphemeralKey struct {
 	// different JSON structure.  This ensures that if the structure differs
 	// from the version of these bindings, we can still pass back a compatible
 	// key.
-	RawJSON []byte `json:"-,omitempty"`
+	RawJSON []byte `json:"-"`
 }
 
 // UnmarshalJSON handles deserialization of an EphemeralKey.

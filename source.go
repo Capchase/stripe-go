@@ -222,97 +222,97 @@ type SourceObjectDetachParams struct {
 // SourceOwner describes the owner hash on a source.
 type SourceOwner struct {
 	Address         *Address `json:"address,omitempty"`
-	Email           *string  `json:"email,omitempty"`
-	Name            *string  `json:"name,omitempty"`
-	Phone           *string  `json:"phone,omitempty"`
+	Email           *string  `json:"email"`
+	Name            *string  `json:"name"`
+	Phone           *string  `json:"phone"`
 	VerifiedAddress *Address `json:"verified_address,omitempty"`
-	VerifiedEmail   *string  `json:"verified_email,omitempty"`
-	VerifiedName    *string  `json:"verified_name,omitempty"`
-	VerifiedPhone   *string  `json:"verified_phone,omitempty"`
+	VerifiedEmail   *string  `json:"verified_email"`
+	VerifiedName    *string  `json:"verified_name"`
+	VerifiedPhone   *string  `json:"verified_phone"`
 }
 
 // RedirectFlow informs of the state of a redirect authentication flow.
 type RedirectFlow struct {
-	FailureReason SourceRedirectFlowFailureReason `json:"failure_reason,omitempty"`
-	ReturnURL     *string                         `json:"return_url,omitempty"`
-	Status        SourceRedirectFlowStatus        `json:"status,omitempty"`
-	URL           *string                         `json:"url,omitempty"`
+	FailureReason SourceRedirectFlowFailureReason `json:"failure_reason"`
+	ReturnURL     *string                         `json:"return_url"`
+	Status        SourceRedirectFlowStatus        `json:"status"`
+	URL           *string                         `json:"url"`
 }
 
 // ReceiverFlow informs of the state of a receiver authentication flow.
 type ReceiverFlow struct {
-	Address                *string                      `json:"address,omitempty"`
-	AmountCharged          *int64                       `json:"amount_charged,omitempty"`
-	AmountReceived         *int64                       `json:"amount_received,omitempty"`
-	AmountReturned         *int64                       `json:"amount_returned,omitempty"`
-	RefundAttributesMethod SourceRefundAttributesMethod `json:"refund_attributes_method,omitempty"`
-	RefundAttributesStatus SourceRefundAttributesStatus `json:"refund_attributes_status,omitempty"`
+	Address                *string                      `json:"address"`
+	AmountCharged          *int64                       `json:"amount_charged"`
+	AmountReceived         *int64                       `json:"amount_received"`
+	AmountReturned         *int64                       `json:"amount_returned"`
+	RefundAttributesMethod SourceRefundAttributesMethod `json:"refund_attributes_method"`
+	RefundAttributesStatus SourceRefundAttributesStatus `json:"refund_attributes_status"`
 }
 
 // CodeVerificationFlow informs of the state of a verification authentication flow.
 type CodeVerificationFlow struct {
-	AttemptsRemaining *int64                           `json:"attempts_remaining,omitempty"`
-	Status            SourceCodeVerificationFlowStatus `json:"status,omitempty"`
+	AttemptsRemaining *int64                           `json:"attempts_remaining"`
+	Status            SourceCodeVerificationFlowStatus `json:"status"`
 }
 
 // SourceMandateAcceptance describes a source mandate acceptance state.
 type SourceMandateAcceptance struct {
-	Date      *int64                        `json:"date,omitempty"`
-	IP        *string                       `json:"ip,omitempty"`
-	Status    SourceMandateAcceptanceStatus `json:"status,omitempty"`
-	UserAgent *string                       `json:"user_agent,omitempty"`
+	Date      *int64                        `json:"date"`
+	IP        *string                       `json:"ip"`
+	Status    SourceMandateAcceptanceStatus `json:"status"`
+	UserAgent *string                       `json:"user_agent"`
 }
 
 // SourceMandate describes a source mandate.
 type SourceMandate struct {
-	Acceptance         *SourceMandateAcceptance        `json:"acceptance,omitempty"`
-	NotificationMethod SourceMandateNotificationMethod `json:"notification_method,omitempty"`
-	Reference          *string                         `json:"reference,omitempty"`
-	URL                *string                         `json:"url,omitempty"`
+	Acceptance         *SourceMandateAcceptance        `json:"acceptance"`
+	NotificationMethod SourceMandateNotificationMethod `json:"notification_method"`
+	Reference          *string                         `json:"reference"`
+	URL                *string                         `json:"url"`
 }
 
 // SourceSourceOrderItems describes the items on source orders for sources.
 type SourceSourceOrderItems struct {
-	Amount      *int64                    `json:"amount,omitempty"`
-	Currency    Currency                  `json:"currency,omitempty"`
-	Description *string                   `json:"description,omitempty"`
-	Quantity    *int64                    `json:"quantity,omitempty"`
-	Type        SourceSourceOrderItemType `json:"type,omitempty"`
+	Amount      *int64                    `json:"amount"`
+	Currency    Currency                  `json:"currency"`
+	Description *string                   `json:"description"`
+	Quantity    *int64                    `json:"quantity"`
+	Type        SourceSourceOrderItemType `json:"type"`
 }
 
 // SourceSourceOrder describes a source order for a source.
 type SourceSourceOrder struct {
-	Amount   *int64                    `json:"amount,omitempty"`
-	Currency Currency                  `json:"currency,omitempty"`
-	Email    *string                   `json:"email,omitempty"`
-	Items    *[]SourceSourceOrderItems `json:"items,omitempty"`
-	Shipping *ShippingDetails          `json:"shipping,omitempty"`
+	Amount   *int64                    `json:"amount"`
+	Currency Currency                  `json:"currency"`
+	Email    *string                   `json:"email"`
+	Items    *[]SourceSourceOrderItems `json:"items"`
+	Shipping *ShippingDetails          `json:"shipping"`
 }
 
 // Source is the resource representing a Source.
 // For more details see https://stripe.com/docs/api#sources.
 type Source struct {
 	APIResource
-	Amount              *int64                `json:"amount,omitempty"`
-	ClientSecret        *string               `json:"client_secret,omitempty"`
+	Amount              *int64                `json:"amount"`
+	ClientSecret        *string               `json:"client_secret"`
 	CodeVerification    *CodeVerificationFlow `json:"code_verification,omitempty"`
-	Created             *int64                `json:"created,omitempty"`
-	Currency            Currency              `json:"currency,omitempty"`
-	Customer            *string               `json:"customer,omitempty"`
-	Flow                SourceFlow            `json:"flow,omitempty"`
-	ID                  *string               `json:"id,omitempty"`
-	Livemode            *bool                 `json:"livemode,omitempty"`
-	Mandate             *SourceMandate        `json:"mandate,omitempty"`
-	Metadata            map[string]string     `json:"metadata,omitempty"`
-	Owner               *SourceOwner          `json:"owner,omitempty"`
+	Created             *int64                `json:"created"`
+	Currency            Currency              `json:"currency"`
+	Customer            *string               `json:"customer"`
+	Flow                SourceFlow            `json:"flow"`
+	ID                  *string               `json:"id"`
+	Livemode            *bool                 `json:"livemode"`
+	Mandate             *SourceMandate        `json:"mandate"`
+	Metadata            map[string]string     `json:"metadata"`
+	Owner               *SourceOwner          `json:"owner"`
 	Receiver            *ReceiverFlow         `json:"receiver,omitempty"`
 	Redirect            *RedirectFlow         `json:"redirect,omitempty"`
-	StatementDescriptor *string               `json:"statement_descriptor,omitempty"`
-	SourceOrder         *SourceSourceOrder    `json:"source_order,omitempty"`
-	Status              SourceStatus          `json:"status,omitempty"`
-	Type                *string               `json:"type,omitempty"`
+	StatementDescriptor *string               `json:"statement_descriptor"`
+	SourceOrder         *SourceSourceOrder    `json:"source_order"`
+	Status              SourceStatus          `json:"status"`
+	Type                *string               `json:"type"`
 	TypeData            map[string]interface{}
-	Usage               SourceUsage `json:"usage,omitempty"`
+	Usage               SourceUsage `json:"usage"`
 }
 
 // AppendTo implements custom encoding logic for SourceObjectParams so that the special

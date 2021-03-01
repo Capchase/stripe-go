@@ -113,20 +113,20 @@ type OAuthTokenParams struct {
 type OAuthToken struct {
 	APIResource
 
-	Livemode     *bool `json:"livemode,omitempty"`
-	Scope        OAuthScopeType `json:"scope,omitempty"`
-	StripeUserID *string `json:"stripe_user_id,omitempty"`
-	TokenType    OAuthTokenType `json:"token_type,omitempty"`
+	Livemode     *bool `json:"livemode"`
+	Scope        OAuthScopeType `json:"scope"`
+	StripeUserID *string `json:"stripe_user_id"`
+	TokenType    OAuthTokenType `json:"token_type"`
 
 	// Deprecated, please use StripeUserID
-	AccessToken          *string `json:"access_token,omitempty"`
-	RefreshToken         *string `json:"refresh_token,omitempty"`
-	StripePublishableKey *string `json:"stripe_publishable_key,omitempty"`
+	AccessToken          *string `json:"access_token"`
+	RefreshToken         *string `json:"refresh_token"`
+	StripePublishableKey *string `json:"stripe_publishable_key"`
 }
 
 // Deauthorize is the value of the return from deauthorizing.
 // https://stripe.com/docs/connect/oauth-reference#post-deauthorize
 type Deauthorize struct {
 	APIResource
-	StripeUserID *string `json:"stripe_user_id,omitempty"`
+	StripeUserID *string `json:"stripe_user_id"`
 }

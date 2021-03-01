@@ -157,65 +157,65 @@ type IssuingCardListParams struct {
 
 // IssuingCardShipping is the resource representing shipping on an issuing card.
 type IssuingCardShipping struct {
-	Address        *Address                   `json:"address,omitempty"`
-	Carrier        IssuingCardShippingCarrier `json:"carrier,omitempty"`
-	ETA            *int64 `json:"eta,omitempty"`
-	Name           *string `json:"name,omitempty"`
-	Service        IssuingCardShippingService `json:"service,omitempty"`
-	Status         IssuingCardShippingStatus  `json:"status,omitempty"`
-	TrackingNumber *string `json:"tracking_number,omitempty"`
-	TrackingURL    *string `json:"tracking_url,omitempty"`
-	Type           IssuingCardShippingType    `json:"type,omitempty"`
+	Address        *Address                   `json:"address"`
+	Carrier        IssuingCardShippingCarrier `json:"carrier"`
+	ETA            *int64 `json:"eta"`
+	Name           *string `json:"name"`
+	Service        IssuingCardShippingService `json:"service"`
+	Status         IssuingCardShippingStatus  `json:"status"`
+	TrackingNumber *string `json:"tracking_number"`
+	TrackingURL    *string `json:"tracking_url"`
+	Type           IssuingCardShippingType    `json:"type"`
 }
 
 // IssuingCardSpendingControlsSpendingLimit is the resource representing a spending limit
 // for an issuing card.
 type IssuingCardSpendingControlsSpendingLimit struct {
-	Amount     *int64 `json:"amount,omitempty"`
-	Categories []string                                         `json:"categories,omitempty"`
-	Interval   IssuingCardSpendingControlsSpendingLimitInterval `json:"interval,omitempty"`
+	Amount     *int64 `json:"amount"`
+	Categories []string                                         `json:"categories"`
+	Interval   IssuingCardSpendingControlsSpendingLimitInterval `json:"interval"`
 }
 
 // IssuingCardSpendingControls is the resource representing spending controls
 // for an issuing card.
 type IssuingCardSpendingControls struct {
-	AllowedCategories      []string                                    `json:"allowed_categories,omitempty"`
-	BlockedCategories      []string                                    `json:"blocked_categories,omitempty"`
-	SpendingLimits         []*IssuingCardSpendingControlsSpendingLimit `json:"spending_limits,omitempty"`
-	SpendingLimitsCurrency Currency                                    `json:"spending_limits_currency,omitempty"`
+	AllowedCategories      []string                                    `json:"allowed_categories"`
+	BlockedCategories      []string                                    `json:"blocked_categories"`
+	SpendingLimits         []*IssuingCardSpendingControlsSpendingLimit `json:"spending_limits"`
+	SpendingLimitsCurrency Currency                                    `json:"spending_limits_currency"`
 }
 
 // IssuingCard is the resource representing a Stripe issuing card.
 type IssuingCard struct {
 	APIResource
-	Brand              *string `json:"brand,omitempty"`
-	CancellationReason IssuingCardCancellationReason `json:"cancellation_reason,omitempty"`
-	Cardholder         *IssuingCardholder            `json:"cardholder,omitempty"`
-	Created            *int64 `json:"created,omitempty"`
-	Currency           Currency                      `json:"currency,omitempty"`
-	CVC                *string `json:"cvc,omitempty"`
-	ExpMonth           *int64 `json:"exp_month,omitempty"`
-	ExpYear            *int64 `json:"exp_year,omitempty"`
-	ID                 *string `json:"id,omitempty"`
-	Last4              *string `json:"last4,omitempty"`
-	Livemode           *bool `json:"livemode,omitempty"`
-	Metadata           map[string]string             `json:"metadata,omitempty"`
-	Number             *string `json:"number,omitempty"`
-	Object             *string `json:"object,omitempty"`
-	ReplacedBy         *IssuingCard                  `json:"replaced_by,omitempty"`
-	ReplacementFor     *IssuingCard                  `json:"replacement_for,omitempty"`
-	ReplacementReason  IssuingCardReplacementReason  `json:"replacement_reason,omitempty"`
-	Shipping           *IssuingCardShipping          `json:"shipping,omitempty"`
-	SpendingControls   *IssuingCardSpendingControls  `json:"spending_controls,omitempty"`
-	Status             IssuingCardStatus             `json:"status,omitempty"`
-	Type               IssuingCardType               `json:"type,omitempty"`
+	Brand              *string `json:"brand"`
+	CancellationReason IssuingCardCancellationReason `json:"cancellation_reason"`
+	Cardholder         *IssuingCardholder            `json:"cardholder"`
+	Created            *int64 `json:"created"`
+	Currency           Currency                      `json:"currency"`
+	CVC                *string `json:"cvc"`
+	ExpMonth           *int64 `json:"exp_month"`
+	ExpYear            *int64 `json:"exp_year"`
+	ID                 *string `json:"id"`
+	Last4              *string `json:"last4"`
+	Livemode           *bool `json:"livemode"`
+	Metadata           map[string]string             `json:"metadata"`
+	Number             *string `json:"number"`
+	Object             *string `json:"object"`
+	ReplacedBy         *IssuingCard                  `json:"replaced_by"`
+	ReplacementFor     *IssuingCard                  `json:"replacement_for"`
+	ReplacementReason  IssuingCardReplacementReason  `json:"replacement_reason"`
+	Shipping           *IssuingCardShipping          `json:"shipping"`
+	SpendingControls   *IssuingCardSpendingControls  `json:"spending_controls"`
+	Status             IssuingCardStatus             `json:"status"`
+	Type               IssuingCardType               `json:"type"`
 }
 
 // IssuingCardList is a list of issuing cards as retrieved from a list endpoint.
 type IssuingCardList struct {
 	APIResource
 	ListMeta
-	Data []*IssuingCard `json:"data,omitempty"`
+	Data []*IssuingCard `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of an IssuingCard.

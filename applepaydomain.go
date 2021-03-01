@@ -9,11 +9,11 @@ type ApplePayDomainParams struct {
 // ApplePayDomain is the resource representing a Stripe ApplePayDomain object
 type ApplePayDomain struct {
 	APIResource
-	Created    *int64 `json:"created,omitempty"`
-	Deleted    *bool `json:"deleted,omitempty"`
-	DomainName *string `json:"domain_name,omitempty"`
-	ID         *string `json:"id,omitempty"`
-	Livemode   *bool `json:"livemode,omitempty"`
+	Created    *int64 `json:"created"`
+	Deleted    *bool `json:"deleted"`
+	DomainName *string `json:"domain_name"`
+	ID         *string `json:"id"`
+	Livemode   *bool `json:"livemode"`
 }
 
 // ApplePayDomainListParams are the parameters allowed during ApplePayDomain listing.
@@ -25,5 +25,5 @@ type ApplePayDomainListParams struct {
 type ApplePayDomainList struct {
 	APIResource
 	ListMeta
-	Data []*ApplePayDomain `json:"data,omitempty"`
+	Data []*ApplePayDomain `json:"data"`
 }

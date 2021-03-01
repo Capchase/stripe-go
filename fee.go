@@ -21,26 +21,26 @@ type ApplicationFeeListParams struct {
 // For more details see https://stripe.com/docs/api#application_fees.
 type ApplicationFee struct {
 	APIResource
-	Account                *Account            `json:"account,omitempty"`
-	Amount                 *int64 `json:"amount,omitempty"`
-	AmountRefunded         *int64 `json:"amount_refunded,omitempty"`
-	Application            *string `json:"application,omitempty"`
-	BalanceTransaction     *BalanceTransaction `json:"balance_transaction,omitempty"`
-	Charge                 *Charge             `json:"charge,omitempty"`
-	Created                *int64 `json:"created,omitempty"`
-	Currency               Currency            `json:"currency,omitempty"`
-	ID                     *string `json:"id,omitempty"`
-	Livemode               *bool `json:"livemode,omitempty"`
-	OriginatingTransaction *Charge             `json:"originating_transaction,omitempty"`
-	Refunded               *bool `json:"refunded,omitempty"`
-	Refunds                *FeeRefundList      `json:"refunds,omitempty"`
+	Account                *Account            `json:"account"`
+	Amount                 *int64 `json:"amount"`
+	AmountRefunded         *int64 `json:"amount_refunded"`
+	Application            *string `json:"application"`
+	BalanceTransaction     *BalanceTransaction `json:"balance_transaction"`
+	Charge                 *Charge             `json:"charge"`
+	Created                *int64 `json:"created"`
+	Currency               Currency            `json:"currency"`
+	ID                     *string `json:"id"`
+	Livemode               *bool `json:"livemode"`
+	OriginatingTransaction *Charge             `json:"originating_transaction"`
+	Refunded               *bool `json:"refunded"`
+	Refunds                *FeeRefundList      `json:"refunds"`
 }
 
 //ApplicationFeeList is a list of application fees as retrieved from a list endpoint.
 type ApplicationFeeList struct {
 	APIResource
 	ListMeta
-	Data []*ApplicationFee `json:"data,omitempty"`
+	Data []*ApplicationFee `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of an ApplicationFee.

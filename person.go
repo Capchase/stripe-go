@@ -131,84 +131,84 @@ type PersonListParams struct {
 
 // DOB represents a Person's date of birth.
 type DOB struct {
-	Day   *int64 `json:"day,omitempty"`
-	Month *int64 `json:"month,omitempty"`
-	Year  *int64 `json:"year,omitempty"`
+	Day   *int64 `json:"day"`
+	Month *int64 `json:"month"`
+	Year  *int64 `json:"year"`
 }
 
 // Relationship represents how the Person relates to the business.
 type Relationship struct {
-	Director         *bool `json:"director,omitempty"`
-	Executive        *bool `json:"executive,omitempty"`
-	Owner            *bool `json:"owner,omitempty"`
-	PercentOwnership *float64 `json:"percent_ownership,omitempty"`
-	Representative   *bool `json:"representative,omitempty"`
-	Title            *string `json:"title,omitempty"`
+	Director         *bool `json:"director"`
+	Executive        *bool `json:"executive"`
+	Owner            *bool `json:"owner"`
+	PercentOwnership *float64 `json:"percent_ownership"`
+	Representative   *bool `json:"representative"`
+	Title            *string `json:"title"`
 }
 
 // Requirements represents what's missing to verify a Person.
 type Requirements struct {
-	CurrentlyDue        []string                    `json:"currently_due,omitempty"`
-	Errors              []*AccountRequirementsError `json:"errors,omitempty"`
-	EventuallyDue       []string                    `json:"eventually_due,omitempty"`
-	PastDue             []string                    `json:"past_due,omitempty"`
-	PendingVerification []string                    `json:"pending_verification,omitempty"`
+	CurrentlyDue        []string                    `json:"currently_due"`
+	Errors              []*AccountRequirementsError `json:"errors"`
+	EventuallyDue       []string                    `json:"eventually_due"`
+	PastDue             []string                    `json:"past_due"`
+	PendingVerification []string                    `json:"pending_verification"`
 }
 
 // PersonVerificationDocument represents the documents associated with a Person.
 type PersonVerificationDocument struct {
-	Back        *File                           `json:"back,omitempty"`
-	Details     *string `json:"details,omitempty"`
-	DetailsCode VerificationDocumentDetailsCode `json:"details_code,omitempty"`
-	Front       *File                           `json:"front,omitempty"`
+	Back        *File                           `json:"back"`
+	Details     *string `json:"details"`
+	DetailsCode VerificationDocumentDetailsCode `json:"details_code"`
+	Front       *File                           `json:"front"`
 }
 
 // PersonVerification is the structure for a person's verification details.
 type PersonVerification struct {
-	AdditionalDocument *PersonVerificationDocument   `json:"additional_document,omitempty"`
-	Details            *string `json:"details,omitempty"`
-	DetailsCode        PersonVerificationDetailsCode `json:"details_code,omitempty"`
-	Document           *PersonVerificationDocument   `json:"document,omitempty"`
-	Status             IdentityVerificationStatus    `json:"status,omitempty"`
+	AdditionalDocument *PersonVerificationDocument   `json:"additional_document"`
+	Details            *string `json:"details"`
+	DetailsCode        PersonVerificationDetailsCode `json:"details_code"`
+	Document           *PersonVerificationDocument   `json:"document"`
+	Status             IdentityVerificationStatus    `json:"status"`
 }
 
 // Person is the resource representing a Stripe person.
 // For more details see https://stripe.com/docs/api#persons.
 type Person struct {
 	APIResource
-	Account           *string `json:"account,omitempty"`
-	Address           *AccountAddress         `json:"address,omitempty"`
-	AddressKana       *AccountAddress         `json:"address_kana,omitempty"`
-	AddressKanji      *AccountAddress         `json:"address_kanji,omitempty"`
-	Deleted           *bool `json:"deleted,omitempty"`
-	DOB               *DOB                    `json:"dob,omitempty"`
-	Email             *string `json:"email,omitempty"`
-	FirstName         *string `json:"first_name,omitempty"`
-	FirstNameKana     *string `json:"first_name_kana,omitempty"`
-	FirstNameKanji    *string `json:"first_name_kanji,omitempty"`
-	Gender            *string `json:"gender,omitempty"`
-	ID                *string `json:"id,omitempty"`
-	IDNumberProvided  *bool `json:"id_number_provided,omitempty"`
-	LastName          *string `json:"last_name,omitempty"`
-	LastNameKana      *string `json:"last_name_kana,omitempty"`
-	LastNameKanji     *string `json:"last_name_kanji,omitempty"`
-	MaidenName        *string `json:"maiden_name,omitempty"`
-	Nationality       *string `json:"nationality,omitempty"`
-	Metadata          map[string]string       `json:"metadata,omitempty"`
-	Object            *string `json:"object,omitempty"`
-	Phone             *string `json:"phone,omitempty"`
-	PoliticalExposure PersonPoliticalExposure `json:"political_exposure,omitempty"`
-	Relationship      *Relationship           `json:"relationship,omitempty"`
-	Requirements      *Requirements           `json:"requirements,omitempty"`
-	SSNLast4Provided  *bool `json:"ssn_last_4_provided,omitempty"`
-	Verification      *PersonVerification     `json:"verification,omitempty"`
+	Account           *string `json:"account"`
+	Address           *AccountAddress         `json:"address"`
+	AddressKana       *AccountAddress         `json:"address_kana"`
+	AddressKanji      *AccountAddress         `json:"address_kanji"`
+	Deleted           *bool `json:"deleted"`
+	DOB               *DOB                    `json:"dob"`
+	Email             *string `json:"email"`
+	FirstName         *string `json:"first_name"`
+	FirstNameKana     *string `json:"first_name_kana"`
+	FirstNameKanji    *string `json:"first_name_kanji"`
+	Gender            *string `json:"gender"`
+	ID                *string `json:"id"`
+	IDNumberProvided  *bool `json:"id_number_provided"`
+	LastName          *string `json:"last_name"`
+	LastNameKana      *string `json:"last_name_kana"`
+	LastNameKanji     *string `json:"last_name_kanji"`
+	MaidenName        *string `json:"maiden_name"`
+	Nationality       *string `json:"nationality"`
+	Metadata          map[string]string       `json:"metadata"`
+	Object            *string `json:"object"`
+	Phone             *string `json:"phone"`
+	PoliticalExposure PersonPoliticalExposure `json:"political_exposure"`
+	Relationship      *Relationship           `json:"relationship"`
+	Requirements      *Requirements           `json:"requirements"`
+	SSNLast4Provided  *bool `json:"ssn_last_4_provided"`
+	Verification      *PersonVerification     `json:"verification"`
 }
 
 // PersonList is a list of persons as retrieved from a list endpoint.
 type PersonList struct {
 	APIResource
 	ListMeta
-	Data []*Person `json:"data,omitempty"`
+	Data []*Person `json:"data"`
 }
 
 // UnmarshalJSON handles deserialization of a Person.
